@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rheophile10 · rheophile.ca</title>
+  <meta name="description" content="rheophile10 — building plastron and other reactive substrates. Dev log and reading notes.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐢</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    
+    :root {
+      --accent: #14b8a6;
+    }
+    
+    body {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    
+    .display {
+      font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+      font-feature-settings: "ss02";
+    }
+
+    .section-header {
+      font-size: 1.75rem;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+    }
+
+    .glass {
+      background: rgba(9, 9, 11, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(63, 63, 70, 0.4);
+    }
+
+    .nav-link {
+      transition: color 0.1s ease;
+    }
+    .nav-link:hover {
+      color: #14b8a6;
+    }
+
+    .project-card, .post-card {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                  box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
+                  border-color 0.2s ease;
+    }
+    .project-card:hover, .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      border-color: #14b8a6;
+    }
+
+    .subtle-grid {
+      background-image: 
+        linear-gradient(rgba(163, 163, 172, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163, 163, 172, 0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .flow-accent {
+      position: relative;
+    }
+    .flow-accent::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #14b8a6, transparent);
+      opacity: 0.3;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .blog-content {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .blog-content h3 {
+      font-size: 1.05rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .blog-content p {
+      margin-bottom: 1rem;
+    }
+    .blog-content ul {
+      margin-bottom: 1rem;
+      padding-left: 1.25rem;
+    }
+    .blog-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .stat {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rheo-gradient {
+      background: linear-gradient(90deg, #14b8a6, #67e8f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .modal {
+      animation: modalPop 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .nav-active {
+      color: #14b8a6;
+      position: relative;
+    }
+    .nav-active:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #14b8a6;
+    }
+
+    .pfp-ring {
+      box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.2),
+                  0 25px 50px -12px rgb(0 0 0 / 0.4);
+    }
+
+    .plastron-mock {
+      background: #0a0a0b;
+      border: 1px solid #27272a;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 selection:bg-teal-500/30">
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/95 backdrop-blur-lg">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30">
+            <span class="text-xl leading-none mt-px">🐢</span>
+          </div>
+          <div>
+            <div class="font-semibold tracking-tighter text-xl">rheophile10</div>
+            <div class="text-[10px] text-zinc-500 -mt-1">rheophile.ca</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#plastron" class="nav-link text-zinc-400 hover:text-white">Plastron</a>
+        <a href="#projects" class="nav-link text-zinc-400 hover:text-white">Projects</a>
+        <a href="#devlog" class="nav-link text-zinc-400 hover:text-white">Dev Log</a>
+        <a href="#reading" class="nav-link text-zinc-400 hover:text-white">Reading</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://x.com/rheophile10" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full border border-white/10 hover:bg-white/5 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25l-7.451 8.52L4.5 2.25H1.08l7.646 8.73L1.08 21.75h3.42l6.313-7.23 5.058 7.23h3.42l-7.646-8.73 7.646-8.73h-3.42z"/></svg>
+          <span class="hidden sm:inline">@rheophile10</span>
+        </a>
+        <a href="https://github.com/rheophile10" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full bg-white text-zinc-900 hover:bg-zinc-100 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.89.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 1-.32 3.3 1.23.95-.26 1.98-.4 3-.4s2.05.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.25 5.69.41.36.77 1.08.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.55 4.57-1.51 7.86-5.81 7.86-10.89C23.5 5.73 18.27.5 12 .5z"/></svg>
+          <span class="hidden sm:inline">GitHub</span>
+        </a>
+        <div id="auth-area">
+          <a href="/apps/"
+             class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full border border-teal-500/40 text-teal-400 hover:bg-teal-500/10 transition-colors">
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile quick nav -->
+    <div class="md:hidden border-t border-white/10 bg-zinc-950/95 px-6 py-2 flex gap-x-5 text-xs overflow-x-auto">
+      <a href="#plastron" class="text-zinc-400 whitespace-nowrap">Plastron</a>
+      <a href="#projects" class="text-zinc-400 whitespace-nowrap">Projects</a>
+      <a href="#devlog" class="text-zinc-400 whitespace-nowrap">Dev Log</a>
+      <a href="#reading" class="text-zinc-400 whitespace-nowrap">Reading</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-10 items-center">
+      <!-- Text -->
+      <div class="md:col-span-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs tracking-[1px] font-medium text-teal-400 mb-6 border border-white/10">
+          <div class="w-1.5 h-1.5 bg-teal-400 rounded-full animate-pulse"></div>
+          CURRENTLY SHAPING PLASTRON
+        </div>
+
+        <h1 class="display text-6xl md:text-7xl font-semibold tracking-tighter leading-[0.92]">
+          rheophile10.<br>
+          <span class="text-zinc-500">flowing code.</span>
+        </h1>
+
+        <p class="mt-6 max-w-md text-xl text-zinc-400">
+          Building <span class="text-teal-400">reactive substrates</span> that run everywhere. 
+          Polyglot spreadsheets, self-contained OSes, and tools that feel like water.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#plastron" 
+             class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl bg-teal-500 hover:bg-teal-400 active:bg-teal-600 transition-colors text-zinc-950 font-semibold text-sm tracking-[-0.2px]">
+            Explore Plastron
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="https://plastron.ca" target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl border border-white/20 hover:bg-white/5 transition-colors text-sm font-medium">
+            Open live demo
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center gap-4 text-sm">
+          <div class="flex -space-x-2">
+            <div class="w-7 h-7 rounded-full ring-2 ring-zinc-950 overflow-hidden border border-white/20"><img src="assets/pfp.jpg" alt=""></div>
+          </div>
+          <div class="text-zinc-400">
+            <a href="https://x.com/rheophile10" class="hover:text-white transition-colors">@rheophile10</a>
+            <span class="mx-1.5 text-zinc-700">·</span> 
+            <a href="https://github.com/rheophile10" class="hover:text-white transition-colors">github.com/rheophile10</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PFP -->
+      <div class="md:col-span-5 flex justify-center md:justify-end">
+        <div class="relative">
+          <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden ring-1 ring-white/10 pfp-ring">
+            <img src="assets/pfp.jpg" alt="@rheophile10 profile photo" 
+                 class="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-500">
+          </div>
+          <div class="absolute -bottom-2 -right-2 px-3.5 py-1 rounded-2xl bg-zinc-900 border border-white/10 text-xs flex items-center gap-1.5 shadow-xl">
+            <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+            <span class="font-medium text-emerald-400">online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT / CONNECT BAR -->
+  <div class="border-y border-white/10 bg-zinc-900/40">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-start md:items-center gap-x-10 gap-y-3 text-sm">
+      <div class="text-zinc-400 max-w-2xl">
+        I work at the intersection of computation, data, and form.
+        Plastron is my current focus: a polyglot reactive substrate that becomes a full desktop environment in a single static HTML file.
+        It launched on Show HN in June 2026 and is moving fast.
+      </div>
+      <div class="flex-shrink-0 flex items-center gap-2 text-xs uppercase tracking-[1.5px] text-zinc-500 md:ml-auto">
+        <div>SOFT MATTER</div>
+        <div class="w-px h-3 bg-white/20"></div>
+        <div>REACTIVE SYSTEMS</div>
+        <div class="w-px h-3 bg-white/20"></div>
+        <div>SELF-HOSTED EVERYTHING</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOW -->
+  <section id="now" class="max-w-6xl mx-auto px-6 pt-12">
+    <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium mb-3">On the bench right now</div>
+    <div class="grid sm:grid-cols-3 gap-4 text-sm">
+      <div class="rounded-3xl border border-white/10 bg-zinc-900/50 p-5">
+        <div class="font-semibold tracking-tighter">plastron 🐢</div>
+        <p class="mt-2 text-zinc-400 leading-snug">Growing the formula language and the DAG kernel. Post-launch iteration, in the open.</p>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-zinc-900/50 p-5">
+        <div class="font-semibold tracking-tighter">open-data warehouse build</div>
+        <p class="mt-2 text-zinc-400 leading-snug">Saskatoon open data → Snowflake → dbt → a public dashboard. Repo and live report soon.</p>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-zinc-900/50 p-5">
+        <div class="font-semibold tracking-tighter">field season</div>
+        <p class="mt-2 text-zinc-400 leading-snug">Geophysics surveys on the Canadian Shield; drone survey operations later this summer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLASTRON FEATURED -->
+  <section id="plastron" class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <div class="uppercase tracking-[2px] text-xs text-teal-400 font-medium">Featured project</div>
+        <h2 class="section-header font-semibold tracking-tighter flex items-center gap-3">
+          plastron <span class="text-3xl">🐢</span>
+        </h2>
+      </div>
+      <div class="hidden md:flex items-center gap-3 text-sm">
+        <a href="https://github.com/rheophile10/plastron" target="_blank" 
+           class="px-4 py-2 rounded-2xl border border-white/15 hover:bg-white/5 transition flex items-center gap-2 text-sm">
+          <span>View on GitHub</span>
+        </a>
+        <a href="https://plastron.ca" target="_blank"
+           class="px-5 py-2 rounded-2xl bg-teal-500 hover:bg-teal-400 text-zinc-950 font-semibold text-sm flex items-center gap-2 transition-colors">
+          Launch the OS <span aria-hidden>↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6">
+      <!-- Main desc -->
+      <div class="lg:col-span-3 rounded-3xl border border-white/10 bg-zinc-900/60 p-8">
+        <p class="text-xl leading-tight text-zinc-300">
+          A polyglot reactive substrate. Cels hold values, formulas, or compiled lambdas. 
+          Writing to one fires a cascade that recomputes everything downstream in topological order.
+        </p>
+        
+        <div class="mt-6 text-sm text-zinc-400 space-y-4 leading-relaxed">
+          <p>The eventual shape is a <span class="font-medium text-zinc-200">polyglot spreadsheet</span>: write functions in any language a compiler is installed for (JS, WAT, Python, Scheme…), then call them from formulas in other cels. The same kernel powers a desktop shell, spreadsheet UI, CLI, or web app.</p>
+          <p>Ideal deployment: a single <span class="mono text-teal-400">index.html</span> you can open, edit, share, and archive. Everything round-trips through JSON.</p>
+        </div>
+
+        <div class="mt-7 pt-6 border-t border-white/10 flex flex-wrap gap-2 text-xs">
+          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">TypeScript kernel</div>
+          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">OPFS persistence</div>
+          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">WASM Doom</div>
+          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">Zero server</div>
+        </div>
+      </div>
+
+      <!-- Apps showcase -->
+      <div class="lg:col-span-2 rounded-3xl border border-white/10 bg-zinc-900/60 p-8 flex flex-col">
+        <div class="uppercase text-xs tracking-widest text-zinc-500 mb-3">What ships in the OS</div>
+        
+        <div class="space-y-3 text-sm flex-1">
+          <div class="flex gap-3 items-start">
+            <div class="mt-0.5 text-teal-400">📊</div>
+            <div><span class="font-medium">Sheets</span> — per-cell view cels, formula bar, infix formulas, full persistence</div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <div class="mt-0.5 text-teal-400">📝</div>
+            <div><span class="font-medium">Notepad</span> — textarea bound to a cel, New/Save/Open via shared file toolbar</div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <div class="mt-0.5 text-teal-400">🗂</div>
+            <div><span class="font-medium">File Explorer</span> — folders + drag-and-drop, fs-tree persisted as special segment</div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <div class="mt-0.5 text-teal-400">🎮</div>
+            <div><span class="font-medium">Doom</span> — Freedoom running on doomgeneric compiled to WASM. 60 fps, mouse + keyboard, 28 MB WAD inlined</div>
+          </div>
+        </div>
+
+        <div class="mt-auto pt-6 text-xs text-zinc-500">
+          One static page. ~200 KB core + inlined assets. Everything lives in the browser.
+        </div>
+      </div>
+    </div>
+
+    <!-- Mini mock -->
+    <div class="mt-6 rounded-3xl plastron-mock p-4 text-xs overflow-hidden border border-white/10">
+      <div class="flex items-center gap-2 px-2 pb-2 text-zinc-500">
+        <div class="flex-1 h-px bg-white/10"></div>
+        <div>plastron-simple-examples/plastron-os — the bundled desktop shell</div>
+        <div class="flex-1 h-px bg-white/10"></div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[10px]">
+        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3">
+          <div class="text-teal-400 text-[10px]">Sheets</div>
+          <div class="mt-1 font-medium text-zinc-300">A1 = 12 · B1 =A1*1.5<br>C1 =B1*2 → 36</div>
+        </div>
+        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3">
+          <div class="text-teal-400 text-[10px]">File system</div>
+          <div class="mt-1 text-zinc-400 mono">/notepad/untitled-3.甲<br>/sheets/q4-report.甲</div>
+        </div>
+        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3">
+          <div class="text-teal-400 text-[10px]">Polyglot</div>
+          <div class="mt-1">JS · WAT · Python · Scheme<br>compilers as cels</div>
+        </div>
+        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3 flex items-center justify-center text-center">
+          <div>
+            <div class="font-semibold text-zinc-200">The graph <span class="text-teal-400">is</span> the substrate.</div>
+            <div class="text-[10px] mt-px text-zinc-500">One artifact carries code + data + compilers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:hidden mt-5 flex gap-3">
+      <a href="https://github.com/rheophile10/plastron" target="_blank" class="flex-1 text-center px-4 py-2.5 rounded-2xl border border-white/15 text-sm">GitHub</a>
+      <a href="https://plastron.ca" target="_blank" class="flex-1 text-center px-4 py-2.5 rounded-2xl bg-teal-500 text-zinc-950 font-semibold text-sm">Launch demo</a>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="max-w-6xl mx-auto px-6 pt-8 pb-16 border-t border-white/10">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="section-header font-semibold tracking-tighter">Other projects</h2>
+      <a href="https://github.com/rheophile10?tab=repositories" target="_blank" class="text-xs text-teal-400 hover:underline">All repos on GitHub →</a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Project cards populated by JS -->
+    </div>
+  </section>
+
+  <!-- DEV LOG -->
+  <section id="devlog" class="max-w-6xl mx-auto px-6 py-12 border-t border-white/10 bg-zinc-900/30">
+    <div class="flex items-end justify-between mb-5">
+      <div>
+        <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium">Writing</div>
+        <h2 class="section-header font-semibold tracking-tighter">Dev Log</h2>
+      </div>
+      <div class="text-xs text-zinc-500">Notes on building in the open</div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4" id="devlog-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- BOOKS / READING -->
+  <section id="reading" class="max-w-6xl mx-auto px-6 py-12 border-t border-white/10">
+    <div class="flex items-end justify-between mb-5">
+      <div>
+        <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium">Marginalia</div>
+        <h2 class="section-header font-semibold tracking-tighter">Reading Notes</h2>
+      </div>
+      <div class="text-xs text-zinc-500">Books, essays, and what stuck</div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4" id="reading-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="max-w-6xl mx-auto px-6 py-14 border-t border-white/10">
+    <div class="rounded-3xl bg-zinc-900 border border-white/10 p-9 md:p-10">
+      <div class="max-w-lg">
+        <div class="text-teal-400 text-xs tracking-[2px]">CONNECT</div>
+        <h3 class="text-3xl tracking-tighter font-semibold mt-1">Find me in the currents</h3>
+        <p class="mt-3 text-zinc-400">I post occasionally on X and push code to GitHub. Plastron development is public and fast-moving.</p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://x.com/rheophile10" target="_blank"
+           class="group flex-1 min-w-[200px] flex items-center gap-4 rounded-2xl border border-white/10 hover:border-white/20 px-5 h-16 transition">
+          <div class="text-2xl">𝕏</div>
+          <div>
+            <div class="font-semibold">@rheophile10</div>
+            <div class="text-xs text-zinc-500 group-hover:text-zinc-400">X / Twitter</div>
+          </div>
+        </a>
+        <a href="https://github.com/rheophile10" target="_blank"
+           class="group flex-1 min-w-[200px] flex items-center gap-4 rounded-2xl border border-white/10 hover:border-white/20 px-5 h-16 transition">
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.89.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 1-.32 3.3 1.23.95-.26 1.98-.4 3-.4s2.05.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.25 5.69.41.36.77 1.08.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.55 4.57-1.51 7.86-5.81 7.86-10.89C23.5 5.73 18.27.5 12 .5z"/></svg>
+          <div>
+            <div class="font-semibold">rheophile10</div>
+            <div class="text-xs text-zinc-500 group-hover:text-zinc-400">GitHub</div>
+          </div>
+        </a>
+      </div>
+      <div class="mt-4 text-xs text-zinc-500">DMs open on X. Code speaks louder than anything else.</div>
+
+      <div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center gap-3 text-sm">
+        <div class="text-zinc-400">
+          <span class="text-zinc-200 font-medium">Rheophile Corp.</span> takes on a small number of data &amp; software engagements — pipelines, dashboards, field data, odd problems.
+        </div>
+        <a href="mailto:icar@rheophile.ca"
+           class="md:ml-auto inline-flex items-center gap-2 px-5 h-10 rounded-2xl border border-teal-500/40 text-teal-400 hover:bg-teal-500/10 transition text-sm font-medium whitespace-nowrap">
+          icar@rheophile.ca
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 py-8">
+    <div class="max-w-6xl mx-auto px-6 text-xs text-zinc-500 flex flex-col md:flex-row gap-y-2 items-center justify-between">
+      <div>© Rheophile Corp. · rheophile10 — all code on GitHub under MIT where applicable.</div>
+      <div class="flex items-center gap-x-5">
+        <a href="https://plastron.ca" class="hover:text-zinc-300 transition">plastron live</a>
+        <span class="text-white/10">·</span>
+        <a href="https://github.com/rheophile10/plastron" class="hover:text-zinc-300 transition">plastron source</a>
+        <span class="text-white/10">·</span>
+        <span class="text-zinc-600">Previously: GPX Time-Range Viewer</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BLOG MODAL -->
+  <div id="modal" onclick="if (event.target.id === 'modal') closeModal()" class="hidden fixed inset-0 z-[70] bg-black/90 flex items-center justify-center p-4 md:p-8">
+    <div onclick="event.stopImmediatePropagation()" 
+         class="modal w-full max-w-2xl bg-zinc-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
+      <div class="px-6 pt-5 pb-4 border-b border-white/10 flex items-center justify-between">
+        <div>
+          <div id="modal-meta" class="text-xs uppercase tracking-widest text-teal-400 font-medium"></div>
+          <div id="modal-title" class="text-2xl font-semibold tracking-tighter pr-6"></div>
+        </div>
+        <button onclick="closeModal()" class="text-zinc-400 hover:text-white p-2 -mr-1">✕</button>
+      </div>
+      <div id="modal-body" class="blog-content px-6 py-7 text-zinc-300 max-h-[65vh] overflow-auto"></div>
+      <div class="px-6 py-4 border-t border-white/10 flex justify-end bg-zinc-950/60">
+        <button onclick="closeModal()" 
+                class="text-sm px-5 h-9 rounded-2xl border border-white/15 hover:bg-white/5 transition">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tailwind script
+    function initTailwind() {
+      document.querySelectorAll('script[src*="tailwindcss"]').forEach(s => {
+        // already loaded via CDN
+      });
+    }
+
+    // Project data
+    const projects = [
+      {
+        name: "xit-wasm-ts",
+        desc: "Versioned in-memory archives via xit (Zig VCS) compiled to WebAssembly. Browser-friendly.",
+        lang: "TypeScript",
+        link: "https://github.com/rheophile10/xit-wasm-ts",
+        stars: null
+      },
+      {
+        name: "genenote-js",
+        desc: "Lion Kimbra's genenote concept, rebuilt in JS on top of plastron's reactive substrate.",
+        lang: "TypeScript",
+        link: "https://github.com/rheophile10/genenote-js"
+      },
+      {
+        name: "fieldScripts",
+        desc: "Scripts for the field — utilities written in geophysics camps, for geophysics camps.",
+        lang: "JavaScript",
+        link: "https://github.com/rheophile10/fieldScripts"
+      },
+      {
+        name: "xit",
+        desc: "A git alternative written in Zig. Forked and explored for modern version control ideas.",
+        lang: "Zig",
+        link: "https://github.com/rheophile10/xit"
+      },
+      {
+        name: "js-framework-benchmark",
+        desc: "Fork of the popular krausest/js-framework-benchmark with additional measurements and experiments.",
+        lang: "JavaScript",
+        link: "https://github.com/rheophile10/js-framework-benchmark"
+      },
+      {
+        name: "hermes-agent",
+        desc: "The agent that grows with you. Exploration of long-running personal agents.",
+        lang: "Python",
+        link: "https://github.com/rheophile10/hermes-agent"
+      }
+    ];
+
+    function renderProjects() {
+      const container = document.querySelector('#projects .grid');
+      container.innerHTML = '';
+
+      projects.forEach(p => {
+        const card = document.createElement('a');
+        card.href = p.link;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.className = 'project-card group block rounded-3xl border border-white/10 bg-zinc-900/70 hover:border-teal-500/40 p-6 flex flex-col h-full';
+
+        card.innerHTML = `
+          <div class="flex-1">
+            <div class="flex items-start justify-between">
+              <div class="font-semibold text-lg tracking-tighter group-hover:text-teal-400 transition">${p.name}</div>
+              <span class="text-[10px] px-2 py-px rounded-full border border-white/10 text-zinc-400">${p.lang}</span>
+            </div>
+            <p class="mt-3 text-sm text-zinc-400 leading-snug">${p.desc}</p>
+          </div>
+          <div class="mt-5 text-xs text-teal-400 flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition">
+            View repository 
+            <span class="inline-block transition group-hover:translate-x-px">→</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Dev log posts
+    const devPosts = [
+      {
+        id: "cels-topo",
+        date: "May 28, 2026",
+        title: "Cels All the Way Down",
+        excerpt: "Topological evaluation order, dirty propagation, and why a spreadsheet kernel is the ultimate substrate for everything.",
+        tags: ["plastron", "reactive"],
+        body: `
+          <p>Plastron is built around the idea that the graph itself is the program. Each cel knows its direct dependencies. A write to any cel triggers a cascade that walks the graph in topological order, recomputing only what must change.</p>
+          <p>This is deceptively powerful. The same mechanism powers:</p>
+          <ul>
+            <li>Spreadsheet formulas (obviously)</li>
+            <li>Live UI bindings (DOM channels listen to cels)</li>
+            <li>Compiler registration — a new language is just another cel that exposes a compile function</li>
+          </ul>
+          <p>The hard part is keeping the evaluation fast and stable under cycles or massive fan-out. We use a hybrid dirty-bit + epoch scheme that has survived several rewrites.</p>
+          <p>Next up: making the 50×50 cell sheet feel instant even when every cell depends on the cell above it.</p>
+        `
+      },
+      {
+        id: "single-html-os",
+        date: "May 14, 2026",
+        title: "Shipping a Desktop OS in One HTML File",
+        excerpt: "How we bundle the kernel, four full apps, a Doom port, and a file system into ~200 KB of self-contained static HTML + inlined assets.",
+        tags: ["build", "wasm", "static"],
+        body: `
+          <p>The goal for plastron-os was always: double-click and you have a real environment. No install. No server. Archive it, email it, put it on a USB.</p>
+          <h3>The build</h3>
+          <p>Everything is bundled by a small Bun script. We:</p>
+          <ul>
+            <li>Compile the TypeScript kernel to a single JS module</li>
+            <li>Inline the entire Freedoom WAD + doomgeneric WASM (gzipped + base64)</li>
+            <li>Embed the initial segments that define the desktop, toolbar, and file picker</li>
+          </ul>
+          <p>Result: one index.html that boots a full desktop with persistent user spaces via OPFS. The Doom port alone is the bulk of the size, but it's worth it.</p>
+        `
+      },
+      {
+        id: "wasm-vcs",
+        date: "Apr 22, 2026",
+        title: "Bringing xit to the Browser",
+        excerpt: "Compiling a Zig version control system to WASM so that every plastron user-space can have proper versioned snapshots without leaving the page.",
+        tags: ["wasm", "vcs", "zig"],
+        body: `
+          <p>Version control is table stakes for any serious creative tool. I wanted plastron documents to have real history without needing git or external services.</p>
+          <p>xit (a git alternative in Zig) was the perfect candidate. With xit-wasm-ts we expose a tiny surface that lets the kernel snapshot and restore user-space segments as proper versioned archives.</p>
+          <p>The browser experience is surprisingly good once you accept that everything is in-memory + OPFS. No network roundtrips for local history.</p>
+        `
+      },
+      {
+        id: "polyglot-compilers",
+        date: "Mar 9, 2026",
+        title: "Polyglot by Default",
+        excerpt: "Making every language a first-class citizen inside the cel graph. JS, WebAssembly Text, Python, and Scheme all living together.",
+        tags: ["compilers", "plastron"],
+        body: `
+          <p>One of the most fun parts of plastron is that the kernel itself doesn't care what language your formulas are written in. It only cares about the compiled lambdas that get attached to cels.</p>
+          <p>We have a small registry of “compiler cels”. Drop in a new one and suddenly every downstream cel can call into that language.</p>
+          <p>The pictograph example demonstrates JS ↔ WAT ↔ Python ↔ QuickJS all cooperating in a single DAG. The dream is a world where you pick the right tool for the cell instead of the right tool for the whole document.</p>
+        `
+      }
+    ];
+
+    function renderDevLog() {
+      const grid = document.getElementById('devlog-grid');
+      grid.innerHTML = '';
+
+      devPosts.forEach(post => {
+        const el = document.createElement('div');
+        el.className = 'post-card cursor-pointer rounded-3xl border border-white/10 bg-zinc-900/70 p-6 group';
+        el.innerHTML = `
+          <div class="flex justify-between items-baseline text-xs">
+            <span class="text-teal-400 font-medium">${post.date}</span>
+            <span class="text-zinc-600 group-hover:text-zinc-500">${post.tags.join(' · ')}</span>
+          </div>
+          <div class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight group-hover:text-teal-400 transition">${post.title}</div>
+          <p class="mt-3 text-sm text-zinc-400 line-clamp-3">${post.excerpt}</p>
+          <div class="mt-5 text-xs text-teal-400 flex items-center gap-1">
+            Read note <span class="transition group-hover:translate-x-0.5">→</span>
+          </div>
+        `;
+        el.onclick = () => openModal(post, 'dev');
+        grid.appendChild(el);
+      });
+    }
+
+    // Reading / books posts
+    const readingPosts = [
+      {
+        id: "geb",
+        date: "May 19, 2026",
+        title: "Gödel, Escher, Bach — 15 years later",
+        excerpt: "Still the best book ever written about strange loops, recursion, and why consciousness might just be a very good hash collision.",
+        tags: ["philosophy", "computation"],
+        body: `
+          <p>Every few years I return to GEB. This time I paid special attention to the dialogues. They are the real payload.</p>
+          <p>Hofstadter's central insight — that self-reference and tangled hierarchies are everywhere once you start looking — maps disturbingly well onto what we're building with plastron. The cel graph is a strange loop factory.</p>
+          <p>If you're building any kind of live system that observes itself, read (or re-read) this. Then go implement a quine in your substrate of choice.</p>
+        `
+      },
+      {
+        id: "dispossessed",
+        date: "Apr 3, 2026",
+        title: "The Dispossessed",
+        excerpt: "Ursula K. Le Guin’s anarchist utopia on Anarres remains the most rigorous exploration of what “enough” actually looks like.",
+        tags: ["fiction", "politics"],
+        body: `
+          <p>Shevek's journey between two worlds is a masterclass in making the familiar strange. The book never lectures; it simply shows two flawed systems and lets the contradictions breathe.</p>
+          <p>What struck me on this reading: the physics chapters are not decoration. The search for a general temporal theory is the same search the book performs on society.</p>
+          <p>Recommended for anyone who thinks they have strong opinions about centralization vs. distribution (most software people).</p>
+        `
+      },
+      {
+        id: "structure",
+        date: "Feb 11, 2026",
+        title: "The Structure of Scientific Revolutions",
+        excerpt: "Kuhn still explains why certain ideas feel impossible until suddenly they are the only sane way to see the world.",
+        tags: ["science", "history"],
+        body: `
+          <p>Normal science is puzzle-solving within a paradigm. Crisis occurs when anomalies pile up. Then — sometimes — a new paradigm appears that makes the old questions look malformed.</p>
+          <p>Replace “science” with “programming paradigms” or “data models” and the book reads like a contemporary diagnosis of why our tools ossify and why the next substrate always feels heretical at first.</p>
+        `
+      },
+      {
+        id: "antifragile",
+        date: "Jan 8, 2026",
+        title: "Antifragile (revisited)",
+        excerpt: "Taleb’s distinction between robust and antifragile systems is the best mental model I have for why some software gets better under stress.",
+        tags: ["systems", "design"],
+        body: `
+          <p>Most of what we call “reliable” in software is actually robust — it survives shocks. Antifragile things improve from volatility.</p>
+          <p>Plastron tries to be the latter in small ways: the more you use a document the richer its history becomes; adding a new compiler cel makes the entire environment more capable without breaking existing work.</p>
+          <p>The book is uneven but the core vocabulary (via negativa, skin in the game, Lindy effect) has become part of how I evaluate ideas now.</p>
+        `
+      }
+    ];
+
+    function renderReading() {
+      const grid = document.getElementById('reading-grid');
+      grid.innerHTML = '';
+
+      readingPosts.forEach(post => {
+        const el = document.createElement('div');
+        el.className = 'post-card cursor-pointer rounded-3xl border border-white/10 bg-zinc-900/70 p-6 group';
+        el.innerHTML = `
+          <div class="flex justify-between items-baseline text-xs">
+            <span class="text-teal-400 font-medium">${post.date}</span>
+            <span class="text-zinc-600 group-hover:text-zinc-500">${post.tags.join(' · ')}</span>
+          </div>
+          <div class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight group-hover:text-teal-400 transition">${post.title}</div>
+          <p class="mt-3 text-sm text-zinc-400 line-clamp-3">${post.excerpt}</p>
+          <div class="mt-5 text-xs text-teal-400 flex items-center gap-1">
+            Read note <span class="transition group-hover:translate-x-0.5">→</span>
+          </div>
+        `;
+        el.onclick = () => openModal(post, 'reading');
+        grid.appendChild(el);
+      });
+    }
+
+    let currentModalPost = null;
+
+    function openModal(post, category) {
+      const modal = document.getElementById('modal');
+      document.getElementById('modal-title').textContent = post.title;
+      document.getElementById('modal-meta').textContent = `${post.date} · ${category === 'dev' ? 'DEV LOG' : 'READING'}`;
+      document.getElementById('modal-body').innerHTML = post.body;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      currentModalPost = post;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Simple keyboard support
+    function initKeyboard() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const modal = document.getElementById('modal');
+          if (!modal.classList.contains('hidden')) {
+            closeModal();
+          }
+        }
+      });
+    }
+
+    // Active nav on scroll (lightweight)
+    function initActiveNav() {
+      const links = document.querySelectorAll('nav a[href^="#"]');
+      const sections = [...links].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+      function update() {
+        let current = '';
+        const scrollPos = window.scrollY + 140;
+
+        sections.forEach(sec => {
+          if (sec.offsetTop <= scrollPos) {
+            current = sec.getAttribute('id');
+          }
+        });
+
+        links.forEach(link => {
+          link.classList.remove('nav-active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('nav-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      // initial
+      setTimeout(update, 300);
+    }
+
+    // Boot
+    function init() {
+      initTailwind();
+      renderProjects();
+      renderDevLog();
+      renderReading();
+      initKeyboard();
+      initActiveNav();
+
+      // Easter egg: clicking the turtle in nav scrolls to plastron
+      const logo = document.querySelector('nav .w-8.h-8');
+      if (logo) {
+        logo.style.cursor = 'pointer';
+        logo.addEventListener('click', () => {
+          document.getElementById('plastron').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      // Make sure modals close on escape is already handled
+      console.log('%c[rheophile.ca] static site ready — @rheophile10', 'color:#14b8a6');
+    }
+
+    window.onload = init;
+  </script>
+
+  <!-- SESSION CHIP — the portal at /apps/ owns login (same origin, same
+       Supabase project), so its session lands in this page's localStorage.
+       If one exists, upgrade the Login link into an account chip. -->
+  <script>
+    (function () {
+      try {
+        const key = Object.keys(localStorage).find(k => /^sb-.*-auth-token$/.test(k));
+        if (!key) return;
+        const session = JSON.parse(localStorage.getItem(key));
+        const email = session?.user?.email;
+        if (!email || (session.expires_at && session.expires_at * 1000 < Date.now())) return;
+        document.getElementById('auth-area').innerHTML = `
+          <a href="/apps/" class="inline-flex items-center gap-2 pl-3 pr-3.5 py-1.5 text-xs font-medium rounded-full border border-teal-500/40 text-teal-400 hover:bg-teal-500/10 transition-colors">
+            <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
+            <span class="hidden sm:inline max-w-[140px] truncate"></span>
+            <span class="sm:hidden">Portal</span>
+            <span aria-hidden="true">→</span>
+          </a>`;
+        document.querySelector('#auth-area .truncate').textContent = email;
+      } catch { /* no session, no chip */ }
+    })();
+  </script>
+</body>
+</html>
