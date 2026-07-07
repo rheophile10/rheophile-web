@@ -142,13 +142,14 @@
       <p>
         The main line of work here is
         <a href="https://plastron.ca">plastron</a> — a polyglot reactive substrate (spreadsheet kernel,
-        desktop shell, single-file deployment). This HRIS prototype is a <strong>detour</strong>: a
+        desktop shell, hosted at plastron.ca). This HRIS prototype is a <strong>detour</strong>: a
         self-contained experiment in <strong>CRDT SQLite</strong> (<a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>)
         for offline-first data that must merge cleanly after a day of disconnected edits.
       </p>
       <p>
-        Plastron is meant to be <strong>offline capable</strong> eventually — open a file, work without
-        a server, persist and share state on your own terms. Before bolting that into the full kernel, we
+        Plastron is hosted at <a href="https://plastron.ca">plastron.ca</a> with server-backed persistence
+        today; the <strong>zero-server, offline-capable</strong> single-file build is still the goal (no OPFS
+        in offline plastron yet). Before bolting CRDT SQLite into the full kernel, we
         wanted a smaller, adversarial test case: Protected B personnel rows, encrypted portable dumps,
         multi-operator convergence, and no network egress. Lessons from this build (changeset export,
         merge ritual, audit tables, CSP-safe inlined WASM) are intended to feed back into plastron as a
@@ -325,7 +326,7 @@
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite</li>
         <li><a href="https://github.com/rheophile10/offline-Protected-B-HRIS">offline-Protected-B-HRIS</a> — source &amp; build</li>
         <li><a href="https://github.com/rheophile10/plastron">plastron</a> — main project; offline + CRDT SQLite planned</li>
-        <li><a href="https://plastron.ca">plastron.ca</a> — live demo</li>
+        <li><a href="https://plastron.ca">plastron.ca</a> — hosted build (server-backed today; zero-server goal)</li>
       </ul>
     </article>
 

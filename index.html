@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>rheophile10 · rheophile.ca</title>
-  <meta name="description" content="rheophile10 — building plastron, a polyglot reactive substrate. Dev log.">
+  <meta name="description" content="rheophile10 — building plastron, a polyglot reactive substrate hosted at plastron.ca. Dev log.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rheophile.ca/">
   <meta property="og:title" content="rheophile.ca">
@@ -266,6 +266,9 @@
         <h2 class="section-header font-semibold tracking-tighter flex items-center gap-3">
           plastron <span class="text-3xl">🐢</span>
         </h2>
+        <p class="mt-1 text-sm text-zinc-500">
+          Hosted at <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300 transition">plastron.ca</a>
+        </p>
       </div>
       <div class="hidden md:flex items-center gap-3 text-sm">
         <a href="https://github.com/rheophile10/plastron" target="_blank" 
@@ -289,14 +292,20 @@
         
         <div class="mt-6 text-sm text-zinc-400 space-y-4 leading-relaxed">
           <p>The eventual shape is a <span class="font-medium text-zinc-200">polyglot spreadsheet</span>: write functions in any language a compiler is installed for (JS, WAT, Python, Scheme…), then call them from formulas in other cels. The same kernel powers a desktop shell, spreadsheet UI, CLI, or web app.</p>
-          <p>Ideal deployment: a single <span class="mono text-teal-400">index.html</span> you can open, edit, share, and archive. Everything round-trips through JSON.</p>
+          <p>
+            <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300 transition">plastron.ca</a>
+            is live today with server-backed persistence — not zero-server anymore, though that remains the goal.
+            Offline single-file builds are still in progress: no OPFS persistence yet, but more is coming.
+            The north star is still a single <span class="mono text-teal-400">index.html</span> you can open,
+            edit, share, and archive, with everything round-tripping through JSON.
+          </p>
         </div>
 
         <div class="mt-7 pt-6 border-t border-white/10 flex flex-wrap gap-2 text-xs">
           <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">TypeScript kernel</div>
-          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">OPFS persistence</div>
+          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">plastron.ca</div>
           <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">WASM Doom</div>
-          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">Zero server</div>
+          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">Zero-server goal</div>
         </div>
       </div>
 
@@ -307,7 +316,7 @@
         <div class="space-y-3 text-sm flex-1">
           <div class="flex gap-3 items-start">
             <div class="mt-0.5 text-teal-400">📊</div>
-            <div><span class="font-medium">Sheets</span> — per-cell view cels, formula bar, infix formulas, full persistence</div>
+            <div><span class="font-medium">Sheets</span> — per-cell view cels, formula bar, infix formulas, server-backed persistence on plastron.ca</div>
           </div>
           <div class="flex gap-3 items-start">
             <div class="mt-0.5 text-teal-400">📝</div>
@@ -315,7 +324,7 @@
           </div>
           <div class="flex gap-3 items-start">
             <div class="mt-0.5 text-teal-400">🗂</div>
-            <div><span class="font-medium">File Explorer</span> — folders + drag-and-drop, fs-tree persisted as special segment</div>
+            <div><span class="font-medium">File Explorer</span> — folders + drag-and-drop, fs-tree synced on the hosted build</div>
           </div>
           <div class="flex gap-3 items-start">
             <div class="mt-0.5 text-teal-400">🎮</div>
@@ -324,7 +333,7 @@
         </div>
 
         <div class="mt-auto pt-6 text-xs text-zinc-500">
-          One static page. ~200 KB core + inlined assets. Everything lives in the browser.
+          plastron.ca runs online today. Offline single-file builds — without OPFS for now — are still on the roadmap.
         </div>
       </div>
     </div>
