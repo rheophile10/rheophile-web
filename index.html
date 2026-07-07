@@ -429,6 +429,24 @@
     // Dev log posts — add entries here as they're written
     const devPosts = [
       {
+        date: '2026-07-07',
+        tags: ['plastron', 'steganography', 'pyodide', 'chaosedgesteg'],
+        title: 'Hiding plastron links in pictures with ChaosEdgeSteg',
+        excerpt: 'Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.',
+        body: `<p>Sheetapp on <a href="https://plastron.ca" class="text-teal-400 hover:underline">plastron.ca</a>: upstream <a href="https://github.com/crypt0lith/ChaosEdgeSteg" class="text-teal-400 hover:underline">ChaosEdgeSteg</a> (Hénon-keyed LSB on edge pixels) runs as Python in the browser via Pyodide — byte-compatible both ways with the desktop CLI.</p>
+          <p>Post a ≤680px steg PNG to X; decoder needs the original cover, the X image, and the password. Algorithm lives in visible cells, not a new app segment.</p>
+          <p><a href="/blog/chaosedgesteg-plastron.html" class="text-teal-400 hover:underline">Read the full write-up →</a> · <a href="https://plastron.ca" class="text-teal-400 hover:underline">Try it live</a></p>`
+      },
+      {
+        date: '2026-07-07',
+        tags: ['plastron', 'hris', 'offline', 'crdt'],
+        title: 'Offline HRIS for a community police office',
+        excerpt: 'A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron\'s own offline-capable future.',
+        body: `<p>Detour from <a href="https://plastron.ca" class="text-teal-400 hover:underline">plastron</a>: explore cr-sqlite (encrypted dumps, daily merge ritual) before integrating it into the reactive substrate. Plastron aims to be offline capable; this HRIS prototype stress-tests that path on Protected B personnel data — fictional Juárez PD demo.</p>
+          <p>Cryptography follows CSE <a href="https://www.cyber.gc.ca/en/guidance/cryptographic-algorithms-unclassified-protected-protected-b-information-itsp40111" class="text-teal-400 hover:underline">ITSP.40.111</a> (AES-256-GCM + PBKDF2). PIA, screening, and coordinator SOPs remain organizational work.</p>
+          <p><a href="/blog/offline-hris-juarez.html" class="text-teal-400 hover:underline">Read the full write-up →</a> · <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/" class="text-teal-400 hover:underline">Try the demo</a></p>`
+      },
+      {
         date: '2026-07-06',
         tags: ['plastron', 'zhuangzi', 'interactive'],
         title: '曳尾塗中 — drag your tail in the mud',

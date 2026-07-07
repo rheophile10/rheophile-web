@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline Protected B HRIS · rheophile.ca</title>
+  <meta name="description" content="A single-file offline HRIS for community police staffing — CRDT sync, encrypted dumps, and how it maps to CSE Protected B guidance. Demo skinned for a fictional Juárez PD.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+
+    :root { --accent: #14b8a6; }
+
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+
+    .glass {
+      background: rgba(9, 9, 11, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(63, 63, 70, 0.4);
+    }
+
+    .prose-blog {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #d4d4d8;
+    }
+    .prose-blog h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #fafafa;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose-blog h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e4e4e7;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-blog p { margin-bottom: 1rem; }
+    .prose-blog ul, .prose-blog ol {
+      margin-bottom: 1rem;
+      padding-left: 1.35rem;
+    }
+    .prose-blog li { margin-bottom: 0.4rem; }
+    .prose-blog a {
+      color: #2dd4bf;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .prose-blog a:hover { color: #99f6e4; }
+    .prose-blog code {
+      font-family: ui-monospace, monospace;
+      font-size: 0.88em;
+      background: rgba(255,255,255,0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25rem;
+    }
+    .prose-blog blockquote {
+      border-left: 3px solid rgba(20, 184, 166, 0.5);
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: #a1a1aa;
+      font-size: 0.95rem;
+    }
+
+    .subtle-grid {
+      background-image:
+        linear-gradient(rgba(163,163,172,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,163,172,0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .callout {
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      background: rgba(20, 184, 166, 0.06);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen subtle-grid">
+
+  <nav class="sticky top-0 z-50 glass">
+    <div class="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="/" class="display text-sm font-semibold tracking-tight text-zinc-300 hover:text-white transition">rheophile.ca</a>
+      <div class="text-xs text-zinc-500">Dev log · offline HRIS</div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 md:py-14">
+    <header>
+      <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Dev log · 2026-07-07</div>
+      <h1 class="display text-4xl md:text-[2.6rem] font-semibold tracking-tighter mt-2 leading-[1.1]">
+        Offline HRIS for a community police office
+      </h1>
+      <p class="mt-4 text-zinc-400 text-base leading-relaxed">
+        A <strong class="text-zinc-300">detour from <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300">plastron</a></strong> —
+        exploring CRDT SQLite for offline merge before we add it to the main substrate (which is also
+        meant to be offline capable). This proof-of-concept runs as one self-contained HTML file: no server,
+        no network, encrypted at rest. The demo is skinned for a fictional <strong class="text-zinc-300">Juárez Police Department</strong>;
+        the use case is any small community policing unit that cannot depend on enterprise cloud HR.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
+          Try the demo →
+        </a>
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
+          Source on GitHub
+        </a>
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
+          How-to guide
+        </a>
+      </div>
+    </header>
+
+    <article class="prose-blog mt-10">
+
+      <div class="callout">
+        <strong>Proof of concept only.</strong> The app has not completed a Privacy Impact Assessment,
+        threat/risk assessment, or formal security authorization. The Juárez roster is entirely synthetic.
+        Do not load real personnel data until governance requirements (below) are satisfied.
+      </div>
+
+      <h2>A detour from plastron</h2>
+      <p>
+        The main line of work here is
+        <a href="https://plastron.ca">plastron</a> — a polyglot reactive substrate (spreadsheet kernel,
+        desktop shell, single-file deployment). This HRIS prototype is a <strong>detour</strong>: a
+        self-contained experiment in <strong>CRDT SQLite</strong> (<a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>)
+        for offline-first data that must merge cleanly after a day of disconnected edits.
+      </p>
+      <p>
+        Plastron is meant to be <strong>offline capable</strong> eventually — open a file, work without
+        a server, persist and share state on your own terms. Before bolting that into the full kernel, we
+        wanted a smaller, adversarial test case: Protected B personnel rows, encrypted portable dumps,
+        multi-operator convergence, and no network egress. Lessons from this build (changeset export,
+        merge ritual, audit tables, CSP-safe inlined WASM) are intended to feed back into plastron as a
+        <strong>future cr-sqlite integration</strong>, not to replace the spreadsheet model.
+      </p>
+      <p>
+        Think of offline HRIS as a field exercise for a capability plastron will need; the Juárez skin
+        is just a narrative wrapper for the demo.
+      </p>
+
+      <h2>The problem</h2>
+      <p>
+        A community police office still has to plan staffing: which positions exist, who holds them,
+        where the gaps are, what payroll pressure looks like. Enterprise HRIS products assume always-on
+        connectivity, identity federation, and a vendor security boundary. A neighbourhood command post,
+        a borrowed laptop, or a planning cell working from USB sticks does not get that luxury.
+      </p>
+      <p>
+        The design question was blunt: <em>can several planners maintain one consistent personnel picture
+        without a server, without the public internet, and without ever writing plaintext rows to disk?</em>
+      </p>
+
+      <h2>The idea</h2>
+      <p>
+        Ship <strong>one file</strong> — a built <code>index.html</code> — that embeds React, SQLite,
+        and the <strong>cr-sqlite</strong> CRDT extension as inlined WebAssembly. Operators double-click it.
+        The live database exists only in memory. The only artifacts that touch disk are
+        <strong>encrypted</strong> blobs: a morning <code>truth.hrisdump</code> and evening
+        <code>lastname.hrischanges</code> deltas.
+      </p>
+      <p>
+        Content Security Policy sets <code>connect-src 'none'</code>, so even if script execution were
+        compromised, the page has no <code>fetch</code>, WebSocket, or beacon path off the machine.
+        That is a deliberate trade: perfect for an air-gapped ritual, hostile to SaaS analytics.
+      </p>
+      <p>
+        The demo skin says <strong>Juárez PD</strong> — Zona Centro, Anapra, fictional badge numbers,
+        invented salaries — because the original spreadsheet model came from a Canadian police HR layout
+        and we wanted a clearly non-production narrative. The mechanics are jurisdiction-agnostic; only
+        labels and seed data change.
+      </p>
+
+      <h2>The daily ritual</h2>
+      <p>Think of it as git for staffing data, except the merge commit is encrypted and the coordinator
+        may have no admin rights beyond a browser.</p>
+
+      <h3>Morning — one truth</h3>
+      <ol>
+        <li>The coordinator distributes <code>truth-YYYYMMDD.hrisdump</code> and the day's org passphrase (out of band — never bundled with the file).</li>
+        <li>Each planner opens the HTML file locally, decrypts the truth, and passes the <strong>user gate</strong> (pick identity from a pre-provisioned operator list).</li>
+        <li>The app records a <code>session_open</code> event and stamps a <code>morning_db_version</code> watermark.</li>
+      </ol>
+
+      <h3>Day — offline work</h3>
+      <ul>
+        <li>CRUD on officers, positions, assignments; dashboard refreshes deficits and headcount live.</li>
+        <li>Every mutation appends to <code>change_event</code> (who / what / when) and updates row-level <code>updated_by</code> columns.</li>
+        <li>cr-sqlite records replica-level changes in <code>crsql_changes</code> for merge — separate from human attribution.</li>
+        <li>Nothing is autosaved to disk. Closing the tab without exporting loses work — by design.</li>
+      </ul>
+
+      <h3>Evening — converge</h3>
+      <ol>
+        <li>Each planner exports <strong>my changes</strong> → encrypted <code>.hrischanges</code> (not a full database dump).</li>
+        <li>The coordinator opens the same HTML file, loads the morning truth, and uses <strong>Merge operator changes</strong> on the Data &amp; Security screen to apply every delta.</li>
+        <li>cr-sqlite merges in an order-independent way; conflicting edits converge under CRDT rules instead of last-writer-wins file replacement.</li>
+        <li>Export the merged truth for tomorrow. Optional Node script <code>merge-hris.mjs</code> exists for automation; it is not required to operate.</li>
+      </ol>
+
+      <blockquote>
+        CRDT solves <em>data convergence</em>. It does not automatically solve <em>accountability</em> —
+        that is why <code>change_event</code> and <code>session_log</code> are first-class tables that
+        sync with the same merge machinery.
+      </blockquote>
+
+      <h2>Protected B and CSE cryptography</h2>
+      <p>
+        Personnel files (names, assignments, compensation) are not open data. In Government of Canada
+        terms they typically land at <strong>Protected B</strong>: unauthorized disclosure could cause
+        serious injury outside the national interest — see
+        <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32614">TBS Standard on Security Categorization (Appendix J)</a>
+        and the
+        <a href="https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/security-policy-implementation-notice-direction-security-categorization-personal-information-aggregate.html">2023 direction on personal information in the aggregate</a>.
+        A community police office handling officer PII faces the same injury model even when the formal
+        framework is municipal privacy law rather than Treasury Board policy.
+      </p>
+
+      <h3>What the app satisfies technically</h3>
+      <p>
+        For encryption algorithms, CSE publishes
+        <a href="https://www.cyber.gc.ca/en/guidance/cryptographic-algorithms-unclassified-protected-protected-b-information-itsp40111">ITSP.40.111</a>
+        (Cryptographic algorithms for UNCLASSIFIED, Protected A, and Protected B information). The dump
+        format uses the strongest practical stack from that document for file-at-rest:
+      </p>
+      <ul>
+        <li><strong>AES-256-GCM</strong> — bulk encryption with authenticated integrity (ITSP.40.111 §3.1, §4.2)</li>
+        <li><strong>PBKDF2-HMAC-SHA-256</strong> at 250,000 iterations — passphrase-to-key derivation (ITSP.40.111 §10.9; GC password guidance minimum 10,000)</li>
+        <li><strong>Per-file random salt and IV</strong> — 16-byte salt, 12-byte GCM nonce</li>
+        <li><strong>Non-extractable Web Crypto keys</strong> — raw key material never surfaces in JavaScript</li>
+      </ul>
+      <p>
+        Storage and transit expectations for sensitive electronic media are articulated in
+        <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611&section=procedure&p=B">Directive on Security Management, Appendix B §B.2.3.4–§B.2.3.6</a>
+        (protect data at rest, in transit, and on portable media commensurate with sensitivity; encrypt
+        on public or risky networks). This app addresses <strong>at-rest</strong> for portable dumps;
+        coordinators still need a procedure for USB handoff or approved encrypted channels.
+      </p>
+
+      <h3>What the app enforces in software</h3>
+      <ul>
+        <li>No plaintext <code>.sqlite</code> or <code>.csv</code> export paths</li>
+        <li>Memory-only database while unlocked; lock wipes passphrase and DB</li>
+        <li>Operator identity gate + append-only <code>change_event</code> and <code>session_log</code></li>
+        <li>Encrypted changeset export for multi-planner sync without competing full dumps</li>
+      </ul>
+
+      <h3>What still requires organizational "soft" requirements</h3>
+      <p>
+        Protected B is not a checkbox you get from AES alone. Before operational use with real officers,
+        a jurisdiction would still need documented controls the browser cannot implement:
+      </p>
+      <ul>
+        <li><strong>Privacy Impact Assessment</strong> — <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=18308">Directive on Privacy Impact Assessment</a> (federal reference); municipal equivalent under local FOIP/IP legislation</li>
+        <li><strong>Threat &amp; risk assessment and authorization to operate</strong> — <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=16578">Policy on Government Security</a> lifecycle; accept residual risks (lost USB, shoulder surfing, stale truth files)</li>
+        <li><strong>Need-to-know roster</strong> — who appears in <code>app_user</code>; security screening verified outside the app</li>
+        <li><strong>Passphrase ceremony</strong> — org/day key distributed out of band; rotation on compromise; never stored beside dumps (including cloud-sync folders)</li>
+        <li><strong>Media policy</strong> — preferred USB handoff vs whether OneDrive/Google Drive may hold ciphertext</li>
+        <li><strong>Breach playbook</strong> — <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy/privacy/breach-management.html">Privacy Breach Management Toolkit</a>; <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy/access-information-privacy-notices/2022-01-cyber-security-incidents-involving-personal-information.html">PIN 2022-01</a> for cyber incidents involving personal information</li>
+        <li><strong>Coordinator SOP</strong> — morning distribution, evening collection, merge audit review, handling missed exports and stale watermarks</li>
+        <li><strong>Operator training</strong> — export changes before lock; do not treat the user picker as MFA</li>
+      </ul>
+      <p>
+        We split these explicitly in the project docs:
+        in-app build requirements vs governance procedure requirements (the latter intentionally deferred
+        until after the prototype stabilizes).
+      </p>
+
+      <h2>Why a browser tab at all?</h2>
+      <p>
+        A community office may not be allowed to install server software or database engines on managed
+        PCs. A static HTML file with inlined WASM is weird, but it has properties enterprise stacks rarely
+        offer together: offline-first, auditable merge semantics, ciphertext-only persistence, and zero
+        network egress enforced by CSP. The GitHub Pages host
+        (<a href="https://rheophile10.github.io/offline-Protected-B-HRIS/">demo</a>) is convenience for
+        evaluation; the intended deployment is download-and-run locally on a controlled machine —
+        <code>file://</code> with no backend.
+      </p>
+
+      <h2>Status</h2>
+      <p>
+        The repository
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS">rheophile10/offline-Protected-B-HRIS</a>
+        includes Playwright user stories, an automated CRDT convergence test, and a screen-recorded
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to</a>.
+        It is an exploration of how far you can push personnel HRIS into a single encrypted, mergeable,
+        offline artifact — not a production authorization, and not a fork of the product roadmap.
+      </p>
+      <p>
+        Next for <a href="https://github.com/rheophile10/plastron">plastron</a>: absorb the CRDT SQLite
+        patterns here into the substrate so cels, sheets, and shared state can survive offline edits and
+        reconcile the same way. Next for this detour (if it continues): governance documentation for a
+        real pilot, optional PIN-per-operator, jurisdiction-specific legal review.
+      </p>
+
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://www.cyber.gc.ca/en/guidance/cryptographic-algorithms-unclassified-protected-protected-b-information-itsp40111">CSE ITSP.40.111</a> — approved algorithms (AES, GCM, PBKDF2)</li>
+        <li><a href="https://www.cyber.gc.ca/en/guidance/using-encryption-keep-your-sensitive-data-secure-itsap40016">CSE ITSAP.40.016</a> — encryption for sensitive data at rest and in transit</li>
+        <li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=16578">Policy on Government Security</a></li>
+        <li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611">Directive on Security Management</a> (Appendix B — IT security controls)</li>
+        <li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32614">Standard on Security Categorization</a> (Protected A / B definitions)</li>
+        <li><a href="https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/security-policy-implementation-notice-direction-security-categorization-personal-information-aggregate.html">Direction on security categorization of personal information in the aggregate</a> (2023)</li>
+        <li><a href="https://www.canada.ca/en/government/system/digital-government/online-security-privacy/identity-credential-access-management/password-guidance.html">Guideline on Password Security</a> (PBKDF2, offline attack countermeasures)</li>
+        <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite</li>
+        <li><a href="https://github.com/rheophile10/offline-Protected-B-HRIS">offline-Protected-B-HRIS</a> — source &amp; build</li>
+        <li><a href="https://github.com/rheophile10/plastron">plastron</a> — main project; offline + CRDT SQLite planned</li>
+        <li><a href="https://plastron.ca">plastron.ca</a> — live demo</li>
+      </ul>
+    </article>
+
+    <footer class="mt-14 pt-8 border-t border-white/10 text-sm text-zinc-500">
+      <a href="/" class="text-teal-400 hover:underline">← rheophile.ca</a>
+    </footer>
+  </main>
+</body>
+</html>

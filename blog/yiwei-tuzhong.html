@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>曳尾塗中 · Zhuangzi · rheophile.ca</title>
+  <meta name="description" content="Zhuangzi's tortoise story in traditional Chinese — click any character to explore its structural decomposition tree.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐢</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;600&family=Space+Grotesk:wght@500;600&display=swap');
+
+    :root { --accent: #14b8a6; }
+
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+
+    .story-text {
+      font-family: 'Noto Serif TC', 'Source Han Serif TC', serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+      line-height: 2.1;
+      letter-spacing: 0.04em;
+    }
+
+    .hanzi {
+      cursor: pointer;
+      border-radius: 0.25rem;
+      padding: 0 0.1em;
+      transition: background 0.12s, color 0.12s, box-shadow 0.12s;
+    }
+    .hanzi:hover {
+      background: rgba(20, 184, 166, 0.18);
+      color: #99f6e4;
+    }
+    .hanzi.active {
+      background: rgba(20, 184, 166, 0.32);
+      box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.55);
+      color: #ccfbf1;
+    }
+
+    .tree-node {
+      border-left: 1px solid rgba(255,255,255,0.08);
+      margin-left: 0.65rem;
+      padding-left: 0.75rem;
+    }
+    .tree-item { margin: 0.35rem 0; }
+
+    .tree-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(9,9,11,0.55);
+      padding: 0.2rem 0.55rem 0.2rem 0.4rem;
+      cursor: pointer;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .tree-chip:hover { border-color: rgba(20,184,166,0.45); }
+    .tree-chip.selected {
+      border-color: rgba(20,184,166,0.7);
+      background: rgba(20,184,166,0.12);
+    }
+    .tree-glyph {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.35rem;
+      line-height: 1;
+      min-width: 1.35rem;
+      text-align: center;
+    }
+    .tree-meta { font-size: 0.72rem; color: #a1a1aa; max-width: 14rem; line-height: 1.35; }
+
+    .subtle-grid {
+      background-image:
+        linear-gradient(rgba(163,163,172,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,163,172,0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen subtle-grid">
+
+  <nav class="sticky top-0 z-50 glass border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="/" class="display text-sm font-semibold tracking-tight text-zinc-300 hover:text-white transition">rheophile.ca</a>
+      <div class="text-xs text-zinc-500">Zhuangzi · 秋水 · §17</div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 py-10 md:py-14">
+    <header class="max-w-3xl">
+      <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Blog · plastron lore</div>
+      <h1 class="display text-4xl md:text-5xl font-semibold tracking-tighter mt-2">曳尾塗中</h1>
+      <p class="mt-4 text-zinc-400 text-sm md:text-base leading-relaxed">
+        Zhuangzi declines the Chu king's offer of power by asking whether a sacred tortoise would rather be
+        dead and honored in a temple, or alive with its tail dragging in the mud.
+        Click any character in the passage to open its decomposition tree — each node can be explored further
+        while it has constituent parts.
+      </p>
+    </header>
+
+    <div class="mt-10 grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)] gap-6 items-start">
+      <article class="rounded-3xl border border-white/10 bg-zinc-900/70 p-6 md:p-8">
+        <div id="story" class="story-text text-zinc-100" aria-label="Zhuangzi tortoise passage"></div>
+        <p class="mt-8 text-xs text-zinc-500 leading-relaxed">
+          Text from the Guo Xiang recension, <a class="text-teal-400 hover:underline" href="https://zh.wikisource.org/wiki/%E5%BA%84%E5%AD%90/%E7%A7%8B%E6%B0%B4" target="_blank" rel="noopener">Wikisource · 莊子/秋水</a>.
+          Decompositions from <a class="text-teal-400 hover:underline" href="https://github.com/cjkvi/cjkvi-ids" target="_blank" rel="noopener">cjkvi-ids</a> (CHISE IDS);
+          English glosses from Unicode Unihan plus story-specific notes.
+        </p>
+      </article>
+
+      <aside class="rounded-3xl border border-white/10 bg-zinc-900/80 p-5 md:p-6 lg:sticky lg:top-20">
+        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">Character tree</div>
+        <div id="selection-label" class="display text-2xl mt-2 tracking-tight">—</div>
+        <div id="selection-gloss" class="text-sm text-zinc-400 mt-1 min-h-[2.5rem]">Select a character in the passage.</div>
+        <div id="tree" class="mt-4 max-h-[55vh] overflow-auto pr-1 text-sm"></div>
+      </aside>
+    </div>
+
+    <section class="mt-8 rounded-3xl border border-white/10 bg-zinc-900/50 p-6 text-sm text-zinc-400 leading-relaxed">
+      <h2 class="display text-lg text-zinc-200 font-semibold tracking-tight">About the trees</h2>
+      <p class="mt-2">
+        These are <em>structural</em> decompositions (how the glyph is built from parts), not full etymological
+        histories. Some characters are atomic in the IDS database — especially old pictographs like 曳 — and
+        are shown as leaves even though scholars discuss deeper origins. Nodes marked ◆ describe composition
+        pattern (left-right, top-bottom, etc.) rather than a written character.
+      </p>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 mt-6">
+    <div class="max-w-6xl mx-auto px-6 text-xs text-zinc-500 flex flex-col md:flex-row gap-y-2 items-center justify-between">
+      <div>© Rheophile Corp. · Character data: cjkvi-ids + Unicode Unihan</div>
+      <a href="/" class="hover:text-zinc-300 transition">← Back to rheophile.ca</a>
+    </div>
+  </footer>
+
+  <script>
+    const DATA_URL = '/assets/zhuangzi-char-data.json';
+    let charData = {};
+    let activeChar = null;
+    let selectedNodePath = 'root';
+
+    function isHanzi(ch) {
+      const cp = ch.codePointAt(0);
+      return cp >= 0x4E00 && cp <= 0x9FFF;
+    }
+
+    function renderPassage(text) {
+      const story = document.getElementById('story');
+      story.innerHTML = '';
+      for (const ch of text) {
+        if (isHanzi(ch)) {
+          const span = document.createElement('span');
+          span.className = 'hanzi';
+          span.textContent = ch;
+          span.title = 'Explore ' + ch;
+          span.addEventListener('click', () => selectChar(ch, span));
+          story.appendChild(span);
+        } else {
+          story.appendChild(document.createTextNode(ch));
+        }
+      }
+    }
+
+    function selectChar(ch, el) {
+      activeChar = ch;
+      selectedNodePath = 'root';
+      document.querySelectorAll('.hanzi').forEach(n => n.classList.remove('active'));
+      if (el) el.classList.add('active');
+      const node = charData[ch];
+      document.getElementById('selection-label').textContent = ch;
+      document.getElementById('selection-gloss').textContent = node?.english || 'No data for this character.';
+      renderTree(node, document.getElementById('tree'));
+    }
+
+    function renderTree(node, container) {
+      container.innerHTML = '';
+      if (!node) {
+        container.textContent = 'No decomposition available.';
+        return;
+      }
+      container.appendChild(buildTreeNode(node, 'root'));
+    }
+
+    function buildTreeNode(node, path) {
+      const wrap = document.createElement('div');
+      wrap.className = 'tree-item';
+
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'tree-chip' + (selectedNodePath === path ? ' selected' : '');
+      chip.innerHTML = `
+        <span class="tree-glyph">${node.char}</span>
+        <span class="tree-meta">${escapeHtml(node.english || '')}</span>
+      `;
+      chip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedNodePath = path;
+        document.getElementById('selection-label').textContent = node.char === '◆' ? (activeChar || '◆') : node.char;
+        document.getElementById('selection-gloss').textContent = node.english || '';
+        document.querySelectorAll('.tree-chip').forEach(c => c.classList.remove('selected'));
+        chip.classList.add('selected');
+      });
+      wrap.appendChild(chip);
+
+      if (node.children?.length) {
+        const kids = document.createElement('div');
+        kids.className = 'tree-node';
+        node.children.forEach((child, i) => {
+          kids.appendChild(buildTreeNode(child, path + '.' + i));
+        });
+        wrap.appendChild(kids);
+      }
+
+      return wrap;
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    async function init() {
+      const res = await fetch(DATA_URL);
+      const data = await res.json();
+      charData = data.characters;
+      renderPassage(data.passage);
+      const first = [...data.passage].find(isHanzi);
+      const firstEl = document.querySelector('.hanzi');
+      if (first) selectChar(first, firstEl);
+    }
+
+    init().catch(err => {
+      document.getElementById('story').textContent = 'Failed to load character data: ' + err.message;
+    });
+  </script>
+</body>
+</html>

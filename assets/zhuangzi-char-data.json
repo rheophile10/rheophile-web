@@ -1,0 +1,4813 @@
+{
+  "source": {
+    "text": "Zhuangzi, Qiushui (秋水) §17 — tortoise invitation",
+    "ids": "cjkvi-ids (CHISE-based)",
+    "definitions": "Unicode Unihan kDefinition + supplemental glosses"
+  },
+  "passage": "莊子釣於濮水，楚王使大夫二人往先焉，曰：「願以境內累矣！」莊子持竿不顧，曰：「吾聞楚有神龜，死已三千歲矣，王巾笥而藏之廟堂之上。此龜者，寧其死為留骨而貴乎？寧其生而曳尾於塗中乎？」二大夫曰：「寧生而曳尾塗中。」莊子曰：「往矣！吾將曳尾於塗中。」",
+  "characters": {
+    "G": {
+      "char": "G",
+      "english": "G",
+      "leaf": true
+    },
+    "J": {
+      "char": "J",
+      "english": "J",
+      "leaf": true
+    },
+    "K": {
+      "char": "K",
+      "english": "K",
+      "leaf": true
+    },
+    "T": {
+      "char": "T",
+      "english": "T",
+      "leaf": true
+    },
+    "V": {
+      "char": "V",
+      "english": "V",
+      "leaf": true
+    },
+    "[": {
+      "char": "[",
+      "english": "[",
+      "leaf": true
+    },
+    "]": {
+      "char": "]",
+      "english": "]",
+      "leaf": true
+    },
+    "②": {
+      "char": "②",
+      "english": "②",
+      "leaf": true
+    },
+    "③": {
+      "char": "③",
+      "english": "③",
+      "leaf": true
+    },
+    "④": {
+      "char": "④",
+      "english": "④",
+      "leaf": true
+    },
+    "⑤": {
+      "char": "⑤",
+      "english": "⑤",
+      "leaf": true
+    },
+    "⺀": {
+      "char": "⺀",
+      "english": "two dots radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        },
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "⺊": {
+      "char": "⺊",
+      "english": "divination top",
+      "leaf": true
+    },
+    "⺌": {
+      "char": "⺌",
+      "english": "small top",
+      "leaf": true
+    },
+    "㇇": {
+      "char": "㇇",
+      "english": "horizontal hook",
+      "leaf": true
+    },
+    "䒑": {
+      "char": "䒑",
+      "english": "䒑",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丷",
+          "english": "CJK character U+4E37",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "一": {
+      "char": "一",
+      "english": "one (horizontal stroke)",
+      "leaf": true
+    },
+    "丁": {
+      "char": "丁",
+      "english": "CJK character U+4E01",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "亅",
+          "english": "vertical hook",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "三": {
+      "char": "三",
+      "english": "san — three",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "二",
+          "english": "er — two",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "上": {
+      "char": "上",
+      "english": "shang — above, on top",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "⺊",
+          "english": "divination top",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "不": {
+      "char": "不",
+      "english": "bu — not",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "③",
+          "english": "③",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "业": {
+      "char": "业",
+      "english": "CJK character U+4E1A",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "④",
+          "english": "④",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "丨": {
+      "char": "丨",
+      "english": "vertical stroke",
+      "leaf": true
+    },
+    "中": {
+      "char": "中",
+      "english": "zhong — middle, within",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "口",
+          "english": "mouth radical",
+          "leaf": true
+        },
+        {
+          "char": "丨",
+          "english": "vertical stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "丶": {
+      "char": "丶",
+      "english": "dot",
+      "leaf": true
+    },
+    "丷": {
+      "char": "丷",
+      "english": "CJK character U+4E37",
+      "leaf": true
+    },
+    "主": {
+      "char": "主",
+      "english": "CJK character U+4E3B",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "亠",
+          "english": "CJK character U+4EA0",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "土",
+          "english": "earth radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "丿": {
+      "char": "丿",
+      "english": "left-falling stroke",
+      "leaf": true
+    },
+    "乀": {
+      "char": "乀",
+      "english": "right-falling stroke",
+      "leaf": true
+    },
+    "之": {
+      "char": "之",
+      "english": "zhi — it, him, her; possessive/genitive marker",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        },
+        {
+          "char": "②",
+          "english": "②",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "乎": {
+      "char": "乎",
+      "english": "hu — question particle; also \"in, at\"",
+      "leaf": true
+    },
+    "乚": {
+      "char": "乚",
+      "english": "hidden tail stroke",
+      "leaf": true
+    },
+    "亅": {
+      "char": "亅",
+      "english": "vertical hook",
+      "leaf": true
+    },
+    "亇": {
+      "char": "亇",
+      "english": "CJK character U+4E87",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "𠂊",
+          "english": "𠂊",
+          "leaf": true
+        },
+        {
+          "char": "亅",
+          "english": "vertical hook",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "二": {
+      "char": "二",
+      "english": "er — two",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "五": {
+      "char": "五",
+      "english": "CJK character U+4E94",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "𫝀",
+          "english": "𫝀",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "亠": {
+      "char": "亠",
+      "english": "CJK character U+4EA0",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "人": {
+      "char": "人",
+      "english": "ren — person, human",
+      "leaf": true
+    },
+    "亻": {
+      "char": "亻",
+      "english": "person radical",
+      "leaf": true
+    },
+    "亼": {
+      "char": "亼",
+      "english": "CJK character U+4EBC",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "人",
+          "english": "ren — person, human",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "仒": {
+      "char": "仒",
+      "english": "CJK character U+4ED2",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "人",
+          "english": "ren — person, human",
+          "leaf": true
+        },
+        {
+          "char": "⺀",
+          "english": "two dots radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            },
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "以": {
+      "char": "以",
+      "english": "yi — with, by means of, in order to",
+      "leaf": true
+    },
+    "余": {
+      "char": "余",
+      "english": "CJK character U+4F59",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "亼",
+          "english": "CJK character U+4EBC",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "人",
+              "english": "ren — person, human",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "朩",
+          "english": "CJK character U+6729",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "使": {
+      "char": "使",
+      "english": "shi — to send, envoy, cause",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "亻",
+          "english": "person radical",
+          "leaf": true
+        },
+        {
+          "char": "吏",
+          "english": "CJK character U+540F",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "史",
+              "english": "CJK character U+53F2",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "僕": {
+      "char": "僕",
+      "english": "CJK character U+50D5",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "亻",
+          "english": "person radical",
+          "leaf": true
+        },
+        {
+          "char": "菐",
+          "english": "CJK character U+83D0",
+          "composition": "top-middle-bottom",
+          "operator": "⿳",
+          "children": [
+            {
+              "char": "业",
+              "english": "CJK character U+4E1A",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "④",
+                  "english": "④",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "䒑",
+              "english": "䒑",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "丷",
+                  "english": "CJK character U+4E37",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "夫",
+              "english": "fu — adult man; also a title (officer)",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "二",
+                  "english": "er — two",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "人",
+                  "english": "ren — person, human",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "儿": {
+      "char": "儿",
+      "english": "CJK character U+513F",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        },
+        {
+          "char": "乚",
+          "english": "hidden tail stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "先": {
+      "char": "先",
+      "english": "xian — before, prior, first",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "𠂒",
+          "english": "𠂒",
+          "leaf": true
+        },
+        {
+          "char": "儿",
+          "english": "CJK character U+513F",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            },
+            {
+              "char": "乚",
+              "english": "hidden tail stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "入": {
+      "char": "入",
+      "english": "CJK character U+5165",
+      "leaf": true
+    },
+    "內": {
+      "char": "內",
+      "english": "nei — inside",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "冂",
+          "english": "open box enclosure",
+          "leaf": true
+        },
+        {
+          "char": "入",
+          "english": "CJK character U+5165",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "八": {
+      "char": "八",
+      "english": "CJK character U+516B",
+      "leaf": true
+    },
+    "其": {
+      "char": "其",
+      "english": "qi — its, their, that",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "◆",
+          "english": "top-bottom composition",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "⑤",
+              "english": "⑤",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "八",
+          "english": "CJK character U+516B",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "冂": {
+      "char": "冂",
+      "english": "open box enclosure",
+      "leaf": true
+    },
+    "冖": {
+      "char": "冖",
+      "english": "cover radical",
+      "leaf": true
+    },
+    "冫": {
+      "char": "冫",
+      "english": "CJK character U+51AB",
+      "leaf": true
+    },
+    "刀": {
+      "char": "刀",
+      "english": "CJK character U+5200",
+      "composition": "right-top surround",
+      "operator": "⿹",
+      "children": [
+        {
+          "char": "𠃌",
+          "english": "𠃌",
+          "leaf": true
+        },
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "勹": {
+      "char": "勹",
+      "english": "CJK character U+52F9",
+      "leaf": true
+    },
+    "勺": {
+      "char": "勺",
+      "english": "CJK character U+52FA",
+      "composition": "right-top surround",
+      "operator": "⿹",
+      "children": [
+        {
+          "char": "勹",
+          "english": "CJK character U+52F9",
+          "leaf": true
+        },
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "匕": {
+      "char": "匕",
+      "english": "CJK character U+5315",
+      "composition": "left-bottom surround",
+      "operator": "⿺",
+      "children": [
+        {
+          "char": "乚",
+          "english": "hidden tail stroke",
+          "leaf": true
+        },
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "十": {
+      "char": "十",
+      "english": "CJK character U+5341",
+      "leaf": true
+    },
+    "千": {
+      "char": "千",
+      "english": "qian — thousand",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        },
+        {
+          "char": "十",
+          "english": "CJK character U+5341",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "厂": {
+      "char": "厂",
+      "english": "CJK character U+5382",
+      "leaf": true
+    },
+    "原": {
+      "char": "原",
+      "english": "CJK character U+539F",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "厂",
+          "english": "CJK character U+5382",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "top-bottom composition",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "白",
+              "english": "white radical",
+              "leaf": true
+            },
+            {
+              "char": "小",
+              "english": "small radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "厶": {
+      "char": "厶",
+      "english": "private / secret component",
+      "leaf": true
+    },
+    "口": {
+      "char": "口",
+      "english": "mouth radical",
+      "leaf": true
+    },
+    "史": {
+      "char": "史",
+      "english": "CJK character U+53F2",
+      "leaf": true
+    },
+    "司": {
+      "char": "司",
+      "english": "CJK character U+53F8",
+      "composition": "right-top surround",
+      "operator": "⿹",
+      "children": [
+        {
+          "char": "𠃌",
+          "english": "𠃌",
+          "leaf": true
+        },
+        {
+          "char": "𠮛",
+          "english": "𠮛",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "口",
+              "english": "mouth radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "吏": {
+      "char": "吏",
+      "english": "CJK character U+540F",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "史",
+          "english": "CJK character U+53F2",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "吾": {
+      "char": "吾",
+      "english": "wu — I, me (classical first person)",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "五",
+          "english": "CJK character U+4E94",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "𫝀",
+              "english": "𫝀",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "口",
+          "english": "mouth radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "土": {
+      "char": "土",
+      "english": "earth radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "十",
+          "english": "CJK character U+5341",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "堂": {
+      "char": "堂",
+      "english": "tang — hall, main room",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "𫩠",
+          "english": "𫩠",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "龸",
+              "english": "CJK character U+9FB8",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "⺌",
+                  "english": "small top",
+                  "leaf": true
+                },
+                {
+                  "char": "冖",
+                  "english": "cover radical",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "口",
+              "english": "mouth radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "土",
+          "english": "earth radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "塗": {
+      "char": "塗",
+      "english": "tu — mud, mire; path, road (classical)",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "涂",
+          "english": "CJK character U+6D82",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "氵",
+              "english": "water radical",
+              "leaf": true
+            },
+            {
+              "char": "余",
+              "english": "CJK character U+4F59",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "亼",
+                  "english": "CJK character U+4EBC",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "人",
+                      "english": "ren — person, human",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "朩",
+                  "english": "CJK character U+6729",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "土",
+          "english": "earth radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "境": {
+      "char": "境",
+      "english": "jing — border, territory, realm",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "土",
+          "english": "earth radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "竟",
+          "english": "CJK character U+7ADF",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "音",
+              "english": "sound radical",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "立",
+                  "english": "stand radical",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "◆",
+                      "english": "top-bottom composition",
+                      "composition": "top-bottom composition",
+                      "operator": "⿱",
+                      "children": [
+                        {
+                          "char": "亠",
+                          "english": "CJK character U+4EA0",
+                          "composition": "top-bottom composition",
+                          "operator": "⿱",
+                          "children": [
+                            {
+                              "char": "丶",
+                              "english": "dot",
+                              "leaf": true
+                            },
+                            {
+                              "char": "一",
+                              "english": "one (horizontal stroke)",
+                              "leaf": true
+                            }
+                          ],
+                          "leaf": false
+                        },
+                        {
+                          "char": "丷",
+                          "english": "CJK character U+4E37",
+                          "leaf": true
+                        }
+                      ],
+                      "leaf": false
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "日",
+                  "english": "sun radical",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "儿",
+              "english": "CJK character U+513F",
+              "composition": "left-right composition",
+              "operator": "⿰",
+              "children": [
+                {
+                  "char": "丿",
+                  "english": "left-falling stroke",
+                  "leaf": true
+                },
+                {
+                  "char": "乚",
+                  "english": "hidden tail stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "士": {
+      "char": "士",
+      "english": "CJK character U+58EB",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "十",
+          "english": "CJK character U+5341",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "壯": {
+      "char": "壯",
+      "english": "CJK character U+58EF",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "爿",
+          "english": "split wood",
+          "leaf": true
+        },
+        {
+          "char": "士",
+          "english": "CJK character U+58EB",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "夕": {
+      "char": "夕",
+      "english": "CJK character U+5915",
+      "composition": "full surround",
+      "operator": "⿴",
+      "children": [
+        {
+          "char": "𠂊",
+          "english": "𠂊",
+          "leaf": true
+        },
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "大": {
+      "char": "大",
+      "english": "da — great, big",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "人",
+          "english": "ren — person, human",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "夫": {
+      "char": "夫",
+      "english": "fu — adult man; also a title (officer)",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "二",
+          "english": "er — two",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "人",
+          "english": "ren — person, human",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "子": {
+      "char": "子",
+      "english": "zi — master, philosopher; also child, seed",
+      "leaf": true
+    },
+    "宀": {
+      "char": "宀",
+      "english": "roof radical",
+      "leaf": true
+    },
+    "寍": {
+      "char": "寍",
+      "english": "CJK character U+5BCD",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "宀",
+          "english": "roof radical",
+          "leaf": true
+        },
+        {
+          "char": "𬐘",
+          "english": "𬐘",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "心",
+              "english": "heart radical",
+              "leaf": true
+            },
+            {
+              "char": "皿",
+              "english": "vessel radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "寧": {
+      "char": "寧",
+      "english": "ning — rather, would rather; peaceful",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "寍",
+          "english": "CJK character U+5BCD",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "宀",
+              "english": "roof radical",
+              "leaf": true
+            },
+            {
+              "char": "𬐘",
+              "english": "𬐘",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "心",
+                  "english": "heart radical",
+                  "leaf": true
+                },
+                {
+                  "char": "皿",
+                  "english": "vessel radical",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "丁",
+          "english": "CJK character U+4E01",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "亅",
+              "english": "vertical hook",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "寸": {
+      "char": "寸",
+      "english": "inch radical",
+      "leaf": true
+    },
+    "寺": {
+      "char": "寺",
+      "english": "CJK character U+5BFA",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "土",
+          "english": "earth radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "寸",
+          "english": "inch radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "將": {
+      "char": "將",
+      "english": "jiang — will, about to; general",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "爿",
+          "english": "split wood",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "top-bottom composition",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "◆",
+              "english": "full surround",
+              "composition": "full surround",
+              "operator": "⿴",
+              "children": [
+                {
+                  "char": "𠂊",
+                  "english": "𠂊",
+                  "leaf": true
+                },
+                {
+                  "char": "冫",
+                  "english": "CJK character U+51AB",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "寸",
+              "english": "inch radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "小": {
+      "char": "小",
+      "english": "small radical",
+      "leaf": true
+    },
+    "尸": {
+      "char": "尸",
+      "english": "CJK character U+5C38",
+      "leaf": true
+    },
+    "尾": {
+      "char": "尾",
+      "english": "wei — tail",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "尸",
+          "english": "CJK character U+5C38",
+          "leaf": true
+        },
+        {
+          "char": "毛",
+          "english": "fur radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            },
+            {
+              "char": "◆",
+              "english": "overlay / intertwined",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "二",
+                  "english": "er — two",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "乚",
+                  "english": "hidden tail stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "已": {
+      "char": "已",
+      "english": "yi — already; also \"to stop\"",
+      "leaf": true
+    },
+    "巾": {
+      "char": "巾",
+      "english": "jin — cloth, kerchief; here \"wrapped in silk\"",
+      "leaf": true
+    },
+    "干": {
+      "char": "干",
+      "english": "CJK character U+5E72",
+      "leaf": true
+    },
+    "幺": {
+      "char": "幺",
+      "english": "CJK character U+5E7A",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "②",
+          "english": "②",
+          "leaf": true
+        },
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "广": {
+      "char": "广",
+      "english": "dotted cliff radical",
+      "leaf": true
+    },
+    "廟": {
+      "char": "廟",
+      "english": "miao — temple, ancestral shrine",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "广",
+          "english": "dotted cliff radical",
+          "leaf": true
+        },
+        {
+          "char": "朝",
+          "english": "CJK character U+671D",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "𠦝",
+              "english": "𠦝",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "十",
+                  "english": "CJK character U+5341",
+                  "leaf": true
+                },
+                {
+                  "char": "早",
+                  "english": "CJK character U+65E9",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "日",
+                      "english": "sun radical",
+                      "leaf": true
+                    },
+                    {
+                      "char": "十",
+                      "english": "CJK character U+5341",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "月",
+              "english": "moon radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "弋": {
+      "char": "弋",
+      "english": "CJK character U+5F0B",
+      "composition": "left-bottom surround",
+      "operator": "⿺",
+      "children": [
+        {
+          "char": "𫠠",
+          "english": "𫠠",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "乚",
+              "english": "hidden tail stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "彳": {
+      "char": "彳",
+      "english": "step radical",
+      "leaf": true
+    },
+    "往": {
+      "char": "往",
+      "english": "wang — to go toward",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "彳",
+          "english": "step radical",
+          "leaf": true
+        },
+        {
+          "char": "主",
+          "english": "CJK character U+4E3B",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "亠",
+              "english": "CJK character U+4EA0",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "土",
+              "english": "earth radical",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "十",
+                  "english": "CJK character U+5341",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "心": {
+      "char": "心",
+      "english": "heart radical",
+      "leaf": true
+    },
+    "戈": {
+      "char": "戈",
+      "english": "spear radical",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "弋",
+          "english": "CJK character U+5F0B",
+          "composition": "left-bottom surround",
+          "operator": "⿺",
+          "children": [
+            {
+              "char": "𫠠",
+              "english": "𫠠",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                },
+                {
+                  "char": "乚",
+                  "english": "hidden tail stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "戊": {
+      "char": "戊",
+      "english": "CJK character U+620A",
+      "leaf": true
+    },
+    "戌": {
+      "char": "戌",
+      "english": "CJK character U+620C",
+      "composition": "top surround",
+      "operator": "⿵",
+      "children": [
+        {
+          "char": "戊",
+          "english": "CJK character U+620A",
+          "leaf": true
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "戕": {
+      "char": "戕",
+      "english": "CJK character U+6215",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "爿",
+          "english": "split wood",
+          "leaf": true
+        },
+        {
+          "char": "戈",
+          "english": "spear radical",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "弋",
+              "english": "CJK character U+5F0B",
+              "composition": "left-bottom surround",
+              "operator": "⿺",
+              "children": [
+                {
+                  "char": "𫠠",
+                  "english": "𫠠",
+                  "composition": "overlay / intertwined",
+                  "operator": "⿻",
+                  "children": [
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    },
+                    {
+                      "char": "乚",
+                      "english": "hidden tail stroke",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "户": {
+      "char": "户",
+      "english": "CJK character U+6237",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丶",
+          "english": "dot",
+          "leaf": true
+        },
+        {
+          "char": "尸",
+          "english": "CJK character U+5C38",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "扌": {
+      "char": "扌",
+      "english": "hand radical",
+      "leaf": true
+    },
+    "持": {
+      "char": "持",
+      "english": "chi — to hold, grasp",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "扌",
+          "english": "hand radical",
+          "leaf": true
+        },
+        {
+          "char": "寺",
+          "english": "CJK character U+5BFA",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "土",
+              "english": "earth radical",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "十",
+                  "english": "CJK character U+5341",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "寸",
+              "english": "inch radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "方": {
+      "char": "方",
+      "english": "square radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "亠",
+          "english": "CJK character U+4EA0",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "◆",
+          "english": "left-right composition",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            },
+            {
+              "char": "𠃌",
+              "english": "𠃌",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "於": {
+      "char": "於",
+      "english": "yu — in, at, to (preposition)",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "方",
+          "english": "square radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "亠",
+              "english": "CJK character U+4EA0",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "◆",
+              "english": "left-right composition",
+              "composition": "left-right composition",
+              "operator": "⿰",
+              "children": [
+                {
+                  "char": "丿",
+                  "english": "left-falling stroke",
+                  "leaf": true
+                },
+                {
+                  "char": "𠃌",
+                  "english": "𠃌",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "仒",
+          "english": "CJK character U+4ED2",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "人",
+              "english": "ren — person, human",
+              "leaf": true
+            },
+            {
+              "char": "⺀",
+              "english": "two dots radical",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                },
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "日": {
+      "char": "日",
+      "english": "sun radical",
+      "leaf": true
+    },
+    "早": {
+      "char": "早",
+      "english": "CJK character U+65E9",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "日",
+          "english": "sun radical",
+          "leaf": true
+        },
+        {
+          "char": "十",
+          "english": "CJK character U+5341",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "曰": {
+      "char": "曰",
+      "english": "yue — to say, spoke",
+      "leaf": true
+    },
+    "曳": {
+      "char": "曳",
+      "english": "ye — to drag, trail, pull along",
+      "composition": "top-middle-bottom",
+      "operator": "⿳",
+      "children": [
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        },
+        {
+          "char": "日",
+          "english": "sun radical",
+          "leaf": true
+        },
+        {
+          "char": "乀",
+          "english": "right-falling stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "月": {
+      "char": "月",
+      "english": "moon radical",
+      "leaf": true
+    },
+    "有": {
+      "char": "有",
+      "english": "CJK character U+6709",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "𠂇",
+          "english": "𠂇",
+          "leaf": true
+        },
+        {
+          "char": "月",
+          "english": "moon radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "朝": {
+      "char": "朝",
+      "english": "CJK character U+671D",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "𠦝",
+          "english": "𠦝",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "早",
+              "english": "CJK character U+65E9",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "日",
+                  "english": "sun radical",
+                  "leaf": true
+                },
+                {
+                  "char": "十",
+                  "english": "CJK character U+5341",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "月",
+          "english": "moon radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "木": {
+      "char": "木",
+      "english": "tree radical",
+      "leaf": true
+    },
+    "朩": {
+      "char": "朩",
+      "english": "CJK character U+6729",
+      "leaf": true
+    },
+    "林": {
+      "char": "林",
+      "english": "CJK character U+6797",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "木",
+          "english": "tree radical",
+          "leaf": true
+        },
+        {
+          "char": "木",
+          "english": "tree radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "楚": {
+      "char": "楚",
+      "english": "Chu — ancient state south of the Yellow River; also \"distinct, painful\"",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "林",
+          "english": "CJK character U+6797",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "木",
+              "english": "tree radical",
+              "leaf": true
+            },
+            {
+              "char": "木",
+              "english": "tree radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "疋",
+          "english": "bolt of cloth",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "止": {
+      "char": "止",
+      "english": "stop radical",
+      "leaf": true
+    },
+    "正": {
+      "char": "正",
+      "english": "CJK character U+6B63",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "止",
+          "english": "stop radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "此": {
+      "char": "此",
+      "english": "ci — this",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "止",
+          "english": "stop radical",
+          "leaf": true
+        },
+        {
+          "char": "匕",
+          "english": "CJK character U+5315",
+          "composition": "left-bottom surround",
+          "operator": "⿺",
+          "children": [
+            {
+              "char": "乚",
+              "english": "hidden tail stroke",
+              "leaf": true
+            },
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "歲": {
+      "char": "歲",
+      "english": "sui — year (of age), harvest",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "止",
+          "english": "stop radical",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "top surround",
+          "composition": "top surround",
+          "operator": "⿵",
+          "children": [
+            {
+              "char": "戌",
+              "english": "CJK character U+620C",
+              "composition": "top surround",
+              "operator": "⿵",
+              "children": [
+                {
+                  "char": "戊",
+                  "english": "CJK character U+620A",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "𣥂",
+              "english": "𣥂",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "歹": {
+      "char": "歹",
+      "english": "death radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "夕",
+          "english": "CJK character U+5915",
+          "composition": "full surround",
+          "operator": "⿴",
+          "children": [
+            {
+              "char": "𠂊",
+              "english": "𠂊",
+              "leaf": true
+            },
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "死": {
+      "char": "死",
+      "english": "si — to die, death",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "歹",
+          "english": "death radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "夕",
+              "english": "CJK character U+5915",
+              "composition": "full surround",
+              "operator": "⿴",
+              "children": [
+                {
+                  "char": "𠂊",
+                  "english": "𠂊",
+                  "leaf": true
+                },
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "匕",
+          "english": "CJK character U+5315",
+          "composition": "left-bottom surround",
+          "operator": "⿺",
+          "children": [
+            {
+              "char": "乚",
+              "english": "hidden tail stroke",
+              "leaf": true
+            },
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "毛": {
+      "char": "毛",
+      "english": "fur radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "overlay / intertwined",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "二",
+              "english": "er — two",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "乚",
+              "english": "hidden tail stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "水": {
+      "char": "水",
+      "english": "shui — water",
+      "composition": "left-middle-right",
+      "operator": "⿲",
+      "children": [
+        {
+          "char": "㇇",
+          "english": "horizontal hook",
+          "leaf": true
+        },
+        {
+          "char": "亅",
+          "english": "vertical hook",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "left-bottom surround",
+          "composition": "left-bottom surround",
+          "operator": "⿺",
+          "children": [
+            {
+              "char": "乀",
+              "english": "right-falling stroke",
+              "leaf": true
+            },
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "氵": {
+      "char": "氵",
+      "english": "water radical",
+      "leaf": true
+    },
+    "涂": {
+      "char": "涂",
+      "english": "CJK character U+6D82",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "氵",
+          "english": "water radical",
+          "leaf": true
+        },
+        {
+          "char": "余",
+          "english": "CJK character U+4F59",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "亼",
+              "english": "CJK character U+4EBC",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "人",
+                  "english": "ren — person, human",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "朩",
+              "english": "CJK character U+6729",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "濮": {
+      "char": "濮",
+      "english": "Pu — name of a river in Henan",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "氵",
+          "english": "water radical",
+          "leaf": true
+        },
+        {
+          "char": "僕",
+          "english": "CJK character U+50D5",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "亻",
+              "english": "person radical",
+              "leaf": true
+            },
+            {
+              "char": "菐",
+              "english": "CJK character U+83D0",
+              "composition": "top-middle-bottom",
+              "operator": "⿳",
+              "children": [
+                {
+                  "char": "业",
+                  "english": "CJK character U+4E1A",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "④",
+                      "english": "④",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "䒑",
+                  "english": "䒑",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "丷",
+                      "english": "CJK character U+4E37",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "夫",
+                  "english": "fu — adult man; also a title (officer)",
+                  "composition": "overlay / intertwined",
+                  "operator": "⿻",
+                  "children": [
+                    {
+                      "char": "二",
+                      "english": "er — two",
+                      "composition": "top-bottom composition",
+                      "operator": "⿱",
+                      "children": [
+                        {
+                          "char": "一",
+                          "english": "one (horizontal stroke)",
+                          "leaf": true
+                        },
+                        {
+                          "char": "一",
+                          "english": "one (horizontal stroke)",
+                          "leaf": true
+                        }
+                      ],
+                      "leaf": false
+                    },
+                    {
+                      "char": "人",
+                      "english": "ren — person, human",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "灬": {
+      "char": "灬",
+      "english": "fire dots",
+      "leaf": true
+    },
+    "為": {
+      "char": "為",
+      "english": "wei — for, as, to be, do",
+      "leaf": true
+    },
+    "焉": {
+      "char": "焉",
+      "english": "yan — therein, how, auxiliary particle",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "正",
+          "english": "CJK character U+6B63",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "止",
+              "english": "stop radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "◆",
+          "english": "right-top surround",
+          "composition": "right-top surround",
+          "operator": "⿹",
+          "children": [
+            {
+              "char": "②",
+              "english": "②",
+              "leaf": true
+            },
+            {
+              "char": "灬",
+              "english": "fire dots",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "爿": {
+      "char": "爿",
+      "english": "split wood",
+      "leaf": true
+    },
+    "王": {
+      "char": "王",
+      "english": "wang — king",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "土",
+          "english": "earth radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "生": {
+      "char": "生",
+      "english": "sheng — life, to live, born",
+      "leaf": true
+    },
+    "田": {
+      "char": "田",
+      "english": "field radical",
+      "leaf": true
+    },
+    "申": {
+      "char": "申",
+      "english": "CJK character U+7533",
+      "leaf": true
+    },
+    "留": {
+      "char": "留",
+      "english": "liu — to keep, remain, leave behind",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "◆",
+          "english": "left-right composition",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "③",
+              "english": "③",
+              "leaf": true
+            },
+            {
+              "char": "刀",
+              "english": "CJK character U+5200",
+              "composition": "right-top surround",
+              "operator": "⿹",
+              "children": [
+                {
+                  "char": "𠃌",
+                  "english": "𠃌",
+                  "leaf": true
+                },
+                {
+                  "char": "丿",
+                  "english": "left-falling stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "田",
+          "english": "field radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "疋": {
+      "char": "疋",
+      "english": "bolt of cloth",
+      "leaf": true
+    },
+    "白": {
+      "char": "白",
+      "english": "white radical",
+      "leaf": true
+    },
+    "皿": {
+      "char": "皿",
+      "english": "vessel radical",
+      "leaf": true
+    },
+    "目": {
+      "char": "目",
+      "english": "eye radical",
+      "leaf": true
+    },
+    "矢": {
+      "char": "矢",
+      "english": "CJK character U+77E2",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "𠂉",
+          "english": "𠂉",
+          "leaf": true
+        },
+        {
+          "char": "大",
+          "english": "da — great, big",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            },
+            {
+              "char": "人",
+              "english": "ren — person, human",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "矣": {
+      "char": "矣",
+      "english": "yi — classical sentence-final particle (change of state)",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "厶",
+          "english": "private / secret component",
+          "leaf": true
+        },
+        {
+          "char": "矢",
+          "english": "CJK character U+77E2",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "𠂉",
+              "english": "𠂉",
+              "leaf": true
+            },
+            {
+              "char": "大",
+              "english": "da — great, big",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                },
+                {
+                  "char": "人",
+                  "english": "ren — person, human",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "礻": {
+      "char": "礻",
+      "english": "spirit radical",
+      "leaf": true
+    },
+    "神": {
+      "char": "神",
+      "english": "shen — spirit, divine, marvelous",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "礻",
+          "english": "spirit radical",
+          "leaf": true
+        },
+        {
+          "char": "申",
+          "english": "CJK character U+7533",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "立": {
+      "char": "立",
+      "english": "stand radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "◆",
+          "english": "top-bottom composition",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "亠",
+              "english": "CJK character U+4EA0",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "丷",
+              "english": "CJK character U+4E37",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "竟": {
+      "char": "竟",
+      "english": "CJK character U+7ADF",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "音",
+          "english": "sound radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "立",
+              "english": "stand radical",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "◆",
+                  "english": "top-bottom composition",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "亠",
+                      "english": "CJK character U+4EA0",
+                      "composition": "top-bottom composition",
+                      "operator": "⿱",
+                      "children": [
+                        {
+                          "char": "丶",
+                          "english": "dot",
+                          "leaf": true
+                        },
+                        {
+                          "char": "一",
+                          "english": "one (horizontal stroke)",
+                          "leaf": true
+                        }
+                      ],
+                      "leaf": false
+                    },
+                    {
+                      "char": "丷",
+                      "english": "CJK character U+4E37",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "日",
+              "english": "sun radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "儿",
+          "english": "CJK character U+513F",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            },
+            {
+              "char": "乚",
+              "english": "hidden tail stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "竹": {
+      "char": "竹",
+      "english": "bamboo radical",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "亇",
+          "english": "CJK character U+4E87",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "𠂊",
+              "english": "𠂊",
+              "leaf": true
+            },
+            {
+              "char": "亅",
+              "english": "vertical hook",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "亇",
+          "english": "CJK character U+4E87",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "𠂊",
+              "english": "𠂊",
+              "leaf": true
+            },
+            {
+              "char": "亅",
+              "english": "vertical hook",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "竿": {
+      "char": "竿",
+      "english": "gan — bamboo pole (for fishing)",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "竹",
+          "english": "bamboo radical",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "亇",
+              "english": "CJK character U+4E87",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "𠂊",
+                  "english": "𠂊",
+                  "leaf": true
+                },
+                {
+                  "char": "亅",
+                  "english": "vertical hook",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "亇",
+              "english": "CJK character U+4E87",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "𠂊",
+                  "english": "𠂊",
+                  "leaf": true
+                },
+                {
+                  "char": "亅",
+                  "english": "vertical hook",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "干",
+          "english": "CJK character U+5E72",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "笥": {
+      "char": "笥",
+      "english": "si — bamboo box, case",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "竹",
+          "english": "bamboo radical",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "亇",
+              "english": "CJK character U+4E87",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "𠂊",
+                  "english": "𠂊",
+                  "leaf": true
+                },
+                {
+                  "char": "亅",
+                  "english": "vertical hook",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "亇",
+              "english": "CJK character U+4E87",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "𠂊",
+                  "english": "𠂊",
+                  "leaf": true
+                },
+                {
+                  "char": "亅",
+                  "english": "vertical hook",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "司",
+          "english": "CJK character U+53F8",
+          "composition": "right-top surround",
+          "operator": "⿹",
+          "children": [
+            {
+              "char": "𠃌",
+              "english": "𠃌",
+              "leaf": true
+            },
+            {
+              "char": "𠮛",
+              "english": "𠮛",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                },
+                {
+                  "char": "口",
+                  "english": "mouth radical",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "糸": {
+      "char": "糸",
+      "english": "silk radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "幺",
+          "english": "CJK character U+5E7A",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "②",
+              "english": "②",
+              "leaf": true
+            },
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "小",
+          "english": "small radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "累": {
+      "char": "累",
+      "english": "lei — to burden, entangle; also \"pile up\"",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "田",
+          "english": "field radical",
+          "leaf": true
+        },
+        {
+          "char": "糸",
+          "english": "silk radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "幺",
+              "english": "CJK character U+5E7A",
+              "composition": "left-right composition",
+              "operator": "⿰",
+              "children": [
+                {
+                  "char": "②",
+                  "english": "②",
+                  "leaf": true
+                },
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "小",
+              "english": "small radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "耂": {
+      "char": "耂",
+      "english": "CJK character U+8002",
+      "leaf": true
+    },
+    "者": {
+      "char": "者",
+      "english": "zhe — one who; nominalizer",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "耂",
+          "english": "CJK character U+8002",
+          "leaf": true
+        },
+        {
+          "char": "日",
+          "english": "sun radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "而": {
+      "char": "而",
+      "english": "er — and, but, thereby",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "𦓐",
+          "english": "𦓐",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丿",
+              "english": "left-falling stroke",
+              "leaf": true
+            },
+            {
+              "char": "𦉫",
+              "english": "𦉫",
+              "composition": "top surround",
+              "operator": "⿵",
+              "children": [
+                {
+                  "char": "冂",
+                  "english": "open box enclosure",
+                  "leaf": true
+                },
+                {
+                  "char": "◆",
+                  "english": "left-right composition",
+                  "composition": "left-right composition",
+                  "operator": "⿰",
+                  "children": [
+                    {
+                      "char": "丨",
+                      "english": "vertical stroke",
+                      "leaf": true
+                    },
+                    {
+                      "char": "丨",
+                      "english": "vertical stroke",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "耳": {
+      "char": "耳",
+      "english": "ear radical",
+      "leaf": true
+    },
+    "聞": {
+      "char": "聞",
+      "english": "wen — to hear, learn of",
+      "composition": "top surround",
+      "operator": "⿵",
+      "children": [
+        {
+          "char": "門",
+          "english": "gate radical",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "𠁣",
+              "english": "𠁣",
+              "leaf": true
+            },
+            {
+              "char": "𠃛",
+              "english": "𠃛",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "耳",
+          "english": "ear radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "臣": {
+      "char": "臣",
+      "english": "minister radical",
+      "leaf": true
+    },
+    "臧": {
+      "char": "臧",
+      "english": "CJK character U+81E7",
+      "composition": "top surround",
+      "operator": "⿵",
+      "children": [
+        {
+          "char": "戕",
+          "english": "CJK character U+6215",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "爿",
+              "english": "split wood",
+              "leaf": true
+            },
+            {
+              "char": "戈",
+              "english": "spear radical",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "弋",
+                  "english": "CJK character U+5F0B",
+                  "composition": "left-bottom surround",
+                  "operator": "⿺",
+                  "children": [
+                    {
+                      "char": "𫠠",
+                      "english": "𫠠",
+                      "composition": "overlay / intertwined",
+                      "operator": "⿻",
+                      "children": [
+                        {
+                          "char": "一",
+                          "english": "one (horizontal stroke)",
+                          "leaf": true
+                        },
+                        {
+                          "char": "乚",
+                          "english": "hidden tail stroke",
+                          "leaf": true
+                        }
+                      ],
+                      "leaf": false
+                    },
+                    {
+                      "char": "丶",
+                      "english": "dot",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "丿",
+                  "english": "left-falling stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "臣",
+          "english": "minister radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "艹": {
+      "char": "艹",
+      "english": "grass top",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "十",
+          "english": "CJK character U+5341",
+          "leaf": true
+        },
+        {
+          "char": "丨",
+          "english": "vertical stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "莊": {
+      "char": "莊",
+      "english": "Zhuang — surname of Master Zhuang (Zhuangzi); also \"solemn, dignified\"",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "艹",
+          "english": "grass top",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "丨",
+              "english": "vertical stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "壯",
+          "english": "CJK character U+58EF",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "爿",
+              "english": "split wood",
+              "leaf": true
+            },
+            {
+              "char": "士",
+              "english": "CJK character U+58EB",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "十",
+                  "english": "CJK character U+5341",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "菐": {
+      "char": "菐",
+      "english": "CJK character U+83D0",
+      "composition": "top-middle-bottom",
+      "operator": "⿳",
+      "children": [
+        {
+          "char": "业",
+          "english": "CJK character U+4E1A",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "④",
+              "english": "④",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "䒑",
+          "english": "䒑",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丷",
+              "english": "CJK character U+4E37",
+              "leaf": true
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "夫",
+          "english": "fu — adult man; also a title (officer)",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "二",
+              "english": "er — two",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                },
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "人",
+              "english": "ren — person, human",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "藏": {
+      "char": "藏",
+      "english": "cang — to hide, store, treasure",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "艹",
+          "english": "grass top",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            },
+            {
+              "char": "丨",
+              "english": "vertical stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "臧",
+          "english": "CJK character U+81E7",
+          "composition": "top surround",
+          "operator": "⿵",
+          "children": [
+            {
+              "char": "戕",
+              "english": "CJK character U+6215",
+              "composition": "left-right composition",
+              "operator": "⿰",
+              "children": [
+                {
+                  "char": "爿",
+                  "english": "split wood",
+                  "leaf": true
+                },
+                {
+                  "char": "戈",
+                  "english": "spear radical",
+                  "composition": "overlay / intertwined",
+                  "operator": "⿻",
+                  "children": [
+                    {
+                      "char": "弋",
+                      "english": "CJK character U+5F0B",
+                      "composition": "left-bottom surround",
+                      "operator": "⿺",
+                      "children": [
+                        {
+                          "char": "𫠠",
+                          "english": "𫠠",
+                          "composition": "overlay / intertwined",
+                          "operator": "⿻",
+                          "children": [
+                            {
+                              "char": "一",
+                              "english": "one (horizontal stroke)",
+                              "leaf": true
+                            },
+                            {
+                              "char": "乚",
+                              "english": "hidden tail stroke",
+                              "leaf": true
+                            }
+                          ],
+                          "leaf": false
+                        },
+                        {
+                          "char": "丶",
+                          "english": "dot",
+                          "leaf": true
+                        }
+                      ],
+                      "leaf": false
+                    },
+                    {
+                      "char": "丿",
+                      "english": "left-falling stroke",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "臣",
+              "english": "minister radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "貝": {
+      "char": "貝",
+      "english": "shell/money radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "目",
+          "english": "eye radical",
+          "leaf": true
+        },
+        {
+          "char": "八",
+          "english": "CJK character U+516B",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "貴": {
+      "char": "貴",
+      "english": "gui — noble, precious, honor",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "𠀐",
+          "english": "𠀐",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "中",
+              "english": "zhong — middle, within",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "口",
+                  "english": "mouth radical",
+                  "leaf": true
+                },
+                {
+                  "char": "丨",
+                  "english": "vertical stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "貝",
+          "english": "shell/money radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "目",
+              "english": "eye radical",
+              "leaf": true
+            },
+            {
+              "char": "八",
+              "english": "CJK character U+516B",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "金": {
+      "char": "金",
+      "english": "metal radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "人",
+          "english": "ren — person, human",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "overlay / intertwined",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "王",
+              "english": "wang — king",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "一",
+                  "english": "one (horizontal stroke)",
+                  "leaf": true
+                },
+                {
+                  "char": "土",
+                  "english": "earth radical",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "十",
+                      "english": "CJK character U+5341",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "丷",
+              "english": "CJK character U+4E37",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "釣": {
+      "char": "釣",
+      "english": "diao — to fish with hook and line",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "金",
+          "english": "metal radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "人",
+              "english": "ren — person, human",
+              "leaf": true
+            },
+            {
+              "char": "◆",
+              "english": "overlay / intertwined",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "王",
+                  "english": "wang — king",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    },
+                    {
+                      "char": "土",
+                      "english": "earth radical",
+                      "composition": "top-bottom composition",
+                      "operator": "⿱",
+                      "children": [
+                        {
+                          "char": "十",
+                          "english": "CJK character U+5341",
+                          "leaf": true
+                        },
+                        {
+                          "char": "一",
+                          "english": "one (horizontal stroke)",
+                          "leaf": true
+                        }
+                      ],
+                      "leaf": false
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "丷",
+                  "english": "CJK character U+4E37",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "勺",
+          "english": "CJK character U+52FA",
+          "composition": "right-top surround",
+          "operator": "⿹",
+          "children": [
+            {
+              "char": "勹",
+              "english": "CJK character U+52F9",
+              "leaf": true
+            },
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "門": {
+      "char": "門",
+      "english": "gate radical",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "𠁣",
+          "english": "𠁣",
+          "leaf": true
+        },
+        {
+          "char": "𠃛",
+          "english": "𠃛",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "隹": {
+      "char": "隹",
+      "english": "short-tailed bird",
+      "leaf": true
+    },
+    "雇": {
+      "char": "雇",
+      "english": "CJK character U+96C7",
+      "composition": "left-top surround",
+      "operator": "⿸",
+      "children": [
+        {
+          "char": "户",
+          "english": "CJK character U+6237",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "丶",
+              "english": "dot",
+              "leaf": true
+            },
+            {
+              "char": "尸",
+              "english": "CJK character U+5C38",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "隹",
+          "english": "short-tailed bird",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "音": {
+      "char": "音",
+      "english": "sound radical",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "立",
+          "english": "stand radical",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "◆",
+              "english": "top-bottom composition",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "亠",
+                  "english": "CJK character U+4EA0",
+                  "composition": "top-bottom composition",
+                  "operator": "⿱",
+                  "children": [
+                    {
+                      "char": "丶",
+                      "english": "dot",
+                      "leaf": true
+                    },
+                    {
+                      "char": "一",
+                      "english": "one (horizontal stroke)",
+                      "leaf": true
+                    }
+                  ],
+                  "leaf": false
+                },
+                {
+                  "char": "丷",
+                  "english": "CJK character U+4E37",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "一",
+              "english": "one (horizontal stroke)",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "日",
+          "english": "sun radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "頁": {
+      "char": "頁",
+      "english": "page/head radical",
+      "leaf": true
+    },
+    "願": {
+      "char": "願",
+      "english": "yuan — to wish, willing",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "原",
+          "english": "CJK character U+539F",
+          "composition": "left-top surround",
+          "operator": "⿸",
+          "children": [
+            {
+              "char": "厂",
+              "english": "CJK character U+5382",
+              "leaf": true
+            },
+            {
+              "char": "◆",
+              "english": "top-bottom composition",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "白",
+                  "english": "white radical",
+                  "leaf": true
+                },
+                {
+                  "char": "小",
+                  "english": "small radical",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "頁",
+          "english": "page/head radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "顧": {
+      "char": "顧",
+      "english": "gu — to look back, regard, attend to",
+      "composition": "left-right composition",
+      "operator": "⿰",
+      "children": [
+        {
+          "char": "雇",
+          "english": "CJK character U+96C7",
+          "composition": "left-top surround",
+          "operator": "⿸",
+          "children": [
+            {
+              "char": "户",
+              "english": "CJK character U+6237",
+              "composition": "top-bottom composition",
+              "operator": "⿱",
+              "children": [
+                {
+                  "char": "丶",
+                  "english": "dot",
+                  "leaf": true
+                },
+                {
+                  "char": "尸",
+                  "english": "CJK character U+5C38",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            },
+            {
+              "char": "隹",
+              "english": "short-tailed bird",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "頁",
+          "english": "page/head radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "骨": {
+      "char": "骨",
+      "english": "gu — bone",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "⑤",
+          "english": "⑤",
+          "leaf": true
+        },
+        {
+          "char": "月",
+          "english": "moon radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "龜": {
+      "char": "龜",
+      "english": "gui — tortoise, turtle (divination animal)",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "𠂊",
+          "english": "𠂊",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "overlay / intertwined",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "日",
+              "english": "sun radical",
+              "leaf": true
+            },
+            {
+              "char": "电",
+              "english": "电",
+              "composition": "overlay / intertwined",
+              "operator": "⿻",
+              "children": [
+                {
+                  "char": "日",
+                  "english": "sun radical",
+                  "leaf": true
+                },
+                {
+                  "char": "乚",
+                  "english": "hidden tail stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "龸": {
+      "char": "龸",
+      "english": "CJK character U+9FB8",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "⺌",
+          "english": "small top",
+          "leaf": true
+        },
+        {
+          "char": "冖",
+          "english": "cover radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "𠀐": {
+      "char": "𠀐",
+      "english": "𠀐",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "中",
+          "english": "zhong — middle, within",
+          "composition": "overlay / intertwined",
+          "operator": "⿻",
+          "children": [
+            {
+              "char": "口",
+              "english": "mouth radical",
+              "leaf": true
+            },
+            {
+              "char": "丨",
+              "english": "vertical stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "𠁣": {
+      "char": "𠁣",
+      "english": "𠁣",
+      "leaf": true
+    },
+    "𠂇": {
+      "char": "𠂇",
+      "english": "𠂇",
+      "leaf": true
+    },
+    "𠂉": {
+      "char": "𠂉",
+      "english": "𠂉",
+      "leaf": true
+    },
+    "𠂊": {
+      "char": "𠂊",
+      "english": "𠂊",
+      "leaf": true
+    },
+    "𠂒": {
+      "char": "𠂒",
+      "english": "𠂒",
+      "leaf": true
+    },
+    "𠃌": {
+      "char": "𠃌",
+      "english": "𠃌",
+      "leaf": true
+    },
+    "𠃛": {
+      "char": "𠃛",
+      "english": "𠃛",
+      "leaf": true
+    },
+    "𠦝": {
+      "char": "𠦝",
+      "english": "𠦝",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "十",
+          "english": "CJK character U+5341",
+          "leaf": true
+        },
+        {
+          "char": "早",
+          "english": "CJK character U+65E9",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "日",
+              "english": "sun radical",
+              "leaf": true
+            },
+            {
+              "char": "十",
+              "english": "CJK character U+5341",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "𠮛": {
+      "char": "𠮛",
+      "english": "𠮛",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "口",
+          "english": "mouth radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "𣥂": {
+      "char": "𣥂",
+      "english": "𣥂",
+      "leaf": true
+    },
+    "𦉫": {
+      "char": "𦉫",
+      "english": "𦉫",
+      "composition": "top surround",
+      "operator": "⿵",
+      "children": [
+        {
+          "char": "冂",
+          "english": "open box enclosure",
+          "leaf": true
+        },
+        {
+          "char": "◆",
+          "english": "left-right composition",
+          "composition": "left-right composition",
+          "operator": "⿰",
+          "children": [
+            {
+              "char": "丨",
+              "english": "vertical stroke",
+              "leaf": true
+            },
+            {
+              "char": "丨",
+              "english": "vertical stroke",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "𦓐": {
+      "char": "𦓐",
+      "english": "𦓐",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "丿",
+          "english": "left-falling stroke",
+          "leaf": true
+        },
+        {
+          "char": "𦉫",
+          "english": "𦉫",
+          "composition": "top surround",
+          "operator": "⿵",
+          "children": [
+            {
+              "char": "冂",
+              "english": "open box enclosure",
+              "leaf": true
+            },
+            {
+              "char": "◆",
+              "english": "left-right composition",
+              "composition": "left-right composition",
+              "operator": "⿰",
+              "children": [
+                {
+                  "char": "丨",
+                  "english": "vertical stroke",
+                  "leaf": true
+                },
+                {
+                  "char": "丨",
+                  "english": "vertical stroke",
+                  "leaf": true
+                }
+              ],
+              "leaf": false
+            }
+          ],
+          "leaf": false
+        }
+      ],
+      "leaf": false
+    },
+    "𫝀": {
+      "char": "𫝀",
+      "english": "𫝀",
+      "leaf": true
+    },
+    "𫠠": {
+      "char": "𫠠",
+      "english": "𫠠",
+      "composition": "overlay / intertwined",
+      "operator": "⿻",
+      "children": [
+        {
+          "char": "一",
+          "english": "one (horizontal stroke)",
+          "leaf": true
+        },
+        {
+          "char": "乚",
+          "english": "hidden tail stroke",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "𫩠": {
+      "char": "𫩠",
+      "english": "𫩠",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "龸",
+          "english": "CJK character U+9FB8",
+          "composition": "top-bottom composition",
+          "operator": "⿱",
+          "children": [
+            {
+              "char": "⺌",
+              "english": "small top",
+              "leaf": true
+            },
+            {
+              "char": "冖",
+              "english": "cover radical",
+              "leaf": true
+            }
+          ],
+          "leaf": false
+        },
+        {
+          "char": "口",
+          "english": "mouth radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    },
+    "𬐘": {
+      "char": "𬐘",
+      "english": "𬐘",
+      "composition": "top-bottom composition",
+      "operator": "⿱",
+      "children": [
+        {
+          "char": "心",
+          "english": "heart radical",
+          "leaf": true
+        },
+        {
+          "char": "皿",
+          "english": "vessel radical",
+          "leaf": true
+        }
+      ],
+      "leaf": false
+    }
+  }
+}
