@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #09090b;
+      color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 56px 72px 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 32%, rgba(20, 184, 166, 0.14) 0%, transparent 68%),
+        radial-gradient(ellipse 45% 35% at 82% 78%, rgba(20, 184, 166, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.045;
+      background-image:
+        linear-gradient(rgba(163,163,172,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,163,172,0.5) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .main-row {
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      position: relative;
+      z-index: 1;
+    }
+    .banner {
+      width: 300px;
+      height: 300px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.45);
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .copy { flex: 1; min-width: 0; }
+    .label {
+      font-size: 17px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #2dd4bf;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 46px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      max-width: 760px;
+    }
+    .excerpt {
+      font-size: 22px;
+      color: #a1a1aa;
+      margin-top: 16px;
+      line-height: 1.45;
+      max-width: 760px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .footer {
+      position: absolute;
+      bottom: 48px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      font-size: 19px;
+      color: #71717a;
+      z-index: 1;
+    }
+    .tags { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .url {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fafafa;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .url span { color: #14b8a6; }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid"></div>
+  <div class="main-row">
+    <img class="banner" src="{{BANNER_URI}}" alt="">
+    <div class="copy">
+      <div class="label">Dev log · {{DATE}}</div>
+      <h1>{{TITLE}}</h1>
+      <p class="excerpt">{{EXCERPT}}</p>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="tags">{{TAGS}}</span>
+    <div class="url">rheophile<span>.ca</span></div>
+  </div>
+</body>
+</html>

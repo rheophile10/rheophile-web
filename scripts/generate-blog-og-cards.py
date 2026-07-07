@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = ROOT / "scripts" / "blog-og-card.html"
+TEMPLATE_BANNER = ROOT / "scripts" / "blog-og-card-banner.html"
 POSTS_JSON = ROOT / "assets" / "blog-posts.json"
 OUT_DIR = ROOT / "assets" / "og"
 CHROME = "/usr/bin/google-chrome"
@@ -32,16 +33,28 @@ def card_emoji(post: dict) -> str:
     return post.get("emoji") or "🐸"
 
 
-def render_card(post: dict, template: str) -> str:
+def pick_template(post: dict) -> str:
+    if post.get("bannerImage") and TEMPLATE_BANNER.exists():
+        return TEMPLATE_BANNER.read_text(encoding="utf-8")
+    return TEMPLATE.read_text(encoding="utf-8")
+
+
+def render_card(post: dict) -> str:
+    template = pick_template(post)
     title = post.get("ogTitle") or strip_title_emoji(post["title"])
     tags = " · ".join(post.get("tags", []))
-    return (
+    html = (
         template.replace("{{EMOJI}}", card_emoji(post))
         .replace("{{DATE}}", post["date"])
         .replace("{{TITLE}}", title)
         .replace("{{EXCERPT}}", post["excerpt"])
         .replace("{{TAGS}}", tags)
     )
+    banner_image = post.get("bannerImage")
+    if banner_image:
+        banner_path = ROOT / banner_image.lstrip("/")
+        html = html.replace("{{BANNER_URI}}", banner_path.resolve().as_uri())
+    return html
 
 
 def screenshot(html: str, out: Path) -> None:
@@ -68,8 +81,16 @@ def screenshot(html: str, out: Path) -> None:
         Path(tmp).unlink(missing_ok=True)
 
 
+def write_jpeg(png_path: Path) -> Path:
+    from PIL import Image
+
+    jpg_path = png_path.with_suffix(".jpg")
+    with Image.open(png_path) as img:
+        img.convert("RGB").save(jpg_path, "JPEG", quality=92, optimize=True)
+    return jpg_path
+
+
 def main() -> None:
-    template = TEMPLATE.read_text(encoding="utf-8")
     data = json.loads(POSTS_JSON.read_text(encoding="utf-8"))
     posts = data.get("posts", [])
     updated = False
@@ -77,13 +98,20 @@ def main() -> None:
     for post in posts:
         slug = post["slug"]
         out = OUT_DIR / f"{slug}.png"
-        html = render_card(post, template)
+        html = render_card(post)
         screenshot(html, out)
-        og_url = f"{SITE}/assets/og/{slug}.png"
-        if post.get("ogImage") != og_url:
-            post["ogImage"] = og_url
+        jpg = write_jpeg(out)
+        og_png = f"{SITE}/assets/og/{slug}.png"
+        og_jpg = f"{SITE}/assets/og/{slug}.jpg"
+        if post.get("ogImage") != og_png:
+            post["ogImage"] = og_png
             updated = True
-        print(f"wrote {out.relative_to(ROOT)}  →  {og_url}")
+        if post.get("ogImageJpg") != og_jpg:
+            post["ogImageJpg"] = og_jpg
+            updated = True
+        print(f"wrote {out.relative_to(ROOT)} + {jpg.relative_to(ROOT)}")
+        print(f"  og:image     → {og_png}")
+        print(f"  twitter pref → {og_jpg}")
 
     if updated:
         POSTS_JSON.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

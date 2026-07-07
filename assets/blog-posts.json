@@ -11,10 +11,12 @@
         "chaosedgesteg"
       ],
       "emoji": "🕵️",
+      "bannerImage": "/assets/chaosedgesteg-blog/crypt0lith-banner.png",
       "title": "Hiding plastron links in pictures with ChaosEdgeSteg 🐢",
       "ogTitle": "Hiding plastron links in pictures with ChaosEdgeSteg",
       "excerpt": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.",
-      "ogImage": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.png"
+      "ogImage": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg"
     },
     {
       "slug": "offline-hris-juarez",
@@ -30,7 +32,8 @@
       "title": "Offline HRIS for a community police office 👮",
       "ogTitle": "Offline HRIS for a community police office",
       "excerpt": "A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.",
-      "ogImage": "https://rheophile.ca/assets/og/offline-hris-juarez.png"
+      "ogImage": "https://rheophile.ca/assets/og/offline-hris-juarez.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/offline-hris-juarez.jpg"
     },
     {
       "slug": "yiwei-tuzhong",
@@ -45,7 +48,8 @@
       "title": "曳尾塗中 — drag your tail in the mud 🐢",
       "ogTitle": "曳尾塗中 — drag your tail in the mud",
       "excerpt": "Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.",
-      "ogImage": "https://rheophile.ca/assets/og/yiwei-tuzhong.png"
+      "ogImage": "https://rheophile.ca/assets/og/yiwei-tuzhong.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/yiwei-tuzhong.jpg"
     }
   ]
 }
