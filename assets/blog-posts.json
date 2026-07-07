@@ -4,25 +4,48 @@
       "slug": "chaosedgesteg-plastron",
       "href": "/blog/chaosedgesteg-plastron.html",
       "date": "2026-07-07",
-      "tags": ["plastron", "steganography", "pyodide", "chaosedgesteg"],
+      "tags": [
+        "plastron",
+        "steganography",
+        "pyodide",
+        "chaosedgesteg"
+      ],
+      "emoji": "🕵️",
       "title": "Hiding plastron links in pictures with ChaosEdgeSteg 🐢",
-      "excerpt": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password."
+      "ogTitle": "Hiding plastron links in pictures with ChaosEdgeSteg",
+      "excerpt": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.",
+      "ogImage": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.png"
     },
     {
       "slug": "offline-hris-juarez",
       "href": "/blog/offline-hris-juarez.html",
       "date": "2026-07-07",
-      "tags": ["plastron", "hris", "offline", "crdt"],
+      "tags": [
+        "plastron",
+        "hris",
+        "offline",
+        "crdt"
+      ],
+      "emoji": "👮",
       "title": "Offline HRIS for a community police office 👮",
-      "excerpt": "A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future."
+      "ogTitle": "Offline HRIS for a community police office",
+      "excerpt": "A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.",
+      "ogImage": "https://rheophile.ca/assets/og/offline-hris-juarez.png"
     },
     {
       "slug": "yiwei-tuzhong",
       "href": "/blog/yiwei-tuzhong.html",
       "date": "2026-07-06",
-      "tags": ["plastron", "zhuangzi", "interactive"],
+      "tags": [
+        "plastron",
+        "zhuangzi",
+        "interactive"
+      ],
+      "emoji": "🐢",
       "title": "曳尾塗中 — drag your tail in the mud 🐢",
-      "excerpt": "Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses."
+      "ogTitle": "曳尾塗中 — drag your tail in the mud",
+      "excerpt": "Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.",
+      "ogImage": "https://rheophile.ca/assets/og/yiwei-tuzhong.png"
     }
   ]
 }
