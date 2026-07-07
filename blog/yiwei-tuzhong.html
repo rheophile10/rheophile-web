@@ -127,16 +127,26 @@
         pattern (left-right, top-bottom, etc.) rather than a written character.
       </p>
     </section>
+
+    <section class="mt-14 pt-10 border-t border-white/10">
+      <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium mb-4">More from the dev log</div>
+      <div class="grid md:grid-cols-2 gap-4" id="related-posts-grid"></div>
+    </section>
   </main>
 
   <footer class="border-t border-white/10 py-8 mt-6">
     <div class="max-w-6xl mx-auto px-6 text-xs text-zinc-500 flex flex-col md:flex-row gap-y-2 items-center justify-between">
       <div>© Rheophile Corp. · Character data: cjkvi-ids + Unicode Unihan</div>
-      <a href="/" class="hover:text-zinc-300 transition">← Back to rheophile.ca</a>
+      <a href="/#devlog" class="hover:text-zinc-300 transition">← Dev log</a>
+      <span class="text-white/10 mx-2">·</span>
+      <a href="/" class="hover:text-zinc-300 transition">rheophile.ca</a>
     </div>
   </footer>
 
+  <script src="/assets/blog-ui.js"></script>
   <script>
+    BlogUI.renderRelatedPosts('related-posts-grid', 'yiwei-tuzhong');
+
     const DATA_URL = '/assets/zhuangzi-char-data.json';
     let charData = {};
     let activeChar = null;

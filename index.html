@@ -125,15 +125,6 @@
       overflow: hidden;
     }
 
-    .modal {
-      animation: modalPop 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    @keyframes modalPop {
-      from { opacity: 0; transform: scale(0.96) translateY(8px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
     .nav-active {
       color: #14b8a6;
       position: relative;
@@ -399,127 +390,12 @@
     </div>
   </footer>
 
-  <!-- BLOG MODAL -->
-  <div id="modal" onclick="if (event.target.id === 'modal') closeModal()" class="hidden fixed inset-0 z-[70] bg-black/90 flex items-center justify-center p-4 md:p-8">
-    <div onclick="event.stopImmediatePropagation()" 
-         class="modal w-full max-w-2xl bg-zinc-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
-      <div class="px-6 pt-5 pb-4 border-b border-white/10 flex items-center justify-between">
-        <div>
-          <div id="modal-meta" class="text-xs uppercase tracking-widest text-teal-400 font-medium"></div>
-          <div id="modal-title" class="text-2xl font-semibold tracking-tighter pr-6"></div>
-        </div>
-        <button onclick="closeModal()" class="text-zinc-400 hover:text-white p-2 -mr-1">✕</button>
-      </div>
-      <div id="modal-body" class="blog-content px-6 py-7 text-zinc-300 max-h-[65vh] overflow-auto"></div>
-      <div class="px-6 py-4 border-t border-white/10 flex justify-end bg-zinc-950/60">
-        <button onclick="closeModal()" 
-                class="text-sm px-5 h-9 rounded-2xl border border-white/15 hover:bg-white/5 transition">Close</button>
-      </div>
-    </div>
-  </div>
-
+  <script src="/assets/blog-ui.js"></script>
   <script>
     // Tailwind script
     function initTailwind() {
       document.querySelectorAll('script[src*="tailwindcss"]').forEach(s => {
         // already loaded via CDN
-      });
-    }
-
-    // Dev log posts — add entries here as they're written
-    const devPosts = [
-      {
-        date: '2026-07-07',
-        tags: ['plastron', 'steganography', 'pyodide', 'chaosedgesteg'],
-        title: 'Hiding plastron links in pictures with ChaosEdgeSteg',
-        excerpt: 'Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.',
-        body: `<p>Sheetapp on <a href="https://plastron.ca" class="text-teal-400 hover:underline">plastron.ca</a>: upstream <a href="https://github.com/crypt0lith/ChaosEdgeSteg" class="text-teal-400 hover:underline">ChaosEdgeSteg</a> (Hénon-keyed LSB on edge pixels) runs as Python in the browser via Pyodide — byte-compatible both ways with the desktop CLI.</p>
-          <p>Post a ≤680px steg PNG to X; decoder needs the original cover, the X image, and the password. Algorithm lives in visible cells, not a new app segment.</p>
-          <p><a href="/blog/chaosedgesteg-plastron.html" class="text-teal-400 hover:underline">Read the full write-up →</a> · <a href="https://plastron.ca" class="text-teal-400 hover:underline">Try it live</a></p>`
-      },
-      {
-        date: '2026-07-07',
-        tags: ['plastron', 'hris', 'offline', 'crdt'],
-        title: 'Offline HRIS for a community police office',
-        excerpt: 'A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron\'s own offline-capable future.',
-        body: `<p>Detour from <a href="https://plastron.ca" class="text-teal-400 hover:underline">plastron</a>: explore cr-sqlite (encrypted dumps, daily merge ritual) before integrating it into the reactive substrate. Plastron aims to be offline capable; this HRIS prototype stress-tests that path on Protected B personnel data — fictional Juárez PD demo.</p>
-          <p>Cryptography follows CSE <a href="https://www.cyber.gc.ca/en/guidance/cryptographic-algorithms-unclassified-protected-protected-b-information-itsp40111" class="text-teal-400 hover:underline">ITSP.40.111</a> (AES-256-GCM + PBKDF2). PIA, screening, and coordinator SOPs remain organizational work.</p>
-          <p><a href="/blog/offline-hris-juarez.html" class="text-teal-400 hover:underline">Read the full write-up →</a> · <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/" class="text-teal-400 hover:underline">Try the demo</a></p>`
-      },
-      {
-        date: '2026-07-06',
-        tags: ['plastron', 'zhuangzi', 'interactive'],
-        title: '曳尾塗中 — drag your tail in the mud',
-        excerpt: 'Zhuangzi\'s tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.',
-        body: `<p>The Chu king wants Zhuangzi to run his realm. Zhuangzi asks: would the sacred tortoise rather be dead, wrapped in silk, honored in a temple — or alive, dragging its tail through the mud?</p>
-          <p><a href="/blog/yiwei-tuzhong.html" class="text-teal-400 hover:underline">Read the interactive passage →</a></p>`
-      }
-    ];
-
-    function renderDevLog() {
-      const grid = document.getElementById('devlog-grid');
-      grid.innerHTML = '';
-
-      if (devPosts.length === 0) {
-        const el = document.createElement('div');
-        el.className = 'md:col-span-2 rounded-3xl border border-dashed border-white/15 bg-zinc-900/40 p-10 text-center';
-        el.innerHTML = `
-          <div class="text-2xl tracking-tighter font-semibold text-zinc-300">Coming soon</div>
-          <p class="mt-2 text-sm text-zinc-500">Notes on building plastron in the open will land here.</p>
-        `;
-        grid.appendChild(el);
-        return;
-      }
-
-      devPosts.forEach(post => {
-        const el = document.createElement('div');
-        el.className = 'post-card cursor-pointer rounded-3xl border border-white/10 bg-zinc-900/70 p-6 group';
-        el.innerHTML = `
-          <div class="flex justify-between items-baseline text-xs">
-            <span class="text-teal-400 font-medium">${post.date}</span>
-            <span class="text-zinc-600 group-hover:text-zinc-500">${post.tags.join(' · ')}</span>
-          </div>
-          <div class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight group-hover:text-teal-400 transition">${post.title}</div>
-          <p class="mt-3 text-sm text-zinc-400 line-clamp-3">${post.excerpt}</p>
-          <div class="mt-5 text-xs text-teal-400 flex items-center gap-1">
-            Read note <span class="transition group-hover:translate-x-0.5">→</span>
-          </div>
-        `;
-        el.onclick = () => openModal(post, 'dev');
-        grid.appendChild(el);
-      });
-    }
-
-    let currentModalPost = null;
-
-    function openModal(post, category) {
-      const modal = document.getElementById('modal');
-      document.getElementById('modal-title').textContent = post.title;
-      document.getElementById('modal-meta').textContent = `${post.date} · ${category === 'dev' ? 'DEV LOG' : 'READING'}`;
-      document.getElementById('modal-body').innerHTML = post.body;
-      
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-      currentModalPost = post;
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-
-    // Simple keyboard support
-    function initKeyboard() {
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          const modal = document.getElementById('modal');
-          if (!modal.classList.contains('hidden')) {
-            closeModal();
-          }
-        }
       });
     }
 
@@ -552,10 +428,9 @@
     }
 
     // Boot
-    function init() {
+    async function init() {
       initTailwind();
-      renderDevLog();
-      initKeyboard();
+      await BlogUI.renderDevLogGrid('devlog-grid');
       initActiveNav();
 
       // Easter egg: clicking the turtle in nav scrolls to plastron
@@ -567,7 +442,6 @@
         });
       }
 
-      // Make sure modals close on escape is already handled
       console.log('%c[rheophile.ca] static site ready — @rheophile10', 'color:#14b8a6');
     }
 

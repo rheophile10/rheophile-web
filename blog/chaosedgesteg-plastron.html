@@ -371,9 +371,21 @@ chaosedgesteg extract cover.png steg.png -O extracted.zip</code></pre>
       </ul>
     </article>
 
+    <section class="mt-14 pt-10 border-t border-white/10">
+      <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium mb-4">More from the dev log</div>
+      <div class="grid md:grid-cols-2 gap-4" id="related-posts-grid"></div>
+    </section>
+
     <footer class="mt-14 pt-8 border-t border-white/10 text-sm text-zinc-500">
-      <a href="/" class="text-teal-400 hover:underline">← rheophile.ca</a>
+      <a href="/#devlog" class="text-teal-400 hover:underline">← Dev log</a>
+      <span class="mx-2 text-zinc-700">·</span>
+      <a href="/" class="text-teal-400 hover:underline">rheophile.ca</a>
     </footer>
   </main>
+
+  <script src="/assets/blog-ui.js"></script>
+  <script>
+    BlogUI.renderRelatedPosts('related-posts-grid', 'chaosedgesteg-plastron');
+  </script>
 </body>
 </html>
