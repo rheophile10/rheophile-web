@@ -5,7 +5,7 @@
       "href": "/blog/chaosedgesteg-plastron.html",
       "date": "2026-07-07",
       "tags": ["plastron", "steganography", "pyodide", "chaosedgesteg"],
-      "title": "Hiding plastron links in pictures with ChaosEdgeSteg",
+      "title": "Hiding plastron links in pictures with ChaosEdgeSteg 🐢",
       "excerpt": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password."
     },
     {
@@ -21,7 +21,7 @@
       "href": "/blog/yiwei-tuzhong.html",
       "date": "2026-07-06",
       "tags": ["plastron", "zhuangzi", "interactive"],
-      "title": "曳尾塗中 — drag your tail in the mud",
+      "title": "曳尾塗中 — drag your tail in the mud 🐢",
       "excerpt": "Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses."
     }
   ]
