@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "slug": "rheoserv-waumpaum",
+      "href": "/blog/rheoserv-waumpaum.html",
+      "date": "2026-07-07",
+      "tags": [
+        "credit-union",
+        "offline",
+        "crdt",
+        "core-banking",
+        "waumpaum"
+      ],
+      "emoji": "🏦",
+      "title": "RheoServ Waumpaum — a credit-union core in one HTML file 🏦",
+      "ogTitle": "RheoServ Waumpaum — a credit-union core in one HTML file",
+      "excerpt": "A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.",
+      "ogImage": "https://rheophile.ca/assets/og/rheoserv-waumpaum.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg"
+    },
+    {
       "slug": "chaosedgesteg-plastron",
       "href": "/blog/chaosedgesteg-plastron.html",
       "date": "2026-07-07",
