@@ -110,6 +110,39 @@
       margin: 1.5rem 0;
       font-size: 0.92rem;
     }
+
+    .prose-blog .howto-story {
+      margin: 1.75rem 0;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      background: rgba(9,9,11,0.45);
+    }
+    .prose-blog .howto-story h3 { margin-top: 0; }
+    .prose-blog .howto-role {
+      color: #a1a1aa;
+      font-size: 0.92rem;
+      margin: -0.25rem 0 0.75rem;
+    }
+    .prose-blog .howto-tag {
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      color: #71717a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 0.1rem 0.45rem;
+      margin-left: 0.35rem;
+      vertical-align: middle;
+      font-weight: 400;
+    }
+    .prose-blog .howto-video {
+      display: block;
+      width: 100%;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #000;
+      margin: 0.5rem 0 0.85rem;
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen subtle-grid">
@@ -327,8 +360,9 @@
       <p>
         The repository
         <a href="https://github.com/rheophile10/offline-Protected-B-HRIS">rheophile10/offline-Protected-B-HRIS</a>
-        includes Playwright user stories, an automated CRDT convergence test, and a screen-recorded
-        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to</a>.
+        includes Playwright user stories, an automated CRDT convergence test, and the screen-recorded
+        walkthroughs below (also on the standalone
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>).
         It is an exploration of how far you can push personnel HRIS into a single encrypted, mergeable,
         offline artifact — not a production authorization, and not a fork of the product roadmap.
       </p>
@@ -337,6 +371,161 @@
         patterns here into the substrate so cels, sheets, and shared state can survive offline edits and
         reconcile the same way. Next for this detour (if it continues): governance documentation for a
         real pilot, optional PIN-per-operator, jurisdiction-specific legal review.
+      </p>
+
+      <h2>How to use it</h2>
+      <p>
+        Each clip below is a Playwright test from
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/tests/hris.spec.ts"><code>tests/hris.spec.ts</code></a>
+        screen-recorded against the real built app — the same videos shipped in the repo's
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>.
+        User stories are documented in
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/USER-STORIES.md"><code>USER-STORIES.md</code></a>;
+        setup and build notes live in the
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/README.md">README</a>.
+      </p>
+      <div class="callout">
+        <strong>One file.</strong> Download
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/app.html">the built <code>index.html</code></a>,
+        double-click it, and everything below works offline — no server, no install, no admin rights.
+        Export your changes before locking or closing; unsaved work is lost by design.
+      </div>
+
+      <div class="howto-story">
+        <h3>Start a session <span class="howto-tag">US-1</span></h3>
+        <p class="howto-role">Open the app, load today's data behind a passphrase, pick your operator identity.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us1-start-session.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li>Open the file — locked gate first.</li>
+          <li>Keep <em>Demo data</em>, enter a passphrase, <strong>Start session</strong>.</li>
+          <li>Pick an operator; dashboard shows 27 officers and staffing gaps.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Add an officer <span class="howto-tag">US-2</span></h3>
+        <p class="howto-role">Add a new hire; roster and dashboard update with audit attribution.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us2-add-officer.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Officers</strong> → <strong>+ Add officer</strong>, badge + name, <strong>Save</strong>.</li>
+          <li>Headcount rises; change is attributed and audited.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Assign an officer to a position <span class="howto-tag">US-3</span></h3>
+        <p class="howto-role">Keep staffing levels and vacancy deficits current.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us3-assign-officer.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Assignments</strong> → <strong>+ Assign officer</strong>, pick officer + position, <strong>Assign</strong>.</li>
+          <li>Staffing views recompute automatically.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Query data &amp; export encrypted CSV <span class="howto-tag">US-4</span></h3>
+        <p class="howto-role">Run ad-hoc SQL; share figures without plaintext ever touching disk.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us4-query-export-csv.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>SQL Console</strong> → write a query → <strong>Run</strong>.</li>
+          <li>Export produces <code>.csv.enc</code> only — decrypt later from <em>Data &amp; Security</em>.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Export changes &amp; merge (no Node) <span class="howto-tag">US-5</span></h3>
+        <p class="howto-role">The coordinator merges everyone's offline edits inside the same HTML file.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us5-export-and-merge.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li>Operator: <strong>Export my changes</strong> → encrypted <code>.hrischanges</code>.</li>
+          <li>Coordinator: open morning truth → <strong>Merge operator changes</strong> → select deltas.</li>
+          <li><strong>Export merged truth</strong> for tomorrow. CRDT converges divergent edits.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Recruit &amp; hire an applicant <span class="howto-tag">US-7</span></h3>
+        <p class="howto-role">Run a hiring pipeline and convert a successful applicant into an officer.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us7-recruitment-hire.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Recruitment</strong> kanban — add applicants, move through stages to Offer.</li>
+          <li><strong>Hire →</strong> creates officer record + active assignment; headcount updates.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Training &amp; compliance <span class="howto-tag">US-8</span></h3>
+        <p class="howto-role">See what's expiring and renew certifications.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us8-compliance.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Compliance</strong> — Expired / Expiring / Valid counts and firearms-current ratio.</li>
+          <li>Filter by KPI; <strong>Renew</strong> or <strong>+ Record certification</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Leave &amp; absence <span class="howto-tag">US-9</span></h3>
+        <p class="howto-role">Track requests, approvals, and who's off today.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us9-leave.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Leave</strong> — on-leave today, pending, upcoming counts.</li>
+          <li><strong>+ Request leave</strong>; <strong>Approve</strong> or <strong>Deny</strong> pending rows.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Workforce planning <span class="howto-tag">US-10</span></h3>
+        <p class="howto-role">Project vacancies ahead of retirements.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us10-planning.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Planning</strong> — projected deficit at +1/+2/+3/+5-year horizons.</li>
+          <li>Officers nearing pension milestone listed for hire-ahead decisions.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Audit trail <span class="howto-tag">US-11</span></h3>
+        <p class="howto-role">See who changed what — attribution that survives the merge.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us11-audit.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Audit</strong> — change log (operator, entity, action) + session events.</li>
+          <li>Logs are CRRs; they travel with each changeset into the merge.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Officer file <span class="howto-tag">US-12</span></h3>
+        <p class="howto-role">Emergency contacts, performance reviews, and conduct in one place.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us12-officer-file.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Officer File</strong> → pick an officer.</li>
+          <li>View contacts, reviews, conduct; add a review or update a disposition.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Equipment register <span class="howto-tag">US-13</span></h3>
+        <p class="howto-role">Track who holds each firearm, vehicle, radio, or camera.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us13-equipment.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Equipment</strong> — in-service / issued / available counts.</li>
+          <li><strong>Issue</strong> or <strong>Return</strong> assets; mark Maintenance or Retired.</li>
+        </ol>
+      </div>
+
+      <div class="howto-story">
+        <h3>Lock the session <span class="howto-tag">US-6</span></h3>
+        <p class="howto-role">Wipe decrypted data from memory when you step away.</p>
+        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us6-lock-session.webm" controls muted playsinline preload="metadata"></video>
+        <ol>
+          <li><strong>Lock session</strong> — returns to gate, clears DB + key + identity from memory.</li>
+          <li>Export changes first; unsaved work is lost by design.</li>
+        </ol>
+      </div>
+
+      <p>
+        Full standalone guide:
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">rheophile10.github.io/offline-Protected-B-HRIS/how-to.html</a>
       </p>
 
       <h2>References</h2>
