@@ -377,7 +377,8 @@
       <p>
         Each clip below is a Playwright test from
         <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/tests/hris.spec.ts"><code>tests/hris.spec.ts</code></a>
-        screen-recorded against the real built app — the same videos shipped in the repo's
+        screen-recorded against the real built app with <strong>800&nbsp;ms slow-motion</strong> between
+        actions so each step is easy to follow — the same videos shipped in the repo's
         <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>.
         User stories are documented in
         <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/USER-STORIES.md"><code>USER-STORIES.md</code></a>;
@@ -394,7 +395,7 @@
       <div class="howto-story">
         <h3>Start a session <span class="howto-tag">US-1</span></h3>
         <p class="howto-role">Open the app, load today's data behind a passphrase, pick your operator identity.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us1-start-session.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us1-start-session.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li>Open the file — locked gate first.</li>
           <li>Keep <em>Demo data</em>, enter a passphrase, <strong>Start session</strong>.</li>
@@ -405,7 +406,7 @@
       <div class="howto-story">
         <h3>Add an officer <span class="howto-tag">US-2</span></h3>
         <p class="howto-role">Add a new hire; roster and dashboard update with audit attribution.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us2-add-officer.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us2-add-officer.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Officers</strong> → <strong>+ Add officer</strong>, badge + name, <strong>Save</strong>.</li>
           <li>Headcount rises; change is attributed and audited.</li>
@@ -415,7 +416,7 @@
       <div class="howto-story">
         <h3>Assign an officer to a position <span class="howto-tag">US-3</span></h3>
         <p class="howto-role">Keep staffing levels and vacancy deficits current.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us3-assign-officer.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us3-assign-officer.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Assignments</strong> → <strong>+ Assign officer</strong>, pick officer + position, <strong>Assign</strong>.</li>
           <li>Staffing views recompute automatically.</li>
@@ -425,7 +426,7 @@
       <div class="howto-story">
         <h3>Query data &amp; export encrypted CSV <span class="howto-tag">US-4</span></h3>
         <p class="howto-role">Run ad-hoc SQL; share figures without plaintext ever touching disk.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us4-query-export-csv.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us4-query-export-csv.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>SQL Console</strong> → write a query → <strong>Run</strong>.</li>
           <li>Export produces <code>.csv.enc</code> only — decrypt later from <em>Data &amp; Security</em>.</li>
@@ -435,7 +436,7 @@
       <div class="howto-story">
         <h3>Export changes &amp; merge (no Node) <span class="howto-tag">US-5</span></h3>
         <p class="howto-role">The coordinator merges everyone's offline edits inside the same HTML file.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us5-export-and-merge.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us5-export-and-merge.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li>Operator: <strong>Export my changes</strong> → encrypted <code>.hrischanges</code>.</li>
           <li>Coordinator: open morning truth → <strong>Merge operator changes</strong> → select deltas.</li>
@@ -446,7 +447,7 @@
       <div class="howto-story">
         <h3>Recruit &amp; hire an applicant <span class="howto-tag">US-7</span></h3>
         <p class="howto-role">Run a hiring pipeline and convert a successful applicant into an officer.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us7-recruitment-hire.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us7-recruitment-hire.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Recruitment</strong> kanban — add applicants, move through stages to Offer.</li>
           <li><strong>Hire →</strong> creates officer record + active assignment; headcount updates.</li>
@@ -456,7 +457,7 @@
       <div class="howto-story">
         <h3>Training &amp; compliance <span class="howto-tag">US-8</span></h3>
         <p class="howto-role">See what's expiring and renew certifications.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us8-compliance.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us8-compliance.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Compliance</strong> — Expired / Expiring / Valid counts and firearms-current ratio.</li>
           <li>Filter by KPI; <strong>Renew</strong> or <strong>+ Record certification</strong>.</li>
@@ -466,7 +467,7 @@
       <div class="howto-story">
         <h3>Leave &amp; absence <span class="howto-tag">US-9</span></h3>
         <p class="howto-role">Track requests, approvals, and who's off today.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us9-leave.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us9-leave.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Leave</strong> — on-leave today, pending, upcoming counts.</li>
           <li><strong>+ Request leave</strong>; <strong>Approve</strong> or <strong>Deny</strong> pending rows.</li>
@@ -476,7 +477,7 @@
       <div class="howto-story">
         <h3>Workforce planning <span class="howto-tag">US-10</span></h3>
         <p class="howto-role">Project vacancies ahead of retirements.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us10-planning.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us10-planning.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Planning</strong> — projected deficit at +1/+2/+3/+5-year horizons.</li>
           <li>Officers nearing pension milestone listed for hire-ahead decisions.</li>
@@ -486,7 +487,7 @@
       <div class="howto-story">
         <h3>Audit trail <span class="howto-tag">US-11</span></h3>
         <p class="howto-role">See who changed what — attribution that survives the merge.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us11-audit.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us11-audit.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Audit</strong> — change log (operator, entity, action) + session events.</li>
           <li>Logs are CRRs; they travel with each changeset into the merge.</li>
@@ -496,7 +497,7 @@
       <div class="howto-story">
         <h3>Officer file <span class="howto-tag">US-12</span></h3>
         <p class="howto-role">Emergency contacts, performance reviews, and conduct in one place.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us12-officer-file.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us12-officer-file.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Officer File</strong> → pick an officer.</li>
           <li>View contacts, reviews, conduct; add a review or update a disposition.</li>
@@ -506,7 +507,7 @@
       <div class="howto-story">
         <h3>Equipment register <span class="howto-tag">US-13</span></h3>
         <p class="howto-role">Track who holds each firearm, vehicle, radio, or camera.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us13-equipment.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us13-equipment.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Equipment</strong> — in-service / issued / available counts.</li>
           <li><strong>Issue</strong> or <strong>Return</strong> assets; mark Maintenance or Retired.</li>
@@ -516,7 +517,7 @@
       <div class="howto-story">
         <h3>Lock the session <span class="howto-tag">US-6</span></h3>
         <p class="howto-role">Wipe decrypted data from memory when you step away.</p>
-        <video class="howto-video" src="https://rheophile10.github.io/offline-Protected-B-HRIS/videos/us6-lock-session.webm" controls muted playsinline preload="metadata"></video>
+        <video class="howto-video" src="/assets/offline-hris-howto/us6-lock-session.webm" controls muted playsinline preload="metadata"></video>
         <ol>
           <li><strong>Lock session</strong> — returns to gate, clears DB + key + identity from memory.</li>
           <li>Export changes first; unsaved work is lost by design.</li>
