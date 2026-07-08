@@ -1,13 +1,23 @@
 # Deploying rheophile.ca
 
-The site is one file: `index.html` (+ `assets/pfp.jpg`). No build step. The Vite plan
-in SITE-PLAN.md is retired — single-file is the brand.
+Static site, no framework and no build step: hand-written HTML plus a few
+JSON data files and small helper scripts. Everything is served as-is from the
+repo root.
+
+Layout:
+- `index.html` — home (hero, Projects, Blog teaser)
+- `blog/index.html` — tag-filterable blog index; `blog/*.html` — the posts
+- `assets/projects.json` — the Projects grid data (edit this to add a project)
+- `assets/blog-posts.json` — the post index (drives the grid, the RSS feed, and per-post meta)
+- `assets/blog-ui.js` — client-side rendering for projects, blog grid, tag filter
+- `feed.xml` — generated RSS (do not hand-edit; see Updating)
+- `scripts/` — `generate-rss.py`, `sync-blog-meta.py`, OG-card generators
 
 ## Fastest path (GitHub Pages, free, fits the artifact strategy)
 
 ```bash
 cd ~/projects/rheophile/website
-git init && git add index.html assets DEPLOY.md && git commit -m "rheophile.ca"
+git init && git add index.html blog assets feed.xml scripts DEPLOY.md README.md CNAME && git commit -m "rheophile.ca"
 gh repo create rheophile10/rheophile.ca --public --source=. --push
 gh api repos/rheophile10/rheophile.ca/pages -X POST -f "source[branch]=master" -f "source[path]=/"
 ```
@@ -46,8 +56,19 @@ the project's Auth → Redirect URLs.
 
 ## Updating
 
-Edit `index.html` directly:
-- New project card → `projects` array in the script block.
-- New dev log / reading note → `devPosts` / `readingPosts` arrays.
-- "On the bench right now" → the `#now` section near the top.
+**Add a project:** append an object to `assets/projects.json` (set
+`"featured": true` to make it the plastron-style lead; otherwise it lands in
+the "Other projects" grid). The home page renders it — no HTML edit needed.
+
+**Add a blog post:**
+1. Add the post HTML under `blog/`.
+2. Add its entry to `assets/blog-posts.json`.
+3. Regenerate meta + feed:
+   ```bash
+   python3 scripts/sync-blog-meta.py     # injects OG/Twitter meta into the post
+   python3 scripts/generate-rss.py       # rewrites feed.xml from blog-posts.json
+   ```
+The home page grid, the `/blog/` index, and its tag filter all pick the post
+up automatically from `blog-posts.json`.
+
 Commit + push = deployed. Every update is a timestamped public artifact.

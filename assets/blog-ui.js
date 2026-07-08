@@ -1,5 +1,6 @@
 (function () {
   const POSTS_URL = '/assets/blog-posts.json';
+  const PROJECTS_URL = '/assets/projects.json';
 
   function ensureCardStyles() {
     if (document.getElementById('blog-ui-styles')) return;
@@ -93,11 +94,133 @@
     renderPostGrid(container, related);
   }
 
+  // ---- Tag-filterable blog index ------------------------------------------
+
+  function uniqueTags(posts) {
+    const seen = new Set();
+    posts.forEach(p => (p.tags || []).forEach(t => seen.add(t)));
+    return [...seen].sort((a, b) => a.localeCompare(b));
+  }
+
+  function currentTagFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('tag') || '';
+  }
+
+  function renderTagFilter(filterEl, gridEl, posts, activeTag) {
+    const tags = uniqueTags(posts);
+    const chips = ['', ...tags];
+
+    function draw() {
+      const active = currentTagFromUrl();
+      filterEl.innerHTML = '';
+      chips.forEach(tag => {
+        const label = tag || 'All';
+        const isActive = tag === active;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.tag = tag;
+        btn.setAttribute('aria-pressed', String(isActive));
+        btn.className = 'px-3 py-1 rounded-full text-xs font-medium border transition-colors ' +
+          (isActive
+            ? 'bg-teal-500 text-zinc-950 border-teal-500'
+            : 'bg-white/5 text-zinc-300 border-white/10 hover:border-teal-500/50 hover:text-white');
+        btn.textContent = tag ? `#${label}` : label;
+        btn.addEventListener('click', () => {
+          const url = new URL(window.location.href);
+          if (tag) url.searchParams.set('tag', tag);
+          else url.searchParams.delete('tag');
+          window.history.replaceState({}, '', url);
+          draw();
+          drawGrid();
+        });
+        filterEl.appendChild(btn);
+      });
+    }
+
+    function drawGrid() {
+      const active = currentTagFromUrl();
+      const filtered = active ? posts.filter(p => (p.tags || []).includes(active)) : posts;
+      renderPostGrid(gridEl, filtered);
+    }
+
+    draw();
+    drawGrid();
+  }
+
+  async function renderBlogIndex(gridId, filterId) {
+    const gridEl = document.getElementById(gridId);
+    const filterEl = document.getElementById(filterId);
+    if (!gridEl) return;
+    const posts = await fetchBlogPosts();
+    if (filterEl) {
+      renderTagFilter(filterEl, gridEl, posts, currentTagFromUrl());
+    } else {
+      renderPostGrid(gridEl, posts);
+    }
+  }
+
+  // ---- Projects grid -------------------------------------------------------
+
+  async function fetchProjects() {
+    const res = await fetch(PROJECTS_URL);
+    if (!res.ok) throw new Error('Failed to load projects');
+    const data = await res.json();
+    return data.projects || [];
+  }
+
+  function renderProjectCard(project) {
+    ensureCardStyles();
+    const card = document.createElement('div');
+    card.className = 'project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col';
+
+    const links = [];
+    if (project.repo) {
+      links.push(`<a href="${escapeHtml(project.repo)}" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a>`);
+    }
+    if (project.live) {
+      links.push(`<a href="${escapeHtml(project.live)}" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Live <span aria-hidden="true">↗</span></a>`);
+    }
+    if (project.blog) {
+      links.push(`<a href="${escapeHtml(project.blog)}" class="text-teal-400 hover:text-teal-300 transition">Read <span aria-hidden="true">→</span></a>`);
+    }
+
+    card.innerHTML = `
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="text-2xl leading-none" aria-hidden="true">${escapeHtml(project.emoji || '📦')}</span>
+          <span class="font-semibold tracking-tight text-lg truncate">${escapeHtml(project.name)}</span>
+        </div>
+        <span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">${escapeHtml(project.lang || '')}</span>
+      </div>
+      <p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">${escapeHtml(project.tagline || '')}</p>
+      <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium">
+        ${links.join('')}
+      </div>
+    `;
+    return card;
+  }
+
+  async function renderProjectsGrid(containerId, opts) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const options = opts || {};
+    const projects = await fetchProjects();
+    const list = options.includeFeatured ? projects : projects.filter(p => !p.featured);
+    container.innerHTML = '';
+    list.forEach(p => container.appendChild(renderProjectCard(p)));
+  }
+
   window.BlogUI = {
     fetchBlogPosts,
     renderPostCard,
     renderPostGrid,
     renderDevLogGrid,
     renderRelatedPosts,
+    renderBlogIndex,
+    uniqueTags,
+    fetchProjects,
+    renderProjectCard,
+    renderProjectsGrid,
   };
 })();

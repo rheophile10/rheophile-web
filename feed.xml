@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>rheophile.ca — dev log</title>
+  <link>https://rheophile.ca/blog/</link>
+  <atom:link href="https://rheophile.ca/feed.xml" rel="self" type="application/rss+xml" />
+  <description>Notes on building plastron and other reactive, offline-first tools in the open.</description>
+  <language>en-ca</language>
+  <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>RheoServ Waumpaum — a credit-union core in one HTML file</title>
+    <link>https://rheophile.ca/blog/rheoserv-waumpaum.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/rheoserv-waumpaum.html</guid>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
+    <description>A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.</description>
+    <category>credit-union</category>
+    <category>offline</category>
+    <category>crdt</category>
+    <category>core-banking</category>
+    <category>waumpaum</category>
+  </item>
+  <item>
+    <title>Hiding plastron links in pictures with ChaosEdgeSteg</title>
+    <link>https://rheophile.ca/blog/chaosedgesteg-plastron.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/chaosedgesteg-plastron.html</guid>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
+    <description>Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.</description>
+    <category>plastron</category>
+    <category>steganography</category>
+    <category>pyodide</category>
+    <category>chaosedgesteg</category>
+  </item>
+  <item>
+    <title>Offline HRIS for a community police office</title>
+    <link>https://rheophile.ca/blog/offline-hris-juarez.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/offline-hris-juarez.html</guid>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
+    <description>A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.</description>
+    <category>plastron</category>
+    <category>hris</category>
+    <category>offline</category>
+    <category>crdt</category>
+  </item>
+  <item>
+    <title>曳尾塗中 — drag your tail in the mud</title>
+    <link>https://rheophile.ca/blog/yiwei-tuzhong.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/yiwei-tuzhong.html</guid>
+    <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
+    <description>Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.</description>
+    <category>plastron</category>
+    <category>zhuangzi</category>
+    <category>interactive</category>
+  </item>
+</channel>
+</rss>

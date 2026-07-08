@@ -1,0 +1,80 @@
+{
+  "projects": [
+    {
+      "slug": "plastron",
+      "name": "plastron",
+      "emoji": "🐢",
+      "lang": "TypeScript",
+      "tagline": "A polyglot reactive substrate — cells hold values, formulas, or compiled lambdas in any language a compiler is installed for. Live at plastron.ca.",
+      "repo": "https://github.com/rheophile10/plastron",
+      "live": "https://plastron.ca",
+      "featured": true
+    },
+    {
+      "slug": "rheoserv-waumpaum",
+      "name": "RheoServ Waumpaum",
+      "emoji": "🏦",
+      "lang": "TypeScript",
+      "tagline": "An offline-first credit-union core in one encrypted HTML file: cr-sqlite CRDT merge across operators and waumpaum settlement between institutions.",
+      "repo": "https://github.com/rheophile10/rheoServ-waumpaum",
+      "blog": "/blog/rheoserv-waumpaum.html"
+    },
+    {
+      "slug": "offline-hris",
+      "name": "Offline Protected-B HRIS",
+      "emoji": "👮",
+      "lang": "TypeScript",
+      "tagline": "A Protected-B HRIS that runs offline in a single HTML file, merging HR records across operators with CRDT SQLite.",
+      "repo": "https://github.com/rheophile10/offline-Protected-B-HRIS",
+      "blog": "/blog/offline-hris-juarez.html"
+    },
+    {
+      "slug": "xit-wasm-ts",
+      "name": "xit-wasm-ts",
+      "emoji": "📦",
+      "lang": "TypeScript",
+      "tagline": "Versioned in-memory archives via xit (a Zig VCS) compiled to WebAssembly.",
+      "repo": "https://github.com/rheophile10/xit-wasm-ts"
+    },
+    {
+      "slug": "colonial-advocate",
+      "name": "The Colonial Advocate",
+      "emoji": "📰",
+      "lang": "Python",
+      "tagline": "A single-page web app modelled after William Lyon Mackenzie's 19th-century reform newspaper.",
+      "repo": "https://github.com/rheophile10/colonial-advocate"
+    },
+    {
+      "slug": "civilian-firearms-vs-homicide",
+      "name": "Firearms vs Homicide",
+      "emoji": "📊",
+      "lang": "HTML",
+      "tagline": "Civilian firearm ownership (Small Arms Survey 2017) charted against intentional homicide rates (UNODC), by country.",
+      "repo": "https://github.com/rheophile10/civilian-firearms-vs-homicide"
+    },
+    {
+      "slug": "xit",
+      "name": "xit",
+      "emoji": "🗃️",
+      "lang": "Zig",
+      "tagline": "A git alternative written in Zig.",
+      "repo": "https://github.com/rheophile10/xit"
+    },
+    {
+      "slug": "genenote-js",
+      "name": "genenote-js",
+      "emoji": "🧬",
+      "lang": "TypeScript",
+      "tagline": "Lion Kimbra's genenote, reimplemented in JavaScript on top of plastron.",
+      "repo": "https://github.com/rheophile10/genenote-js"
+    },
+    {
+      "slug": "pycard",
+      "name": "pycard",
+      "emoji": "🃏",
+      "lang": "Python",
+      "tagline": "A HyperCard-inspired toolkit built with tkinter and Python.",
+      "repo": "https://github.com/rheophile10/pycard"
+    }
+  ]
+}

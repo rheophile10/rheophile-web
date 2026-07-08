@@ -3,34 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>rheophile10 · rheophile.ca</title>
-  <meta name="description" content="rheophile10 — building plastron, a polyglot reactive substrate hosted at plastron.ca. Dev log.">
+  <title>rheophile10 — flowing code</title>
+  <link rel="canonical" href="https://rheophile.ca/">
+  <meta name="description" content="rheophile10 builds plastron, a polyglot reactive substrate where cells hold values, formulas, or compiled lambdas in any language. Projects and a dev log on building tools that feel like water.">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="rheophile.ca">
+  <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/">
-  <meta property="og:title" content="rheophile.ca">
-  <meta property="og:description" content="moist">
+  <meta property="og:title" content="rheophile10 — flowing code">
+  <meta property="og:description" content="Building plastron, a polyglot reactive substrate, plus other tools that feel like water — and a dev log on building them in the open.">
   <meta property="og:image" content="https://rheophile.ca/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="rheophile.ca">
-  <meta name="twitter:description" content="moist">
+  <meta name="twitter:site" content="@rheophile10">
+  <meta name="twitter:creator" content="@rheophile10">
+  <meta name="twitter:title" content="rheophile10 — flowing code">
+  <meta name="twitter:description" content="Building plastron, a polyglot reactive substrate, plus other tools that feel like water — and a dev log on building them in the open.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og-card.png">
+  <link rel="alternate" type="application/rss+xml" title="rheophile.ca dev log" href="https://rheophile.ca/feed.xml">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-    
+
     :root {
       --accent: #14b8a6;
     }
-    
+
     body {
-      font-family: 'Inter', system_ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
     }
-    
+
     .display {
-      font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+      font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
       font-feature-settings: "ss02";
     }
 
@@ -54,7 +60,7 @@
     }
 
     .project-card, .post-card {
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                   box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
                   border-color 0.2s ease;
     }
@@ -65,7 +71,7 @@
     }
 
     .subtle-grid {
-      background-image: 
+      background-image:
         linear-gradient(rgba(163, 163, 172, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(163, 163, 172, 0.035) 1px, transparent 1px);
       background-size: 32px 32px;
@@ -85,27 +91,6 @@
 
     .mono {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-
-    .blog-content {
-      font-size: 15px;
-      line-height: 1.7;
-    }
-    .blog-content h3 {
-      font-size: 1.05rem;
-      margin-top: 1.25rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .blog-content p {
-      margin-bottom: 1rem;
-    }
-    .blog-content ul {
-      margin-bottom: 1rem;
-      padding-left: 1.25rem;
-    }
-    .blog-content li {
-      margin-bottom: 0.35rem;
     }
 
     .stat {
@@ -148,38 +133,73 @@
       background: #0a0a0b;
       border: 1px solid #27272a;
     }
+
+    /* ---- Accessibility ---------------------------------------------------- */
+    :focus-visible {
+      outline: 2px solid #14b8a6;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 0.5rem;
+      top: -3rem;
+      z-index: 100;
+      background: #14b8a6;
+      color: #09090b;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 selection:bg-teal-500/30">
+  <a href="#content" class="skip-link">Skip to content</a>
+
   <!-- NAV -->
   <nav class="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/95 backdrop-blur-lg">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="flex items-center gap-2.5">
+        <a href="#plastron" class="flex items-center gap-2.5 no-underline text-inherit" aria-label="rheophile10 — jump to plastron">
           <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30">
-            <span class="text-xl leading-none mt-px">🐸</span>
+            <span class="text-xl leading-none mt-px" aria-hidden="true">🐸</span>
           </div>
           <div>
             <div class="font-semibold tracking-tighter text-xl">rheophile10</div>
             <div class="text-[10px] text-zinc-500 -mt-1">rheophile.ca</div>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#plastron" class="nav-link text-zinc-400 hover:text-white">Plastron</a>
-        <a href="#devlog" class="nav-link text-zinc-400 hover:text-white">Dev Log</a>
+        <a href="#projects" class="nav-link text-zinc-400 hover:text-white">Projects</a>
+        <a href="#blog" class="nav-link text-zinc-400 hover:text-white">Blog</a>
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="https://x.com/rheophile10" target="_blank" rel="noopener"
+        <a href="https://x.com/rheophile10" target="_blank" rel="noopener" aria-label="rheophile10 on X"
            class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full border border-white/10 hover:bg-white/5 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25l-7.451 8.52L4.5 2.25H1.08l7.646 8.73L1.08 21.75h3.42l6.313-7.23 5.058 7.23h3.42l-7.646-8.73 7.646-8.73h-3.42z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25l-7.451 8.52L4.5 2.25H1.08l7.646 8.73L1.08 21.75h3.42l6.313-7.23 5.058 7.23h3.42l-7.646-8.73 7.646-8.73h-3.42z"/></svg>
           <span class="hidden sm:inline">@rheophile10</span>
         </a>
-        <a href="https://github.com/rheophile10" target="_blank" rel="noopener"
+        <a href="https://github.com/rheophile10" target="_blank" rel="noopener" aria-label="rheophile10 on GitHub"
            class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full bg-white text-zinc-900 hover:bg-zinc-100 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.89.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 1-.32 3.3 1.23.95-.26 1.98-.4 3-.4s2.05.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.25 5.69.41.36.77 1.08.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.55 4.57-1.51 7.86-5.81 7.86-10.89C23.5 5.73 18.27.5 12 .5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.89.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 1-.32 3.3 1.23.95-.26 1.98-.4 3-.4s2.05.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.25 5.69.41.36.77 1.08.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.55 4.57-1.51 7.86-5.81 7.86-10.89C23.5 5.73 18.27.5 12 .5z"/></svg>
           <span class="hidden sm:inline">GitHub</span>
         </a>
         <div id="auth-area">
@@ -193,11 +213,12 @@
 
     <!-- Mobile quick nav -->
     <div class="md:hidden border-t border-white/10 bg-zinc-950/95 px-6 py-2 flex gap-x-5 text-xs overflow-x-auto">
-      <a href="#plastron" class="text-zinc-400 whitespace-nowrap">Plastron</a>
-      <a href="#devlog" class="text-zinc-400 whitespace-nowrap">Dev Log</a>
+      <a href="#projects" class="text-zinc-400 whitespace-nowrap">Projects</a>
+      <a href="#blog" class="text-zinc-400 whitespace-nowrap">Blog</a>
     </div>
   </nav>
 
+  <main id="content">
   <!-- HERO -->
   <header class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24">
     <div class="grid md:grid-cols-12 gap-x-10 gap-y-10 items-center">
@@ -214,14 +235,14 @@
         </h1>
 
         <p class="mt-6 max-w-md text-xl text-zinc-400">
-          Building <span class="text-teal-400">reactive substrates</span> that run everywhere. 
+          Building <span class="text-teal-400">reactive substrates</span> that run everywhere.
           Polyglot spreadsheets, self-contained OSes, and tools that feel like water.
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#plastron" 
+          <a href="#projects"
              class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl bg-teal-500 hover:bg-teal-400 active:bg-teal-600 transition-colors text-zinc-950 font-semibold text-sm tracking-[-0.2px]">
-            Explore Plastron
+            View projects
             <span aria-hidden="true">→</span>
           </a>
           <a href="https://plastron.ca" target="_blank" rel="noopener"
@@ -232,11 +253,11 @@
 
         <div class="mt-8 flex items-center gap-4 text-sm">
           <div class="flex -space-x-2">
-            <div class="w-7 h-7 rounded-full ring-2 ring-zinc-950 overflow-hidden border border-white/20"><img src="assets/pfp.jpg" alt=""></div>
+            <div class="w-7 h-7 rounded-full ring-2 ring-zinc-950 overflow-hidden border border-white/20"><img src="assets/pfp.jpg" alt="" aria-hidden="true"></div>
           </div>
           <div class="text-zinc-400">
             <a href="https://x.com/rheophile10" class="hover:text-white transition-colors">@rheophile10</a>
-            <span class="mx-1.5 text-zinc-700">·</span> 
+            <span class="mx-1.5 text-zinc-700">·</span>
             <a href="https://github.com/rheophile10" class="hover:text-white transition-colors">github.com/rheophile10</a>
           </div>
         </div>
@@ -246,7 +267,7 @@
       <div class="md:col-span-5 flex justify-center md:justify-end">
         <div class="relative">
           <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden ring-1 ring-white/10 pfp-ring">
-            <img src="assets/pfp.jpg" alt="@rheophile10 profile photo" 
+            <img src="assets/pfp.jpg" alt="@rheophile10 profile photo"
                  class="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-500">
           </div>
           <div class="absolute -bottom-2 -right-2 px-3.5 py-1 rounded-2xl bg-zinc-900 border border-white/10 text-xs flex items-center gap-1.5 shadow-xl">
@@ -258,26 +279,36 @@
     </div>
   </header>
 
-  <!-- PLASTRON FEATURED -->
-  <section id="plastron" class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+  <!-- PROJECTS -->
+  <section id="projects" class="max-w-6xl mx-auto px-6 pt-16 pb-12">
     <div class="flex items-end justify-between mb-6">
       <div>
-        <div class="uppercase tracking-[2px] text-xs text-teal-400 font-medium">Featured project</div>
-        <h2 class="section-header font-semibold tracking-tighter flex items-center gap-3">
-          plastron <span class="text-3xl">🐢</span>
-        </h2>
+        <div class="uppercase tracking-[2px] text-xs text-teal-400 font-medium">Projects</div>
+        <h2 class="section-header font-semibold tracking-tighter">What I'm building</h2>
+      </div>
+      <a href="https://github.com/rheophile10?tab=repositories" target="_blank" rel="noopener"
+         class="hidden md:inline text-sm text-zinc-400 hover:text-teal-400 transition">All repos →</a>
+    </div>
+
+    <!-- Featured: plastron -->
+    <div id="plastron" class="mb-4 flex items-end justify-between scroll-mt-24">
+      <div>
+        <div class="uppercase tracking-[2px] text-[10px] text-zinc-500 font-medium">Featured</div>
+        <h3 class="text-2xl font-semibold tracking-tighter flex items-center gap-3">
+          plastron <span class="text-2xl" aria-hidden="true">🐢</span>
+        </h3>
         <p class="mt-1 text-sm text-zinc-500">
           Hosted at <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300 transition">plastron.ca</a>
         </p>
       </div>
       <div class="hidden md:flex items-center gap-3 text-sm">
-        <a href="https://github.com/rheophile10/plastron" target="_blank" 
+        <a href="https://github.com/rheophile10/plastron" target="_blank" rel="noopener"
            class="px-4 py-2 rounded-2xl border border-white/15 hover:bg-white/5 transition flex items-center gap-2 text-sm">
           <span>View on GitHub</span>
         </a>
-        <a href="https://plastron.ca" target="_blank"
+        <a href="https://plastron.ca" target="_blank" rel="noopener"
            class="px-5 py-2 rounded-2xl bg-teal-500 hover:bg-teal-400 text-zinc-950 font-semibold text-sm flex items-center gap-2 transition-colors">
-          Launch the OS <span aria-hidden>↗</span>
+          Launch the OS <span aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
@@ -286,10 +317,10 @@
       <!-- Main desc -->
       <div class="lg:col-span-3 rounded-3xl border border-white/10 bg-zinc-900/60 p-8">
         <p class="text-xl leading-tight text-zinc-300">
-          A polyglot reactive substrate. Cels hold values, formulas, or compiled lambdas. 
+          A polyglot reactive substrate. Cels hold values, formulas, or compiled lambdas.
           Writing to one fires a cascade that recomputes everything downstream in topological order.
         </p>
-        
+
         <div class="mt-6 text-sm text-zinc-400 space-y-4 leading-relaxed">
           <p>The eventual shape is a <span class="font-medium text-zinc-200">polyglot spreadsheet</span>: write functions in any language a compiler is installed for (JS, WAT, Python, Scheme…), then call them from formulas in other cels. The same kernel powers a desktop shell, spreadsheet UI, CLI, or web app.</p>
           <p>
@@ -312,22 +343,22 @@
       <!-- Apps showcase -->
       <div class="lg:col-span-2 rounded-3xl border border-white/10 bg-zinc-900/60 p-8 flex flex-col">
         <div class="uppercase text-xs tracking-widest text-zinc-500 mb-3">What ships in the OS</div>
-        
+
         <div class="space-y-3 text-sm flex-1">
           <div class="flex gap-3 items-start">
-            <div class="mt-0.5 text-teal-400">📊</div>
+            <div class="mt-0.5 text-teal-400" aria-hidden="true">📊</div>
             <div><span class="font-medium">Sheets</span> — per-cell view cels, formula bar, infix formulas, server-backed persistence on plastron.ca</div>
           </div>
           <div class="flex gap-3 items-start">
-            <div class="mt-0.5 text-teal-400">📝</div>
+            <div class="mt-0.5 text-teal-400" aria-hidden="true">📝</div>
             <div><span class="font-medium">Notepad</span> — textarea bound to a cel, New/Save/Open via shared file toolbar</div>
           </div>
           <div class="flex gap-3 items-start">
-            <div class="mt-0.5 text-teal-400">🗂</div>
+            <div class="mt-0.5 text-teal-400" aria-hidden="true">🗂</div>
             <div><span class="font-medium">File Explorer</span> — folders + drag-and-drop, fs-tree synced on the hosted build</div>
           </div>
           <div class="flex gap-3 items-start">
-            <div class="mt-0.5 text-teal-400">🎮</div>
+            <div class="mt-0.5 text-teal-400" aria-hidden="true">🎮</div>
             <div><span class="font-medium">Doom</span> — Freedoom running on doomgeneric compiled to WASM. 60 fps, mouse + keyboard, 28 MB WAD inlined</div>
           </div>
         </div>
@@ -368,30 +399,51 @@
     </div>
 
     <div class="md:hidden mt-5 flex gap-3">
-      <a href="https://github.com/rheophile10/plastron" target="_blank" class="flex-1 text-center px-4 py-2.5 rounded-2xl border border-white/15 text-sm">GitHub</a>
-      <a href="https://plastron.ca" target="_blank" class="flex-1 text-center px-4 py-2.5 rounded-2xl bg-teal-500 text-zinc-950 font-semibold text-sm">Launch demo</a>
+      <a href="https://github.com/rheophile10/plastron" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-2.5 rounded-2xl border border-white/15 text-sm">GitHub</a>
+      <a href="https://plastron.ca" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-2.5 rounded-2xl bg-teal-500 text-zinc-950 font-semibold text-sm">Launch demo</a>
+    </div>
+
+    <!-- Other projects -->
+    <div class="mt-12 mb-5">
+      <div class="uppercase tracking-[2px] text-[10px] text-zinc-500 font-medium">More work</div>
+      <h3 class="text-xl font-semibold tracking-tighter">Other projects</h3>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="projects-grid">
+      <!-- Populated by JS from assets/projects.json -->
+    </div>
+    <div class="md:hidden mt-6 text-center">
+      <a href="https://github.com/rheophile10?tab=repositories" target="_blank" rel="noopener"
+         class="text-sm text-teal-400 hover:text-teal-300 transition">All repos →</a>
     </div>
   </section>
 
-  <!-- DEV LOG -->
-  <section id="devlog" class="max-w-6xl mx-auto px-6 py-12 border-t border-white/10 bg-zinc-900/30">
+  <!-- BLOG -->
+  <section id="blog" class="max-w-6xl mx-auto px-6 py-12 border-t border-white/10 bg-zinc-900/30 scroll-mt-16">
     <div class="flex items-end justify-between mb-5">
       <div>
         <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium">Writing</div>
-        <h2 class="section-header font-semibold tracking-tighter">Dev Log</h2>
+        <h2 class="section-header font-semibold tracking-tighter">Blog</h2>
       </div>
-      <div class="text-xs text-zinc-500">Notes on building in the open</div>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="/blog/" class="text-zinc-400 hover:text-teal-400 transition">Browse all &amp; filter by tag →</a>
+        <a href="/feed.xml" class="text-zinc-500 hover:text-teal-400 transition" aria-label="RSS feed">RSS</a>
+      </div>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4" id="devlog-grid">
       <!-- Populated by JS -->
     </div>
   </section>
+  </main>
 
   <footer class="border-t border-white/10 py-8">
     <div class="max-w-6xl mx-auto px-6 text-xs text-zinc-500 flex flex-col md:flex-row gap-y-2 items-center justify-between">
       <div>© Rheophile Corp. · rheophile10 — licensing varies by repository; see each repo for terms.</div>
       <div class="flex items-center gap-x-5">
+        <a href="/blog/" class="hover:text-zinc-300 transition">Blog</a>
+        <span class="text-white/10">·</span>
+        <a href="/feed.xml" class="hover:text-zinc-300 transition">RSS</a>
+        <span class="text-white/10">·</span>
         <a href="https://plastron.ca" class="hover:text-zinc-300 transition">plastron live</a>
         <span class="text-white/10">·</span>
         <a href="https://github.com/rheophile10/plastron" class="hover:text-zinc-300 transition">plastron source</a>
@@ -401,13 +453,6 @@
 
   <script src="/assets/blog-ui.js"></script>
   <script>
-    // Tailwind script
-    function initTailwind() {
-      document.querySelectorAll('script[src*="tailwindcss"]').forEach(s => {
-        // already loaded via CDN
-      });
-    }
-
     // Active nav on scroll (lightweight)
     function initActiveNav() {
       const links = document.querySelectorAll('nav a[href^="#"]');
@@ -432,25 +477,16 @@
       }
 
       window.addEventListener('scroll', update, { passive: true });
-      // initial
       setTimeout(update, 300);
     }
 
     // Boot
     async function init() {
-      initTailwind();
-      await BlogUI.renderDevLogGrid('devlog-grid');
+      await Promise.all([
+        BlogUI.renderDevLogGrid('devlog-grid'),
+        BlogUI.renderProjectsGrid('projects-grid'),
+      ]);
       initActiveNav();
-
-      // Easter egg: clicking the frog in nav scrolls to plastron
-      const logo = document.querySelector('nav .w-8.h-8');
-      if (logo) {
-        logo.style.cursor = 'pointer';
-        logo.addEventListener('click', () => {
-          document.getElementById('plastron').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-
       console.log('%c[rheophile.ca] static site ready — @rheophile10', 'color:#14b8a6');
     }
 
