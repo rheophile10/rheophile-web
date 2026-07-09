@@ -4,7 +4,7 @@
   1. Swap the Tailwind Play CDN <script> for the compiled /assets/tailwind.css.
   2. Move the render-blocking @import Google-Fonts URL out of <style> into
      preconnect + <link rel="stylesheet"> in the head.
-  3. Add the privacy-friendly Plausible analytics <script> before </head>.
+  3. Strip any analytics <script> (analytics is off for now).
 
 Run it after adding a new page/post so its head matches the rest of the site.
 
@@ -23,7 +23,6 @@ FILES = [ROOT / "index.html", ROOT / "404.html", ROOT / "blog" / "index.html"] +
 
 CDN = '<script src="https://cdn.tailwindcss.com"></script>'
 TW_LINK = '<link rel="stylesheet" href="/assets/tailwind.css">'
-ANALYTICS = '<script defer data-domain="rheophile.ca" src="https://plausible.io/js/script.js"></script>'
 
 
 def swap_tailwind(html: str) -> str:
@@ -51,10 +50,9 @@ def migrate_fonts(html: str) -> str:
     return re.sub(r'(  <link rel="icon")', links + r"\1", html, count=1)
 
 
-def add_analytics(html: str) -> str:
-    if "plausible.io" in html:
-        return html
-    return html.replace("</head>", "  " + ANALYTICS + "\n</head>", 1)
+def strip_analytics(html: str) -> str:
+    # Analytics is off for now — remove any previously-injected analytics tag.
+    return re.sub(r'[ \t]*<script[^>]*\bplausible\.io\b[^>]*></script>\n', "", html)
 
 
 def main() -> None:
@@ -63,7 +61,7 @@ def main() -> None:
         before = html
         html = swap_tailwind(html)
         html = migrate_fonts(html)
-        html = add_analytics(html)
+        html = strip_analytics(html)
         if html != before:
             path.write_text(html, encoding="utf-8")
             print(f"normalized {path.relative_to(ROOT)}")

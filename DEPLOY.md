@@ -17,8 +17,7 @@ Layout:
 - The JS-rendered grids are also **pre-rendered** into the HTML (between
   `<!-- prerender:* -->` markers) so crawlers and no-JS visitors see full content;
   `blog-ui.js` re-renders identical markup at runtime and wires the tag filter.
-- Analytics: Plausible (`plausible.io`) — privacy-friendly, cookieless. Data only
-  shows up once `rheophile.ca` is added as a site in a Plausible account.
+- Analytics: none for now (`normalize-head.py` strips any analytics tag).
 - `feed.xml` / `sitemap.xml` — generated (do not hand-edit; see Updating)
 - `robots.txt` — allows all, disallows `/apps/`, points at the sitemap
 - `404.html` — branded not-found page (GitHub Pages serves it automatically)
