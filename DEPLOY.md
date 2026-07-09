@@ -10,8 +10,10 @@ Layout:
 - `assets/projects.json` — the Projects grid data (edit this to add a project)
 - `assets/blog-posts.json` — the post index (drives the grid, the RSS feed, and per-post meta)
 - `assets/blog-ui.js` — client-side rendering for projects, blog grid, tag filter
-- `feed.xml` — generated RSS (do not hand-edit; see Updating)
-- `scripts/` — `generate-rss.py`, `sync-blog-meta.py`, OG-card generators
+- `feed.xml` / `sitemap.xml` — generated (do not hand-edit; see Updating)
+- `robots.txt` — allows all, disallows `/apps/`, points at the sitemap
+- `404.html` — branded not-found page (GitHub Pages serves it automatically)
+- `scripts/` — `generate-rss.py`, `generate-sitemap.py`, `sync-blog-meta.py`, OG-card generators
 
 ## Fastest path (GitHub Pages, free, fits the artifact strategy)
 
@@ -67,6 +69,7 @@ the "Other projects" grid). The home page renders it — no HTML edit needed.
    ```bash
    python3 scripts/sync-blog-meta.py     # injects OG/Twitter meta into the post
    python3 scripts/generate-rss.py       # rewrites feed.xml from blog-posts.json
+   python3 scripts/generate-sitemap.py   # rewrites sitemap.xml from blog-posts.json
    ```
 The home page grid, the `/blog/` index, and its tag filter all pick the post
 up automatically from `blog-posts.json`.

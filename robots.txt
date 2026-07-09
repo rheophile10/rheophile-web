@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# The portal at /apps/ is a ~1.3 MB app shell, not content — keep it out of the index.
+Disallow: /apps/
+
+Sitemap: https://rheophile.ca/sitemap.xml
