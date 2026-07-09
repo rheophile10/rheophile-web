@@ -7,15 +7,23 @@
     const style = document.createElement('style');
     style.id = 'blog-ui-styles';
     style.textContent = `
-      .post-card {
+      .post-card, .project-card {
         transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                     border-color 0.2s ease;
       }
-      .post-card:hover {
+      .post-card { position: relative; }
+      .post-card:hover, .project-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         border-color: #14b8a6;
+      }
+      /* Whole-card click target while keeping a single semantic heading link */
+      .stretched-link::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
       }
       .line-clamp-3 {
         display: -webkit-box;
@@ -42,23 +50,25 @@
       .replace(/"/g, '&quot;');
   }
 
-  function renderPostCard(post) {
+  function renderPostCard(post, opts) {
     ensureCardStyles();
-    const a = document.createElement('a');
-    a.href = post.href;
-    a.className = 'post-card block rounded-3xl border border-white/10 bg-zinc-900/70 p-6 group no-underline text-inherit';
-    a.innerHTML = `
+    const h = (opts && opts.headingLevel) || 'h3';
+    const article = document.createElement('article');
+    article.className = 'post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6';
+    article.innerHTML = `
       <div class="flex justify-between items-baseline text-xs">
-        <span class="text-teal-400 font-medium">${escapeHtml(post.date)}</span>
+        <time datetime="${escapeHtml(post.date)}" class="text-teal-400 font-medium">${escapeHtml(post.date)}</time>
         <span class="text-zinc-600 group-hover:text-zinc-500">${escapeHtml(post.tags.join(' · '))}</span>
       </div>
-      <div class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight group-hover:text-teal-400 transition">${escapeHtml(post.title)}</div>
+      <${h} class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight">
+        <a href="${escapeHtml(post.href)}" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">${escapeHtml(post.title)}</a>
+      </${h}>
       <p class="mt-3 text-sm text-zinc-400 line-clamp-3">${escapeHtml(post.excerpt)}</p>
       <div class="mt-5 text-xs text-teal-400 flex items-center gap-1">
-        Read note <span class="transition group-hover:translate-x-0.5">→</span>
+        Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
       </div>
     `;
-    return a;
+    return article;
   }
 
   function renderEmptyState(container) {
@@ -70,13 +80,13 @@
     `;
   }
 
-  function renderPostGrid(container, posts) {
+  function renderPostGrid(container, posts, opts) {
     container.innerHTML = '';
     if (!posts.length) {
       renderEmptyState(container);
       return;
     }
-    posts.forEach(post => container.appendChild(renderPostCard(post)));
+    posts.forEach(post => container.appendChild(renderPostCard(post, opts)));
   }
 
   async function renderDevLogGrid(containerId) {
@@ -141,7 +151,7 @@
     function drawGrid() {
       const active = currentTagFromUrl();
       const filtered = active ? posts.filter(p => (p.tags || []).includes(active)) : posts;
-      renderPostGrid(gridEl, filtered);
+      renderPostGrid(gridEl, filtered, { headingLevel: 'h2' });
     }
 
     draw();
@@ -156,7 +166,7 @@
     if (filterEl) {
       renderTagFilter(filterEl, gridEl, posts, currentTagFromUrl());
     } else {
-      renderPostGrid(gridEl, posts);
+      renderPostGrid(gridEl, posts, { headingLevel: 'h2' });
     }
   }
 
@@ -171,7 +181,7 @@
 
   function renderProjectCard(project) {
     ensureCardStyles();
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.className = 'project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col';
 
     const links = [];
@@ -189,7 +199,7 @@
       <div class="flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5 min-w-0">
           <span class="text-2xl leading-none" aria-hidden="true">${escapeHtml(project.emoji || '📦')}</span>
-          <span class="font-semibold tracking-tight text-lg truncate">${escapeHtml(project.name)}</span>
+          <h4 class="font-semibold tracking-tight text-lg truncate">${escapeHtml(project.name)}</h4>
         </div>
         <span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">${escapeHtml(project.lang || '')}</span>
       </div>
