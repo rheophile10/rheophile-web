@@ -62,9 +62,37 @@ def build_meta(post: dict) -> str:
         f'  <meta name="twitter:image" content="{image}">',
         f'  <meta name="twitter:image:alt" content="{image_alt}">',
         '  <meta name="robots" content="max-image-preview:large">',
+        '  <script type="application/ld+json">' + json.dumps(build_ld(post, title, description, image, page_url), ensure_ascii=False) + '</script>',
         META_END,
     ]
     return "\n".join(lines)
+
+
+def build_ld(post: dict, title: str, description: str, image: str, page_url: str) -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": description,
+        "image": image,
+        "datePublished": post["date"],
+        "url": page_url,
+        "mainEntityOfPage": page_url,
+        "author": {
+            "@type": "Person",
+            "name": "rheophile10",
+            "url": "https://rheophile.ca/",
+            "sameAs": [
+                "https://github.com/rheophile10",
+                "https://x.com/rheophile10",
+            ],
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Rheophile Corp.",
+            "url": "https://rheophile.ca/",
+        },
+    }
 
 
 def strip_legacy_social_meta(html: str) -> str:

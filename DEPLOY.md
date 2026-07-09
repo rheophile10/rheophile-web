@@ -1,8 +1,9 @@
 # Deploying rheophile.ca
 
-Static site, no framework and no build step: hand-written HTML plus a few
-JSON data files and small helper scripts. Everything is served as-is from the
-repo root.
+Static site served as-is from the repo root — GitHub Pages runs **no** CI
+build. There is a small **local** build (`scripts/build.sh`) whose outputs
+(compiled CSS, injected meta, pre-rendered cards, feed, sitemap) are committed,
+so the deployed site stays plain static files. Rebuild locally, commit, push.
 
 Layout:
 - `index.html` — home (hero, Projects, Blog teaser)
@@ -10,10 +11,18 @@ Layout:
 - `assets/projects.json` — the Projects grid data (edit this to add a project)
 - `assets/blog-posts.json` — the post index (drives the grid, the RSS feed, and per-post meta)
 - `assets/blog-ui.js` — client-side rendering for projects, blog grid, tag filter
+- `assets/tailwind.css` — **compiled** Tailwind (built from `tailwind.config.js` +
+  `scripts/tailwind.input.css`; do not hand-edit). Pages link this instead of the
+  old `cdn.tailwindcss.com` Play CDN.
+- The JS-rendered grids are also **pre-rendered** into the HTML (between
+  `<!-- prerender:* -->` markers) so crawlers and no-JS visitors see full content;
+  `blog-ui.js` re-renders identical markup at runtime and wires the tag filter.
+- Analytics: Plausible (`plausible.io`) — privacy-friendly, cookieless. Data only
+  shows up once `rheophile.ca` is added as a site in a Plausible account.
 - `feed.xml` / `sitemap.xml` — generated (do not hand-edit; see Updating)
 - `robots.txt` — allows all, disallows `/apps/`, points at the sitemap
 - `404.html` — branded not-found page (GitHub Pages serves it automatically)
-- `scripts/` — `generate-rss.py`, `generate-sitemap.py`, `sync-blog-meta.py`, OG-card generators
+- `scripts/build.sh` — runs every generator + the Tailwind compile (below)
 
 ## Fastest path (GitHub Pages, free, fits the artifact strategy)
 
@@ -58,20 +67,20 @@ the project's Auth → Redirect URLs.
 
 ## Updating
 
+Whatever you change, finish with **`bash scripts/build.sh`**, then commit. The
+build is idempotent and needs `python3` + `npx` (it fetches Tailwind v3 on first
+run). It runs, in order: `sync-blog-meta` → `prerender` → `generate-rss` →
+`generate-sitemap` → `normalize-head` → Tailwind compile.
+
 **Add a project:** append an object to `assets/projects.json` (set
 `"featured": true` to make it the plastron-style lead; otherwise it lands in
-the "Other projects" grid). The home page renders it — no HTML edit needed.
+the "Other projects" grid), then `bash scripts/build.sh`.
 
 **Add a blog post:**
-1. Add the post HTML under `blog/`.
+1. Add the post HTML under `blog/` (start from an existing post's `<head>`).
 2. Add its entry to `assets/blog-posts.json`.
-3. Regenerate meta + feed:
-   ```bash
-   python3 scripts/sync-blog-meta.py     # injects OG/Twitter meta into the post
-   python3 scripts/generate-rss.py       # rewrites feed.xml from blog-posts.json
-   python3 scripts/generate-sitemap.py   # rewrites sitemap.xml from blog-posts.json
-   ```
-The home page grid, the `/blog/` index, and its tag filter all pick the post
-up automatically from `blog-posts.json`.
+3. Run `bash scripts/build.sh` — it injects meta + JSON-LD into the post,
+   pre-renders the grids, refreshes the feed/sitemap, normalizes the new page's
+   head (Tailwind link, font links, analytics), and recompiles the CSS.
 
 Commit + push = deployed. Every update is a timestamped public artifact.
