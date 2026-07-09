@@ -29,14 +29,6 @@
       "blog": "/blog/offline-hris-juarez.html"
     },
     {
-      "slug": "xit-wasm-ts",
-      "name": "xit-wasm-ts",
-      "emoji": "📦",
-      "lang": "TypeScript",
-      "tagline": "Versioned in-memory archives via xit (a Zig VCS) compiled to WebAssembly.",
-      "repo": "https://github.com/rheophile10/xit-wasm-ts"
-    },
-    {
       "slug": "colonial-advocate",
       "name": "The Colonial Advocate",
       "emoji": "📰",
@@ -53,28 +45,12 @@
       "repo": "https://github.com/rheophile10/civilian-firearms-vs-homicide"
     },
     {
-      "slug": "xit",
-      "name": "xit",
-      "emoji": "🗃️",
-      "lang": "Zig",
-      "tagline": "A git alternative written in Zig.",
-      "repo": "https://github.com/rheophile10/xit"
-    },
-    {
       "slug": "genenote-js",
       "name": "genenote-js",
       "emoji": "🧬",
       "lang": "TypeScript",
       "tagline": "Lion Kimbra's genenote, reimplemented in JavaScript on top of plastron.",
       "repo": "https://github.com/rheophile10/genenote-js"
-    },
-    {
-      "slug": "pycard",
-      "name": "pycard",
-      "emoji": "🃏",
-      "lang": "Python",
-      "tagline": "A HyperCard-inspired toolkit built with tkinter and Python.",
-      "repo": "https://github.com/rheophile10/pycard"
     }
   ]
 }
