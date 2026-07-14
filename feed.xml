@@ -6,7 +6,19 @@
   <atom:link href="https://rheophile.ca/feed.xml" rel="self" type="application/rss+xml" />
   <description>Notes on building plastron and other reactive, offline-first tools in the open.</description>
   <language>en-ca</language>
-  <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>One HTML file vs. a web application: sample intake without the IT-approval gauntlet</title>
+    <link>https://rheophile.ca/blog/offline-forms.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/offline-forms.html</guid>
+    <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+    <description>Web apps are easy to build; getting IT to approve them is not. A single HTML file is the free intermediate step — offline, no server, but with SQLite, Web Crypto, and a scannable QR that composes your form data into a label so transcription never has to happen.</description>
+    <category>offline</category>
+    <category>html-file</category>
+    <category>qr</category>
+    <category>sqlite</category>
+    <category>lab-intake</category>
+  </item>
   <item>
     <title>RheoServ Waumpaum — a credit-union core in one HTML file</title>
     <link>https://rheophile.ca/blog/rheoserv-waumpaum.html</link>

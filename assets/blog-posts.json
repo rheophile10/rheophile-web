@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "slug": "offline-forms",
+      "href": "/blog/offline-forms.html",
+      "date": "2026-07-14",
+      "tags": [
+        "offline",
+        "html-file",
+        "qr",
+        "sqlite",
+        "lab-intake"
+      ],
+      "emoji": "📄",
+      "title": "One HTML file vs. a web application: sample intake without the IT-approval gauntlet 📄",
+      "ogTitle": "One HTML file vs. a web application: sample intake without the IT-approval gauntlet",
+      "excerpt": "Web apps are easy to build; getting IT to approve them is not. A single HTML file is the free intermediate step — offline, no server, but with SQLite, Web Crypto, and a scannable QR that composes your form data into a label so transcription never has to happen.",
+      "ogImage": "https://rheophile.ca/assets/og/offline-forms.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/offline-forms.jpg"
+    },
+    {
       "slug": "rheoserv-waumpaum",
       "href": "/blog/rheoserv-waumpaum.html",
       "date": "2026-07-07",
