@@ -1,6 +1,25 @@
 {
   "posts": [
     {
+      "slug": "localrbac-crypto-rbac",
+      "href": "/blog/localrbac-crypto-rbac.html",
+      "date": "2026-07-15",
+      "tags": [
+        "rbac",
+        "crdt",
+        "cryptography",
+        "shamir",
+        "offline",
+        "sqlite"
+      ],
+      "emoji": "🔐",
+      "title": "Records a group can keep — without any one keyholder becoming a target 🔐",
+      "ogTitle": "Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target",
+      "excerpt": "Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.",
+      "ogImage": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg"
+    },
+    {
       "slug": "offline-forms",
       "href": "/blog/offline-forms.html",
       "date": "2026-07-14",

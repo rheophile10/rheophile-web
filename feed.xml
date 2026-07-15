@@ -6,7 +6,20 @@
   <atom:link href="https://rheophile.ca/feed.xml" rel="self" type="application/rss+xml" />
   <description>Notes on building plastron and other reactive, offline-first tools in the open.</description>
   <language>en-ca</language>
-  <lastBuildDate>Tue, 14 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target</title>
+    <link>https://rheophile.ca/blog/localrbac-crypto-rbac.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/localrbac-crypto-rbac.html</guid>
+    <pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+    <description>Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.</description>
+    <category>rbac</category>
+    <category>crdt</category>
+    <category>cryptography</category>
+    <category>shamir</category>
+    <category>offline</category>
+    <category>sqlite</category>
+  </item>
   <item>
     <title>One HTML file vs. a web application: sample intake without the IT-approval gauntlet</title>
     <link>https://rheophile.ca/blog/offline-forms.html</link>

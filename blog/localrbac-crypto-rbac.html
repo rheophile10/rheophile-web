@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- rheophile:og:start -->
+  <link rel="canonical" href="https://rheophile.ca/blog/localrbac-crypto-rbac.html">
+  <meta name="description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="rheophile.ca">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:url" content="https://rheophile.ca/blog/localrbac-crypto-rbac.html">
+  <meta property="og:title" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
+  <meta property="og:description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.">
+  <meta property="og:image" content="https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg">
+  <meta property="og:image:secure_url" content="https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target — rheophile.ca dev log">
+  <meta property="article:published_time" content="2026-07-15">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@rheophile10">
+  <meta name="twitter:creator" content="@rheophile10">
+  <meta name="twitter:url" content="https://rheophile.ca/blog/localrbac-crypto-rbac.html">
+  <meta name="twitter:title" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
+  <meta name="twitter:description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.">
+  <meta name="twitter:image" content="https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg">
+  <meta name="twitter:image:alt" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target — rheophile.ca dev log">
+  <meta name="robots" content="max-image-preview:large">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target", "description": "Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.", "image": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg", "datePublished": "2026-07-15", "url": "https://rheophile.ca/blog/localrbac-crypto-rbac.html", "mainEntityOfPage": "https://rheophile.ca/blog/localrbac-crypto-rbac.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <!-- rheophile:og:end -->
+  <title>Cryptographic RBAC over a CRDT · rheophile.ca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="/assets/tailwind.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+  <style>
+
+    :root { --accent: #14b8a6; }
+
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+
+    .glass {
+      background: rgba(9, 9, 11, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(63, 63, 70, 0.4);
+    }
+
+    .prose-blog {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #d4d4d8;
+    }
+    .prose-blog h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #fafafa;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose-blog h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e4e4e7;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-blog p { margin-bottom: 1rem; }
+    .prose-blog ul, .prose-blog ol {
+      margin-bottom: 1rem;
+      padding-left: 1.35rem;
+    }
+    .prose-blog li { margin-bottom: 0.4rem; }
+    .prose-blog a {
+      color: #2dd4bf;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .prose-blog a:hover { color: #99f6e4; }
+    .prose-blog code {
+      font-family: ui-monospace, monospace;
+      font-size: 0.88em;
+      background: rgba(255,255,255,0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25rem;
+    }
+    .prose-blog blockquote {
+      border-left: 3px solid rgba(20, 184, 166, 0.5);
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      color: #a1a1aa;
+      font-size: 0.95rem;
+    }
+
+    .subtle-grid {
+      background-image:
+        linear-gradient(rgba(163,163,172,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,163,172,0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .callout {
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      background: rgba(20, 184, 166, 0.06);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+
+    .prose-blog pre {
+      background: #0a0a0c;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.6rem;
+      padding: 0.85rem 1.05rem;
+      overflow: auto;
+      font-size: 0.8rem;
+      color: #d4d4d8;
+      margin: 1.1rem 0;
+      line-height: 1.6;
+    }
+    .prose-blog pre code { background: none; padding: 0; font-size: inherit; }
+
+    .prose-blog table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+    }
+    .prose-blog th, .prose-blog td {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.5rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .prose-blog th {
+      background: rgba(255,255,255,0.03);
+      font-weight: 600;
+      color: #e4e4e7;
+    }
+
+    .prose-blog .tour {
+      margin: 1.5rem 0;
+      padding: 1.1rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      background: rgba(9,9,11,0.45);
+    }
+    .prose-blog .tour h3 { margin-top: 0; }
+    .prose-blog .tour .path {
+      font-family: ui-monospace, monospace;
+      font-size: 0.78rem;
+      color: #5eead4;
+      margin: -0.35rem 0 0.6rem;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen subtle-grid">
+
+  <nav class="sticky top-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30 group-hover:ring-teal-500/50 transition">
+          <span class="text-xl leading-none mt-px">🐸</span>
+        </div>
+        <div>
+          <div class="font-semibold tracking-tighter text-sm text-zinc-300 group-hover:text-white transition">rheophile10</div>
+          <div class="text-[10px] text-zinc-500 -mt-1">rheophile.ca</div>
+        </div>
+      </a>
+      <div class="text-xs text-zinc-500">🔐 Dev log · localRbac</div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 md:py-14">
+    <header>
+      <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Dev log · 2026-07-15</div>
+      <h1 class="display text-4xl md:text-[2.6rem] font-semibold tracking-tighter mt-2 leading-[1.1]">
+        Records a group can keep — without any one keyholder becoming a target <span class="text-3xl">🔐</span>
+      </h1>
+      <p class="mt-4 text-zinc-400 text-base leading-relaxed">
+        <strong class="text-zinc-300">localRbac</strong> is a proof that
+        <strong class="text-zinc-300">role-based access control can be enforced by cryptography alone</strong> — no
+        server, no network at access time — over a <strong class="text-zinc-300">local-first CRDT database</strong> that
+        several people run, edit offline, and merge. Reads are gated by whether you hold a key; writes by an
+        admin-signed grant checked at <em>merge</em> time. And because a full custody of the data shouldn't rest on any
+        one person,
+        <a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176" class="text-teal-400/90 hover:text-teal-300">Shamir
+        secret sharing</a> splits the master key <strong class="text-zinc-300">k-of-n</strong>, so no single member is
+        ever worth coercing.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a href="https://rheophile10.github.io/localRbac/demo.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
+          Try the 3-user demo →
+        </a>
+        <a href="https://github.com/rheophile10/localRbac" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
+          Source on GitHub
+        </a>
+      </div>
+    </header>
+
+    <article class="prose-blog mt-10">
+
+      <div class="callout">
+        <strong>Proof of concept only.</strong> No formal security review, threat assessment, or authorization to
+        protect anything real. It's a working demonstration of a design, not a product. Don't put real secrets in it yet.
+      </div>
+
+      <h2>The goal</h2>
+      <p>
+        Start from a stubborn premise: a group wants to keep shared records <em>together</em> — one converging truth —
+        but they don't trust a server to hold it, they're often offline, and any one of them could lose a laptop or be
+        leaned on. The usual answer, "put it behind a login on a server," fails all three at once. So the records live in
+        an ordinary SQLite file that each person carries, and the whole apparatus of access control has to be baked into
+        the <em>data itself</em>, so it survives the file being copied, edited on a plane, and merged with someone
+        else's copy.
+      </p>
+      <p>
+        Three properties have to hold with no server in the loop:
+      </p>
+      <ul>
+        <li><strong>Multiple parties</strong> can each run the database independently and make changes offline.</li>
+        <li>Their changes <strong>merge for local consensus</strong> — two people reconcile by handing each other a
+          delta — and for <strong>group consensus</strong> — a whole subgroup converges to one agreed checkpoint.</li>
+        <li>No single keyholder is <strong>alone on the critical path</strong> for compromising the archive. Losing one
+          person — or one person being coerced — doesn't hand over the data.</li>
+      </ul>
+      <p>
+        The engine underneath is <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>, a CRDT extension to
+        SQLite: per-column merge that is commutative, associative, and idempotent, so replicas that have seen the same
+        set of changes converge regardless of order. cr-sqlite handles <em>convergence</em>. Everything about
+        <em>who may see and change what</em> is layered on top, and that layer is the interesting part.
+      </p>
+
+      <h2>Read control is a data-encryption key</h2>
+      <p>
+        You cannot stop someone reading the bytes on their own disk, so "can Alice read this record?" can't be a policy
+        check — it has to be <em>can Alice decrypt it?</em> Every record is encrypted, and the right to read is the
+        possession of a key.
+      </p>
+      <p>
+        The unit of permission is a <strong>resource</strong> (a compartment — <code>patient:alice</code>,
+        <code>notes</code>, whatever the app decides). Each resource has its own <strong>data-encryption key
+        (DEK)</strong>, and a version counter so it can be rotated. A record is a set of encrypted cells — one row per
+        <code>(record, column)</code> — each ciphertext produced by AES-256-GCM under its resource's current DEK:
+      </p>
+      <pre><code>cell(pk = rid|resource|col, rid, resource, col, ct, dek_ver, author, sig)</code></pre>
+      <p>
+        Where does a reader's DEK come from? Two paths, and this is the crux of the DEK design:
+      </p>
+      <ul>
+        <li><strong>The admin derives it.</strong> The admin never stores resource keys — they're computed on demand
+          from a single root secret with HKDF: <code>DEK = HKDF(rootKey, info = "dek:" + resource, salt = "v" + ver)</code>.
+          One root secret deterministically fans out into a key for every resource and every version.</li>
+        <li><strong>Everyone else is sealed into it.</strong> When the admin grants Alice a role on a resource, they
+          derive that resource's DEK and <strong>seal it to Alice's X25519 public key</strong> (a sealed box), writing
+          the result into a <code>keywrap</code> row. Alice — and only Alice — can unseal it with her private key.</li>
+      </ul>
+      <p>
+        So reading is mechanical and needs no authority online. <code>listRecords</code> walks the cells, and for each
+        one asks "do I hold this <code>(resource, dek_ver)</code> key?" — deriving it (admin) or unsealing it from a
+        <code>keywrap</code> (everyone else). Cells it can decrypt fold into records by last-writer-wins; cells it can't
+        are simply skipped. A user with no grant holds the exact same ciphertext and sees a <code>🔒</code>. There is
+        nothing to leak because there is no plaintext to hide in the first place.
+      </p>
+      <div class="callout">
+        <strong>Revocation is key rotation.</strong> To revoke Alice, the admin writes a revocation <em>and</em> bumps
+        the resource's <code>dek_ver</code>, re-sealing the new key to the remaining members only. Alice keeps whatever
+        ciphertext she already had, but every cell written afterward is under a key she was never given. Rotation is the
+        default on revoke; it can also be deferred to the next group consensus (a deliberate, optional choice).
+      </div>
+
+      <h2>Write control is a signature checked at merge</h2>
+      <p>
+        Encryption stops unauthorized <em>reads</em>. It does nothing about unauthorized <em>writes</em> — anyone can
+        append a row to a SQLite file. So every row carries its author's Ed25519 public key and a signature over its
+        canonical bytes, and the enforcement happens where it can't be bypassed: <strong>at merge</strong>.
+      </p>
+      <p>
+        When you import someone's changeset, it is <em>not</em> trusted and applied. It's first replayed into a
+        throwaway <strong>staging</strong> SQLite connection, where the asserted rows become readable, and every row is
+        checked:
+      </p>
+      <ol>
+        <li><strong>System rows first</strong> — identities, grants, key-wraps, DEK versions, checkpoints. Each must be
+          signature-valid and <em>admin-authored</em> (identities may be self-signed). These establish a trustworthy
+          picture of who is a writer. If any is tainted, the whole changeset is rejected before data is even looked at.</li>
+        <li><strong>Data rows next</strong> — every <code>cell</code> must be signature-valid <em>and</em> its author
+          must hold a non-revoked <strong>writer</strong> grant for that cell's resource, judged against the effective
+          grant state (the trusted grants already in your database, union the admin-verified ones just staged).</li>
+      </ol>
+      <p>
+        Only if <em>every</em> row passes does the changeset merge into the real database. A forged cell, a self-appointed
+        admin (a conflicting admin root), a reader trying to write — all are <strong>rejected at merge</strong>, and the
+        import reports why. The authenticity travels <em>with each row</em>, not as a signature on the envelope, which
+        matters because cr-sqlite changes keep their origin and gossip transitively through relays: a per-envelope
+        signature would be meaningless two hops later, but a per-row one holds forever.
+      </p>
+
+      <h2>Local consensus: two files, one state root</h2>
+      <p>
+        Two people reconcile with no server by trading changesets. To <em>know</em> they've converged without shipping
+        the data, each computes a <strong>state root</strong> — a SHA-256 over the sorted cell and grant state. Equal
+        roots mean identical state. It's a cheap, private "we're in sync" check: you compare 64 hex characters, not a
+        database.
+      </p>
+      <p>
+        A subtlety that cost real debugging time: cr-sqlite's <code>db_version</code> is a <em>local</em> clock — it gets
+        reassigned to the merging replica's clock on apply, so version vectors aren't portable between peers. "Give me
+        everything since checkpoint H" therefore can't use a shipped version vector; it uses a <strong>local
+        watermark</strong> — the <code>db_version</code> this replica held when it adopted H — and exports its own writes
+        past that mark. The gotcha is documented right where it bites, in the engine.
+      </p>
+
+      <h2>Group consensus: the wipe-and-rebuild ceremony</h2>
+      <p>
+        Local merge converges two peers. A whole subgroup needs a <strong>ceremony</strong>. A coordinator (the admin)
+        collects everyone's diff-since-the-last-checkpoint, merges them, <em>optionally</em> rotates every DEK, and
+        records a signed <strong>checkpoint</strong> — a hash of the agreed state, its epoch, its parent, and the member
+        roster. The chain of checkpoints is the group's history of agreed states.
+      </p>
+      <p>
+        Then the elegant part. Instead of shipping the merged database back wholesale, the coordinator builds each member
+        a <strong>rebuild slice</strong>: a self-contained changeset with the auth and checkpoint state, plus
+        <em>only</em> the non-archived cells for resources that member is entitled to read. Each member <strong>wipes
+        their local store and rebuilds from the slice</strong>. One move does three jobs at once:
+      </p>
+      <ul>
+        <li><strong>Compaction</strong> — tombstoned records and superseded history fall away.</li>
+        <li><strong>Data minimization</strong> — you get back exactly what you're entitled to, nothing more. Yesterday's
+          access you no longer have simply isn't in your new store.</li>
+        <li><strong>Redistribution</strong> — everyone starts the next cycle from the same agreed checkpoint.</li>
+      </ul>
+      <p>
+        "Evening lock, morning unlock": the group converges at day's end, optionally rotates keys, and each person walks
+        away with a fresh minimal slice for tomorrow.
+      </p>
+
+      <h2>No single keyholder: Shamir threshold custody</h2>
+      <p>
+        Everything so far still has an uncomfortable shape: the admin's root secret can derive every DEK. If custody of
+        the whole archive can rest on one person, that person is a target — and cryptography has nothing to say to a
+        <a href="https://xkcd.com/538/">$5 wrench</a>. The fix isn't a stronger cipher; it's arranging things so
+        <em>no one person is worth the wrench in the first place.</em>
+      </p>
+      <blockquote>
+        A group should be able to keep records together without making any single one of their number particularly
+        interesting to knee-breakers.
+      </blockquote>
+      <p>
+        That's exactly what
+        <a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Shamir's 1979 <em>How to Share a Secret</em></a>
+        buys. To seal a payload — say, a full database dump — for custody, <code>sealVault</code>:
+      </p>
+      <ol>
+        <li>generates a random data-key and encrypts the payload under it (AEAD);</li>
+        <li><strong>Shamir-splits the data-key into <code>n</code> shares</strong> such that any <code>k</code>
+          reconstruct it and any <code>k−1</code> reveal <em>nothing</em>;</li>
+        <li>seals share <em>i</em> to custodian <em>i</em>'s X25519 public key.</li>
+      </ol>
+      <p>
+        The math is a polynomial of degree <code>k−1</code> over the finite field GF(2⁸), one per secret byte: the
+        constant term is the secret, the other coefficients are random, and each custodian gets the polynomial evaluated
+        at a distinct point. Any <code>k</code> points determine the polynomial (Lagrange interpolation at
+        <code>x = 0</code> recovers the secret); fewer than <code>k</code> leave every value equally likely. It is the
+        one primitive here that has no WebCrypto equivalent, so it's the one thing hand-rolled — about 60 lines, and
+        deliberately <em>not</em> a cipher: it only governs <em>who can reassemble the key</em>. Confidentiality still
+        rests on the AEAD.
+      </p>
+      <p>
+        Unlock is distributed — no hot-seat where all the shares briefly sit in one place. Each custodian, at their own
+        machine, re-seals their share to a chosen opener; the opener gathers <code>k</code> of them, reconstructs the
+        key, and decrypts. Wrong or insufficient shares <strong>fail closed</strong> on the AEAD tag, and the
+        reconstructed key is zeroed after use. A sensible default quorum is 4-of-5: you can lose one custodian and still
+        open the vault, but an adversary needs to compromise four people at once. No one keyholder is a single point of
+        either failure or coercion.
+      </p>
+
+      <h2>A tour of the datalayer</h2>
+      <p>
+        The engine is a headless package — no DOM, no build tooling — that an app wires to a UI. It is deliberately
+        <strong>resource- and column-agnostic</strong>: records are a generic entity-attribute-value store, and "notes"
+        (title/body columns, seeds, the UI) is a demo convention layered on top, not baked into the core. Here's the map.
+      </p>
+
+      <div class="tour">
+        <h3>The engine</h3>
+        <p class="path">packages/datalayer/src/engine/crengine.ts</p>
+        <p>
+          The whole compartmented-RBAC device: <code>genesis</code> (become admin), <code>grant</code>/<code>revoke</code>,
+          <code>putRecord</code>/<code>listRecords</code>, <code>importChangeset</code> with the staging-authorize logic,
+          <code>runConsensus</code> and <code>rebuildSliceFor</code>. The essential schema is eight small tables
+          (<code>adminroot</code>, <code>identity</code>, <code>grantrec</code>, <code>dekver</code>, <code>keywrap</code>,
+          <code>cell</code>, <code>archived</code>, <code>checkpoint</code>) — all cr-sqlite CRRs except a local watermark.
+        </p>
+      </div>
+
+      <div class="tour">
+        <h3>Threshold custody</h3>
+        <p class="path">packages/datalayer/src/vault.ts · crypto/secret-sharing/shamir.ts</p>
+        <p>
+          <code>sealVault</code> / <code>openVault</code> / <code>produceContribution</code> — the k-of-n seal and the
+          distributed unlock. The Shamir split/combine over GF(2⁸) lives beside it. Covered end to end by
+          <code>tests/{shamir,vault}.test.ts</code>.
+        </p>
+      </div>
+
+      <div class="tour">
+        <h3>Consensus &amp; compartments</h3>
+        <p class="path">packages/datalayer/src/consensus/ · compartment/</p>
+        <p>
+          Pure verbs over the checkpoint chain (<code>tip</code>, <code>chainFrom</code>, <code>isDescendant</code>,
+          <code>converged</code>) and the compartment fold that LWW-merges decrypted cells across the resources a viewer
+          can read. Both are side-effect-free and independently testable.
+        </p>
+      </div>
+
+      <div class="tour">
+        <h3>Swappable crypto</h3>
+        <p class="path">packages/datalayer/src/crypto/{kdf,signing,sealing,aead,hash,secret-sharing}/</p>
+        <p>
+          Each cryptographic concern is a folder whose <code>index.ts</code> picks one implementation, so a protocol can
+          be swapped in one line. Signing is <strong>WebCrypto Ed25519</strong>, sealing <strong>X25519</strong>, record
+          encryption <strong>AES-256-GCM</strong>, hashing/derivation <strong>SHA-256/HKDF</strong> — all native. Only
+          the memory-hard keystore KDF (<strong>Argon2id</strong>, via hash-wasm) and the one sync-critical page cipher
+          pull in WASM/noble. Every WASM blob is base64-inlined, so there are <strong>zero network fetches</strong>, even
+          from <code>file://</code>.
+        </p>
+      </div>
+
+      <div class="tour">
+        <h3>Identity you hold, never stored</h3>
+        <p class="path">packages/datalayer/src/crypto/keystore.ts</p>
+        <p>
+          Identities are <em>generated</em> keypairs, wrapped in an Argon2id-encrypted <strong>keystore file</strong> the
+          user downloads and keeps — never written to IndexedDB. Provisioning is by public-key card exchange: you export
+          a self-signed <code>{pub, name, xpub, sig}</code> card, the admin grants to that key, and no private material
+          ever changes hands.
+        </p>
+      </div>
+
+      <div class="tour">
+        <h3>The notes demo &amp; UI</h3>
+        <p class="path">packages/app/src/{notes.ts,ui.ts} · public/demo.html</p>
+        <p>
+          The demo layer: <code>notes.ts</code> is the entire "a note is a record with title + body under the
+          <code>notes</code> resource" convention (~20 lines). <code>demo.html</code> iframes the built app three times —
+          admin, writer, reader — so you can watch role enforcement, offline edits, and merge on one screen.
+        </p>
+      </div>
+
+      <h2>See it run</h2>
+      <p>
+        The <a href="https://rheophile10.github.io/localRbac/demo.html">three-user demo</a> is one HTML file loaded three
+        times — three independent machines that never talk to each other. Give the admin a role to the writer, deny the
+        reader, add a note, export a delta, import it in the next frame: the writer's note converges, the reader sees
+        <code>🔒</code>. Every frame is the real engine; the only simulation is that "sending a delta between machines" is
+        modelled as moving text between iframes instead of over a USB stick.
+      </p>
+
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://github.com/rheophile10/localRbac">rheophile10/localRbac</a> — source &amp; the datalayer tour</li>
+        <li><a href="https://rheophile10.github.io/localRbac/demo.html">the three-user demo</a> — one self-contained file, loaded thrice</li>
+        <li><a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Adi Shamir, <em>How to Share a Secret</em>, CACM 22(11), 1979</a> — the threshold-custody primitive</li>
+        <li><a href="https://xkcd.com/538/">xkcd 538 — <em>Security</em></a> — why no single keyholder should be worth the wrench</li>
+        <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite (the CRDT engine)</li>
+        <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the offline-CRDT lineage this builds on</li>
+      </ul>
+    </article>
+
+    <section class="mt-14 pt-10 border-t border-white/10">
+      <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium mb-4">More from the dev log</div>
+      <div class="grid md:grid-cols-2 gap-4" id="related-posts-grid"></div>
+    </section>
+
+    <footer class="mt-14 pt-8 border-t border-white/10 text-sm text-zinc-500">
+      <a href="/#devlog" class="text-teal-400 hover:underline">← Dev log</a>
+      <span class="mx-2 text-zinc-700">·</span>
+      <a href="/" class="text-teal-400 hover:underline">rheophile.ca</a>
+    </footer>
+  </main>
+
+  <script src="/assets/blog-ui.js"></script>
+  <script>
+    BlogUI.renderRelatedPosts('related-posts-grid', 'localrbac-crypto-rbac');
+  </script>
+</body>
+</html>
