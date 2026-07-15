@@ -5,6 +5,7 @@ module.exports = {
   content: [
     "./index.html",
     "./404.html",
+    "./manifesto.html",
     "./blog/**/*.html",
     "./assets/blog-ui.js",
   ],

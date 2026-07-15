@@ -32,6 +32,7 @@ def main() -> None:
 
     entries = [
         url_entry(f"{SITE}/", newest, "1.0"),
+        url_entry(f"{SITE}/manifesto.html", None, "0.9"),
         url_entry(f"{SITE}/blog/", newest, "0.8"),
     ]
     for post in posts:
