@@ -11,6 +11,15 @@
       "featured": true
     },
     {
+      "slug": "sqlite-studio",
+      "name": "SQLite Studio",
+      "emoji": "🗄️",
+      "lang": "TypeScript",
+      "tagline": "A database GUI in one self-contained index.html — demand-paged SQLite whose pages live in IndexedDB, with a schema tree, SQL editor, CSV export and CRUD. Runs from file://.",
+      "repo": "https://github.com/rheophile10/sqlite-studio",
+      "live": "https://rheophile10.github.io/sqlite-studio/"
+    },
+    {
       "slug": "rheoserv-waumpaum",
       "name": "RheoServ Waumpaum",
       "emoji": "🏦",

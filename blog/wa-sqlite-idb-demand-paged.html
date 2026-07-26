@@ -94,6 +94,9 @@
         <a href="https://rheophile10.github.io/wa-sqlite-idb-demo/" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
           Try the live demo →
         </a>
+        <a href="https://rheophile10.github.io/sqlite-studio/" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
+          Open SQLite Studio →
+        </a>
         <a href="https://github.com/rheophile10/wa-sqlite-idb-demo" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
           Source on GitHub
         </a>
@@ -318,6 +321,27 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
         file. If a project truly needs OGC semantics and reprojection, that argues for a server, not for this build.
       </p>
 
+      <h2>A database GUI, in the same one file</h2>
+      <p>
+        The most convincing demonstration of a claim like this is an application you'd otherwise expect to need a
+        server. So: <a href="https://rheophile10.github.io/sqlite-studio/"><strong>SQLite Studio</strong></a> — a
+        database GUI in a single <code>index.html</code>. Schema tree, SQL editor with completion fed from the live
+        schema, results grid, CSV export, and a tab for ordinary CRUD. Create a database, create tables, query them,
+        edit rows.
+      </p>
+      <p>
+        Nothing about it is served. Save the page and open it from <code>file://</code> and it behaves identically,
+        because the wasm is inlined and the pages are in IndexedDB. The completion is schema-aware rather than a
+        keyword list — after each statement it re-introspects, so <code>SELECT </code> offers your tables and
+        <code>notes.</code> offers that table's columns.
+      </p>
+      <p>
+        Two details it forced, both consequences of things above. A single-column primary key or <code>rowid</code> is
+        needed to address a row for editing, so views and <code>WITHOUT ROWID</code> tables without one are read-only
+        and say so. And because Studio refreshes the schema immediately after running a user query, it would trip the
+        two-statements-at-once abort constantly — every statement goes through one queue.
+      </p>
+
       <h2>Gotchas that cost real time</h2>
       <p>
         Building this against a current toolchain (Emscripten 6, Rust nightly) failed six times before it worked, and
@@ -372,6 +396,7 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
       <h2>References</h2>
       <ul>
         <li><a href="https://github.com/rheophile10/wa-sqlite-idb-demo">rheophile10/wa-sqlite-idb-demo</a> — the demo: TypeScript, demand-paged, FTS5 + CRDT (source &amp; live)</li>
+        <li><a href="https://rheophile10.github.io/sqlite-studio/">SQLite Studio</a> · <a href="https://github.com/rheophile10/sqlite-studio">source</a> — a database GUI in one <code>index.html</code>: schema tree, SQL editor, CSV export, CRUD</li>
         <li><a href="https://github.com/rheophile10/sqlite-wasm-build">rheophile10/sqlite-wasm-build</a> — per-extension builds from pinned source: <code>vec0</code>, <code>rtree</code>, <code>geopoly</code></li>
         <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite + pluggable VFS toolkit</li>
         <li><a href="https://github.com/vlcn-io/wa-sqlite">vlcn-io/wa-sqlite</a> — the fork used here: same VFS, plus FTS5 and cr-sqlite</li>
