@@ -122,12 +122,23 @@ def sync_post(post: dict) -> None:
     html = strip_legacy_social_meta(html)
     meta = build_meta(post)
 
-    html = re.sub(
-        r'(<meta name="viewport" content="width=device-width, initial-scale=1\.0">)\n',
+    # The trailing newline is optional ([ \t]*\n?) rather than required (\n), because
+    # strip_legacy_social_meta consumes the newline after the viewport tag whenever the very
+    # next line was a stripped meta tag — which happens on any post whose head is unindented
+    # and has no og markers. With a literal \n this substitution silently matched nothing, and
+    # since the strip had already run, the post was left with *no* social meta at all.
+    # Deliberately not \s*: that would also swallow the next line's indentation.
+    html, substitutions = re.subn(
+        r'(<meta name="viewport" content="width=device-width, initial-scale=1\.0">)[ \t]*\n?',
         r"\1\n" + meta + "\n",
         html,
         count=1,
     )
+    if substitutions != 1:
+        raise SystemExit(
+            f"{html_path.relative_to(ROOT)}: no viewport anchor to insert meta after — "
+            "refusing to write a post with its social meta stripped"
+        )
 
     html_path.write_text(html, encoding="utf-8")
     print(f"synced {html_path.relative_to(ROOT)}")
