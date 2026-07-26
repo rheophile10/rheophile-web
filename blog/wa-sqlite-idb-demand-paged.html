@@ -102,6 +102,26 @@
 
     <article class="prose-blog mt-10">
 
+      <h2>The objective</h2>
+      <p>
+        <strong>Robust SQLite — demand-paged, with the extensions we actually want — running inside a plain
+        <code>.html</code> file opened at <code>file://</code>.</strong> No server, no network fetch, no
+        <code>SharedArrayBuffer</code>, and therefore none of the <code>COOP</code>/<code>COEP</code> headers a local
+        file can't send. Double-click the file and you have a real database.
+      </p>
+      <p>
+        Three things have to hold at once, and most browser-SQLite setups give up one of them:
+      </p>
+      <ul>
+        <li><strong>Demand-paged</strong> — the pager faults in individual 4&nbsp;KB pages as queries touch them, so a
+          database far larger than RAM works and a write doesn't rewrite the file.</li>
+        <li><strong>Extensions</strong> — full-text search, CRDT merge, vectors, geometry. Since
+          <code>SQLITE_OMIT_LOAD_EXTENSION</code> is set in these builds, <em>nothing loads at runtime</em>: whatever
+          you want has to be compiled into the binary.</li>
+        <li><strong>Verified in a browser at <code>file://</code></strong> — not merely under Node, which is where the
+          most expensive bug in this post hid.</li>
+      </ul>
+
       <h2>Ordinary SQLite is demand-paged</h2>
       <p>
         A file-backed SQLite database is not loaded into memory. Its <strong>pager</strong> reads and writes individual
@@ -258,33 +278,101 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
         root secret. Start here for the mechanism; go there for the full apparatus.
       </p>
 
-      <h2>What's still missing: vectors and geometry</h2>
+      <h2>What we have now: one binary, every extension</h2>
       <p>
-        Two things the published build doesn't have, both confirmed by probing the binary rather than reading a
-        Makefile: <strong>sqlite-vec</strong> (<code>vec0</code>) and any spatial support —
-        <code>rtree</code> and <code>geopoly</code> are both absent. Because
-        <code>SQLITE_OMIT_LOAD_EXTENSION</code> is set, there's no way to add them at runtime; they need a custom
-        Emscripten build, which is
-        <a href="https://github.com/rheophile10/wa-sqlite-ext-build">a separate repo</a> rather than a complication
-        here.
+        The published <code>@vlcn.io/wa-sqlite</code> has FTS5 and CRDT but no vectors and no spatial support —
+        <code>rtree</code>, <code>geopoly</code> and <code>vec0</code> are all absent, confirmed by probing the binary
+        rather than reading a Makefile. Getting them means building from source, so
+        <a href="https://github.com/rheophile10/sqlite-wasm-build">that is now its own repo</a>, producing four
+        variants so you can pay only for what you use:
+      </p>
+      <table>
+        <thead><tr><th>Variant</th><th>FTS5</th><th>CRDT</th><th>R*Tree</th><th>Geopoly</th><th><code>vec0</code></th><th>Size</th></tr></thead>
+        <tbody>
+          <tr><td><code>base</code></td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>1.77&nbsp;MB</td></tr>
+          <tr><td><code>geo</code></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>1.83&nbsp;MB</td></tr>
+          <tr><td><code>vec</code></td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>1.94&nbsp;MB</td></tr>
+          <tr><td><code>all</code></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>2.01&nbsp;MB</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Geometry costs about 60&nbsp;KB and vectors about 170&nbsp;KB — both cheap against the 1.77&nbsp;MB floor. But
+        that floor becomes roughly 2.7&nbsp;MB once base64-inlined into an HTML file, so take the smallest variant that
+        does the job.
       </p>
       <p>
-        On the geometry question specifically, the useful answer is narrower than "use SpatiaLite".
-        <strong>Geopoly</strong> is the one that fits this target: it lives inside the SQLite amalgamation with
-        <strong>zero external dependencies</strong>, so it's a single compile flag, and it gives real indexed polygon
-        predicates — <code>geopoly_contains_point</code>, <code>geopoly_within</code>, <code>geopoly_overlap</code>,
-        <code>geopoly_area</code> — on top of <strong>R*Tree</strong>. It takes GeoJSON-style coordinate arrays, which
-        pairs well with JSON1 (already present). What it isn't: no projections, no geodesy, polygons only, and no
-        <code>ST_*</code> names. SpatiaLite gives you all of that and needs GEOS and PROJ to do it — a serious
-        wasm porting project that would add megabytes to a binary whose entire point is arriving as one
-        double-clickable file. If a project truly needs OGC semantics and reprojection, that's an argument for a
-        server, not for this build.
+        Registration hangs off <code>SQLITE_EXTRA_INIT</code>, which names exactly one symbol — and cr-sqlite already
+        claims it with <code>core_init()</code>. Rather than patch a submodule, a small file is concatenated after it
+        and chains: run cr-sqlite's initializer, then register everything else. R*Tree and Geopoly need nothing there
+        at all; they live in the SQLite amalgamation and are enabled purely by <code>-D</code> flags, which is exactly
+        what makes them the sane spatial choice for this target.
+      </p>
+      <p>
+        On geometry specifically, the useful answer is narrower than &ldquo;use SpatiaLite&rdquo;.
+        <strong>Geopoly</strong> ships inside the amalgamation with <strong>zero external dependencies</strong> and
+        gives real indexed polygon predicates — <code>geopoly_contains_point</code>, <code>geopoly_within</code>,
+        <code>geopoly_overlap</code>, <code>geopoly_area</code> — on top of R*Tree, taking GeoJSON-style coordinate
+        arrays that pair well with JSON1. What it isn't: no projections, no geodesy, polygons only, no
+        <code>ST_*</code> names. SpatiaLite gives you all of that and needs GEOS and PROJ to do it — a serious wasm
+        porting project that would add megabytes to a binary whose whole point is arriving as one double-clickable
+        file. If a project truly needs OGC semantics and reprojection, that argues for a server, not for this build.
+      </p>
+
+      <h2>Gotchas that cost real time</h2>
+      <p>
+        Building this against a current toolchain (Emscripten 6, Rust nightly) failed six times before it worked, and
+        none of the failures were self-explanatory. Recording them because they will recur:
+      </p>
+      <ul>
+        <li><strong>cr-sqlite <code>main</code> does not compile for wasm.</strong> It dropped
+          <code>use core::alloc::Layout;</code> while still using <code>Layout</code> under
+          <code>#[cfg(target_family = "wasm")]</code>. Build from the <code>v0.16.3</code> tag.</li>
+        <li><strong>SQLite 3.45 builds fine and then fails at runtime.</strong> cr-sqlite v0.16.3 compiles against it,
+          but <code>crsql_as_crr()</code> then dies with <code>out of memory</code>. 3.44 works — and is what the
+          published package ships.</li>
+        <li><strong><code>WASM_BIGINT</code> defaults on in Emscripten 6.</strong> <code>int64</code> returns arrive as
+          BigInt, but wa-sqlite's own <code>sqlite-api.js</code> still reads them the legalized way
+          (<code>lo32</code> + <code>getTempRet0()</code>) and multiplies — so it throws
+          <code>Cannot mix BigInt and other types</code> on the <em>first</em> integer column read. Every
+          <code>count(*)</code>, rowid and <code>json_extract</code> fails. Link with <code>-s WASM_BIGINT=0</code>.</li>
+        <li><strong>Heap views are no longer auto-attached.</strong> <code>Module.HEAPU8</code>/<code>HEAPU32</code>
+          must be exported explicitly, or the API dies with
+          <code>Cannot read properties of undefined (reading 'buffer')</code>. And it can't be fixed with a
+          command-line <code>-s</code>: the Makefile places extra flags <em>before</em> the <code>@file</code> ones, so
+          the file always wins.</li>
+        <li><strong>bindgen can't find <code>stdarg.h</code>.</strong> cr-sqlite's Rust layer runs bindgen, which uses
+          its own libclang and doesn't inherit emcc's include paths.</li>
+        <li><strong>The repo layout is undocumented.</strong> wa-sqlite contains a <em>symlink</em>,
+          <code>crsql -&gt; ../cr-sqlite/core</code>, so the two repos must be siblings. Neither is a submodule of the
+          other, so nothing enforces the pairing — which is the whole reason to pin.</li>
+      </ul>
+
+      <h2>Dependencies, and what would force a rebuild</h2>
+      <p>
+        This stack is a pinned pairing, not a set of libraries that float forward independently. Worth knowing which
+        moving parts would make us re-evaluate:
+      </p>
+      <table>
+        <thead><tr><th>Dependency</th><th>Pinned at</th><th>What would force a re-evaluation</th></tr></thead>
+        <tbody>
+          <tr><td>cr-sqlite</td><td><code>v0.16.3</code></td><td>A release that compiles for wasm again, or one that pairs with a newer SQLite. Until then <code>main</code> is not an option.</td></tr>
+          <tr><td>SQLite</td><td><code>3.44.0</code></td><td>Any upgrade has to be tested against <code>crsql_as_crr()</code>, not just compiled — 3.45 passes the compiler and fails at runtime.</td></tr>
+          <tr><td>wa-sqlite</td><td>a specific commit</td><td>Changes to its JS ↔ wasm calling convention, especially anything touching int64 or heap views.</td></tr>
+          <tr><td>Rust</td><td><code>nightly-2023-10-05</code></td><td>Pinned by cr-sqlite itself, and nightly-only because of <code>-Z build-std</code>. A cr-sqlite that drops that requirement would free this.</td></tr>
+          <tr><td>Emscripten</td><td>host emsdk</td><td>Already bitten us twice (BigInt, heap views). Each upgrade needs the probe re-run before it is trusted.</td></tr>
+          <tr><td>sqlite-vec</td><td>tracking</td><td>Pre-1.0. Its header is generated from a template, so its build layout is not stable yet.</td></tr>
+        </tbody>
+      </table>
+      <p>
+        The guard against all of it is the same: a probe that <em>executes SQL</em> against the produced binary rather
+        than trusting compile flags, plus a test asserting each variant contains exactly its declared extensions and
+        nothing else. A flag that was set but had no effect cannot fool that.
       </p>
 
       <h2>References</h2>
       <ul>
         <li><a href="https://github.com/rheophile10/wa-sqlite-idb-demo">rheophile10/wa-sqlite-idb-demo</a> — the demo: TypeScript, demand-paged, FTS5 + CRDT (source &amp; live)</li>
-        <li><a href="https://github.com/rheophile10/wa-sqlite-ext-build">rheophile10/wa-sqlite-ext-build</a> — custom Emscripten build adding <code>vec0</code>, <code>rtree</code> and <code>geopoly</code></li>
+        <li><a href="https://github.com/rheophile10/sqlite-wasm-build">rheophile10/sqlite-wasm-build</a> — per-extension builds from pinned source: <code>vec0</code>, <code>rtree</code>, <code>geopoly</code></li>
         <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite + pluggable VFS toolkit</li>
         <li><a href="https://github.com/vlcn-io/wa-sqlite">vlcn-io/wa-sqlite</a> — the fork used here: same VFS, plus FTS5 and cr-sqlite</li>
         <li><a href="https://www.sqlite.org/geopoly.html">Geopoly</a> · <a href="https://www.sqlite.org/rtree.html">R*Tree</a> — dependency-free spatial support, if you compile it in</li>
