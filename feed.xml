@@ -6,7 +6,21 @@
   <atom:link href="https://rheophile.ca/feed.xml" rel="self" type="application/rss+xml" />
   <description>Notes on building plastron and other reactive, offline-first tools in the open.</description>
   <language>en-ca</language>
-  <lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 26 Jul 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS</title>
+    <link>https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html</link>
+    <guid isPermaLink="true">https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html</guid>
+    <pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate>
+    <description>sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.</description>
+    <category>sqlite</category>
+    <category>wasm</category>
+    <category>indexeddb</category>
+    <category>offline</category>
+    <category>vfs</category>
+    <category>fts5</category>
+    <category>crdt</category>
+  </item>
   <item>
     <title>Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target</title>
     <link>https://rheophile.ca/blog/localrbac-crypto-rbac.html</link>

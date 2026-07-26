@@ -5,23 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- rheophile:og:start -->
   <link rel="canonical" href="https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html">
-  <meta name="description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.">
+  <meta name="description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="rheophile.ca">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html">
   <meta property="og:title" content="Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS">
-  <meta property="og:description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.">
+  <meta property="og:description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.">
   <meta property="og:image" content="https://rheophile.ca/assets/og-card.png">
+  <meta property="og:image:secure_url" content="https://rheophile.ca/assets/og-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS — rheophile.ca dev log">
   <meta property="article:published_time" content="2026-07-26">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@rheophile10">
   <meta name="twitter:creator" content="@rheophile10">
+  <meta name="twitter:url" content="https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html">
   <meta name="twitter:title" content="Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS">
-  <meta name="twitter:description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser, running from file://.">
+  <meta name="twitter:description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og-card.png">
+  <meta name="twitter:image:alt" content="Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS — rheophile.ca dev log">
   <meta name="robots" content="max-image-preview:large">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS", "description": "sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.", "image": "https://rheophile.ca/assets/og-card.png", "datePublished": "2026-07-26", "url": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html", "mainEntityOfPage": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS", "description": "sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.", "image": "https://rheophile.ca/assets/og-card.png", "datePublished": "2026-07-26", "url": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html", "mainEntityOfPage": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
   <!-- rheophile:og:end -->
   <title>Demand-paged SQLite in the browser · rheophile.ca</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,9 +84,11 @@
       <p class="mt-4 text-zinc-400 text-base leading-relaxed">
         Persistent SQLite in the browser almost always means <a href="https://github.com/sql-js/sql.js" class="text-teal-400/90 hover:text-teal-300">sql.js</a>,
         which loads the <em>entire</em> database file into memory. Real SQLite doesn't work that way — it's
-        <strong class="text-zinc-300">demand-paged</strong>. Here's the ~90-line version that keeps the demand-paged
+        <strong class="text-zinc-300">demand-paged</strong>. Here's the version that keeps the demand-paged
         model in the browser: SQLite whose pages live in <strong class="text-zinc-300">IndexedDB</strong>, read on
-        demand — running from a double-clicked <code style="background:rgba(255,255,255,.08);padding:.1em .35em;border-radius:.25rem">file://</code> page.
+        demand — with <strong class="text-zinc-300">FTS5</strong> full-text search and
+        <strong class="text-zinc-300">CRDT</strong> merge in the same build — running from a double-clicked
+        <code style="background:rgba(255,255,255,.08);padding:.1em .35em;border-radius:.25rem">file://</code> page.
       </p>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
         <a href="https://rheophile10.github.io/wa-sqlite-idb-demo/" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
@@ -116,9 +125,9 @@
         IndexedDB and the pager's block reads and writes land there, one page at a time.
         <a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> ships that VFS — <code>IDBBatchAtomicVFS</code>:
       </p>
-      <pre><code>import * as SQLite from 'wa-sqlite';
-import SQLiteESMFactory from 'wa-sqlite/dist/wa-sqlite-async.mjs';
-import { IDBBatchAtomicVFS } from 'wa-sqlite/src/examples/IDBBatchAtomicVFS.js';
+      <pre><code>import * as SQLite from '@vlcn.io/wa-sqlite';
+import SQLiteESMFactory from '@vlcn.io/wa-sqlite/dist/crsqlite.mjs';
+import { IDBBatchAtomicVFS } from '@vlcn.io/wa-sqlite/src/examples/IDBBatchAtomicVFS.js';
 
 const module  = await SQLiteESMFactory({ wasmBinary });          // inlined wasm → no fetch
 const sqlite3 = SQLite.Factory(module);
@@ -141,6 +150,83 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
           <strong>zero network fetches</strong>. Double-click the HTML file; it just runs.</li>
       </ul>
 
+      <h2>Which build: FTS5 and CRDT come for free</h2>
+      <p>
+        The snippet above imports <code>@vlcn.io/wa-sqlite</code> rather than plain
+        <code>wa-sqlite</code>, and it's worth being precise about why, because the naming invites a wrong
+        conclusion. <a href="https://github.com/vlcn-io/wa-sqlite">vlcn's package</a> is a <em>fork of</em>
+        wa-sqlite that statically links <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>. It ships the
+        same <code>IDBBatchAtomicVFS</code> — byte-identical but for one commented-out import — so
+        <strong>choosing it costs nothing in paging</strong>. Demand paging comes from the VFS, not from the build.
+        What the fork adds is two things you'd otherwise compile yourself:
+      </p>
+      <table>
+        <thead><tr><th>Capability</th><th>Where it comes from</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Demand paging</strong></td><td><code>IDBBatchAtomicVFS</code> — the VFS, in either package</td></tr>
+          <tr><td><strong>FTS5</strong> (<code>bm25</code>, <code>snippet</code>)</td><td><code>-DSQLITE_ENABLE_FTS5</code>, already in the published wasm</td></tr>
+          <tr><td><strong>CRDT</strong> (<code>crsql_as_crr</code>, <code>crsql_changes</code>)</td><td>cr-sqlite, statically linked</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Upstream <code>wa-sqlite</code> has neither FTS5 nor CRDT — <code>PRAGMA compile_options</code> lists no
+        <code>ENABLE_FTS5</code>, and <code>CREATE VIRTUAL TABLE … USING fts5</code> fails with
+        <code>no such module: fts5</code>. The fork has both. Since <code>SQLITE_OMIT_LOAD_EXTENSION</code> is set in
+        both, nothing can be loaded at runtime: whatever you want has to be in the binary, which is exactly why
+        picking the right prebuilt binary saves you a toolchain.
+      </p>
+
+      <h2>Is it still paged with all that on top? Measure it</h2>
+      <p>
+        Easy to assert, so the repo asserts it in a test instead. Subclass the VFS, count every
+        <code>xRead</code> the pager issues, then close and reopen the database so the page cache is cold and every
+        read has to come back out of IndexedDB:
+      </p>
+      <pre><code>234 pages in file, FTS5 query faulted in 17</code></pre>
+      <p>
+        A full-text search against a 234-page database touches 17 pages — about 7% of the file — with a CRR and an
+        FTS5 index live in the same file. That's the whole claim in one line, and it's a
+        <a href="https://github.com/rheophile10/wa-sqlite-idb-demo">test</a>, not a paragraph.
+      </p>
+
+      <h2>Four things that bite</h2>
+      <p>
+        Most of the value in the repo is these four, each of which cost real debugging time.
+      </p>
+      <p>
+        <strong>1. One connection cannot run two statements at once.</strong> This is the expensive one. A wa-sqlite
+        connection is a single <strong>Asyncify</strong> state machine. Overlap two queries on it — an innocent
+        <code>Promise.all</code>, or a debounced search box landing mid-refresh — and the await points inside
+        <code>step()</code> interleave, desynchronising SQLite's pager. It takes duplicate read locks, then fails a
+        hot-journal check against a journal that was never there, and the wasm aborts with
+        <code>memory access out of bounds</code>. The symptom looks like VFS corruption and has nothing whatsoever to
+        do with the VFS. The fix is to funnel every statement through one promise queue, which the engine does now, so
+        callers can be as concurrent as they like.
+      </p>
+      <div class="callout">
+        <strong>The tests that mattered.</strong> That crash never reproduced under Node with
+        <code>fake-indexeddb</code> — the fake is fast enough to hide the interleaving. The Node suite passed green
+        while the real page crashed on boot. What caught it was driving the built file from an actual
+        <code>file://</code> URL in headless Chromium. If you take one operational lesson from this post: an
+        in-memory IndexedDB stand-in does not test a VFS.
+      </div>
+      <p>
+        <strong>2. cr-sqlite rejects <code>NOT NULL</code> without a <code>DEFAULT</code>.</strong> A replicated
+        table needs a default on every column — so replicas on different schema versions can still trade rows — and a
+        non-nullable primary key. <code>body TEXT NOT NULL</code> fails; add <code>DEFAULT ''</code> and it's fine.
+      </p>
+      <p>
+        <strong>3. An FTS5 table can't itself be a CRR.</strong> <code>crsql_as_crr</code> refuses it, on the
+        nullable rowid primary key. So the index is a <em>derived local artifact</em>: the content table replicates,
+        and triggers maintain the FTS index on top of it. The good news, and it wasn't obvious enough to assume:
+        <strong>those triggers do fire for rows that arrive through a merge</strong>, so the index stays correct
+        without a rebuild. That's asserted in the test suite too.
+      </p>
+      <p>
+        <strong>4. No autoincrement ids under CRDT.</strong> Two replicas offline, both picking
+        <code>max(id)+1</code>, collide and merge into a single row. Use random ids.
+      </p>
+
       <h2>Two directions of "demand-paged"</h2>
       <p>
         Same idea, two targets — pick by whether you're reading or writing, local or remote:
@@ -162,19 +248,47 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
         moment persistence, size, or write frequency matters, put a VFS under it — that's the SQLite-shaped answer.
       </div>
 
-      <h2>The step up: encrypted &amp; multi-party</h2>
+      <h2>The step up: encrypted &amp; access-controlled</h2>
       <p>
-        Want it encrypted at rest, or shared across people who merge offline? That's the same VFS with more on top.
-        <a href="/blog/localrbac-crypto-rbac.html">localRbac</a> wraps this exact
+        The demo stops at convergence: two replicas merge, and any changeset is as trustworthy as the last. Wanting it
+        encrypted at rest, or wanting to constrain <em>who may read and write what</em>, is the same VFS with more on
+        top. <a href="/blog/localrbac-crypto-rbac.html">localRbac</a> wraps this exact
         <code>IDBBatchAtomicVFS</code> as an <code>EncryptedIDBVFS</code> — <strong>transparent per-page AES</strong> —
-        and runs <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> on it for CRDT merge and cryptographic
-        RBAC. Start here for the mechanism; go there for the full apparatus.
+        and adds per-resource encryption keys, signatures verified at merge, and Shamir threshold custody over the
+        root secret. Start here for the mechanism; go there for the full apparatus.
+      </p>
+
+      <h2>What's still missing: vectors and geometry</h2>
+      <p>
+        Two things the published build doesn't have, both confirmed by probing the binary rather than reading a
+        Makefile: <strong>sqlite-vec</strong> (<code>vec0</code>) and any spatial support —
+        <code>rtree</code> and <code>geopoly</code> are both absent. Because
+        <code>SQLITE_OMIT_LOAD_EXTENSION</code> is set, there's no way to add them at runtime; they need a custom
+        Emscripten build, which is
+        <a href="https://github.com/rheophile10/wa-sqlite-ext-build">a separate repo</a> rather than a complication
+        here.
+      </p>
+      <p>
+        On the geometry question specifically, the useful answer is narrower than "use SpatiaLite".
+        <strong>Geopoly</strong> is the one that fits this target: it lives inside the SQLite amalgamation with
+        <strong>zero external dependencies</strong>, so it's a single compile flag, and it gives real indexed polygon
+        predicates — <code>geopoly_contains_point</code>, <code>geopoly_within</code>, <code>geopoly_overlap</code>,
+        <code>geopoly_area</code> — on top of <strong>R*Tree</strong>. It takes GeoJSON-style coordinate arrays, which
+        pairs well with JSON1 (already present). What it isn't: no projections, no geodesy, polygons only, and no
+        <code>ST_*</code> names. SpatiaLite gives you all of that and needs GEOS and PROJ to do it — a serious
+        wasm porting project that would add megabytes to a binary whose entire point is arriving as one
+        double-clickable file. If a project truly needs OGC semantics and reprojection, that's an argument for a
+        server, not for this build.
       </p>
 
       <h2>References</h2>
       <ul>
-        <li><a href="https://github.com/rheophile10/wa-sqlite-idb-demo">rheophile10/wa-sqlite-idb-demo</a> — the ~90-line demo (source &amp; live)</li>
+        <li><a href="https://github.com/rheophile10/wa-sqlite-idb-demo">rheophile10/wa-sqlite-idb-demo</a> — the demo: TypeScript, demand-paged, FTS5 + CRDT (source &amp; live)</li>
+        <li><a href="https://github.com/rheophile10/wa-sqlite-ext-build">rheophile10/wa-sqlite-ext-build</a> — custom Emscripten build adding <code>vec0</code>, <code>rtree</code> and <code>geopoly</code></li>
         <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite + pluggable VFS toolkit</li>
+        <li><a href="https://github.com/vlcn-io/wa-sqlite">vlcn-io/wa-sqlite</a> — the fork used here: same VFS, plus FTS5 and cr-sqlite</li>
+        <li><a href="https://www.sqlite.org/geopoly.html">Geopoly</a> · <a href="https://www.sqlite.org/rtree.html">R*Tree</a> — dependency-free spatial support, if you compile it in</li>
+        <li><a href="https://github.com/asg017/sqlite-vec">sqlite-vec</a> — vector search; single-file C, so wasm-friendly</li>
         <li><a href="https://github.com/phiresky/sql.js-httpvfs">sql.js-httpvfs</a> — demand-paging a remote static DB over HTTP range requests</li>
         <li><a href="https://www.sqlite.org/vfs.html">SQLite VFS</a> · <a href="https://github.com/sql-js/sql.js">sql.js</a> — the in-memory approach this is the counterpoint to</li>
         <li><a href="/blog/localrbac-crypto-rbac.html">localRbac</a> — the encrypted, CRDT-flavoured step up (per-page AES + cr-sqlite over this VFS)</li>
