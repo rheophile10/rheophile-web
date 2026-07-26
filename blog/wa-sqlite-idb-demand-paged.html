@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- rheophile:og:start -->
+  <link rel="canonical" href="https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html">
+  <meta name="description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="rheophile.ca">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:url" content="https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html">
+  <meta property="og:title" content="Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS">
+  <meta property="og:description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.">
+  <meta property="og:image" content="https://rheophile.ca/assets/og-card.png">
+  <meta property="article:published_time" content="2026-07-26">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@rheophile10">
+  <meta name="twitter:creator" content="@rheophile10">
+  <meta name="twitter:title" content="Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS">
+  <meta name="twitter:description" content="sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser, running from file://.">
+  <meta name="twitter:image" content="https://rheophile.ca/assets/og-card.png">
+  <meta name="robots" content="max-image-preview:large">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS", "description": "sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.", "image": "https://rheophile.ca/assets/og-card.png", "datePublished": "2026-07-26", "url": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html", "mainEntityOfPage": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <!-- rheophile:og:end -->
+  <title>Demand-paged SQLite in the browser · rheophile.ca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="/assets/tailwind.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗄️</text></svg>">
+  <style>
+    :root { --accent: #14b8a6; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+    .glass { background: rgba(9, 9, 11, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(63, 63, 70, 0.4); }
+    .prose-blog { font-size: 1rem; line-height: 1.75; color: #d4d4d8; }
+    .prose-blog h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; color: #fafafa; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+    .prose-blog p { margin-bottom: 1rem; }
+    .prose-blog ul, .prose-blog ol { margin-bottom: 1rem; padding-left: 1.35rem; }
+    .prose-blog li { margin-bottom: 0.4rem; }
+    .prose-blog a { color: #2dd4bf; text-decoration: underline; text-underline-offset: 2px; }
+    .prose-blog a:hover { color: #99f6e4; }
+    .prose-blog code { font-family: ui-monospace, monospace; font-size: 0.88em; background: rgba(255,255,255,0.06); padding: 0.1em 0.35em; border-radius: 0.25rem; }
+    .subtle-grid { background-image: linear-gradient(rgba(163,163,172,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(163,163,172,0.035) 1px, transparent 1px); background-size: 32px 32px; }
+    .callout { border: 1px solid rgba(20, 184, 166, 0.25); background: rgba(20, 184, 166, 0.06); border-radius: 1rem; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 0.92rem; }
+    .prose-blog pre { background: #0a0a0c; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.6rem; padding: 0.85rem 1.05rem; overflow: auto; font-size: 0.8rem; color: #d4d4d8; margin: 1.1rem 0; line-height: 1.6; }
+    .prose-blog pre code { background: none; padding: 0; font-size: inherit; }
+    .prose-blog table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9rem; }
+    .prose-blog th, .prose-blog td { border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.7rem; text-align: left; vertical-align: top; }
+    .prose-blog th { background: rgba(255,255,255,0.03); font-weight: 600; color: #e4e4e7; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen subtle-grid">
+
+  <nav class="sticky top-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30 group-hover:ring-teal-500/50 transition">
+          <span class="text-xl leading-none mt-px">🐸</span>
+        </div>
+        <div>
+          <div class="font-semibold tracking-tighter text-sm text-zinc-300 group-hover:text-white transition">rheophile10</div>
+          <div class="text-[10px] text-zinc-500 -mt-1">rheophile.ca</div>
+        </div>
+      </a>
+      <div class="text-xs text-zinc-500">🗄️ Dev log · wa-sqlite</div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 md:py-14">
+    <header>
+      <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Dev log · 2026-07-26</div>
+      <h1 class="display text-4xl md:text-[2.6rem] font-semibold tracking-tighter mt-2 leading-[1.1]">
+        SQLite that persists without hoarding RAM <span class="text-3xl">🗄️</span>
+      </h1>
+      <p class="mt-4 text-zinc-400 text-base leading-relaxed">
+        Persistent SQLite in the browser almost always means <a href="https://github.com/sql-js/sql.js" class="text-teal-400/90 hover:text-teal-300">sql.js</a>,
+        which loads the <em>entire</em> database file into memory. Real SQLite doesn't work that way — it's
+        <strong class="text-zinc-300">demand-paged</strong>. Here's the ~90-line version that keeps the demand-paged
+        model in the browser: SQLite whose pages live in <strong class="text-zinc-300">IndexedDB</strong>, read on
+        demand — running from a double-clicked <code style="background:rgba(255,255,255,.08);padding:.1em .35em;border-radius:.25rem">file://</code> page.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a href="https://rheophile10.github.io/wa-sqlite-idb-demo/" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
+          Try the live demo →
+        </a>
+        <a href="https://github.com/rheophile10/wa-sqlite-idb-demo" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
+          Source on GitHub
+        </a>
+      </div>
+    </header>
+
+    <article class="prose-blog mt-10">
+
+      <h2>Ordinary SQLite is demand-paged</h2>
+      <p>
+        A file-backed SQLite database is not loaded into memory. Its <strong>pager</strong> reads and writes individual
+        <strong>pages</strong> (4&nbsp;KB by default) as queries touch them, keeping only a small cache in RAM
+        (<code>PRAGMA cache_size</code>). A 50&nbsp;GB database runs in a few megabytes; only a <code>:memory:</code>
+        database lives entirely in RAM. That on-demand paging is the whole reason SQLite scales down to a wristwatch and
+        up to a warehouse.
+      </p>
+
+      <h2>The browser broke that — sql.js hands it back as one big array</h2>
+      <p>
+        The browser gave WebAssembly no random-access file API that SQLite's pager could drive, so
+        <code>sql.js</code> fakes the file as a single <code>Uint8Array</code> on the WASM heap. Simple, and fine for
+        small data — but a 20&nbsp;MB database is 20&nbsp;MB of RAM, load times scale with the whole file, and writes mean
+        re-serialising and re-storing the lot. You've traded SQLite's best trick for convenience.
+      </p>
+
+      <h2>A VFS puts it back — in about four lines</h2>
+      <p>
+        SQLite has a seam for exactly this: the <strong>VFS</strong> (virtual filesystem). Give it one backed by
+        IndexedDB and the pager's block reads and writes land there, one page at a time.
+        <a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> ships that VFS — <code>IDBBatchAtomicVFS</code>:
+      </p>
+      <pre><code>import * as SQLite from 'wa-sqlite';
+import SQLiteESMFactory from 'wa-sqlite/dist/wa-sqlite-async.mjs';
+import { IDBBatchAtomicVFS } from 'wa-sqlite/src/examples/IDBBatchAtomicVFS.js';
+
+const module  = await SQLiteESMFactory({ wasmBinary });          // inlined wasm → no fetch
+const sqlite3 = SQLite.Factory(module);
+sqlite3.vfs_register(new IDBBatchAtomicVFS('mydb'), true);        // IndexedDB is the "disk"
+const db = await sqlite3.open_v2('demo.db');                      // demand-paged from here</code></pre>
+      <p>
+        Each SQLite page becomes one IndexedDB object — a <code>FileBlock</code> keyed <code>[path, offset, version]</code>,
+        with batch-atomic commits. Open DevTools → Application → IndexedDB in the
+        <a href="https://rheophile10.github.io/wa-sqlite-idb-demo/">demo</a> and you can watch the pages appear.
+      </p>
+
+      <h2>Why it runs from <code>file://</code></h2>
+      <p>Two properties, and they're the ones most persistent-SQLite options miss:</p>
+      <ul>
+        <li>The VFS is <strong>Asyncify</strong>-based, so it needs no <code>SharedArrayBuffer</code> — and therefore
+          none of the <code>COOP</code>/<code>COEP</code> cross-origin-isolation headers a static host (or a local file)
+          can't send. This is why <a href="https://github.com/jlongster/absurd-sql">absurd-sql</a> and threaded-OPFS
+          builds don't work here.</li>
+        <li>The <code>wasm</code> is <strong>base64-inlined</strong> at build time, so opening the engine costs
+          <strong>zero network fetches</strong>. Double-click the HTML file; it just runs.</li>
+      </ul>
+
+      <h2>Two directions of "demand-paged"</h2>
+      <p>
+        Same idea, two targets — pick by whether you're reading or writing, local or remote:
+      </p>
+      <table>
+        <thead><tr><th>You want…</th><th>VFS</th><th>Fetches</th></tr></thead>
+        <tbody>
+          <tr><td>A <strong>local read/write</strong> DB that persists</td><td><code>IDBBatchAtomicVFS</code> (this demo)</td><td>pages ↔ IndexedDB</td></tr>
+          <tr><td>To <strong>query a big remote read-only</strong> DB</td><td>HTTP-range VFS (<a href="https://github.com/phiresky/sql.js-httpvfs">sql.js-httpvfs</a>)</td><td>only the pages a query touches, over HTTP <code>Range</code></td></tr>
+        </tbody>
+      </table>
+      <p>
+        The second is how you'd serve a large static <code>.sqlite</code> knowledge base without making every visitor
+        download it whole — the query pulls a few kilobytes of pages, not the file.
+      </p>
+
+      <div class="callout">
+        <strong>Rule of thumb.</strong> If your data is small and you never write, <code>sql.js</code> is fine. The
+        moment persistence, size, or write frequency matters, put a VFS under it — that's the SQLite-shaped answer.
+      </div>
+
+      <h2>The step up: encrypted &amp; multi-party</h2>
+      <p>
+        Want it encrypted at rest, or shared across people who merge offline? That's the same VFS with more on top.
+        <a href="/blog/localrbac-crypto-rbac.html">localRbac</a> wraps this exact
+        <code>IDBBatchAtomicVFS</code> as an <code>EncryptedIDBVFS</code> — <strong>transparent per-page AES</strong> —
+        and runs <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> on it for CRDT merge and cryptographic
+        RBAC. Start here for the mechanism; go there for the full apparatus.
+      </p>
+
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://github.com/rheophile10/wa-sqlite-idb-demo">rheophile10/wa-sqlite-idb-demo</a> — the ~90-line demo (source &amp; live)</li>
+        <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite + pluggable VFS toolkit</li>
+        <li><a href="https://github.com/phiresky/sql.js-httpvfs">sql.js-httpvfs</a> — demand-paging a remote static DB over HTTP range requests</li>
+        <li><a href="https://www.sqlite.org/vfs.html">SQLite VFS</a> · <a href="https://github.com/sql-js/sql.js">sql.js</a> — the in-memory approach this is the counterpoint to</li>
+        <li><a href="/blog/localrbac-crypto-rbac.html">localRbac</a> — the encrypted, CRDT-flavoured step up (per-page AES + cr-sqlite over this VFS)</li>
+      </ul>
+    </article>
+
+    <section class="mt-14 pt-10 border-t border-white/10">
+      <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium mb-4">More from the dev log</div>
+      <div class="grid md:grid-cols-2 gap-4" id="related-posts-grid"></div>
+    </section>
+
+    <footer class="mt-14 pt-8 border-t border-white/10 text-sm text-zinc-500">
+      <a href="/#devlog" class="text-teal-400 hover:underline">← Dev log</a>
+      <span class="mx-2 text-zinc-700">·</span>
+      <a href="/" class="text-teal-400 hover:underline">rheophile.ca</a>
+    </footer>
+  </main>
+
+  <script src="/assets/blog-ui.js"></script>
+  <script>
+    BlogUI.renderRelatedPosts('related-posts-grid', 'wa-sqlite-idb-demand-paged');
+  </script>
+</body>
+</html>

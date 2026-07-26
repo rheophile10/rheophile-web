@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "slug": "wa-sqlite-idb-demand-paged",
+      "href": "/blog/wa-sqlite-idb-demand-paged.html",
+      "date": "2026-07-26",
+      "tags": [
+        "sqlite",
+        "wasm",
+        "indexeddb",
+        "offline",
+        "vfs"
+      ],
+      "emoji": "🗄️",
+      "title": "SQLite that persists without hoarding RAM 🗄️",
+      "ogTitle": "Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS",
+      "excerpt": "sql.js loads the whole database into memory; ordinary SQLite doesn't. A ~90-line demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand — running from a double-clicked file:// page.",
+      "ogImage": "https://rheophile.ca/assets/og-card.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og-card.png"
+    },
+    {
       "slug": "localrbac-crypto-rbac",
       "href": "/blog/localrbac-crypto-rbac.html",
       "date": "2026-07-15",

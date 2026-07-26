@@ -339,6 +339,8 @@
         <code>COOP</code>/<code>COEP</code> cross-origin-isolation headers that absurd-sql or threaded-OPFS builds
         require; and the <code>crsqlite.mjs</code> WASM is base64-inlined as a <code>data:</code> URI, so opening the
         engine costs zero network fetches. Demand-paged, encrypted, offline — from a double-clicked HTML file.
+        <em>(For the bare mechanism — just this VFS, without the encryption or CRDT — see the standalone write-up:
+        <a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a>.)</em>
       </p>
 
       <div class="tour">
@@ -443,6 +445,7 @@
         <li><a href="https://xkcd.com/538/">xkcd 538 — <em>Security</em></a> — why no single keyholder should be worth the wrench</li>
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite (the CRDT engine)</li>
         <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite whose <code>IDBBatchAtomicVFS</code> demand-pages onto IndexedDB (the storage engine, wrapped as <code>EncryptedIDBVFS</code>)</li>
+        <li><a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a> — the bare wa-sqlite + IndexedDB-VFS version, without the encryption or CRDT</li>
         <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the offline-CRDT lineage this builds on</li>
       </ul>
     </article>
