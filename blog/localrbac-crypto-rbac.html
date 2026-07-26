@@ -314,6 +314,46 @@
         once. No single keyholder is a point of failure <em>or</em> coercion.
       </p>
 
+      <h2>Where the database lives: demand-paged onto encrypted IndexedDB</h2>
+      <p>
+        Ordinary SQLite is <strong>demand-paged</strong>: its pager reads and writes individual <strong>pages</strong>
+        (4&nbsp;KB by default) from the file as queries touch them, holding only a small page cache in RAM — a 50&nbsp;GB
+        database runs in a few megabytes, and only a <code>:memory:</code> database lives entirely in RAM. Most
+        SQLite-in-the-browser throws that away: <code>sql.js</code> loads the <em>whole</em> file into a
+        <code>Uint8Array</code> on the WASM heap. localRbac keeps the demand-paged model in the browser by injecting a
+        <strong>VFS</strong> — SQLite's virtual-filesystem seam — so the pager's block reads and writes land in
+        <strong>IndexedDB</strong>, one page at a time, never the whole file in memory.
+      </p>
+      <p>
+        The persistent connection opens <em>through</em> <code>EncryptedIDBVFS</code>, a vendored copy of wa-sqlite's
+        <code>IDBBatchAtomicVFS</code>. Each SQLite page becomes an IndexedDB block keyed
+        <code>[path,&nbsp;offset,&nbsp;version]</code>, fetched and written on demand, with <strong>transparent
+        per-page AES encryption</strong> in the VFS layer and batch-atomic commits. The only <code>:memory:</code>
+        database is the throwaway <strong>staging</strong> connection that authorizes an incoming changeset before it
+        merges (the same staging step from <em>Write control</em>, above) — the store of record is always the encrypted
+        IndexedDB VFS.
+      </p>
+      <p>
+        Two properties let this run from <code>file://</code>, where most persistent-SQLite options can't: the VFS is
+        <strong>Asyncify</strong>-based, so it needs no <code>SharedArrayBuffer</code> and therefore none of the
+        <code>COOP</code>/<code>COEP</code> cross-origin-isolation headers that absurd-sql or threaded-OPFS builds
+        require; and the <code>crsqlite.mjs</code> WASM is base64-inlined as a <code>data:</code> URI, so opening the
+        engine costs zero network fetches. Demand-paged, encrypted, offline — from a double-clicked HTML file.
+      </p>
+
+      <div class="tour">
+        <h3>The storage engine — line items</h3>
+        <p class="path">packages/datalayer/src/engine/ · localRbac@fcc4079</p>
+        <ul>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L20-L25"><code>boot-browser.ts</code> L20–L25</a> — <code>openMain</code> registers <code>EncryptedIDBVFS</code> and opens <code>/&lt;name&gt;.db</code> through it; <code>openStaging</code> is the throwaway <code>:memory:</code> db.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L1-L5"><code>boot-browser.ts</code> L1–L5</a> — the design note in prose: persistent main = encrypted IndexedDB VFS, staging = <code>:memory:</code>, wasm inlined so it "works on <code>file://</code>".</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L2"><code>EncryptedIDBVFS.js</code> L2</a> — vendored from <code>@vlcn.io/wa-sqlite/src/examples/IDBBatchAtomicVFS.js</code>.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L34"><code>EncryptedIDBVFS.js</code> L34</a> — each page is a <code>FileBlock</code> IndexedDB object keyed <code>[path, offset, version]</code>.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L220"><code>EncryptedIDBVFS.js</code> L220</a> — the VFS is <strong>Asyncify</strong> (async I/O, no <code>SharedArrayBuffer</code>).</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/sqlite.ts#L111-L116"><code>sqlite.ts</code> L111–L116</a> — imports <code>@vlcn.io/wa-sqlite/dist/crsqlite.mjs</code>; <code>openMemory()</code> is the <code>:memory:</code> staging connection.</li>
+        </ul>
+      </div>
+
       <h2>A tour of the datalayer</h2>
       <p>
         The engine is a headless package an app wires to a UI, deliberately <strong>resource- and column-agnostic</strong>
@@ -402,6 +442,7 @@
         <li><a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA">Cargo cult</a> — access control that isn't enforced is theatre</li>
         <li><a href="https://xkcd.com/538/">xkcd 538 — <em>Security</em></a> — why no single keyholder should be worth the wrench</li>
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite (the CRDT engine)</li>
+        <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite whose <code>IDBBatchAtomicVFS</code> demand-pages onto IndexedDB (the storage engine, wrapped as <code>EncryptedIDBVFS</code>)</li>
         <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the offline-CRDT lineage this builds on</li>
       </ul>
     </article>
