@@ -281,7 +281,7 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
         root secret. Start here for the mechanism; go there for the full apparatus.
       </p>
 
-      <h2>What we have now: one binary, every extension</h2>
+      <h2 id="the-build">What we have now: one binary, every extension</h2>
       <p>
         The published <code>@vlcn.io/wa-sqlite</code> has FTS5 and CRDT but no vectors and no spatial support —
         <code>rtree</code>, <code>geopoly</code> and <code>vec0</code> are all absent, confirmed by probing the binary
@@ -302,6 +302,13 @@ const db = await sqlite3.open_v2('demo.db');                      // demand-page
         Geometry costs about 60&nbsp;KB and vectors about 170&nbsp;KB — both cheap against the 1.77&nbsp;MB floor. But
         that floor becomes roughly 2.7&nbsp;MB once base64-inlined into an HTML file, so take the smallest variant that
         does the job.
+      </p>
+      <p>
+        Each variant declares itself as a <strong>drop-in <code>@vlcn.io/wa-sqlite</code></strong> — same package name,
+        same import specifiers — so adopting one is a dependency line rather than a refactor:
+        <code>"@vlcn.io/wa-sqlite": "file:../sqlite-wasm-build/dist/vec"</code>.
+        <a href="/blog/localrbac-crypto-rbac.html">localRbac</a> is the first thing running on it, on
+        <code>base</code>, with its 46 RBAC tests green against the locally built binary.
       </p>
       <p>
         Registration hangs off <code>SQLITE_EXTRA_INIT</code>, which names exactly one symbol — and cr-sqlite already

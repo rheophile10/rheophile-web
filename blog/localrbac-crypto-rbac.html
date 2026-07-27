@@ -343,6 +343,36 @@
         <a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a>.)</em>
       </p>
 
+      <h3>The binary is built here, not installed</h3>
+      <p>
+        The engine underneath is not the published <code>@vlcn.io/wa-sqlite</code> — it is compiled from pinned
+        source by <a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a>, using the
+        <code>base</code> variant (cr-sqlite + FTS5), the recipe that reproduces the published package. That
+        matters here more than it would elsewhere, because
+        <strong><code>SQLITE_OMIT_LOAD_EXTENSION</code> is set</strong>: nothing can be loaded at runtime, so every
+        capability has to be <em>in the binary</em>. Installing the published build means accepting someone else's
+        answer to "which extensions does this database have" — and for a project whose whole argument is that the
+        rules must survive the file being copied, that is an odd thing to leave to a registry.
+      </p>
+      <p>
+        Because the variant declares itself under the same package name and exposes the same import specifiers,
+        adopting it moved one line and no source:
+      </p>
+      <pre><code>"@vlcn.io/wa-sqlite": "file:../../../sqlite-wasm-build/dist/base"</code></pre>
+      <p>
+        Swapping in <code>geo</code> (R*Tree, Geopoly) or <code>vec</code> (sqlite-vec) is the same line with a
+        different word — which is the reason for building them as separate variants rather than one everything
+        binary. The build, the four variants and the six toolchain failures behind them are written up in
+        <a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a>.
+      </p>
+      <div class="callout">
+        <strong>One trap worth repeating.</strong> The swap can look like it worked while the registry binary is
+        still the one loading. <code>@vlcn.io/crsqlite-wasm</code> was a dependency nothing imported, and it pulled
+        the published <code>wa-sqlite</code> in transitively — which npm then hoisted over the local
+        <code>file:</code> dependency without a word. Check the bytes, not the lockfile:
+        <code>sha256sum node_modules/@vlcn.io/wa-sqlite/crsqlite.wasm dist/base/crsqlite.wasm</code>.
+      </div>
+
       <div class="tour">
         <h3>The storage engine — line items</h3>
         <p class="path">packages/datalayer/src/engine/ · localRbac@fcc4079</p>
@@ -446,6 +476,8 @@
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite (the CRDT engine)</li>
         <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite whose <code>IDBBatchAtomicVFS</code> demand-pages onto IndexedDB (the storage engine, wrapped as <code>EncryptedIDBVFS</code>)</li>
         <li><a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a> — the bare wa-sqlite + IndexedDB-VFS version, without the encryption or CRDT</li>
+        <li><a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a> — the pinned-source build this runs on; four variants, each a drop-in <code>@vlcn.io/wa-sqlite</code></li>
+        <li><a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a> — why the build exists, and the six toolchain failures it took</li>
         <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the offline-CRDT lineage this builds on</li>
       </ul>
     </article>
