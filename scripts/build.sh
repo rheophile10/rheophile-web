@@ -8,6 +8,8 @@ python3 scripts/sync-blog-meta.py     # OG/Twitter meta + BlogPosting JSON-LD in
 python3 scripts/prerender.py          # bake project/blog cards + tag chips into HTML
 python3 scripts/generate-rss.py       # feed.xml
 python3 scripts/generate-sitemap.py   # sitemap.xml
+python3 scripts/fetch-repos.py        # assets/repos.json (network optional; keeps cache)
+python3 scripts/generate-search.py    # assets/search.json — posts + repos, one index
 python3 scripts/normalize-head.py     # tailwind link + font links (strips analytics)
 
 # Compiled Tailwind (scans HTML + blog-ui.js). Runs last so it sees final markup.

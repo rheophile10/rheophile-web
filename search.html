@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://rheophile.ca/search.html">
+  <meta name="description" content="Search rheophile — the writing and the code in one place. Every blog post and every public repo, filterable by tag.">
+  <meta name="robots" content="noindex">
+  <title>Search · rheophile.ca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="/assets/tailwind.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+  <style>
+    :root { --accent: #14b8a6; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+    .glass {
+      background: rgba(9, 9, 11, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(63, 63, 70, 0.4);
+    }
+    .subtle-grid {
+      background-image:
+        linear-gradient(rgba(163,163,172,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,163,172,0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    mark { background: rgba(20,184,166,0.25); color: #99f6e4; border-radius: .15rem; padding: 0 .1em; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen subtle-grid">
+
+  <nav class="sticky top-0 z-50 glass">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30 group-hover:ring-teal-500/50 transition">
+          <span class="text-xl leading-none mt-px">🐸</span>
+        </div>
+        <div>
+          <div class="font-semibold tracking-tighter text-sm text-zinc-300 group-hover:text-white transition">rheophile10</div>
+          <div class="text-[10px] text-zinc-500 -mt-1">rheophile.ca</div>
+        </div>
+      </a>
+      <div class="text-xs text-zinc-500">🔎 Search</div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-6 py-10 md:py-14">
+    <header class="mb-8">
+      <h1 class="display text-3xl md:text-4xl font-semibold tracking-tighter leading-[1.1]">
+        Search everything <span class="text-2xl">🔎</span>
+      </h1>
+      <p class="mt-3 text-zinc-400 text-base leading-relaxed">
+        The writing and the code in one index — every post and every public repo. Built from
+        <a href="/assets/search.json" class="text-teal-400 hover:text-teal-300 underline underline-offset-2">assets/search.json</a>,
+        which is plain JSON and meant to be fetched by things other than this page.
+      </p>
+    </header>
+
+    <div class="sticky top-16 z-40 bg-zinc-950/90 backdrop-blur pt-2 pb-4 -mx-2 px-2">
+      <input id="q" type="search" autocomplete="off" autofocus
+             placeholder="sqlite, encryption, offline, webrtc…"
+             class="w-full px-4 py-3 rounded-2xl bg-zinc-900 border border-white/10 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-teal-500/50 transition">
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <button data-kind="all"  class="kind px-3 py-1 rounded-full text-xs border border-teal-500/40 bg-teal-500/10 text-teal-300 transition">Everything</button>
+        <button data-kind="post" class="kind px-3 py-1 rounded-full text-xs border border-white/10 text-zinc-400 hover:text-zinc-200 transition">Writing</button>
+        <button data-kind="repo" class="kind px-3 py-1 rounded-full text-xs border border-white/10 text-zinc-400 hover:text-zinc-200 transition">Code</button>
+        <span class="text-xs text-zinc-600 ml-auto" id="count"></span>
+      </div>
+      <div class="mt-3 flex flex-wrap gap-1.5" id="tags"></div>
+    </div>
+
+    <div id="results" class="mt-6 grid gap-3"></div>
+    <p id="empty" class="text-zinc-500 text-sm mt-8 hidden">Nothing matches that.</p>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-6 pb-14 pt-8 border-t border-white/10 text-sm text-zinc-500">
+    <a href="/" class="text-teal-400 hover:underline">rheophile.ca</a>
+    <span class="mx-2 text-zinc-700">·</span>
+    <a href="/#devlog" class="text-teal-400 hover:underline">Dev log</a>
+  </footer>
+
+  <script>
+  (async () => {
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+    let entries = [];
+    try {
+      const res = await fetch('/assets/search.json');
+      entries = (await res.json()).entries || [];
+    } catch {
+      $('results').innerHTML = '<p class="text-amber-400 text-sm">Could not load the index.</p>';
+      return;
+    }
+
+    let kind = 'all';
+    let tag = null;
+
+    // Tags worth showing as chips: the ones that actually group things. A tag used once is
+    // a filter that returns one result, which is not a filter.
+    const freq = new Map();
+    for (const e of entries) for (const t of e.tags || []) freq.set(t, (freq.get(t) || 0) + 1);
+    const topTags = [...freq.entries()].filter(([, n]) => n > 1).sort((a, b) => b[1] - a[1]).slice(0, 18);
+
+    $('tags').innerHTML = topTags.map(([t, n]) =>
+      `<button data-tag="${esc(t)}" class="tag px-2 py-0.5 rounded-full text-[11px] border border-white/10 text-zinc-500 hover:text-zinc-200 transition">${esc(t)} <span class="text-zinc-700">${n}</span></button>`
+    ).join('');
+
+    const highlight = (text, terms) => {
+      let out = esc(text);
+      for (const term of terms) {
+        if (term.length < 2) continue;
+        out = out.replace(new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>');
+      }
+      return out;
+    };
+
+    const card = (e, terms) => {
+      const badge = e.kind === 'post'
+        ? '<span class="text-[10px] uppercase tracking-wider text-teal-400/80 border border-teal-500/25 rounded px-1.5 py-0.5">writing</span>'
+        : '<span class="text-[10px] uppercase tracking-wider text-zinc-400 border border-white/10 rounded px-1.5 py-0.5">code</span>';
+      const live = e.extra?.live
+        ? ` <a href="${esc(e.extra.live)}" class="text-teal-400 hover:text-teal-300" target="_blank" rel="noopener">live ↗</a>` : '';
+      const tags = (e.tags || []).slice(0, 6)
+        .map((t) => `<span class="text-[11px] text-zinc-600">#${esc(t)}</span>`).join(' ');
+      return `<article class="rounded-2xl border border-white/10 bg-zinc-900/40 p-4 hover:border-teal-500/30 transition">
+        <div class="flex items-center gap-2 mb-1.5">
+          ${badge}
+          ${e.extra?.emoji ? `<span>${esc(e.extra.emoji)}</span>` : ''}
+          <span class="text-[11px] text-zinc-600 ml-auto">${esc(e.date || '')}</span>
+        </div>
+        <h2 class="display text-base font-semibold leading-snug">
+          <a href="${esc(e.url)}" class="hover:text-teal-300 transition"${e.kind === 'repo' ? ' target="_blank" rel="noopener"' : ''}>${highlight(e.title, terms)}</a>${live}
+        </h2>
+        <p class="text-sm text-zinc-400 mt-1 leading-relaxed">${highlight(e.summary, terms)}</p>
+        <div class="mt-2 flex flex-wrap gap-2">${tags}</div>
+      </article>`;
+    };
+
+    const render = () => {
+      const raw = $('q').value.trim().toLowerCase();
+      const terms = raw.split(/\s+/).filter(Boolean);
+      const hits = entries.filter((e) => {
+        if (kind !== 'all' && e.kind !== kind) return false;
+        if (tag && !(e.tags || []).includes(tag)) return false;
+        return terms.every((t) => e.text.includes(t));   // every term must appear: AND, not OR
+      });
+      $('results').innerHTML = hits.map((e) => card(e, terms)).join('');
+      $('empty').classList.toggle('hidden', hits.length > 0);
+      $('count').textContent = `${hits.length} of ${entries.length}`;
+
+      // A query is a shareable link, the same way the CMS search treats one.
+      const params = new URLSearchParams();
+      if (raw) params.set('q', raw);
+      if (kind !== 'all') params.set('kind', kind);
+      if (tag) params.set('tag', tag);
+      const qs = params.toString();
+      history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+    };
+
+    $('q').addEventListener('input', render);
+
+    document.querySelectorAll('.kind').forEach((button) => {
+      button.addEventListener('click', () => {
+        kind = button.dataset.kind;
+        document.querySelectorAll('.kind').forEach((b) => {
+          const on = b === button;
+          b.className = `kind px-3 py-1 rounded-full text-xs border transition ${on
+            ? 'border-teal-500/40 bg-teal-500/10 text-teal-300'
+            : 'border-white/10 text-zinc-400 hover:text-zinc-200'}`;
+        });
+        render();
+      });
+    });
+
+    document.querySelectorAll('.tag').forEach((button) => {
+      button.addEventListener('click', () => {
+        tag = tag === button.dataset.tag ? null : button.dataset.tag;
+        document.querySelectorAll('.tag').forEach((b) => {
+          const on = b.dataset.tag === tag;
+          b.className = `tag px-2 py-0.5 rounded-full text-[11px] border transition ${on
+            ? 'border-teal-500/40 text-teal-300'
+            : 'border-white/10 text-zinc-500 hover:text-zinc-200'}`;
+        });
+        render();
+      });
+    });
+
+    // Restore state from the URL, so a shared link lands on the same results.
+    const params = new URLSearchParams(location.search);
+    if (params.get('q')) $('q').value = params.get('q');
+    if (params.get('kind')) document.querySelector(`.kind[data-kind="${params.get('kind')}"]`)?.click();
+    if (params.get('tag')) document.querySelector(`.tag[data-tag="${CSS.escape(params.get('tag'))}"]`)?.click();
+    render();
+  })();
+  </script>
+</body>
+</html>

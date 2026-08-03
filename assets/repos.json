@@ -1,0 +1,364 @@
+{
+  "repos": [
+    {
+      "name": "chat",
+      "url": "https://github.com/rheophile10/chat",
+      "description": "Typed chat messages over a serverless encrypted CRDT store: a format column over cr-sqlite, encrypted at rest in the IndexedDB vault, synced peer-to-peer over WebRTC.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-08-03",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "rtc-invite",
+      "url": "https://github.com/rheophile10/rtc-invite",
+      "description": "Peer-to-peer rendezvous with no signalling server: signed WebRTC invites ~1 KB you can email, key-verified handshakes, group keyrings, and mesh introduction. Works from file://.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-08-03",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "idb-vfs-crypto",
+      "url": "https://github.com/rheophile10/idb-vfs-crypto",
+      "description": "Encryption at rest for the IndexedDB VFS: one key over media, documents and a demand-paged SQLite database, unlocked by passcode (Argon2id) or a session X25519 keypair. Runs from file://.",
+      "topics": [],
+      "language": "JavaScript",
+      "pushedAt": "2026-08-03",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "idb-vfs-store",
+      "url": "https://github.com/rheophile10/idb-vfs-store",
+      "description": "Files and media in IndexedDB, block-format-compatible with wa-sqlite's IDBBatchAtomicVFS — range reads, streaming writes, and a SQLite database sharing one object store. Runs from file://.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-08-03",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "browser-crypto",
+      "url": "https://github.com/rheophile10/browser-crypto",
+      "description": "The crypto stack shared by the offline-browser projects: Argon2id, Ed25519, X25519 sealed boxes, AES-256-GCM, SHA-256/HKDF and a synchronous XChaCha20-Poly1305 block cipher.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-08-03",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "sqlite-cms",
+      "url": "https://github.com/rheophile10/sqlite-cms",
+      "description": "A WordPress-shaped CMS whose HTML, theme and media are served out of demand-paged SQLite in the browser — Service Worker when hosted, blob: URLs at file://.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-28",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "rheophile-web",
+      "url": "https://github.com/rheophile10/rheophile-web",
+      "description": "website",
+      "topics": [],
+      "language": "HTML",
+      "pushedAt": "2026-07-27",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "sqlite-wasm-build",
+      "url": "https://github.com/rheophile10/sqlite-wasm-build",
+      "description": "Per-extension SQLite wasm builds from pinned source: cr-sqlite + FTS5, R*Tree, Geopoly, sqlite-vec — for demand-paged SQLite in a single index.html at file://",
+      "topics": [],
+      "language": "JavaScript",
+      "pushedAt": "2026-07-27",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "localRbac",
+      "url": "https://github.com/rheophile10/localRbac",
+      "description": "",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-27",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "sqlite-studio",
+      "url": "https://github.com/rheophile10/sqlite-studio",
+      "description": "A database GUI in one self-contained index.html — demand-paged SQLite from file://, with schema tree, SQL editor with completion, results grid, CSV export and CRUD",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-26",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "wa-sqlite-idb-demo",
+      "url": "https://github.com/rheophile10/wa-sqlite-idb-demo",
+      "description": "The smallest demand-paged SQLite that runs from file:// — wa-sqlite + IDBBatchAtomicVFS, pages persisted to IndexedDB.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-26",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "sample-forms",
+      "url": "https://github.com/rheophile10/sample-forms",
+      "description": "doodles",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-14",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "water-hardware",
+      "url": "https://github.com/rheophile10/water-hardware",
+      "description": "water hardware",
+      "topics": [],
+      "language": "HTML",
+      "pushedAt": "2026-07-13",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "dnd",
+      "url": "https://github.com/rheophile10/dnd",
+      "description": "dnd",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-10",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "rheoServ-waumpaum",
+      "url": "https://github.com/rheophile10/rheoServ-waumpaum",
+      "description": "Offline-first credit-union core in one HTML file: cr-sqlite CRDT, encrypted portable ledgers, Fiserv-DNA-shaped person-centered model, and waumpaum settlement.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-08",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "offline-Protected-B-HRIS",
+      "url": "https://github.com/rheophile10/offline-Protected-B-HRIS",
+      "description": "offline protected b hris",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-07",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "plastron",
+      "url": "https://github.com/rheophile10/plastron",
+      "description": "plastron",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-07-07",
+      "stars": 6,
+      "archived": false
+    },
+    {
+      "name": "rheophile-swa",
+      "url": "https://github.com/rheophile10/rheophile-swa",
+      "description": "",
+      "topics": [],
+      "language": "HTML",
+      "pushedAt": "2026-07-06",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "xit-wasm-ts",
+      "url": "https://github.com/rheophile10/xit-wasm-ts",
+      "description": "Versioned in-memory archives via xit (Zig VCS) compiled to WebAssembly. Browser-friendly.",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-05-18",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "colonial-advocate",
+      "url": "https://github.com/rheophile10/colonial-advocate",
+      "description": "The Colonial Advocate — a single-page web app modelled after William Lyon Mackenzie's newspaper",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2026-05-10",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "civilian-firearms-vs-homicide",
+      "url": "https://github.com/rheophile10/civilian-firearms-vs-homicide",
+      "description": "Civilian firearms (SAS 2017) vs intentional homicides (UNODC) by country, with interactive bar charts and population-threshold filtering.",
+      "topics": [],
+      "language": "HTML",
+      "pushedAt": "2026-05-08",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "genenote-js",
+      "url": "https://github.com/rheophile10/genenote-js",
+      "description": "Lion Kimbras genenote in js but with plastron",
+      "topics": [],
+      "language": "TypeScript",
+      "pushedAt": "2026-04-28",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "no_orm_ever",
+      "url": "https://github.com/rheophile10/no_orm_ever",
+      "description": "",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2025-12-29",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "ChuangTzuBot",
+      "url": "https://github.com/rheophile10/ChuangTzuBot",
+      "description": "",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2025-12-20",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "catherd",
+      "url": "https://github.com/rheophile10/catherd",
+      "description": "",
+      "topics": [],
+      "language": null,
+      "pushedAt": "2025-12-02",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "videoWatcher",
+      "url": "https://github.com/rheophile10/videoWatcher",
+      "description": "Watch videos",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2025-11-25",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "fieldScripts",
+      "url": "https://github.com/rheophile10/fieldScripts",
+      "description": "scripts for the field",
+      "topics": [],
+      "language": "JavaScript",
+      "pushedAt": "2025-09-18",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "stateManager",
+      "url": "https://github.com/rheophile10/stateManager",
+      "description": "",
+      "topics": [],
+      "language": "HTML",
+      "pushedAt": "2025-01-04",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "EverythingIsExactlyTheSame",
+      "url": "https://github.com/rheophile10/EverythingIsExactlyTheSame",
+      "description": "I will not learn EF Core and you can't make me",
+      "topics": [],
+      "language": "F#",
+      "pushedAt": "2024-10-12",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "firestoreCLI",
+      "url": "https://github.com/rheophile10/firestoreCLI",
+      "description": "basic firestore cli to sync local csvs with firestore collections",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2023-10-20",
+      "stars": 1,
+      "archived": false
+    },
+    {
+      "name": "SMS-Chatbot",
+      "url": "https://github.com/rheophile10/SMS-Chatbot",
+      "description": "SMS chatbot on a google cloud function",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2023-05-24",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "bskybot",
+      "url": "https://github.com/rheophile10/bskybot",
+      "description": "my bsky bot",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2023-04-19",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "AgencyAnalytics",
+      "url": "https://github.com/rheophile10/AgencyAnalytics",
+      "description": "AgencyAnalytics to Google BigQuery",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2022-05-18",
+      "stars": 1,
+      "archived": false
+    },
+    {
+      "name": "neorheodb",
+      "url": "https://github.com/rheophile10/neorheodb",
+      "description": "an auth service with a cosmos db wrapper",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2021-10-25",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "jetpack",
+      "url": "https://github.com/rheophile10/jetpack",
+      "description": "Inspired by jetpack at LAX",
+      "topics": [],
+      "language": null,
+      "pushedAt": "2020-09-04",
+      "stars": 0,
+      "archived": false
+    },
+    {
+      "name": "prairie_gophers",
+      "url": "https://github.com/rheophile10/prairie_gophers",
+      "description": "silly gopher game",
+      "topics": [],
+      "language": "Python",
+      "pushedAt": "2020-04-21",
+      "stars": 0,
+      "archived": false
+    }
+  ]
+}

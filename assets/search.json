@@ -1,0 +1,772 @@
+{
+  "site": "https://rheophile.ca",
+  "counts": {
+    "posts": 7,
+    "repos": 36
+  },
+  "entries": [
+    {
+      "kind": "repo",
+      "id": "chat",
+      "title": "chat",
+      "url": "https://github.com/rheophile10/chat",
+      "summary": "Typed chat messages over a serverless encrypted CRDT store: a format column over cr-sqlite, encrypted at rest in the IndexedDB vault, synced peer-to-peer over WebRTC.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-08-03",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "chat typed chat messages over a serverless encrypted crdt store: a format column over cr-sqlite, encrypted at rest in the indexeddb vault, synced peer-to-peer over webrtc. typed chat messages over a serverless encrypted crdt store: a format column over cr-sqlite, encrypted at rest in the indexeddb vault, synced peer-to-peer over webrtc. typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "rtc-invite",
+      "title": "rtc-invite",
+      "url": "https://github.com/rheophile10/rtc-invite",
+      "summary": "Peer-to-peer rendezvous with no signalling server: signed WebRTC invites ~1 KB you can email, key-verified handshakes, group keyrings, and mesh introduction. Works from file://.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-08-03",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "rtc-invite peer-to-peer rendezvous with no signalling server: signed webrtc invites ~1 kb you can email, key-verified handshakes, group keyrings, and mesh introduction. works from file://. peer-to-peer rendezvous with no signalling server: signed webrtc invites ~1 kb you can email, key-verified handshakes, group keyrings, and mesh introduction. works from file://. typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "idb-vfs-crypto",
+      "title": "idb-vfs-crypto",
+      "url": "https://github.com/rheophile10/idb-vfs-crypto",
+      "summary": "Encryption at rest for the IndexedDB VFS: one key over media, documents and a demand-paged SQLite database, unlocked by passcode (Argon2id) or a session X25519 keypair. Runs from file://.",
+      "tags": [
+        "JavaScript"
+      ],
+      "date": "2026-08-03",
+      "extra": {
+        "language": "JavaScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "idb-vfs-crypto encryption at rest for the indexeddb vfs: one key over media, documents and a demand-paged sqlite database, unlocked by passcode (argon2id) or a session x25519 keypair. runs from file://. encryption at rest for the indexeddb vfs: one key over media, documents and a demand-paged sqlite database, unlocked by passcode (argon2id) or a session x25519 keypair. runs from file://. javascript"
+    },
+    {
+      "kind": "repo",
+      "id": "idb-vfs-store",
+      "title": "idb-vfs-store",
+      "url": "https://github.com/rheophile10/idb-vfs-store",
+      "summary": "Files and media in IndexedDB, block-format-compatible with wa-sqlite's IDBBatchAtomicVFS — range reads, streaming writes, and a SQLite database sharing one object store. Runs from file://.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-08-03",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "idb-vfs-store files and media in indexeddb, block-format-compatible with wa-sqlite's idbbatchatomicvfs — range reads, streaming writes, and a sqlite database sharing one object store. runs from file://. files and media in indexeddb, block-format-compatible with wa-sqlite's idbbatchatomicvfs — range reads, streaming writes, and a sqlite database sharing one object store. runs from file://. typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "browser-crypto",
+      "title": "browser-crypto",
+      "url": "https://github.com/rheophile10/browser-crypto",
+      "summary": "The crypto stack shared by the offline-browser projects: Argon2id, Ed25519, X25519 sealed boxes, AES-256-GCM, SHA-256/HKDF and a synchronous XChaCha20-Poly1305 block cipher.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-08-03",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "browser-crypto the crypto stack shared by the offline-browser projects: argon2id, ed25519, x25519 sealed boxes, aes-256-gcm, sha-256/hkdf and a synchronous xchacha20-poly1305 block cipher. the crypto stack shared by the offline-browser projects: argon2id, ed25519, x25519 sealed boxes, aes-256-gcm, sha-256/hkdf and a synchronous xchacha20-poly1305 block cipher. typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "sqlite-cms",
+      "title": "sqlite-cms",
+      "url": "https://github.com/rheophile10/sqlite-cms",
+      "summary": "A WordPress-shaped CMS whose HTML, theme and media are served out of demand-paged SQLite in the browser — Service Worker when hosted, blob: URLs at file://.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-28",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "sqlite-cms a wordpress-shaped cms whose html, theme and media are served out of demand-paged sqlite in the browser — service worker when hosted, blob: urls at file://. a wordpress-shaped cms whose html, theme and media are served out of demand-paged sqlite in the browser — service worker when hosted, blob: urls at file://. typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "rheophile-web",
+      "title": "rheophile-web",
+      "url": "https://github.com/rheophile10/rheophile-web",
+      "summary": "website",
+      "tags": [
+        "HTML"
+      ],
+      "date": "2026-07-27",
+      "extra": {
+        "language": "HTML",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "rheophile-web website website html"
+    },
+    {
+      "kind": "repo",
+      "id": "sqlite-wasm-build",
+      "title": "sqlite-wasm-build",
+      "url": "https://github.com/rheophile10/sqlite-wasm-build",
+      "summary": "Per-extension SQLite wasm builds from pinned source: cr-sqlite + FTS5, R*Tree, Geopoly, sqlite-vec — for demand-paged SQLite in a single index.html at file://",
+      "tags": [
+        "JavaScript"
+      ],
+      "date": "2026-07-27",
+      "extra": {
+        "language": "JavaScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "sqlite-wasm-build per-extension sqlite wasm builds from pinned source: cr-sqlite + fts5, r*tree, geopoly, sqlite-vec — for demand-paged sqlite in a single index.html at file:// per-extension sqlite wasm builds from pinned source: cr-sqlite + fts5, r*tree, geopoly, sqlite-vec — for demand-paged sqlite in a single index.html at file:// javascript"
+    },
+    {
+      "kind": "repo",
+      "id": "localRbac",
+      "title": "localRbac",
+      "url": "https://github.com/rheophile10/localRbac",
+      "summary": "",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-27",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "localrbac typescript"
+    },
+    {
+      "kind": "post",
+      "id": "wa-sqlite-idb-demand-paged",
+      "title": "Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS",
+      "url": "https://rheophile.ca/blog/wa-sqlite-idb-demand-paged.html",
+      "summary": "sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.",
+      "tags": [
+        "sqlite",
+        "wasm",
+        "indexeddb",
+        "offline",
+        "vfs",
+        "fts5",
+        "crdt"
+      ],
+      "date": "2026-07-26",
+      "extra": {
+        "emoji": "🗄️",
+        "shortTitle": "SQLite that persists without hoarding RAM 🗄️"
+      },
+      "text": "sqlite that persists without hoarding ram 🗄️ demand-paged sqlite in the browser: wa-sqlite + an indexeddb vfs sql.js loads the whole database into memory; ordinary sqlite doesn't. a typescript demo puts the demand-paged model back in the browser — sqlite whose pages live in indexeddb, read on demand, with fts5 and crdt in the same build — running from a double-clicked file:// page. sqlite wasm indexeddb offline vfs fts5 crdt wa-sqlite-idb-demand-paged"
+    },
+    {
+      "kind": "repo",
+      "id": "sqlite-studio",
+      "title": "sqlite-studio",
+      "url": "https://github.com/rheophile10/sqlite-studio",
+      "summary": "A database GUI in one self-contained index.html — demand-paged SQLite whose pages live in IndexedDB, with a schema tree, SQL editor, CSV export and CRUD. Runs from file://.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-26",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false,
+        "curated": true,
+        "live": "https://rheophile10.github.io/sqlite-studio/",
+        "emoji": "🗄️"
+      },
+      "text": "sqlite-studio a database gui in one self-contained index.html — demand-paged sqlite whose pages live in indexeddb, with a schema tree, sql editor, csv export and crud. runs from file://. a database gui in one self-contained index.html — demand-paged sqlite from file://, with schema tree, sql editor with completion, results grid, csv export and crud typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "wa-sqlite-idb-demo",
+      "title": "wa-sqlite-idb-demo",
+      "url": "https://github.com/rheophile10/wa-sqlite-idb-demo",
+      "summary": "The smallest demand-paged SQLite that runs from file:// — wa-sqlite + IDBBatchAtomicVFS, pages persisted to IndexedDB.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-26",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "wa-sqlite-idb-demo the smallest demand-paged sqlite that runs from file:// — wa-sqlite + idbbatchatomicvfs, pages persisted to indexeddb. the smallest demand-paged sqlite that runs from file:// — wa-sqlite + idbbatchatomicvfs, pages persisted to indexeddb. typescript"
+    },
+    {
+      "kind": "post",
+      "id": "localrbac-crypto-rbac",
+      "title": "Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target",
+      "url": "https://rheophile.ca/blog/localrbac-crypto-rbac.html",
+      "summary": "Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.",
+      "tags": [
+        "rbac",
+        "crdt",
+        "cryptography",
+        "shamir",
+        "offline",
+        "sqlite"
+      ],
+      "date": "2026-07-15",
+      "extra": {
+        "emoji": "🔐",
+        "shortTitle": "Records a group can keep — without any one keyholder becoming a target 🔐"
+      },
+      "text": "records a group can keep — without any one keyholder becoming a target 🔐 cryptographic rbac over a crdt — records a group can keep without any one keyholder becoming a target cryptographic role-based access control over a local-first crdt database — records a group can keep together, merged for local and group consensus, with shamir threshold custody so no single keyholder is ever worth coercing. a tour of the datalayer, plus a live three-user demo. rbac crdt cryptography shamir offline sqlite localrbac-crypto-rbac"
+    },
+    {
+      "kind": "post",
+      "id": "offline-forms",
+      "title": "One HTML file vs. a web application: sample intake without the IT-approval gauntlet",
+      "url": "https://rheophile.ca/blog/offline-forms.html",
+      "summary": "Web apps are easy to build; getting IT to approve them is not. A single HTML file is the free intermediate step — offline, no server, but with SQLite, Web Crypto, and a scannable QR that composes your form data into a label so transcription never has to happen.",
+      "tags": [
+        "offline",
+        "html-file",
+        "qr",
+        "sqlite",
+        "lab-intake"
+      ],
+      "date": "2026-07-14",
+      "extra": {
+        "emoji": "📄",
+        "shortTitle": "One HTML file vs. a web application: sample intake without the IT-approval gauntlet 📄"
+      },
+      "text": "one html file vs. a web application: sample intake without the it-approval gauntlet 📄 one html file vs. a web application: sample intake without the it-approval gauntlet web apps are easy to build; getting it to approve them is not. a single html file is the free intermediate step — offline, no server, but with sqlite, web crypto, and a scannable qr that composes your form data into a label so transcription never has to happen. offline html-file qr sqlite lab-intake offline-forms"
+    },
+    {
+      "kind": "repo",
+      "id": "sample-forms",
+      "title": "sample-forms",
+      "url": "https://github.com/rheophile10/sample-forms",
+      "summary": "doodles",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-14",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "sample-forms doodles doodles typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "water-hardware",
+      "title": "water-hardware",
+      "url": "https://github.com/rheophile10/water-hardware",
+      "summary": "water hardware",
+      "tags": [
+        "HTML"
+      ],
+      "date": "2026-07-13",
+      "extra": {
+        "language": "HTML",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "water-hardware water hardware water hardware html"
+    },
+    {
+      "kind": "repo",
+      "id": "dnd",
+      "title": "dnd",
+      "url": "https://github.com/rheophile10/dnd",
+      "summary": "dnd",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-10",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "dnd dnd dnd typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "rheoServ-waumpaum",
+      "title": "rheoServ-waumpaum",
+      "url": "https://github.com/rheophile10/rheoServ-waumpaum",
+      "summary": "An offline-first credit-union core in one encrypted HTML file: cr-sqlite CRDT merge across operators and waumpaum settlement between institutions.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-08",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false,
+        "curated": true,
+        "emoji": "🏦"
+      },
+      "text": "rheoserv-waumpaum an offline-first credit-union core in one encrypted html file: cr-sqlite crdt merge across operators and waumpaum settlement between institutions. offline-first credit-union core in one html file: cr-sqlite crdt, encrypted portable ledgers, fiserv-dna-shaped person-centered model, and waumpaum settlement. typescript"
+    },
+    {
+      "kind": "post",
+      "id": "rheoserv-waumpaum",
+      "title": "RheoServ Waumpaum — a credit-union core in one HTML file",
+      "url": "https://rheophile.ca/blog/rheoserv-waumpaum.html",
+      "summary": "A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.",
+      "tags": [
+        "credit-union",
+        "offline",
+        "crdt",
+        "core-banking",
+        "waumpaum"
+      ],
+      "date": "2026-07-07",
+      "extra": {
+        "emoji": "🏦",
+        "shortTitle": "RheoServ Waumpaum — a credit-union core in one HTML file 🏦"
+      },
+      "text": "rheoserv waumpaum — a credit-union core in one html file 🏦 rheoserv waumpaum — a credit-union core in one html file a sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted html file, with crdt multi-operator merge and waumpaum settlement between institutions. teller, merge, and payment-provider walkthroughs with videos. credit-union offline crdt core-banking waumpaum rheoserv-waumpaum"
+    },
+    {
+      "kind": "post",
+      "id": "chaosedgesteg-plastron",
+      "title": "Hiding plastron links in pictures with ChaosEdgeSteg",
+      "url": "https://rheophile.ca/blog/chaosedgesteg-plastron.html",
+      "summary": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.",
+      "tags": [
+        "plastron",
+        "steganography",
+        "pyodide",
+        "chaosedgesteg"
+      ],
+      "date": "2026-07-07",
+      "extra": {
+        "emoji": "🕵️",
+        "shortTitle": "Hiding plastron links in pictures with ChaosEdgeSteg 🐢"
+      },
+      "text": "hiding plastron links in pictures with chaosedgesteg 🐢 hiding plastron links in pictures with chaosedgesteg chaos-based edge steganography from crypt0lith, running verbatim in pyodide cells. hide a plastron.ca #f= link in a twitter-safe png; recover it with cover + password. plastron steganography pyodide chaosedgesteg chaosedgesteg-plastron"
+    },
+    {
+      "kind": "post",
+      "id": "offline-hris-juarez",
+      "title": "Offline HRIS for a community police office",
+      "url": "https://rheophile.ca/blog/offline-hris-juarez.html",
+      "summary": "A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.",
+      "tags": [
+        "plastron",
+        "hris",
+        "offline",
+        "crdt"
+      ],
+      "date": "2026-07-07",
+      "extra": {
+        "emoji": "👮",
+        "shortTitle": "Offline HRIS for a community police office 👮"
+      },
+      "text": "offline hris for a community police office 👮 offline hris for a community police office a plastron detour — crdt sqlite in one html file for offline hr merge. juárez-skinned demo; patterns intended for plastron's own offline-capable future. plastron hris offline crdt offline-hris-juarez"
+    },
+    {
+      "kind": "repo",
+      "id": "offline-Protected-B-HRIS",
+      "title": "offline-Protected-B-HRIS",
+      "url": "https://github.com/rheophile10/offline-Protected-B-HRIS",
+      "summary": "A Protected-B HRIS that runs offline in a single HTML file, merging HR records across operators with CRDT SQLite.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-07",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false,
+        "curated": true,
+        "emoji": "👮"
+      },
+      "text": "offline-protected-b-hris a protected-b hris that runs offline in a single html file, merging hr records across operators with crdt sqlite. offline protected b hris typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "plastron",
+      "title": "plastron",
+      "url": "https://github.com/rheophile10/plastron",
+      "summary": "A polyglot reactive substrate — cells hold values, formulas, or compiled lambdas in any language a compiler is installed for. Live at plastron.ca.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-07-07",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 6,
+        "archived": false,
+        "curated": true,
+        "live": "https://plastron.ca",
+        "emoji": "🐢"
+      },
+      "text": "plastron a polyglot reactive substrate — cells hold values, formulas, or compiled lambdas in any language a compiler is installed for. live at plastron.ca. plastron typescript"
+    },
+    {
+      "kind": "post",
+      "id": "yiwei-tuzhong",
+      "title": "曳尾塗中 — drag your tail in the mud",
+      "url": "https://rheophile.ca/blog/yiwei-tuzhong.html",
+      "summary": "Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.",
+      "tags": [
+        "plastron",
+        "zhuangzi",
+        "interactive"
+      ],
+      "date": "2026-07-06",
+      "extra": {
+        "emoji": "🐢",
+        "shortTitle": "曳尾塗中 — drag your tail in the mud 🐢"
+      },
+      "text": "曳尾塗中 — drag your tail in the mud 🐢 曳尾塗中 — drag your tail in the mud zhuangzi's tortoise story in traditional chinese. click any character to break it down through a decomposition tree with english glosses. plastron zhuangzi interactive yiwei-tuzhong"
+    },
+    {
+      "kind": "repo",
+      "id": "rheophile-swa",
+      "title": "rheophile-swa",
+      "url": "https://github.com/rheophile10/rheophile-swa",
+      "summary": "",
+      "tags": [
+        "HTML"
+      ],
+      "date": "2026-07-06",
+      "extra": {
+        "language": "HTML",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "rheophile-swa html"
+    },
+    {
+      "kind": "repo",
+      "id": "xit-wasm-ts",
+      "title": "xit-wasm-ts",
+      "url": "https://github.com/rheophile10/xit-wasm-ts",
+      "summary": "Versioned in-memory archives via xit (Zig VCS) compiled to WebAssembly. Browser-friendly.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-05-18",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "xit-wasm-ts versioned in-memory archives via xit (zig vcs) compiled to webassembly. browser-friendly. versioned in-memory archives via xit (zig vcs) compiled to webassembly. browser-friendly. typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "colonial-advocate",
+      "title": "colonial-advocate",
+      "url": "https://github.com/rheophile10/colonial-advocate",
+      "summary": "A single-page web app modelled after William Lyon Mackenzie's 19th-century reform newspaper.",
+      "tags": [
+        "Python"
+      ],
+      "date": "2026-05-10",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false,
+        "curated": true,
+        "emoji": "📰"
+      },
+      "text": "colonial-advocate a single-page web app modelled after william lyon mackenzie's 19th-century reform newspaper. the colonial advocate — a single-page web app modelled after william lyon mackenzie's newspaper python"
+    },
+    {
+      "kind": "repo",
+      "id": "civilian-firearms-vs-homicide",
+      "title": "civilian-firearms-vs-homicide",
+      "url": "https://github.com/rheophile10/civilian-firearms-vs-homicide",
+      "summary": "Civilian firearm ownership (Small Arms Survey 2017) charted against intentional homicide rates (UNODC), by country.",
+      "tags": [
+        "HTML"
+      ],
+      "date": "2026-05-08",
+      "extra": {
+        "language": "HTML",
+        "stars": 0,
+        "archived": false,
+        "curated": true,
+        "emoji": "📊"
+      },
+      "text": "civilian-firearms-vs-homicide civilian firearm ownership (small arms survey 2017) charted against intentional homicide rates (unodc), by country. civilian firearms (sas 2017) vs intentional homicides (unodc) by country, with interactive bar charts and population-threshold filtering. html"
+    },
+    {
+      "kind": "repo",
+      "id": "genenote-js",
+      "title": "genenote-js",
+      "url": "https://github.com/rheophile10/genenote-js",
+      "summary": "Lion Kimbra's genenote, reimplemented in JavaScript on top of plastron.",
+      "tags": [
+        "TypeScript"
+      ],
+      "date": "2026-04-28",
+      "extra": {
+        "language": "TypeScript",
+        "stars": 0,
+        "archived": false,
+        "curated": true,
+        "emoji": "🧬"
+      },
+      "text": "genenote-js lion kimbra's genenote, reimplemented in javascript on top of plastron. lion kimbras genenote in js but with plastron typescript"
+    },
+    {
+      "kind": "repo",
+      "id": "no_orm_ever",
+      "title": "no_orm_ever",
+      "url": "https://github.com/rheophile10/no_orm_ever",
+      "summary": "",
+      "tags": [
+        "Python"
+      ],
+      "date": "2025-12-29",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "no_orm_ever python"
+    },
+    {
+      "kind": "repo",
+      "id": "ChuangTzuBot",
+      "title": "ChuangTzuBot",
+      "url": "https://github.com/rheophile10/ChuangTzuBot",
+      "summary": "",
+      "tags": [
+        "Python"
+      ],
+      "date": "2025-12-20",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "chuangtzubot python"
+    },
+    {
+      "kind": "repo",
+      "id": "catherd",
+      "title": "catherd",
+      "url": "https://github.com/rheophile10/catherd",
+      "summary": "",
+      "tags": [],
+      "date": "2025-12-02",
+      "extra": {
+        "language": null,
+        "stars": 0,
+        "archived": false
+      },
+      "text": "catherd"
+    },
+    {
+      "kind": "repo",
+      "id": "videoWatcher",
+      "title": "videoWatcher",
+      "url": "https://github.com/rheophile10/videoWatcher",
+      "summary": "Watch videos",
+      "tags": [
+        "Python"
+      ],
+      "date": "2025-11-25",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "videowatcher watch videos watch videos python"
+    },
+    {
+      "kind": "repo",
+      "id": "fieldScripts",
+      "title": "fieldScripts",
+      "url": "https://github.com/rheophile10/fieldScripts",
+      "summary": "scripts for the field",
+      "tags": [
+        "JavaScript"
+      ],
+      "date": "2025-09-18",
+      "extra": {
+        "language": "JavaScript",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "fieldscripts scripts for the field scripts for the field javascript"
+    },
+    {
+      "kind": "repo",
+      "id": "stateManager",
+      "title": "stateManager",
+      "url": "https://github.com/rheophile10/stateManager",
+      "summary": "",
+      "tags": [
+        "HTML"
+      ],
+      "date": "2025-01-04",
+      "extra": {
+        "language": "HTML",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "statemanager html"
+    },
+    {
+      "kind": "repo",
+      "id": "EverythingIsExactlyTheSame",
+      "title": "EverythingIsExactlyTheSame",
+      "url": "https://github.com/rheophile10/EverythingIsExactlyTheSame",
+      "summary": "I will not learn EF Core and you can't make me",
+      "tags": [
+        "F#"
+      ],
+      "date": "2024-10-12",
+      "extra": {
+        "language": "F#",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "everythingisexactlythesame i will not learn ef core and you can't make me i will not learn ef core and you can't make me f#"
+    },
+    {
+      "kind": "repo",
+      "id": "firestoreCLI",
+      "title": "firestoreCLI",
+      "url": "https://github.com/rheophile10/firestoreCLI",
+      "summary": "basic firestore cli to sync local csvs with firestore collections",
+      "tags": [
+        "Python"
+      ],
+      "date": "2023-10-20",
+      "extra": {
+        "language": "Python",
+        "stars": 1,
+        "archived": false
+      },
+      "text": "firestorecli basic firestore cli to sync local csvs with firestore collections basic firestore cli to sync local csvs with firestore collections python"
+    },
+    {
+      "kind": "repo",
+      "id": "SMS-Chatbot",
+      "title": "SMS-Chatbot",
+      "url": "https://github.com/rheophile10/SMS-Chatbot",
+      "summary": "SMS chatbot on a google cloud function",
+      "tags": [
+        "Python"
+      ],
+      "date": "2023-05-24",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "sms-chatbot sms chatbot on a google cloud function sms chatbot on a google cloud function python"
+    },
+    {
+      "kind": "repo",
+      "id": "bskybot",
+      "title": "bskybot",
+      "url": "https://github.com/rheophile10/bskybot",
+      "summary": "my bsky bot",
+      "tags": [
+        "Python"
+      ],
+      "date": "2023-04-19",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "bskybot my bsky bot my bsky bot python"
+    },
+    {
+      "kind": "repo",
+      "id": "AgencyAnalytics",
+      "title": "AgencyAnalytics",
+      "url": "https://github.com/rheophile10/AgencyAnalytics",
+      "summary": "AgencyAnalytics to Google BigQuery",
+      "tags": [
+        "Python"
+      ],
+      "date": "2022-05-18",
+      "extra": {
+        "language": "Python",
+        "stars": 1,
+        "archived": false
+      },
+      "text": "agencyanalytics agencyanalytics to google bigquery agencyanalytics to google bigquery python"
+    },
+    {
+      "kind": "repo",
+      "id": "neorheodb",
+      "title": "neorheodb",
+      "url": "https://github.com/rheophile10/neorheodb",
+      "summary": "an auth service with a cosmos db wrapper",
+      "tags": [
+        "Python"
+      ],
+      "date": "2021-10-25",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "neorheodb an auth service with a cosmos db wrapper an auth service with a cosmos db wrapper python"
+    },
+    {
+      "kind": "repo",
+      "id": "jetpack",
+      "title": "jetpack",
+      "url": "https://github.com/rheophile10/jetpack",
+      "summary": "Inspired by jetpack at LAX",
+      "tags": [],
+      "date": "2020-09-04",
+      "extra": {
+        "language": null,
+        "stars": 0,
+        "archived": false
+      },
+      "text": "jetpack inspired by jetpack at lax inspired by jetpack at lax"
+    },
+    {
+      "kind": "repo",
+      "id": "prairie_gophers",
+      "title": "prairie_gophers",
+      "url": "https://github.com/rheophile10/prairie_gophers",
+      "summary": "silly gopher game",
+      "tags": [
+        "Python"
+      ],
+      "date": "2020-04-21",
+      "extra": {
+        "language": "Python",
+        "stars": 0,
+        "archived": false
+      },
+      "text": "prairie_gophers silly gopher game silly gopher game python"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ module.exports = {
     "./index.html",
     "./404.html",
     "./manifesto.html",
+    "./search.html",
     "./blog/**/*.html",
     "./assets/blog-ui.js",
   ],
