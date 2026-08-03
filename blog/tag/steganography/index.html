@@ -7,24 +7,8 @@
      Without this, ./media/x.svg inside /p/demand-paging/ would resolve to
      /p/demand-paging/media/x.svg when a Service Worker is serving real URLs. -->
 <base href="/blog/">
-<title>Records a group can keep — without any one keyholder becoming a target 🔐 · rheophile</title>
-<link rel="canonical" href="https://rheophile.ca/blog/localrbac-crypto-rbac/">
+<title>steganography · rheophile</title>
 
-<!-- Link preview. Present here so view-source is honest and a browser extension can read it — but a
-     crawler runs no JavaScript and no Service Worker intercepts for it, so previews only actually
-     work if a build step also writes static stubs. See model/cards.ts. -->
-<meta name="description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coerc">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="rheophile">
-<meta property="og:title" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
-<meta property="og:description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coerc">
-<meta property="og:url" content="https://rheophile.ca/blog/localrbac-crypto-rbac/">
-<meta property="og:image" content="https://rheophile.ca/og/localrbac-crypto-rbac.png">
-<meta property="og:image:alt" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
-<meta name="twitter:description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coerc">
-<meta name="twitter:image" content="https://rheophile.ca/og/localrbac-crypto-rbac.png">
 
 <style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.collapse{visibility:collapse}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-bottom-2{bottom:-.5rem}.-right-16{right:-4rem}.-right-2{right:-.5rem}.-top-24{top:-6rem}.top-0{top:0}.z-50{z-index:50}.mx-1\.5{margin-left:.375rem;margin-right:.375rem}.mx-2{margin-left:.5rem;margin-right:.5rem}.mx-auto{margin-left:auto;margin-right:auto}.-mt-1{margin-top:-.25rem}.mb-10{margin-bottom:2.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mt-16{margin-top:4rem}.mt-2{margin-top:.5rem}.mt-2\.5{margin-top:.625rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-7{margin-top:1.75rem}.mt-8{margin-top:2rem}.mt-auto{margin-top:auto}.mt-px{margin-top:1px}.line-clamp-3{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-1\.5{height:.375rem}.h-11{height:2.75rem}.h-16{height:4rem}.h-2{height:.5rem}.h-3\.5{height:.875rem}.h-7{height:1.75rem}.h-72{height:18rem}.h-8{height:2rem}.h-80{height:20rem}.h-full{height:100%}.h-px{height:1px}.max-h-\[55vh\]{max-height:55vh}.min-h-\[2\.5rem\]{min-height:2.5rem}.min-h-screen{min-height:100vh}.w-1\.5{width:.375rem}.w-2{width:.5rem}.w-3\.5{width:.875rem}.w-7{width:1.75rem}.w-72{width:18rem}.w-8{width:2rem}.w-80{width:20rem}.w-full{width:100%}.min-w-0{min-width:0}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-\[140px\]{max-width:140px}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}.scroll-mt-16{scroll-margin-top:4rem}.scroll-mt-24{scroll-margin-top:6rem}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-x-10{-moz-column-gap:2.5rem;column-gap:2.5rem}.gap-x-4{-moz-column-gap:1rem;column-gap:1rem}.gap-x-5{-moz-column-gap:1.25rem;column-gap:1.25rem}.gap-y-1{row-gap:.25rem}.gap-y-10{row-gap:2.5rem}.gap-y-2{row-gap:.5rem}.-space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(-.5rem*var(--tw-space-x-reverse));margin-left:calc(-.5rem*(1 - var(--tw-space-x-reverse)))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166/var(--tw-border-opacity,1))}.border-teal-500\/25{border-color:rgba(20,184,166,.25)}.border-teal-500\/30{border-color:rgba(20,184,166,.3)}.border-teal-500\/40{border-color:rgba(20,184,166,.4)}.border-white\/10{border-color:hsla(0,0%,100%,.1)}.border-white\/15{border-color:hsla(0,0%,100%,.15)}.border-white\/20{border-color:hsla(0,0%,100%,.2)}.border-white\/5{border-color:hsla(0,0%,100%,.05)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153/var(--tw-bg-opacity,1))}.bg-teal-400{--tw-bg-opacity:1;background-color:rgb(45 212 191/var(--tw-bg-opacity,1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166/var(--tw-bg-opacity,1))}.bg-teal-500\/10{background-color:rgba(20,184,166,.1)}.bg-teal-600\/20{background-color:rgba(13,148,136,.2)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/10{background-color:hsla(0,0%,100%,.1)}.bg-white\/5{background-color:hsla(0,0%,100%,.05)}.bg-white\/\[0\.03\]{background-color:hsla(0,0%,100%,.03)}.bg-zinc-900{--tw-bg-opacity:1;background-color:rgb(24 24 27/var(--tw-bg-opacity,1))}.bg-zinc-900\/30{background-color:rgba(24,24,27,.3)}.bg-zinc-900\/40{background-color:rgba(24,24,27,.4)}.bg-zinc-900\/50{background-color:rgba(24,24,27,.5)}.bg-zinc-900\/60{background-color:rgba(24,24,27,.6)}.bg-zinc-900\/70{background-color:rgba(24,24,27,.7)}.bg-zinc-900\/80{background-color:rgba(24,24,27,.8)}.bg-zinc-950{--tw-bg-opacity:1;background-color:rgb(9 9 11/var(--tw-bg-opacity,1))}.bg-zinc-950\/70{background-color:rgba(9,9,11,.7)}.bg-zinc-950\/95{background-color:rgba(9,9,11,.95)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-teal-500\/\[0\.10\]{--tw-gradient-from:rgba(20,184,166,.1) var(--tw-gradient-from-position);--tw-gradient-to:rgba(20,184,166,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-zinc-900\/40{--tw-gradient-to:rgba(24,24,27,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),rgba(24,24,27,.4) var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-zinc-900\/40{--tw-gradient-to:rgba(24,24,27,.4) var(--tw-gradient-to-position)}.object-cover{-o-object-fit:cover;object-fit:cover}.p-10{padding:2.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-12{padding-bottom:3rem}.pb-2{padding-bottom:.5rem}.pb-20{padding-bottom:5rem}.pb-24{padding-bottom:6rem}.pl-3{padding-left:.75rem}.pr-1{padding-right:.25rem}.pr-3\.5{padding-right:.875rem}.pt-10{padding-top:2.5rem}.pt-14{padding-top:3.5rem}.pt-16{padding-top:4rem}.pt-2{padding-top:.5rem}.pt-24{padding-top:6rem}.pt-6{padding-top:1.5rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-7xl{font-size:4.5rem;line-height:1}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-\[0\.92\]{line-height:.92}.leading-\[1\.02\]{line-height:1.02}.leading-\[1\.1\]{line-height:1.1}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-\[-0\.2px\]{letter-spacing:-.2px}.tracking-\[0\.2em\]{letter-spacing:.2em}.tracking-\[1px\]{letter-spacing:1px}.tracking-\[2px\]{letter-spacing:2px}.tracking-tight{letter-spacing:-.025em}.tracking-tighter{letter-spacing:-.05em}.tracking-widest{letter-spacing:.1em}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-inherit{color:inherit}.text-teal-300{--tw-text-opacity:1;color:rgb(94 234 212/var(--tw-text-opacity,1))}.text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.text-teal-400\/90{color:rgba(45,212,191,.9)}.text-white\/10{color:hsla(0,0%,100%,.1)}.text-zinc-100{--tw-text-opacity:1;color:rgb(244 244 245/var(--tw-text-opacity,1))}.text-zinc-200{--tw-text-opacity:1;color:rgb(228 228 231/var(--tw-text-opacity,1))}.text-zinc-300{--tw-text-opacity:1;color:rgb(212 212 216/var(--tw-text-opacity,1))}.text-zinc-400{--tw-text-opacity:1;color:rgb(161 161 170/var(--tw-text-opacity,1))}.text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122/var(--tw-text-opacity,1))}.text-zinc-600{--tw-text-opacity:1;color:rgb(82 82 91/var(--tw-text-opacity,1))}.text-zinc-700{--tw-text-opacity:1;color:rgb(63 63 70/var(--tw-text-opacity,1))}.text-zinc-900{--tw-text-opacity:1;color:rgb(24 24 27/var(--tw-text-opacity,1))}.text-zinc-950{--tw-text-opacity:1;color:rgb(9 9 11/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.no-underline{text-decoration-line:none}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline{outline-style:solid}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-1,.ring-2{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-inset{--tw-ring-inset:inset}.ring-teal-500\/30{--tw-ring-color:rgba(20,184,166,.3)}.ring-white\/10{--tw-ring-color:hsla(0,0%,100%,.1)}.ring-zinc-950{--tw-ring-opacity:1;--tw-ring-color:rgb(9 9 11/var(--tw-ring-opacity,1))}.blur{--tw-blur:blur(8px)}.blur,.blur-3xl{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-3xl{--tw-blur:blur(64px)}.grayscale{--tw-grayscale:grayscale(100%)}.grayscale,.grayscale-\[0\.15\]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.grayscale-\[0\.15\]{--tw-grayscale:grayscale(0.15)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px)}.backdrop-blur-lg,.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-500{transition-duration:.5s}.selection\:bg-teal-500\/30 ::-moz-selection{background-color:rgba(20,184,166,.3)}.selection\:bg-teal-500\/30 ::selection{background-color:rgba(20,184,166,.3)}.selection\:bg-teal-500\/30::-moz-selection{background-color:rgba(20,184,166,.3)}.selection\:bg-teal-500\/30::selection{background-color:rgba(20,184,166,.3)}.hover\:border-teal-500\/50:hover{border-color:rgba(20,184,166,.5)}.hover\:bg-teal-400:hover{--tw-bg-opacity:1;background-color:rgb(45 212 191/var(--tw-bg-opacity,1))}.hover\:bg-teal-500\/10:hover{background-color:rgba(20,184,166,.1)}.hover\:bg-teal-600\/30:hover{background-color:rgba(13,148,136,.3)}.hover\:bg-white\/5:hover{background-color:hsla(0,0%,100%,.05)}.hover\:bg-zinc-100:hover{--tw-bg-opacity:1;background-color:rgb(244 244 245/var(--tw-bg-opacity,1))}.hover\:text-teal-300:hover{--tw-text-opacity:1;color:rgb(94 234 212/var(--tw-text-opacity,1))}.hover\:text-teal-400:hover{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.hover\:text-zinc-300:hover{--tw-text-opacity:1;color:rgb(212 212 216/var(--tw-text-opacity,1))}.hover\:underline:hover{text-decoration-line:underline}.hover\:grayscale-0:hover{--tw-grayscale:grayscale(0);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.active\:bg-teal-600:active{--tw-bg-opacity:1;background-color:rgb(13 148 136/var(--tw-bg-opacity,1))}.group:hover .group-hover\:translate-x-0\.5{--tw-translate-x:0.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:text-teal-300{--tw-text-opacity:1;color:rgb(94 234 212/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122/var(--tw-text-opacity,1))}.group:hover .group-hover\:ring-teal-500\/50{--tw-ring-color:rgba(20,184,166,.5)}@media (min-width:640px){.sm\:inline{display:inline}.sm\:hidden{display:none}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-2{grid-column:span 2/span 2}.md\:col-span-5{grid-column:span 5/span 5}.md\:col-span-7{grid-column:span 7/span 7}.md\:inline{display:inline}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-80{height:20rem}.md\:w-80{width:20rem}.md\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\:flex-row{flex-direction:row}.md\:justify-end{justify-content:flex-end}.md\:p-10{padding:2.5rem}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:py-14{padding-top:3.5rem;padding-bottom:3.5rem}.md\:pb-24{padding-bottom:6rem}.md\:pt-20{padding-top:5rem}.md\:pt-28{padding-top:7rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-\[2\.6rem\]{font-size:2.6rem}.md\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width:1024px){.lg\:sticky{position:sticky}.lg\:top-20{top:5rem}.lg\:col-span-2{grid-column:span 2/span 2}.lg\:col-span-3{grid-column:span 3/span 3}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.lg\:grid-cols-\[minmax\(0\2c 1\.2fr\)_minmax\(0\2c 0\.9fr\)\]{grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr)}}
 
@@ -257,238 +241,19 @@ mark{background:var(--mark);color:var(--fg);border-radius:3px;padding:0 3px}
 </header>
 <main>
 
-<article class="post">
-  <h1 class="page-title">Records a group can keep — without any one keyholder becoming a target 🔐</h1>
-  <p class="subtitle">Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target</p>
-  <p class="meta">July 15, 2026 · <a class="term" href="/blog/category/writing/">Writing</a> <a class="term" href="/blog/tag/crdt/">crdt</a> <a class="term" href="/blog/tag/cryptography/">cryptography</a> <a class="term" href="/blog/tag/offline/">offline</a> <a class="term" href="/blog/tag/rbac/">rbac</a> <a class="term" href="/blog/tag/shamir/">shamir</a> <a class="term" href="/blog/tag/sqlite/">sqlite</a> </p>
-  <div class="content"><aside class="part callout note" id="proof-of-concept-only-no-formal-security">
-  <p class="callout-title">Proof of concept only.</p>
-  No formal security review, threat assessment, or authorization to
-        protect anything real. It's a working demonstration of a design, not a product. Don't put real secrets in it yet.
-</aside>
-<h2 class="part heading" id="the-goal">The goal</h2>
-<div class="part prose" id="a-group-wants-to-keep-shared-records">A group wants to keep shared records <em>together</em> — one converging truth — without trusting a server, often
-        offline, knowing any one of them could lose a laptop or be leaned on. So the records live in an ordinary SQLite
-        file each person carries, and access control is baked into the <em>data itself</em> — it has to survive the file
-        being copied, edited offline, and merged. Three properties, no server in the loop:</div>
-<div class="part list" id="multiple-parties-each-run-the-database-and">
+<h1 class="page-title">steganography</h1>
+<p class="meta">tag · 1 document(s)</p>
+
+<ul class="postlist">
   
-  <ul><li><strong>Multiple parties</strong> each run the database and edit offline.</li><li>Edits <strong>merge</strong>: two peers reconcile by trading a delta; a subgroup converges to an agreed
-          checkpoint.</li><li>No single keyholder is <strong>alone on the critical path</strong> — losing or coercing one person doesn't
-          hand over the data.</li></ul>
-</div>
-<div class="part prose" id="the-engine-is-cr-sqlite-a-crdt">The engine is <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>, a CRDT extension to SQLite:
-        per-column merge that's commutative, associative, and idempotent, so <strong>replicas collaborate on the same
-        records and converge regardless of merge order</strong>. cr-sqlite gives convergence; everything about
-        <em>who may see and change what</em> is layered on top.</div>
-<h2 class="part heading" id="read-control-is-a-data-encryption-key">Read control is a data-encryption key</h2>
-<div class="part prose" id="you-can-t-stop-someone-reading-bytes">You can't stop someone reading bytes on their own disk, so "can Alice read this?" becomes <em>can Alice decrypt
-        it?</em> Each <strong>resource</strong> (a compartment — <code>patient:alice</code>, <code>notes</code>) has its
-        own versioned <strong>data-encryption key (DEK)</strong>. A record is encrypted cells, one per
-        <code>(record, column)</code>, under that resource's DEK:</div>
-<figure class="part code" id="cell-pk-rid-resource-col-rid-resource">
+  <li>
+    <h2><a href="/blog/chaosedgesteg-plastron/">Hiding plastron links in pictures with ChaosEdgeSteg 🐢</a></h2>
+    <p class="meta">July 7, 2026</p>
+    <p class="excerpt">Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.</p>
+  </li>
   
-  <pre data-lang=""><code>cell(pk = rid|resource|col, rid, resource, col, ct, dek_ver, author, sig)</code></pre>
-</figure>
-<div class="part prose" id="a-reader-gets-the-dek-one-of">A reader gets the DEK one of two ways:</div>
-<div class="part list" id="admin-derives-it-on-demand-from-one">
-  
-  <ul><li><strong>Admin derives it</strong> on demand from one root secret:
-          <code>DEK = HKDF(rootKey, "dek:"+resource, "v"+ver)</code>. No resource keys are stored.</li><li><strong>Everyone else is sealed in:</strong> on grant, the admin seals that DEK to the member's X25519 key
-          into a <code>keywrap</code> row. Only they can unseal it.</li></ul>
-</div>
-<div class="part prose" id="reading-needs-no-online-authority-listrecords-decrypts">Reading needs no online authority: <code>listRecords</code> decrypts the cells whose key you hold and skips the
-        rest. No grant, same ciphertext, a <code>🔒</code> — nothing leaks, because there's no plaintext to hide.</div>
-<aside class="part callout note" id="revocation-is-key-rotation-revoking-bumps-dek">
-  <p class="callout-title">Revocation is key rotation.</p>
-  Revoking bumps <code>dek_ver</code> and re-seals the new key to the
-        remaining members. The revoked user keeps old ciphertext but nothing written after.
-</aside>
-<h2 class="part heading" id="write-control-is-a-signature-checked-at">Write control is a signature checked at merge</h2>
-<div class="part prose" id="encryption-stops-reads-not-writes-anyone-can">Encryption stops reads, not writes — anyone can append a row to a file. So every row carries its author's
-        Ed25519 key and a signature, enforced where it can't be bypassed: <strong>at merge</strong>. An incoming
-        changeset is replayed into a throwaway <strong>staging</strong> database and checked before it's trusted:</div>
-<div class="part list" id="system-rows-identities-grants-key-wraps-checkpoints">
-  
-  <ul><li><strong>System rows</strong> (identities, grants, key-wraps, checkpoints) must be signature-valid and
-          admin-authored — establishing who is a writer.</li><li><strong>Data cells</strong> must be signature-valid and authored by a current writer for that resource.</li></ul>
-</div>
-<div class="part prose" id="only-if-every-row-passes-does-it">Only if every row passes does it merge. A forged cell, a self-appointed admin, a reader trying to write — all
-        <strong>rejected at merge</strong>, with a reason. Authenticity rides on <em>each row</em>, not the envelope, so
-        it survives cr-sqlite's transitive gossip.</div>
-<h2 class="part heading" id="local-consensus-two-files-one-state-root">Local consensus: two files, one state root</h2>
-<div class="part prose" id="two-peers-reconcile-by-trading-changesets-to">Two peers reconcile by trading changesets. To <em>know</em> they've converged without shipping data, each
-        computes a <strong>state root</strong> — a SHA-256 over the sorted cell + grant state. Equal roots, identical
-        state: compare 64 hex characters, not a database. (One gotcha, documented in the engine: cr-sqlite's
-        <code>db_version</code> is a <em>local</em> clock reassigned on merge, so "everything since checkpoint H" uses a
-        local watermark, not a portable version vector.)</div>
-<h2 class="part heading" id="group-consensus-the-wipe-and-rebuild-ceremony">Group consensus: the wipe-and-rebuild ceremony</h2>
-<div class="part prose" id="a-whole-subgroup-converges-through-a-ceremony">A whole subgroup converges through a <strong>ceremony</strong>: a coordinator merges everyone's
-        diff-since-last-checkpoint, optionally rotates every DEK, and records a signed <strong>checkpoint</strong> (a
-        hash of the agreed state). Then, instead of shipping the merged database back, it hands each member a
-        <strong>rebuild slice</strong> — the auth/checkpoint state plus only their entitled, non-archived cells — and
-        each member <strong>wipes and rebuilds</strong> from it. One move does three jobs: compaction, data
-        minimization (you get back only what you're entitled to), and redistribution from the same checkpoint. Evening
-        lock, morning unlock.</div>
-<h2 class="part heading" id="no-single-keyholder-shamir-threshold-custody">No single keyholder: Shamir threshold custody</h2>
-<div class="part prose" id="one-uncomfortable-shape-remains-the-admin-s">One uncomfortable shape remains: the admin's root secret can derive every DEK. <strong>If any one person can
-        decrypt the whole collective dataset alone, that person becomes a target for extortion</strong> — and
-        cryptography has nothing to say to a $5 wrench.</div>
-<figure class="part figure" id="xkcd-538-the-fix-isn-t-a">
-  <img src="/assets/localrbac/xkcd-538-security.png" alt="xkcd 538 “Security”: a crypto nerd imagines a million-dollar cluster cracking 4096-bit RSA; what would actually happen is drugging him and hitting him with a $5 wrench until he gives up the password." loading="lazy">
-  <figcaption><a href="https://xkcd.com/538/">xkcd 538</a> — the fix isn't a stronger cipher; it's making sure no one person is worth the wrench. (CC BY-NC 2.5)</figcaption>
-</figure>
-<div class="part prose" id="so-shamir-s-secret-sharing-splits-the">So <a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Shamir's secret sharing</a> splits the custody
-        key into <code>n</code> shares over GF(2⁸) — any <code>k</code> reconstruct it, any <code>k−1</code> reveal
-        <em>nothing</em> — and seals each share to one custodian's key. <code>sealVault</code> encrypts a payload under a
-        random key and splits that key; unlock is distributed (each custodian re-seals their share to the opener, who
-        combines <code>k</code>). A 4-of-5 quorum survives losing one custodian but needs four people compromised at
-        once. No single keyholder is a point of failure <em>or</em> coercion.</div>
-<h2 class="part heading" id="where-the-database-lives-demand-paged-onto">Where the database lives: demand-paged onto encrypted IndexedDB</h2>
-<div class="part prose" id="ordinary-sqlite-is-demand-paged-its-pager">Ordinary SQLite is <strong>demand-paged</strong>: its pager reads and writes individual <strong>pages</strong>
-        (4&nbsp;KB by default) from the file as queries touch them, holding only a small page cache in RAM — a 50&nbsp;GB
-        database runs in a few megabytes, and only a <code>:memory:</code> database lives entirely in RAM. Most
-        SQLite-in-the-browser throws that away: <code>sql.js</code> loads the <em>whole</em> file into a
-        <code>Uint8Array</code> on the WASM heap. localRbac keeps the demand-paged model in the browser by injecting a
-        <strong>VFS</strong> — SQLite's virtual-filesystem seam — so the pager's block reads and writes land in
-        <strong>IndexedDB</strong>, one page at a time, never the whole file in memory.</div>
-<div class="part prose" id="the-persistent-connection-opens-through-encryptedidbvfs-a">The persistent connection opens <em>through</em> <code>EncryptedIDBVFS</code>, a vendored copy of wa-sqlite's
-        <code>IDBBatchAtomicVFS</code>. Each SQLite page becomes an IndexedDB block keyed
-        <code>[path,&nbsp;offset,&nbsp;version]</code>, fetched and written on demand, with <strong>transparent
-        per-page AES encryption</strong> in the VFS layer and batch-atomic commits. The only <code>:memory:</code>
-        database is the throwaway <strong>staging</strong> connection that authorizes an incoming changeset before it
-        merges (the same staging step from <em>Write control</em>, above) — the store of record is always the encrypted
-        IndexedDB VFS.</div>
-<div class="part prose" id="two-properties-let-this-run-from-file">Two properties let this run from <code>file://</code>, where most persistent-SQLite options can't: the VFS is
-        <strong>Asyncify</strong>-based, so it needs no <code>SharedArrayBuffer</code> and therefore none of the
-        <code>COOP</code>/<code>COEP</code> cross-origin-isolation headers that absurd-sql or threaded-OPFS builds
-        require; and the <code>crsqlite.mjs</code> WASM is base64-inlined as a <code>data:</code> URI, so opening the
-        engine costs zero network fetches. Demand-paged, encrypted, offline — from a double-clicked HTML file.
-        <em>(For the bare mechanism — just this VFS, without the encryption or CRDT — see the standalone write-up:
-        <a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a>.)</em></div>
-<h3 class="part heading" id="the-binary-is-built-here-not-installed">The binary is built here, not installed</h3>
-<div class="part prose" id="the-engine-underneath-is-not-the-published">The engine underneath is not the published <code>@vlcn.io/wa-sqlite</code> — it is compiled from pinned
-        source by <a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a>, using the
-        <code>base</code> variant (cr-sqlite + FTS5), the recipe that reproduces the published package. That
-        matters here more than it would elsewhere, because
-        <strong><code>SQLITE_OMIT_LOAD_EXTENSION</code> is set</strong>: nothing can be loaded at runtime, so every
-        capability has to be <em>in the binary</em>. Installing the published build means accepting someone else's
-        answer to "which extensions does this database have" — and for a project whose whole argument is that the
-        rules must survive the file being copied, that is an odd thing to leave to a registry.</div>
-<div class="part prose" id="because-the-variant-declares-itself-under-the">Because the variant declares itself under the same package name and exposes the same import specifiers,
-        adopting it moved one line and no source:</div>
-<figure class="part code" id="vlcn-io-wa-sqlite-file-sqlite-wasm">
-  
-  <pre data-lang=""><code>&quot;@vlcn.io/wa-sqlite&quot;: &quot;file:../../../sqlite-wasm-build/dist/base&quot;</code></pre>
-</figure>
-<div class="part prose" id="swapping-in-geo-r-tree-geopoly-or">Swapping in <code>geo</code> (R*Tree, Geopoly) or <code>vec</code> (sqlite-vec) is the same line with a
-        different word — which is the reason for building them as separate variants rather than one everything
-        binary. The build, the four variants and the six toolchain failures behind them are written up in
-        <a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a>.</div>
-<aside class="part callout note" id="one-trap-worth-repeating-the-swap-can">
-  <p class="callout-title">One trap worth repeating.</p>
-  The swap can look like it worked while the registry binary is
-        still the one loading. <code>@vlcn.io/crsqlite-wasm</code> was a dependency nothing imported, and it pulled
-        the published <code>wa-sqlite</code> in transitively — which npm then hoisted over the local
-        <code>file:</code> dependency without a word. Check the bytes, not the lockfile:
-        <code>sha256sum node_modules/@vlcn.io/wa-sqlite/crsqlite.wasm dist/base/crsqlite.wasm</code>.
-</aside>
-<div class="part raw" id="the-storage-engine-line-items-packages-datalayer"><div class="tour">
-        <h3>The storage engine — line items</h3>
-        <p class="path">packages/datalayer/src/engine/ · localRbac@fcc4079</p>
-        <ul>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L20-L25"><code>boot-browser.ts</code> L20–L25</a> — <code>openMain</code> registers <code>EncryptedIDBVFS</code> and opens <code>/&lt;name&gt;.db</code> through it; <code>openStaging</code> is the throwaway <code>:memory:</code> db.</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L1-L5"><code>boot-browser.ts</code> L1–L5</a> — the design note in prose: persistent main = encrypted IndexedDB VFS, staging = <code>:memory:</code>, wasm inlined so it "works on <code>file://</code>".</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L2"><code>EncryptedIDBVFS.js</code> L2</a> — vendored from <code>@vlcn.io/wa-sqlite/src/examples/IDBBatchAtomicVFS.js</code>.</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L34"><code>EncryptedIDBVFS.js</code> L34</a> — each page is a <code>FileBlock</code> IndexedDB object keyed <code>[path, offset, version]</code>.</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L220"><code>EncryptedIDBVFS.js</code> L220</a> — the VFS is <strong>Asyncify</strong> (async I/O, no <code>SharedArrayBuffer</code>).</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/sqlite.ts#L111-L116"><code>sqlite.ts</code> L111–L116</a> — imports <code>@vlcn.io/wa-sqlite/dist/crsqlite.mjs</code>; <code>openMemory()</code> is the <code>:memory:</code> staging connection.</li>
-        </ul>
-      </div></div>
-<h2 class="part heading" id="a-tour-of-the-datalayer">A tour of the datalayer</h2>
-<div class="part prose" id="the-engine-is-a-headless-package-an">The engine is a headless package an app wires to a UI, deliberately <strong>resource- and column-agnostic</strong>
-        — records are a generic entity-attribute-value store; "notes" is a demo convention on top. The map:</div>
-<div class="part raw" id="the-engine-packages-datalayer-src-engine-crengine"><div class="tour">
-        <h3>The engine</h3>
-        <p class="path">packages/datalayer/src/engine/crengine.ts</p>
-        <p>
-          The whole compartmented-RBAC device: <code>genesis</code> (become admin), <code>grant</code>/<code>revoke</code>,
-          <code>putRecord</code>/<code>listRecords</code>, <code>importChangeset</code> with the staging-authorize logic,
-          <code>runConsensus</code> and <code>rebuildSliceFor</code>. The essential schema is eight small tables
-          (<code>adminroot</code>, <code>identity</code>, <code>grantrec</code>, <code>dekver</code>, <code>keywrap</code>,
-          <code>cell</code>, <code>archived</code>, <code>checkpoint</code>) — all cr-sqlite CRRs except a local watermark.
-        </p>
-      </div></div>
-<div class="part raw" id="threshold-custody-packages-datalayer-src-vault-ts"><div class="tour">
-        <h3>Threshold custody</h3>
-        <p class="path">packages/datalayer/src/vault.ts · crypto/secret-sharing/shamir.ts</p>
-        <p>
-          <code>sealVault</code> / <code>openVault</code> / <code>produceContribution</code> — the k-of-n seal and the
-          distributed unlock. The Shamir split/combine over GF(2⁸) lives beside it. Covered end to end by
-          <code>tests/{shamir,vault}.test.ts</code>.
-        </p>
-      </div></div>
-<div class="part raw" id="consensus-compartments-packages-datalayer-src-consensus-compartment"><div class="tour">
-        <h3>Consensus &amp; compartments</h3>
-        <p class="path">packages/datalayer/src/consensus/ · compartment/</p>
-        <p>
-          Pure verbs over the checkpoint chain (<code>tip</code>, <code>chainFrom</code>, <code>isDescendant</code>,
-          <code>converged</code>) and the compartment fold that LWW-merges decrypted cells across the resources a viewer
-          can read. Both are side-effect-free and independently testable.
-        </p>
-      </div></div>
-<div class="part raw" id="swappable-crypto-packages-datalayer-src-crypto-kdf"><div class="tour">
-        <h3>Swappable crypto</h3>
-        <p class="path">packages/datalayer/src/crypto/{kdf,signing,sealing,aead,hash,secret-sharing}/</p>
-        <p>
-          Each cryptographic concern is a folder whose <code>index.ts</code> picks one implementation, so a protocol can
-          be swapped in one line. Signing is <strong>WebCrypto Ed25519</strong>, sealing <strong>X25519</strong>, record
-          encryption <strong>AES-256-GCM</strong>, hashing/derivation <strong>SHA-256/HKDF</strong> — all native. Only
-          the memory-hard keystore KDF (<strong>Argon2id</strong>, via hash-wasm) and the one sync-critical page cipher
-          pull in WASM/noble. Every WASM blob is base64-inlined, so there are <strong>zero network fetches</strong>, even
-          from <code>file://</code>.
-        </p>
-      </div></div>
-<div class="part raw" id="identity-you-hold-never-stored-packages-datalayer"><div class="tour">
-        <h3>Identity you hold, never stored</h3>
-        <p class="path">packages/datalayer/src/crypto/keystore.ts</p>
-        <p>
-          Identities are <em>generated</em> keypairs, wrapped in an Argon2id-encrypted <strong>keystore file</strong> the
-          user downloads and keeps — never written to IndexedDB. Provisioning is by public-key card exchange: you export
-          a self-signed <code>{pub, name, xpub, sig}</code> card, the admin grants to that key, and no private material
-          ever changes hands.
-        </p>
-      </div></div>
-<div class="part raw" id="the-notes-demo-ui-packages-app-src"><div class="tour">
-        <h3>The notes demo &amp; UI</h3>
-        <p class="path">packages/app/src/{notes.ts,ui.ts} · public/demo.html</p>
-        <p>
-          The demo layer: <code>notes.ts</code> is the entire "a note is a record with title + body under the
-          <code>notes</code> resource" convention (~20 lines). <code>demo.html</code> iframes the built app three times —
-          admin, writer, reader — so you can watch role enforcement, offline edits, and merge on one screen.
-        </p>
-      </div></div>
-<h2 class="part heading" id="see-it-run">See it run</h2>
-<div class="part prose" id="the-three-user-demo-is-one-html">The <a href="https://rheophile10.github.io/localRbac/demo.html">three-user demo</a> is one HTML file loaded
-        thrice — three machines that never talk. Grant the writer, deny the reader, add a note, export a delta, import it
-        next door: the note converges, the reader sees <code>🔒</code>. Real engine throughout; only the transport (text
-        between iframes vs. a USB stick) is simulated.</div>
-<h2 class="part heading" id="references">References</h2>
-<div class="part list" id="rheophile10-localrbac-source-the-datalayer-tour-the">
-  
-  <ul><li><a href="https://github.com/rheophile10/localRbac">rheophile10/localRbac</a> — source &amp; the datalayer tour</li><li><a href="https://rheophile10.github.io/localRbac/demo.html">the three-user demo</a> — one self-contained file, loaded thrice</li><li><a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Adi Shamir, <em>How to Share a Secret</em>, CACM 22(11), 1979</a> — the threshold-custody primitive</li><li><a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA">Cargo cult</a> — access control that isn't enforced is theatre</li><li><a href="https://xkcd.com/538/">xkcd 538 — <em>Security</em></a> — why no single keyholder should be worth the wrench</li><li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite (the CRDT engine)</li><li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite whose <code>IDBBatchAtomicVFS</code> demand-pages onto IndexedDB (the storage engine, wrapped as <code>EncryptedIDBVFS</code>)</li><li><a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a> — the bare wa-sqlite + IndexedDB-VFS version, without the encryption or CRDT</li><li><a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a> — the pinned-source build this runs on; four variants, each a drop-in <code>@vlcn.io/wa-sqlite</code></li><li><a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a> — why the build exists, and the six toolchain failures it took</li><li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the offline-CRDT lineage this builds on</li></ul>
-</div></div>
-  
-  <aside class="related">
-    <h3>Related writing</h3>
-    <ul>
-      <li><a href="/blog/wa-sqlite-idb-demand-paged/">SQLite that persists without hoarding RAM 🗄️</a> <span class="rel">similar 0.22</span></li>
-    
-      <li><a href="/blog/offline-hris-juarez/">Offline HRIS for a community police office 👮</a> <span class="rel">similar 0.10</span></li>
-    </ul>
-  </aside>
-  
-</article>
+</ul>
+
 
 </main>
 <footer class="footsie">

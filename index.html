@@ -1,249 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09090b">
-  <title>rheophile10 — flowing code</title>
-  <link rel="canonical" href="https://rheophile.ca/">
-  <meta name="description" content="rheophile10 builds plastron, a polyglot reactive substrate where cells hold values, formulas, or compiled lambdas in any language. Projects and a dev log on building tools that feel like water.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="rheophile.ca">
-  <meta property="og:locale" content="en_CA">
-  <meta property="og:url" content="https://rheophile.ca/">
-  <meta property="og:title" content="rheophile10 — flowing code">
-  <meta property="og:description" content="Building plastron, a polyglot reactive substrate, plus other tools that feel like water — and a dev log on building them in the open.">
-  <meta property="og:image" content="https://rheophile.ca/assets/og-card.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@rheophile10">
-  <meta name="twitter:creator" content="@rheophile10">
-  <meta name="twitter:title" content="rheophile10 — flowing code">
-  <meta name="twitter:description" content="Building plastron, a polyglot reactive substrate, plus other tools that feel like water — and a dev log on building them in the open.">
-  <meta name="twitter:image" content="https://rheophile.ca/assets/og-card.png">
-  <link rel="alternate" type="application/rss+xml" title="rheophile.ca dev log" href="https://rheophile.ca/feed.xml">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "rheophile.ca",
-    "url": "https://rheophile.ca/",
-    "description": "rheophile10 builds plastron, a polyglot reactive substrate, plus other reactive, offline-first tools — and a dev log on building them in the open.",
-    "author": {
-      "@type": "Person",
-      "name": "rheophile10",
-      "url": "https://rheophile.ca/",
-      "sameAs": [
-        "https://github.com/rheophile10",
-        "https://x.com/rheophile10"
-      ]
-    }
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap">
-  <link rel="stylesheet" href="/assets/tailwind.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>">
-  <style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Relative URLs in part payloads resolve against the site root, not the current permalink.
+     Without this, ./media/x.svg inside /p/demand-paging/ would resolve to
+     /p/demand-paging/media/x.svg when a Service Worker is serving real URLs. -->
+<base href="/blog/">
+<title>rheophile · rheophile</title>
+<link rel="canonical" href="https://rheophile.ca/blog/">
 
-    :root {
-      --accent: #14b8a6;
-    }
+<!-- Link preview. Present here so view-source is honest and a browser extension can read it — but a
+     crawler runs no JavaScript and no Service Worker intercepts for it, so previews only actually
+     work if a build step also writes static stubs. See model/cards.ts. -->
+<meta name="description" content="Offline-first software, written down.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="rheophile">
+<meta property="og:title" content="rheophile">
+<meta property="og:description" content="Offline-first software, written down.">
+<meta property="og:url" content="https://rheophile.ca/blog/">
+<meta property="og:image" content="https://rheophile.ca/og/site.png">
+<meta property="og:image:alt" content="rheophile">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="rheophile">
+<meta name="twitter:description" content="Offline-first software, written down.">
+<meta name="twitter:image" content="https://rheophile.ca/og/site.png">
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-    }
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.collapse{visibility:collapse}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-bottom-2{bottom:-.5rem}.-right-16{right:-4rem}.-right-2{right:-.5rem}.-top-24{top:-6rem}.top-0{top:0}.z-50{z-index:50}.mx-1\.5{margin-left:.375rem;margin-right:.375rem}.mx-2{margin-left:.5rem;margin-right:.5rem}.mx-auto{margin-left:auto;margin-right:auto}.-mt-1{margin-top:-.25rem}.mb-10{margin-bottom:2.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mt-16{margin-top:4rem}.mt-2{margin-top:.5rem}.mt-2\.5{margin-top:.625rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-7{margin-top:1.75rem}.mt-8{margin-top:2rem}.mt-auto{margin-top:auto}.mt-px{margin-top:1px}.line-clamp-3{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-1\.5{height:.375rem}.h-11{height:2.75rem}.h-16{height:4rem}.h-2{height:.5rem}.h-3\.5{height:.875rem}.h-7{height:1.75rem}.h-72{height:18rem}.h-8{height:2rem}.h-80{height:20rem}.h-full{height:100%}.h-px{height:1px}.max-h-\[55vh\]{max-height:55vh}.min-h-\[2\.5rem\]{min-height:2.5rem}.min-h-screen{min-height:100vh}.w-1\.5{width:.375rem}.w-2{width:.5rem}.w-3\.5{width:.875rem}.w-7{width:1.75rem}.w-72{width:18rem}.w-8{width:2rem}.w-80{width:20rem}.w-full{width:100%}.min-w-0{min-width:0}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-\[140px\]{max-width:140px}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}.scroll-mt-16{scroll-margin-top:4rem}.scroll-mt-24{scroll-margin-top:6rem}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-x-10{-moz-column-gap:2.5rem;column-gap:2.5rem}.gap-x-4{-moz-column-gap:1rem;column-gap:1rem}.gap-x-5{-moz-column-gap:1.25rem;column-gap:1.25rem}.gap-y-1{row-gap:.25rem}.gap-y-10{row-gap:2.5rem}.gap-y-2{row-gap:.5rem}.-space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(-.5rem*var(--tw-space-x-reverse));margin-left:calc(-.5rem*(1 - var(--tw-space-x-reverse)))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166/var(--tw-border-opacity,1))}.border-teal-500\/25{border-color:rgba(20,184,166,.25)}.border-teal-500\/30{border-color:rgba(20,184,166,.3)}.border-teal-500\/40{border-color:rgba(20,184,166,.4)}.border-white\/10{border-color:hsla(0,0%,100%,.1)}.border-white\/15{border-color:hsla(0,0%,100%,.15)}.border-white\/20{border-color:hsla(0,0%,100%,.2)}.border-white\/5{border-color:hsla(0,0%,100%,.05)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153/var(--tw-bg-opacity,1))}.bg-teal-400{--tw-bg-opacity:1;background-color:rgb(45 212 191/var(--tw-bg-opacity,1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166/var(--tw-bg-opacity,1))}.bg-teal-500\/10{background-color:rgba(20,184,166,.1)}.bg-teal-600\/20{background-color:rgba(13,148,136,.2)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/10{background-color:hsla(0,0%,100%,.1)}.bg-white\/5{background-color:hsla(0,0%,100%,.05)}.bg-white\/\[0\.03\]{background-color:hsla(0,0%,100%,.03)}.bg-zinc-900{--tw-bg-opacity:1;background-color:rgb(24 24 27/var(--tw-bg-opacity,1))}.bg-zinc-900\/30{background-color:rgba(24,24,27,.3)}.bg-zinc-900\/40{background-color:rgba(24,24,27,.4)}.bg-zinc-900\/50{background-color:rgba(24,24,27,.5)}.bg-zinc-900\/60{background-color:rgba(24,24,27,.6)}.bg-zinc-900\/70{background-color:rgba(24,24,27,.7)}.bg-zinc-900\/80{background-color:rgba(24,24,27,.8)}.bg-zinc-950{--tw-bg-opacity:1;background-color:rgb(9 9 11/var(--tw-bg-opacity,1))}.bg-zinc-950\/70{background-color:rgba(9,9,11,.7)}.bg-zinc-950\/95{background-color:rgba(9,9,11,.95)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-teal-500\/\[0\.10\]{--tw-gradient-from:rgba(20,184,166,.1) var(--tw-gradient-from-position);--tw-gradient-to:rgba(20,184,166,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-zinc-900\/40{--tw-gradient-to:rgba(24,24,27,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),rgba(24,24,27,.4) var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-zinc-900\/40{--tw-gradient-to:rgba(24,24,27,.4) var(--tw-gradient-to-position)}.object-cover{-o-object-fit:cover;object-fit:cover}.p-10{padding:2.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-12{padding-bottom:3rem}.pb-2{padding-bottom:.5rem}.pb-20{padding-bottom:5rem}.pb-24{padding-bottom:6rem}.pl-3{padding-left:.75rem}.pr-1{padding-right:.25rem}.pr-3\.5{padding-right:.875rem}.pt-10{padding-top:2.5rem}.pt-14{padding-top:3.5rem}.pt-16{padding-top:4rem}.pt-2{padding-top:.5rem}.pt-24{padding-top:6rem}.pt-6{padding-top:1.5rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-7xl{font-size:4.5rem;line-height:1}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-\[0\.92\]{line-height:.92}.leading-\[1\.02\]{line-height:1.02}.leading-\[1\.1\]{line-height:1.1}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-\[-0\.2px\]{letter-spacing:-.2px}.tracking-\[0\.2em\]{letter-spacing:.2em}.tracking-\[1px\]{letter-spacing:1px}.tracking-\[2px\]{letter-spacing:2px}.tracking-tight{letter-spacing:-.025em}.tracking-tighter{letter-spacing:-.05em}.tracking-widest{letter-spacing:.1em}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-inherit{color:inherit}.text-teal-300{--tw-text-opacity:1;color:rgb(94 234 212/var(--tw-text-opacity,1))}.text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.text-teal-400\/90{color:rgba(45,212,191,.9)}.text-white\/10{color:hsla(0,0%,100%,.1)}.text-zinc-100{--tw-text-opacity:1;color:rgb(244 244 245/var(--tw-text-opacity,1))}.text-zinc-200{--tw-text-opacity:1;color:rgb(228 228 231/var(--tw-text-opacity,1))}.text-zinc-300{--tw-text-opacity:1;color:rgb(212 212 216/var(--tw-text-opacity,1))}.text-zinc-400{--tw-text-opacity:1;color:rgb(161 161 170/var(--tw-text-opacity,1))}.text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122/var(--tw-text-opacity,1))}.text-zinc-600{--tw-text-opacity:1;color:rgb(82 82 91/var(--tw-text-opacity,1))}.text-zinc-700{--tw-text-opacity:1;color:rgb(63 63 70/var(--tw-text-opacity,1))}.text-zinc-900{--tw-text-opacity:1;color:rgb(24 24 27/var(--tw-text-opacity,1))}.text-zinc-950{--tw-text-opacity:1;color:rgb(9 9 11/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.no-underline{text-decoration-line:none}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline{outline-style:solid}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-1,.ring-2{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.ring-inset{--tw-ring-inset:inset}.ring-teal-500\/30{--tw-ring-color:rgba(20,184,166,.3)}.ring-white\/10{--tw-ring-color:hsla(0,0%,100%,.1)}.ring-zinc-950{--tw-ring-opacity:1;--tw-ring-color:rgb(9 9 11/var(--tw-ring-opacity,1))}.blur{--tw-blur:blur(8px)}.blur,.blur-3xl{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-3xl{--tw-blur:blur(64px)}.grayscale{--tw-grayscale:grayscale(100%)}.grayscale,.grayscale-\[0\.15\]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.grayscale-\[0\.15\]{--tw-grayscale:grayscale(0.15)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px)}.backdrop-blur-lg,.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-500{transition-duration:.5s}.selection\:bg-teal-500\/30 ::-moz-selection{background-color:rgba(20,184,166,.3)}.selection\:bg-teal-500\/30 ::selection{background-color:rgba(20,184,166,.3)}.selection\:bg-teal-500\/30::-moz-selection{background-color:rgba(20,184,166,.3)}.selection\:bg-teal-500\/30::selection{background-color:rgba(20,184,166,.3)}.hover\:border-teal-500\/50:hover{border-color:rgba(20,184,166,.5)}.hover\:bg-teal-400:hover{--tw-bg-opacity:1;background-color:rgb(45 212 191/var(--tw-bg-opacity,1))}.hover\:bg-teal-500\/10:hover{background-color:rgba(20,184,166,.1)}.hover\:bg-teal-600\/30:hover{background-color:rgba(13,148,136,.3)}.hover\:bg-white\/5:hover{background-color:hsla(0,0%,100%,.05)}.hover\:bg-zinc-100:hover{--tw-bg-opacity:1;background-color:rgb(244 244 245/var(--tw-bg-opacity,1))}.hover\:text-teal-300:hover{--tw-text-opacity:1;color:rgb(94 234 212/var(--tw-text-opacity,1))}.hover\:text-teal-400:hover{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.hover\:text-zinc-300:hover{--tw-text-opacity:1;color:rgb(212 212 216/var(--tw-text-opacity,1))}.hover\:underline:hover{text-decoration-line:underline}.hover\:grayscale-0:hover{--tw-grayscale:grayscale(0);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.active\:bg-teal-600:active{--tw-bg-opacity:1;background-color:rgb(13 148 136/var(--tw-bg-opacity,1))}.group:hover .group-hover\:translate-x-0\.5{--tw-translate-x:0.125rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:text-teal-300{--tw-text-opacity:1;color:rgb(94 234 212/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.group:hover .group-hover\:text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122/var(--tw-text-opacity,1))}.group:hover .group-hover\:ring-teal-500\/50{--tw-ring-color:rgba(20,184,166,.5)}@media (min-width:640px){.sm\:inline{display:inline}.sm\:hidden{display:none}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-2{grid-column:span 2/span 2}.md\:col-span-5{grid-column:span 5/span 5}.md\:col-span-7{grid-column:span 7/span 7}.md\:inline{display:inline}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-80{height:20rem}.md\:w-80{width:20rem}.md\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\:flex-row{flex-direction:row}.md\:justify-end{justify-content:flex-end}.md\:p-10{padding:2.5rem}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:py-14{padding-top:3.5rem;padding-bottom:3.5rem}.md\:pb-24{padding-bottom:6rem}.md\:pt-20{padding-top:5rem}.md\:pt-28{padding-top:7rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-\[2\.6rem\]{font-size:2.6rem}.md\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width:1024px){.lg\:sticky{position:sticky}.lg\:top-20{top:5rem}.lg\:col-span-2{grid-column:span 2/span 2}.lg\:col-span-3{grid-column:span 3/span 3}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.lg\:grid-cols-\[minmax\(0\2c 1\.2fr\)_minmax\(0\2c 0\.9fr\)\]{grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr)}}
 
-    .display {
-      font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-      font-feature-settings: "ss02";
-    }
+/* ── rheophile ─────────────────────────────────────────── */
+:root{
+  --bg:#0a0b0d; --panel:#101215; --fg:#e7e9ec; --muted:#8b929c; --rule:#20242a;
+  --accent:#2dd4bf; --mark:#134e4a; --code:#14171c;
+}
+/* Dark only, deliberately: the homepage's hero and manifesto are Tailwind markup written for a
+   dark background — text-zinc-400 on zinc-950 — and a light palette rendered the manifesto card as
+   near-invisible text on near-white. A light theme would mean restyling that markup, which is the
+   opposite of carrying it across unchanged. */
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:17px/1.75 ui-serif,Charter,Georgia,Cambria,"Times New Roman",serif;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#04211d}
 
-    .section-header {
-      font-size: 1.75rem;
-      line-height: 1.1;
-      letter-spacing: -.025em;
-    }
+.masthead{max-width:780px;margin:0 auto;padding:52px 24px 22px}
+.brand{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--fg);text-decoration:none;
+  text-transform:lowercase;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.brand:hover{color:var(--accent)}
+.tagline{margin:2px 0 18px;color:var(--muted);font-size:14px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.menu{display:flex;gap:18px;flex-wrap:wrap;font:11px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  text-transform:uppercase;letter-spacing:.14em}
+.menu a{color:var(--muted);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+.menu a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.searchbox{margin-top:20px}
+.searchbox input{width:100%;padding:10px 13px;border:1px solid var(--rule);border-radius:9px;
+  background:var(--panel);color:var(--fg);
+  font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.searchbox input:focus{outline:none;border-color:var(--accent)}
 
-    .glass {
-      background: rgba(9, 9, 11, 0.8);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(63, 63, 70, 0.4);
-    }
+main{max-width:780px;margin:0 auto;padding:14px 24px 72px}
+.page-title{font-size:38px;line-height:1.15;letter-spacing:-.03em;margin:.35em 0 .25em;font-weight:700}
+.subtitle{color:var(--muted);font-size:19px;margin:-.1em 0 .7em;font-style:normal}
+h2 a{color:var(--fg);text-decoration:none}
+h2 a:hover{color:var(--accent)}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+.meta{color:var(--muted);font-size:12px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.1em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.num{display:none}
+.excerpt{margin:0;color:var(--muted);font-size:16px}
+.crumbs{display:flex;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin:0 0 16px;
+  text-transform:uppercase;letter-spacing:.1em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.crumbs span{opacity:.4}
 
-    .nav-link {
-      transition: color 0.1s ease;
-    }
-    .nav-link:hover {
-      color: #14b8a6;
-    }
+.part.cards{margin:40px 0}
+.cards-title{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);
+  margin:0 0 14px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.cardgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.cardtile{display:flex;flex-direction:column;gap:2px;padding:16px 17px;border:1px solid var(--rule);
+  border-radius:14px;text-decoration:none;color:var(--fg);background:var(--panel);min-width:0}
+.cardtile:hover{border-color:var(--accent)}
+.cardtile.featured{border-color:color-mix(in srgb, var(--accent) 45%, var(--rule))}
+.cardtile-emoji{font-size:20px}
+.cardtile-name{font-weight:700;letter-spacing:-.01em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.cardtile-lang{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.cardtile-tagline{font-size:14px;line-height:1.55;color:var(--muted);margin-top:5px;
+  overflow-wrap:anywhere}
+.listing-title{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);
+  margin:56px 0 0;padding-top:26px;border-top:1px solid var(--rule);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+/* The hero arrives as Tailwind markup sized for a wide container; give the index room for it. */
+.intro{margin:0 -24px}
+.intro > *{max-width:none}
+@media (min-width:1100px){ main{max-width:1100px} }
+.postlist{list-style:none;margin:30px 0 0;padding:0}
+.postlist li{padding:26px 0;border-top:1px solid var(--rule)}
+.postlist li:first-child{border-top:none;padding-top:6px}
+.postlist h2{font-size:25px;line-height:1.25;letter-spacing:-.02em;margin:0 0 6px}
+.postlist li.group{padding:14px 0 2px;border:none;color:var(--muted);font-size:10px;
+  text-transform:uppercase;letter-spacing:.16em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.postlist.passages .excerpt a{color:var(--fg);text-decoration:none;font-size:16px}
+.postlist.passages .excerpt a:hover{color:var(--accent)}
+.postlist.grouped .inner{list-style:none;margin:10px 0 0;padding:0 0 0 16px;
+  border-left:2px solid var(--rule)}
+.postlist.grouped .inner li{padding:5px 0;border:none;font-size:15px}
+.postlist.grouped .inner a{color:var(--fg);text-decoration:none}
+.postlist.grouped .inner a:hover{color:var(--accent)}
 
-    .project-card, .post-card {
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                  box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
-                  border-color 0.2s ease;
-    }
-    .project-card:hover, .post-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-      border-color: #14b8a6;
-    }
+/* parts */
+.content{margin-top:26px}
+.part{margin:0}
+.part.prose p{margin:0 0 1.15em}
+.part.heading h2,.part.heading h3,.part.heading h4{letter-spacing:-.02em;line-height:1.3;
+  margin:2em 0 .55em}
+.part.heading h2{font-size:26px;padding-top:.35em;border-top:1px solid var(--rule)}
+.part.heading h3{font-size:20px}
+.part.heading h4{font-size:17px;color:var(--muted)}
+.content img{max-width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--rule)}
+.content video{width:100%;border-radius:12px;background:#000;display:block;border:1px solid var(--rule)}
+.part.figure,.part.code,.part.table,.part.video{margin:30px 0}
+.part.figure figcaption,.part.video figcaption,.part.code figcaption,.part.table figcaption{
+  color:var(--muted);font-size:13px;margin-top:10px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.part.code pre,.content pre{background:var(--code);border:1px solid var(--rule);padding:15px 17px;
+  border-radius:11px;overflow-x:auto;margin:0;
+  font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace}
+.content code{background:var(--code);border:1px solid var(--rule);padding:.5px 5px;border-radius:5px;
+  font-size:.85em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.content pre code{background:none;border:none;padding:0}
+.part.quote,.content blockquote{margin:28px 0;padding:2px 0 2px 20px;
+  border-left:2px solid var(--accent);color:var(--muted);font-style:italic}
+.part.quote cite{display:block;margin-top:10px;font-size:13px;font-style:normal}
+.part.callout{margin:30px 0;padding:17px 19px;border:1px solid var(--rule);border-radius:13px;
+  background:var(--panel)}
+.part.callout .callout-title{margin:0 0 7px;font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--accent);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.part.callout p:last-child{margin-bottom:0}
+.part.list ul{margin:0 0 1.15em;padding-left:24px}
+.part.list li{margin:.4em 0}
+.part.list .list-title{margin:0 0 8px;font-weight:600}
+.part.sealed{margin:30px 0;padding:19px;border:1px dashed var(--rule);border-radius:13px;
+  color:var(--muted)}
 
-    .subtle-grid {
-      background-image:
-        linear-gradient(rgba(163, 163, 172, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(163, 163, 172, 0.035) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
+/* a whole self-contained document, embedded in a sandboxed frame. Without an explicit width an
+   iframe falls back to its 300x150 default, and this stylesheet replaces the engine's, so the
+   engine's own .raw-frame rules are not there to inherit. */
+.part.raw{margin:32px 0}
+.part.raw .raw-frame{width:100%;display:block;height:520px;border:1px solid var(--rule);
+  border-radius:12px;background:#0a0b0d;color-scheme:dark}
+.part.raw .raw-title{margin:0 0 9px;font-size:10px;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.part.raw .raw-caption{color:var(--muted);font-size:13px;margin-top:10px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 
-    .flow-accent {
-      position: relative;
-    }
-    .flow-accent::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; bottom: -1px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #14b8a6, transparent);
-      opacity: 0.3;
-    }
+/* the paired narration-and-clip shape the how-to posts are built from */
+.part.story{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:34px 0;padding-top:26px;
+  border-top:1px solid var(--rule)}
+@media (min-width:820px){ .part.story{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start} }
+/* minmax(0,…), not 1fr: a grid track defaults to min-width:auto and will not shrink below its
+   content's min-content width, so one <pre> inside a story blew the track out to 781px in a 390px
+   viewport. Measured as 415px of horizontal overflow before this. */
+.part.story > *{min-width:0}
+.part.prose,.part.story .story-text,.content li{overflow-wrap:anywhere}
+.part.story .story-step{margin:0 0 4px;color:var(--accent);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.16em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.part.story h3{margin:0 0 10px;font-size:20px;letter-spacing:-.02em}
+.part.story .story-text p{margin:0 0 .9em;font-size:16px}
+.part.story .story-media{position:sticky;top:20px}
 
-    .mono {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
+.content table{border-collapse:collapse;width:100%;font-size:15px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.content th,.content td{border-bottom:1px solid var(--rule);padding:9px 11px;text-align:left;
+  vertical-align:top}
+.content th{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
+  font-weight:600}
+mark{background:var(--mark);color:var(--fg);border-radius:3px;padding:0 3px}
 
-    .stat {
-      font-variant-numeric: tabular-nums;
-    }
+/* query page */
+.queryform{margin:26px 0 8px}
+.queryform input[type=search]{width:100%;padding:12px 15px;border:1px solid var(--rule);
+  border-radius:10px;background:var(--panel);color:var(--fg);
+  font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.queryform input[type=search]:focus{outline:none;border-color:var(--accent)}
+.queryrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:12px;
+  font:11px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.1em}
+.queryrow label{display:flex;gap:6px;align-items:center}
+.queryrow select{padding:6px 8px;border:1px solid var(--rule);border-radius:7px;
+  background:var(--panel);color:var(--fg);font:11px/1 inherit;letter-spacing:.06em}
+.queryrow button{padding:7px 17px;border:1px solid var(--accent);border-radius:999px;
+  background:transparent;color:var(--accent);font:11px/1 inherit;font-weight:700;
+  letter-spacing:.12em;cursor:pointer}
+.queryrow button:hover{background:var(--accent);color:#04211d}
+.chips{margin:14px 0 0}
+.resultline{margin:20px 0 0;text-transform:none;letter-spacing:0;font-size:13px}
+.pager{display:inline-block;margin:26px 16px 0 0;font-size:14px}
+.facets{margin-top:52px;padding-top:26px;border-top:1px solid var(--rule);
+  display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.facet h3,.cloud h3,.related h3,.subtoc h3{font-size:10px;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--muted);margin:0 0 10px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 
-    .rheo-gradient {
-      background: linear-gradient(90deg, #14b8a6, #67e8f9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .nav-active {
-      color: #14b8a6;
-      position: relative;
-    }
-    .nav-active:after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: #14b8a6;
-    }
-
-    .pfp-ring {
-      box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.2),
-                  0 25px 50px -12px rgb(0 0 0 / 0.4);
-    }
-
-    .plastron-mock {
-      background: #0a0a0b;
-      border: 1px solid #27272a;
-    }
-
-    /* ---- Accessibility ---------------------------------------------------- */
-    :focus-visible {
-      outline: 2px solid #14b8a6;
-      outline-offset: 2px;
-      border-radius: 4px;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: 0.5rem;
-      top: -3rem;
-      z-index: 100;
-      background: #14b8a6;
-      color: #09090b;
-      padding: 0.5rem 1rem;
-      border-radius: 0 0 0.5rem 0.5rem;
-      font-weight: 600;
-      font-size: 0.875rem;
-      transition: top 0.15s ease;
-    }
-    .skip-link:focus {
-      top: 0;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+.term{display:inline-block;color:var(--muted);text-decoration:none;font-size:11px;
+  border:1px solid var(--rule);border-radius:999px;padding:3px 11px;margin:0 5px 5px 0;
+  text-transform:lowercase;letter-spacing:.03em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.term:hover{border-color:var(--accent);color:var(--accent)}
+.term.on{border-color:var(--accent);color:#04211d;background:var(--accent)}
+.term span{opacity:.55;margin-left:2px}
+.cloud{margin-top:52px;padding-top:26px;border-top:1px solid var(--rule)}
+.related,.subtoc{margin-top:52px;padding-top:26px;border-top:1px solid var(--rule)}
+.related ul,.subtoc ol{margin:0;padding-left:20px}
+.related li,.subtoc li{margin:7px 0;font-size:16px}
+.related .rel{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.toc{list-style:none;margin:30px 0 0;padding:0}
+.toc li{padding:7px 0;border-top:1px solid var(--rule)}
+.toc li.depth-1{padding-left:24px} .toc li.depth-2{padding-left:48px}
+.toc a{text-decoration:none}
+.toc-note{display:block;color:var(--muted);font-size:13px}
+.empty{color:var(--muted);font-style:italic}
+.footsie{max-width:780px;margin:0 auto;padding:26px 24px 60px;border-top:1px solid var(--rule);
+  color:var(--muted);font-size:12px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.footsie p{margin:4px 0}
+.served b{color:var(--accent);font-weight:600}
+</style>
 </head>
-<body class="bg-zinc-950 text-zinc-200 selection:bg-teal-500/30">
-  <a href="#content" class="skip-link">Skip to content</a>
-
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/95 backdrop-blur-lg">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="#plastron" class="flex items-center gap-2.5 no-underline text-inherit" aria-label="rheophile10 — jump to plastron">
-          <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30">
-            <span class="text-xl leading-none mt-px" aria-hidden="true">🐸</span>
-          </div>
-          <div>
-            <div class="font-semibold tracking-tighter text-xl">rheophile10</div>
-            <div class="text-[10px] text-zinc-500 -mt-1">rheophile.ca</div>
-          </div>
-        </a>
-      </div>
-
-      <div class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#projects" class="nav-link text-zinc-400 hover:text-white">Projects</a>
-        <a href="#blog" class="nav-link text-zinc-400 hover:text-white">Blog</a>
-        <a href="/manifesto.html" class="nav-link text-zinc-400 hover:text-white">Manifesto</a>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <a href="https://x.com/rheophile10" target="_blank" rel="noopener" aria-label="rheophile10 on X"
-           class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full border border-white/10 hover:bg-white/5 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25l-7.451 8.52L4.5 2.25H1.08l7.646 8.73L1.08 21.75h3.42l6.313-7.23 5.058 7.23h3.42l-7.646-8.73 7.646-8.73h-3.42z"/></svg>
-          <span class="hidden sm:inline">@rheophile10</span>
-        </a>
-        <a href="https://github.com/rheophile10" target="_blank" rel="noopener" aria-label="rheophile10 on GitHub"
-           class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full bg-white text-zinc-900 hover:bg-zinc-100 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.89.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 1-.32 3.3 1.23.95-.26 1.98-.4 3-.4s2.05.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.25 5.69.41.36.77 1.08.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.67.8.55 4.57-1.51 7.86-5.81 7.86-10.89C23.5 5.73 18.27.5 12 .5z"/></svg>
-          <span class="hidden sm:inline">GitHub</span>
-        </a>
-        <div id="auth-area">
-          <a href="/apps/"
-             class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-full border border-teal-500/40 text-teal-400 hover:bg-teal-500/10 transition-colors">
-            Login
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile quick nav -->
-    <div class="md:hidden border-t border-white/10 bg-zinc-950/95 px-6 py-2 flex gap-x-5 text-xs overflow-x-auto">
-      <a href="#projects" class="text-zinc-400 whitespace-nowrap">Projects</a>
-      <a href="#blog" class="text-zinc-400 whitespace-nowrap">Blog</a>
-      <a href="/manifesto.html" class="text-zinc-400 whitespace-nowrap">Manifesto</a>
-    </div>
+<body>
+<header class="masthead">
+  <a class="brand" href="/blog/">rheophile</a>
+  <p class="tagline">Offline-first software, written down.</p>
+  <nav class="menu">
+    <a href="/blog/">Home</a>
+    <a href="/blog/home/">rheophile</a>
+    <a href="/blog/collection/writing/">Writing</a>
+    
+      
+      <a class="chip" href="/apps/" target="_blank" rel="noopener">Login</a>
+      
+    
   </nav>
+  <!-- Every named field becomes a URL parameter, so a result set is a shareable link. -->
+  <form class="searchbox" data-cms-query action="/blog/query/">
+    <input type="search" name="q" value="" placeholder="Search this site…" autocomplete="off">
+  </form>
+</header>
+<main>
 
-  <main id="content">
-  <!-- HERO -->
-  <header class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24">
+<div class="intro"><div class="part raw" id="hero"><header class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24">
     <div class="grid md:grid-cols-12 gap-x-10 gap-y-10 items-center">
       <!-- Text -->
       <div class="md:col-span-7">
@@ -263,20 +277,18 @@
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#projects"
-             class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl bg-teal-500 hover:bg-teal-400 active:bg-teal-600 transition-colors text-zinc-950 font-semibold text-sm tracking-[-0.2px]">
+          <a href="#" class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl bg-teal-500 hover:bg-teal-400 active:bg-teal-600 transition-colors text-zinc-950 font-semibold text-sm tracking-[-0.2px]">
             View projects
             <span aria-hidden="true">→</span>
           </a>
-          <a href="https://plastron.ca" target="_blank" rel="noopener"
-             class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl border border-white/20 hover:bg-white/5 transition-colors text-sm font-medium">
+          <a href="https://plastron.ca" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl border border-white/20 hover:bg-white/5 transition-colors text-sm font-medium">
             Open live demo
           </a>
         </div>
 
         <div class="mt-8 flex items-center gap-4 text-sm">
           <div class="flex -space-x-2">
-            <div class="w-7 h-7 rounded-full ring-2 ring-zinc-950 overflow-hidden border border-white/20"><img src="assets/pfp.jpg" alt="" aria-hidden="true"></div>
+            <div class="w-7 h-7 rounded-full ring-2 ring-zinc-950 overflow-hidden border border-white/20"><img src="/assets/pfp.jpg" alt="" aria-hidden="true"></div>
           </div>
           <div class="text-zinc-400">
             <a href="https://x.com/rheophile10" class="hover:text-white transition-colors">@rheophile10</a>
@@ -290,8 +302,7 @@
       <div class="md:col-span-5 flex justify-center md:justify-end">
         <div class="relative">
           <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden ring-1 ring-white/10 pfp-ring">
-            <img src="assets/pfp.jpg" alt="@rheophile10 profile photo"
-                 class="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-500">
+            <img src="/assets/pfp.jpg" alt="@rheophile10 profile photo" class="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-500">
           </div>
           <div class="absolute -bottom-2 -right-2 px-3.5 py-1 rounded-2xl bg-zinc-900 border border-white/10 text-xs flex items-center gap-1.5 shadow-xl">
             <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
@@ -300,10 +311,8 @@
         </div>
       </div>
     </div>
-  </header>
-
-  <!-- FEATURED: WORDCEL MANIFESTO -->
-  <section class="max-w-6xl mx-auto px-6 pt-2 pb-12">
+  </header></div>
+<div class="part raw" id="section"><section class="max-w-6xl mx-auto px-6 pt-2 pb-12">
     <a href="/manifesto.html" class="group block no-underline text-inherit">
       <div class="relative overflow-hidden rounded-3xl border border-teal-500/25 bg-gradient-to-br from-teal-500/[0.10] via-zinc-900/40 to-zinc-900/40 p-8 md:p-10 transition-colors hover:border-teal-500/50">
         <div class="pointer-events-none absolute -top-24 -right-16 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl"></div>
@@ -332,245 +341,154 @@
         </div>
       </div>
     </a>
-  </section>
+  </section></div>
+<section class="part cards" id="projects">
+  <h2 class="cards-title">Projects</h2>
+  <div class="cardgrid">
+    
+    <a class="cardtile featured" href="https://plastron.ca"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">🐢</span>
+      <span class="cardtile-name">plastron</span>
+      <span class="cardtile-lang">TypeScript</span>
+      <span class="cardtile-tagline">A polyglot reactive substrate — cells hold values, formulas, or compiled lambdas in any language a compiler is installed for. Live at plastron.ca.</span>
+    </a>
+    
+    <a class="cardtile" href="https://rheophile10.github.io/sqlite-studio/"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">🗄️</span>
+      <span class="cardtile-name">SQLite Studio</span>
+      <span class="cardtile-lang">TypeScript</span>
+      <span class="cardtile-tagline">A database GUI in one self-contained index.html — demand-paged SQLite whose pages live in IndexedDB, with a schema tree, SQL editor, CSV export and CRUD. Runs from file://.</span>
+    </a>
+    
+    <a class="cardtile" href="https://github.com/rheophile10/rheoServ-waumpaum"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">🏦</span>
+      <span class="cardtile-name">RheoServ Waumpaum</span>
+      <span class="cardtile-lang">TypeScript</span>
+      <span class="cardtile-tagline">An offline-first credit-union core in one encrypted HTML file: cr-sqlite CRDT merge across operators and waumpaum settlement between institutions.</span>
+    </a>
+    
+    <a class="cardtile" href="https://github.com/rheophile10/offline-Protected-B-HRIS"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">👮</span>
+      <span class="cardtile-name">Offline Protected-B HRIS</span>
+      <span class="cardtile-lang">TypeScript</span>
+      <span class="cardtile-tagline">A Protected-B HRIS that runs offline in a single HTML file, merging HR records across operators with CRDT SQLite.</span>
+    </a>
+    
+    <a class="cardtile" href="https://github.com/rheophile10/colonial-advocate"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">📰</span>
+      <span class="cardtile-name">The Colonial Advocate</span>
+      <span class="cardtile-lang">Python</span>
+      <span class="cardtile-tagline">A single-page web app modelled after William Lyon Mackenzie&#39;s 19th-century reform newspaper.</span>
+    </a>
+    
+    <a class="cardtile" href="https://github.com/rheophile10/civilian-firearms-vs-homicide"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">📊</span>
+      <span class="cardtile-name">Firearms vs Homicide</span>
+      <span class="cardtile-lang">HTML</span>
+      <span class="cardtile-tagline">Civilian firearm ownership (Small Arms Survey 2017) charted against intentional homicide rates (UNODC), by country.</span>
+    </a>
+    
+    <a class="cardtile" href="https://github.com/rheophile10/genenote-js"
+       target="_blank" rel="noopener">
+      <span class="cardtile-emoji">🧬</span>
+      <span class="cardtile-name">genenote-js</span>
+      <span class="cardtile-lang">TypeScript</span>
+      <span class="cardtile-tagline">Lion Kimbra&#39;s genenote, reimplemented in JavaScript on top of plastron.</span>
+    </a>
+    
+  </div>
+</section></div>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="max-w-6xl mx-auto px-6 pt-16 pb-12">
-    <div class="flex items-end justify-between mb-6">
-      <div>
-        <div class="uppercase tracking-[2px] text-xs text-teal-400 font-medium">Projects</div>
-        <h2 class="section-header font-semibold tracking-tighter">What I'm building</h2>
-      </div>
-      <a href="https://github.com/rheophile10?tab=repositories" target="_blank" rel="noopener"
-         class="hidden md:inline text-sm text-zinc-400 hover:text-teal-400 transition">All repos →</a>
-    </div>
+<h2 class="listing-title">Writing</h2>
+<ul class="postlist">
+  
+  <li>
+    <h2><a href="/blog/wa-sqlite-idb-demand-paged/">SQLite that persists without hoarding RAM 🗄️</a></h2>
+    <p class="meta">July 26, 2026 · Writing crdt fts5 indexeddb offline sqlite vfs wasm </p>
+    <p class="excerpt">sql.js loads the whole database into memory; ordinary SQLite doesn&#39;t. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.</p>
+  </li>
+  
+  <li>
+    <h2><a href="/blog/localrbac-crypto-rbac/">Records a group can keep — without any one keyholder becoming a target 🔐</a></h2>
+    <p class="meta">July 15, 2026 · Writing crdt cryptography offline rbac shamir sqlite </p>
+    <p class="excerpt">Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.</p>
+  </li>
+  
+  <li>
+    <h2><a href="/blog/offline-forms/">One HTML file vs. a web application: sample intake without the IT-approval gauntlet 📄</a></h2>
+    <p class="meta">July 14, 2026 · Writing html-file lab-intake offline qr sqlite </p>
+    <p class="excerpt">Web apps are easy to build; getting IT to approve them is not. A single HTML file is the free intermediate step — offline, no server, but with SQLite, Web Crypto, and a scannable QR that composes your form data into a label so transcription never has to happen.</p>
+  </li>
+  
+  <li>
+    <h2><a href="/blog/offline-hris-juarez/">Offline HRIS for a community police office 👮</a></h2>
+    <p class="meta">July 7, 2026 · Writing crdt hris offline plastron </p>
+    <p class="excerpt">A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron&#39;s own offline-capable future.</p>
+  </li>
+  
+  <li>
+    <h2><a href="/blog/chaosedgesteg-plastron/">Hiding plastron links in pictures with ChaosEdgeSteg 🐢</a></h2>
+    <p class="meta">July 7, 2026 · Writing chaosedgesteg plastron pyodide steganography </p>
+    <p class="excerpt">Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.</p>
+  </li>
+  
+  <li>
+    <h2><a href="/blog/rheoserv-waumpaum/">RheoServ Waumpaum — a credit-union core in one HTML file 🏦</a></h2>
+    <p class="meta">July 7, 2026 · Writing core-banking crdt credit-union offline waumpaum </p>
+    <p class="excerpt">A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.</p>
+  </li>
+  
+  <li>
+    <h2><a href="/blog/yiwei-tuzhong/">曳尾塗中 — drag your tail in the mud 🐢</a></h2>
+    <p class="meta">July 6, 2026 · Writing interactive plastron zhuangzi </p>
+    <p class="excerpt">Zhuangzi&#39;s tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.</p>
+  </li>
+  
+</ul>
 
-    <!-- Featured: plastron -->
-    <div id="plastron" class="mb-4 flex items-end justify-between scroll-mt-24">
-      <div>
-        <div class="uppercase tracking-[2px] text-[10px] text-zinc-500 font-medium">Featured</div>
-        <h3 class="text-2xl font-semibold tracking-tighter flex items-center gap-3">
-          plastron <span class="text-2xl" aria-hidden="true">🐢</span>
-        </h3>
-        <p class="mt-1 text-sm text-zinc-500">
-          Hosted at <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300 transition">plastron.ca</a>
-        </p>
-      </div>
-      <div class="hidden md:flex items-center gap-3 text-sm">
-        <a href="https://github.com/rheophile10/plastron" target="_blank" rel="noopener"
-           class="px-4 py-2 rounded-2xl border border-white/15 hover:bg-white/5 transition flex items-center gap-2 text-sm">
-          <span>View on GitHub</span>
-        </a>
-        <a href="https://plastron.ca" target="_blank" rel="noopener"
-           class="px-5 py-2 rounded-2xl bg-teal-500 hover:bg-teal-400 text-zinc-950 font-semibold text-sm flex items-center gap-2 transition-colors">
-          Launch the OS <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <div class="grid lg:grid-cols-5 gap-6">
-      <!-- Main desc -->
-      <div class="lg:col-span-3 rounded-3xl border border-white/10 bg-zinc-900/60 p-8">
-        <p class="text-xl leading-tight text-zinc-300">
-          A polyglot reactive substrate. Cels hold values, formulas, or compiled lambdas.
-          Writing to one fires a cascade that recomputes everything downstream in topological order.
-        </p>
+<aside class="cloud">
+  <h3>Tags</h3>
+  <a class="term" href="/blog/tag/offline/">offline <span>5</span></a><a class="term" href="/blog/tag/crdt/">crdt <span>4</span></a><a class="term" href="/blog/tag/plastron/">plastron <span>3</span></a><a class="term" href="/blog/tag/sqlite/">sqlite <span>3</span></a><a class="term" href="/blog/tag/chaosedgesteg/">chaosedgesteg <span>1</span></a><a class="term" href="/blog/tag/core-banking/">core-banking <span>1</span></a><a class="term" href="/blog/tag/credit-union/">credit-union <span>1</span></a><a class="term" href="/blog/tag/cryptography/">cryptography <span>1</span></a><a class="term" href="/blog/tag/fts5/">fts5 <span>1</span></a><a class="term" href="/blog/tag/hris/">hris <span>1</span></a><a class="term" href="/blog/tag/html-file/">html-file <span>1</span></a><a class="term" href="/blog/tag/indexeddb/">indexeddb <span>1</span></a><a class="term" href="/blog/tag/interactive/">interactive <span>1</span></a><a class="term" href="/blog/tag/lab-intake/">lab-intake <span>1</span></a><a class="term" href="/blog/tag/pyodide/">pyodide <span>1</span></a><a class="term" href="/blog/tag/qr/">qr <span>1</span></a><a class="term" href="/blog/tag/rbac/">rbac <span>1</span></a><a class="term" href="/blog/tag/shamir/">shamir <span>1</span></a><a class="term" href="/blog/tag/steganography/">steganography <span>1</span></a><a class="term" href="/blog/tag/vfs/">vfs <span>1</span></a><a class="term" href="/blog/tag/wasm/">wasm <span>1</span></a><a class="term" href="/blog/tag/waumpaum/">waumpaum <span>1</span></a><a class="term" href="/blog/tag/zhuangzi/">zhuangzi <span>1</span></a>
+</aside>
 
-        <div class="mt-6 text-sm text-zinc-400 space-y-4 leading-relaxed">
-          <p>The eventual shape is a <span class="font-medium text-zinc-200">polyglot spreadsheet</span>: write functions in any language a compiler is installed for (JS, WAT, Python, Scheme…), then call them from formulas in other cels. The same kernel powers a desktop shell, spreadsheet UI, CLI, or web app.</p>
-          <p>
-            <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300 transition">plastron.ca</a>
-            is live today with server-backed persistence — not zero-server anymore, though that remains the goal.
-            Offline single-file builds are still in progress: no OPFS persistence yet, but more is coming.
-            The north star is still a single <span class="mono text-teal-400">index.html</span> you can open,
-            edit, share, and archive, with everything round-tripping through JSON.
-          </p>
-        </div>
 
-        <div class="mt-7 pt-6 border-t border-white/10 flex flex-wrap gap-2 text-xs">
-          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">TypeScript kernel</div>
-          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">plastron.ca</div>
-          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">WASM Doom</div>
-          <div class="px-3 py-1 bg-white/5 rounded-full border border-white/10">Zero-server goal</div>
-        </div>
-      </div>
+</main>
+<footer class="footsie">
+  <p>rheophile — every byte of this page came out of SQLite.</p>
+  <p class="served">served via <b>prerendered from SQLite</b> · 2630 pages in the database file</p>
+</footer>
 
-      <!-- Apps showcase -->
-      <div class="lg:col-span-2 rounded-3xl border border-white/10 bg-zinc-900/60 p-8 flex flex-col">
-        <h4 class="uppercase text-xs tracking-widest text-zinc-500 mb-3">What ships in the OS</h4>
+<script>
+// The account chip, filled in on the client.
+//
+// A prerendered page is generated at build time and cannot know who is reading it, so the server-
+// side viewer is always signed-out for static output. Whoever owns login — an appkit portal on the
+// same origin — leaves its session in localStorage, and this notices it. No auth library ships here,
+// and nothing read is trusted for anything: it decides what a chip says, not what a reader may see.
+(function () {
+  try {
+    var chip = document.querySelector('.menu .chip');
+    if (!chip || typeof localStorage === 'undefined') return;
+    var key = Object.keys(localStorage).find(function (k) { return /^sb-.*-auth-token$/.test(k); });
+    if (!key) return;
+    var session = JSON.parse(localStorage.getItem(key) || 'null');
+    if (!session || (session.expires_at && session.expires_at * 1000 < Date.now())) return;
+    var user = session.user || {};
+    var meta = user.user_metadata || {};
+    var name = meta.name || meta.full_name || user.email;
+    if (!name) return;
+    chip.textContent = name;
+    chip.title = user.email || name;
+  } catch (e) { /* a privacy mode with no localStorage is simply signed out */ }
+})();
+</script>
 
-        <ul class="space-y-3 text-sm flex-1">
-          <li class="flex gap-3 items-start">
-            <span class="mt-0.5 text-teal-400" aria-hidden="true">📊</span>
-            <span><span class="font-medium">Sheets</span> — per-cell view cels, formula bar, infix formulas, server-backed persistence on plastron.ca</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="mt-0.5 text-teal-400" aria-hidden="true">📝</span>
-            <span><span class="font-medium">Notepad</span> — textarea bound to a cel, New/Save/Open via shared file toolbar</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="mt-0.5 text-teal-400" aria-hidden="true">🗂</span>
-            <span><span class="font-medium">File Explorer</span> — folders + drag-and-drop, fs-tree synced on the hosted build</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="mt-0.5 text-teal-400" aria-hidden="true">🎮</span>
-            <span><span class="font-medium">Doom</span> — Freedoom running on doomgeneric compiled to WASM. 60 fps, mouse + keyboard, 28 MB WAD inlined</span>
-          </li>
-        </ul>
-
-        <div class="mt-auto pt-6 text-xs text-zinc-500">
-          plastron.ca runs online today. Offline single-file builds — without OPFS for now — are still on the roadmap.
-        </div>
-      </div>
-    </div>
-
-    <!-- Mini mock -->
-    <div class="mt-6 rounded-3xl plastron-mock p-4 text-xs overflow-hidden border border-white/10">
-      <div class="flex items-center gap-2 px-2 pb-2 text-zinc-500">
-        <div class="flex-1 h-px bg-white/10"></div>
-        <div>plastron-simple-examples/plastron-os — the bundled desktop shell</div>
-        <div class="flex-1 h-px bg-white/10"></div>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[10px]">
-        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3">
-          <div class="text-teal-400 text-[10px]">Sheets</div>
-          <div class="mt-1 font-medium text-zinc-300">A1 = 12 · B1 =A1*1.5<br>C1 =B1*2 → 36</div>
-        </div>
-        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3">
-          <div class="text-teal-400 text-[10px]">File system</div>
-          <div class="mt-1 text-zinc-400 mono">/notepad/untitled-3.甲<br>/sheets/q4-report.甲</div>
-        </div>
-        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3">
-          <div class="text-teal-400 text-[10px]">Polyglot</div>
-          <div class="mt-1">JS · WAT · Python · Scheme<br>compilers as cels</div>
-        </div>
-        <div class="rounded-2xl bg-zinc-950/70 border border-white/5 p-3 flex items-center justify-center text-center">
-          <div>
-            <div class="font-semibold text-zinc-200">The graph <span class="text-teal-400">is</span> the substrate.</div>
-            <div class="text-[10px] mt-px text-zinc-500">One artifact carries code + data + compilers</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="md:hidden mt-5 flex gap-3">
-      <a href="https://github.com/rheophile10/plastron" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-2.5 rounded-2xl border border-white/15 text-sm">GitHub</a>
-      <a href="https://plastron.ca" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-2.5 rounded-2xl bg-teal-500 text-zinc-950 font-semibold text-sm">Launch demo</a>
-    </div>
-
-    <!-- Other projects -->
-    <div class="mt-12 mb-5">
-      <div class="uppercase tracking-[2px] text-[10px] text-zinc-500 font-medium">More work</div>
-      <h3 class="text-xl font-semibold tracking-tighter">Other projects</h3>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="projects-grid">
-      <!-- prerender:projects:start --><article class="project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="text-2xl leading-none" aria-hidden="true">🗄️</span><h4 class="font-semibold tracking-tight text-lg truncate">SQLite Studio</h4></div><span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">TypeScript</span></div><p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">A database GUI in one self-contained index.html — demand-paged SQLite whose pages live in IndexedDB, with a schema tree, SQL editor, CSV export and CRUD. Runs from file://.</p><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium"><a href="https://github.com/rheophile10/sqlite-studio" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a><a href="https://rheophile10.github.io/sqlite-studio/" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Live <span aria-hidden="true">↗</span></a></div></article><article class="project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="text-2xl leading-none" aria-hidden="true">🏦</span><h4 class="font-semibold tracking-tight text-lg truncate">RheoServ Waumpaum</h4></div><span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">TypeScript</span></div><p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">An offline-first credit-union core in one encrypted HTML file: cr-sqlite CRDT merge across operators and waumpaum settlement between institutions.</p><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium"><a href="https://github.com/rheophile10/rheoServ-waumpaum" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a><a href="/blog/rheoserv-waumpaum.html" class="text-teal-400 hover:text-teal-300 transition">Read <span aria-hidden="true">→</span></a></div></article><article class="project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="text-2xl leading-none" aria-hidden="true">👮</span><h4 class="font-semibold tracking-tight text-lg truncate">Offline Protected-B HRIS</h4></div><span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">TypeScript</span></div><p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">A Protected-B HRIS that runs offline in a single HTML file, merging HR records across operators with CRDT SQLite.</p><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium"><a href="https://github.com/rheophile10/offline-Protected-B-HRIS" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a><a href="/blog/offline-hris-juarez.html" class="text-teal-400 hover:text-teal-300 transition">Read <span aria-hidden="true">→</span></a></div></article><article class="project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="text-2xl leading-none" aria-hidden="true">📰</span><h4 class="font-semibold tracking-tight text-lg truncate">The Colonial Advocate</h4></div><span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">Python</span></div><p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">A single-page web app modelled after William Lyon Mackenzie's 19th-century reform newspaper.</p><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium"><a href="https://github.com/rheophile10/colonial-advocate" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a></div></article><article class="project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="text-2xl leading-none" aria-hidden="true">📊</span><h4 class="font-semibold tracking-tight text-lg truncate">Firearms vs Homicide</h4></div><span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">HTML</span></div><p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">Civilian firearm ownership (Small Arms Survey 2017) charted against intentional homicide rates (UNODC), by country.</p><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium"><a href="https://github.com/rheophile10/civilian-firearms-vs-homicide" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a></div></article><article class="project-card rounded-3xl border border-white/10 bg-zinc-900/60 p-6 flex flex-col"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="text-2xl leading-none" aria-hidden="true">🧬</span><h4 class="font-semibold tracking-tight text-lg truncate">genenote-js</h4></div><span class="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 px-2 py-0.5 rounded-full border border-white/10">TypeScript</span></div><p class="mt-3 text-sm text-zinc-400 leading-relaxed flex-1">Lion Kimbra's genenote, reimplemented in JavaScript on top of plastron.</p><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium"><a href="https://github.com/rheophile10/genenote-js" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Source <span aria-hidden="true">↗</span></a></div></article><!-- prerender:projects:end -->
-    </div>
-    <div class="md:hidden mt-6 text-center">
-      <a href="https://github.com/rheophile10?tab=repositories" target="_blank" rel="noopener"
-         class="text-sm text-teal-400 hover:text-teal-300 transition">All repos →</a>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section id="blog" class="max-w-6xl mx-auto px-6 py-12 border-t border-white/10 bg-zinc-900/30 scroll-mt-16">
-    <div class="flex items-end justify-between mb-5">
-      <div>
-        <div class="text-xs uppercase tracking-[2px] text-teal-400 font-medium">Writing</div>
-        <h2 class="section-header font-semibold tracking-tighter">Blog</h2>
-      </div>
-      <div class="flex items-center gap-4 text-xs">
-        <a href="/blog/" class="text-zinc-400 hover:text-teal-400 transition">Browse all &amp; filter by tag →</a>
-        <a href="/feed.xml" class="text-zinc-500 hover:text-teal-400 transition" aria-label="RSS feed">RSS</a>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-4" id="devlog-grid">
-      <!-- prerender:blog:start --><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-26" class="text-teal-400 font-medium">2026-07-26</time><span class="text-zinc-600 group-hover:text-zinc-500">sqlite · wasm · indexeddb · offline · vfs · fts5 · crdt</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/wa-sqlite-idb-demand-paged.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">SQLite that persists without hoarding RAM 🗄️</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-15" class="text-teal-400 font-medium">2026-07-15</time><span class="text-zinc-600 group-hover:text-zinc-500">rbac · crdt · cryptography · shamir · offline · sqlite</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/localrbac-crypto-rbac.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">Records a group can keep — without any one keyholder becoming a target 🔐</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-14" class="text-teal-400 font-medium">2026-07-14</time><span class="text-zinc-600 group-hover:text-zinc-500">offline · html-file · qr · sqlite · lab-intake</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/offline-forms.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">One HTML file vs. a web application: sample intake without the IT-approval gauntlet 📄</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">Web apps are easy to build; getting IT to approve them is not. A single HTML file is the free intermediate step — offline, no server, but with SQLite, Web Crypto, and a scannable QR that composes your form data into a label so transcription never has to happen.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-07" class="text-teal-400 font-medium">2026-07-07</time><span class="text-zinc-600 group-hover:text-zinc-500">credit-union · offline · crdt · core-banking · waumpaum</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/rheoserv-waumpaum.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">RheoServ Waumpaum — a credit-union core in one HTML file 🏦</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-07" class="text-teal-400 font-medium">2026-07-07</time><span class="text-zinc-600 group-hover:text-zinc-500">plastron · steganography · pyodide · chaosedgesteg</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/chaosedgesteg-plastron.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">Hiding plastron links in pictures with ChaosEdgeSteg 🐢</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-07" class="text-teal-400 font-medium">2026-07-07</time><span class="text-zinc-600 group-hover:text-zinc-500">plastron · hris · offline · crdt</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/offline-hris-juarez.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">Offline HRIS for a community police office 👮</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><article class="post-card group block rounded-3xl border border-white/10 bg-zinc-900/70 p-6"><div class="flex justify-between items-baseline text-xs"><time datetime="2026-07-06" class="text-teal-400 font-medium">2026-07-06</time><span class="text-zinc-600 group-hover:text-zinc-500">plastron · zhuangzi · interactive</span></div><h3 class="mt-2.5 text-xl tracking-tighter font-semibold leading-tight"><a href="/blog/yiwei-tuzhong.html" class="stretched-link no-underline text-inherit group-hover:text-teal-400 transition">曳尾塗中 — drag your tail in the mud 🐢</a></h3><p class="mt-3 text-sm text-zinc-400 line-clamp-3">Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.</p><div class="mt-5 text-xs text-teal-400 flex items-center gap-1">Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span></div></article><!-- prerender:blog:end -->
-    </div>
-  </section>
-  </main>
-
-  <footer class="border-t border-white/10 py-8">
-    <div class="max-w-6xl mx-auto px-6 text-xs text-zinc-500 flex flex-col md:flex-row gap-y-2 items-center justify-between">
-      <div>© Rheophile Corp. · rheophile10 — licensing varies by repository; see each repo for terms.</div>
-      <div class="flex items-center gap-x-5">
-        <a href="/manifesto.html" class="hover:text-zinc-300 transition">Manifesto</a>
-        <span class="text-white/10">·</span>
-        <a href="/blog/" class="hover:text-zinc-300 transition">Blog</a>
-        <span class="text-white/10">·</span>
-        <a href="/feed.xml" class="hover:text-zinc-300 transition">RSS</a>
-        <span class="text-white/10">·</span>
-        <a href="https://plastron.ca" class="hover:text-zinc-300 transition">plastron live</a>
-        <span class="text-white/10">·</span>
-        <a href="https://github.com/rheophile10/plastron" class="hover:text-zinc-300 transition">plastron source</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/assets/blog-ui.js"></script>
-  <script>
-    // Active nav on scroll (lightweight)
-    function initActiveNav() {
-      const links = document.querySelectorAll('nav a[href^="#"]');
-      const sections = [...links].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-
-      function update() {
-        let current = '';
-        const scrollPos = window.scrollY + 140;
-
-        sections.forEach(sec => {
-          if (sec.offsetTop <= scrollPos) {
-            current = sec.getAttribute('id');
-          }
-        });
-
-        links.forEach(link => {
-          link.classList.remove('nav-active');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('nav-active');
-          }
-        });
-      }
-
-      window.addEventListener('scroll', update, { passive: true });
-      setTimeout(update, 300);
-    }
-
-    // Boot
-    async function init() {
-      await Promise.all([
-        BlogUI.renderDevLogGrid('devlog-grid'),
-        BlogUI.renderProjectsGrid('projects-grid'),
-      ]);
-      initActiveNav();
-      console.log('%c[rheophile.ca] static site ready — @rheophile10', 'color:#14b8a6');
-    }
-
-    window.onload = init;
-  </script>
-
-  <!-- SESSION CHIP — the portal at /apps/ owns login (same origin, same
-       Supabase project), so its session lands in this page's localStorage.
-       If one exists, upgrade the Login link into an account chip. -->
-  <script>
-    (function () {
-      try {
-        const key = Object.keys(localStorage).find(k => /^sb-.*-auth-token$/.test(k));
-        if (!key) return;
-        const session = JSON.parse(localStorage.getItem(key));
-        const email = session?.user?.email;
-        if (!email || (session.expires_at && session.expires_at * 1000 < Date.now())) return;
-        document.getElementById('auth-area').innerHTML = `
-          <a href="/apps/" class="inline-flex items-center gap-2 pl-3 pr-3.5 py-1.5 text-xs font-medium rounded-full border border-teal-500/40 text-teal-400 hover:bg-teal-500/10 transition-colors">
-            <span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span>
-            <span class="hidden sm:inline max-w-[140px] truncate"></span>
-            <span class="sm:hidden">Portal</span>
-            <span aria-hidden="true">→</span>
-          </a>`;
-        document.querySelector('#auth-area .truncate').textContent = email;
-      } catch { /* no session, no chip */ }
-    })();
-  </script>
 </body>
 </html>
