@@ -9,10 +9,12 @@
       html, body { margin: 0; height: 100%; background: #000; color: #d4d4d8; font: 14px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden; }
       #stage { position: fixed; inset: 0; display: grid; place-items: center; }
       canvas { width: min(100vw, calc(100vh * 4 / 3)); height: min(100vh, calc(100vw * 3 / 4)); image-rendering: pixelated; background: #000; outline: none; }
-      #status { position: fixed; inset: 0; display: grid; place-content: center; text-align: center; gap: 8px; background: #000; }
+      #status { position: fixed; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; gap: 10px; background: #000; padding: 24px; }
       #status[hidden] { display: none; }
-      .bar { width: 240px; height: 6px; border-radius: 3px; background: #27272a; overflow: hidden; }
-      .bar > div { height: 100%; width: 0; background: #2dd4bf; transition: width 0.2s; }
+      .bar { width: 240px; max-width: 70vw; height: 6px; border-radius: 3px; background: #27272a; overflow: hidden; }
+      .bar > div { height: 100%; width: 0; background: #2dd4bf; transition: width 0.15s; }
+      #retry { margin-top: 4px; padding: 8px 16px; border: 1px solid #3f3f46; border-radius: 10px; background: #18181b; color: #e4e4e7; font: inherit; cursor: pointer; }
+      #retry[hidden] { display: none; }
 
       /* touch controls — see touch.js */
       #touch { position: fixed; inset: 0; pointer-events: none; user-select: none; -webkit-user-select: none; touch-action: none; }
@@ -33,11 +35,22 @@
   </head>
   <body>
     <div id="stage"><canvas id="canvas" tabindex="0" oncontextmenu="event.preventDefault()"></canvas></div>
-    <div id="status"><div id="status-text">Loading Freedoom…</div><div class="bar"><div id="progress"></div></div></div>
+    <div id="status">
+      <div id="status-text">Starting Freedoom…</div>
+      <div class="bar"><div id="progress"></div></div>
+      <button id="retry" hidden>Try again</button>
+    </div>
     <script src="bridge.js"></script>
     <script src="touch.js"></script>
     <script>
       // Launched by the chat page as  doom/index.html#role=host&players=2&mode=dm&skill=3&map=1
+      //
+      // The engine's glue (websockets-doom.js) is NOT loaded up front: left to its own devices it
+      // fetches the 28 MB WAD the instant this page exists, with only a coarse per-file progress
+      // report. Instead the WAD is downloaded here first — with a real byte-level bar, and cached so a
+      // rematch is instant — and only then is the engine injected, its filesystem pre-seeded with the
+      // bytes already in hand. The download therefore begins when Doom is activated (this page is
+      // created only when a match starts) and not a moment before.
       (() => {
         const params = new URLSearchParams(location.hash.slice(1));
         const role = ['host', 'join', 'solo'].includes(params.get('role')) ? params.get('role') : 'join';
@@ -59,41 +72,109 @@
         const statusBox = document.getElementById('status');
         const statusText = document.getElementById('status-text');
         const progress = document.getElementById('progress');
+        const retry = document.getElementById('retry');
         const say = (text) => (statusText.textContent = text);
+        const setBar = (frac) => (progress.style.width = `${Math.max(0, Math.min(1, frac)) * 100}%`);
         const tell = (type, extra) => window.parent.postMessage({ type, ...extra }, location.origin);
+        const mb = (bytes) => (bytes / 1048576).toFixed(1);
 
-        window.Module = {
-          noInitialRun: true,
-          canvas: document.getElementById('canvas'),
-          preRun: [
-            () => {
-              Module.FS.createPreloadedFile('', 'freedoom2.wad', 'freedoom2.wad', true, true);
-              Module.FS.createPreloadedFile('', 'default.cfg', 'default.cfg', true, true);
-            },
-          ],
-          onRuntimeInitialized: () => {
-            statusBox.hidden = true;
-            document.getElementById('canvas').focus();
-            tell('doom:running', { role });
-            Module.callMain(args);
-          },
-          print: (text) => {
-            console.log(text);
-            window.doomStatus(text);
-          },
-          printErr: (text) => console.warn(text),
-          setStatus: (text) => {
-            if (!text) return;
-            const parts = /\((\d+(?:\.\d+)?)\/(\d+)\)/.exec(text);
-            if (parts) progress.style.width = `${(100 * Number(parts[1])) / Number(parts[2])}%`;
-            say(text.replace(/\(\d.*\)/, '').trim() || 'Loading Freedoom…');
-          },
-          onAbort: (what) => tell('doom:exit', { reason: String(what) }),
-          onExit: (code) => tell('doom:exit', { reason: `exited (${code})` }),
+        const WAD_URL = 'freedoom2.wad';
+        const WAD_CACHE = 'freedoom-wad-v1';
+
+        // Stream the WAD, reporting progress by bytes. Served from (and stored into) a named cache so a
+        // rematch or reload does not download it again.
+        const downloadWad = async (onProgress) => {
+          const cache = await caches.open(WAD_CACHE).catch(() => null);
+          if (cache) {
+            const hit = await cache.match(WAD_URL).catch(() => null);
+            if (hit) {
+              onProgress(1, 0, 0, true);
+              return new Uint8Array(await hit.arrayBuffer());
+            }
+          }
+          const response = await fetch(WAD_URL);
+          if (!response.ok || !response.body) throw new Error(`download failed (${response.status})`);
+          const total = Number(response.headers.get('Content-Length')) || 0;
+          const reader = response.body.getReader();
+          const chunks = [];
+          let received = 0;
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+            received += value.length;
+            onProgress(total ? received / total : 0, received, total, false);
+          }
+          const bytes = new Uint8Array(received);
+          let offset = 0;
+          for (const chunk of chunks) {
+            bytes.set(chunk, offset);
+            offset += chunk.length;
+          }
+          if (cache) {
+            cache
+              .put(WAD_URL, new Response(bytes.slice(), { headers: { 'Content-Type': 'application/octet-stream', 'Content-Length': String(received) } }))
+              .catch(() => undefined);
+          }
+          return bytes;
         };
+
+        const startEngine = (wad, cfg) => {
+          window.Module = {
+            noInitialRun: true,
+            canvas: document.getElementById('canvas'),
+            // The bytes are already in hand, so preRun just writes them into the in-memory FS.
+            preRun: [
+              () => {
+                Module.FS.writeFile('freedoom2.wad', wad);
+                Module.FS.writeFile('default.cfg', cfg);
+              },
+            ],
+            onRuntimeInitialized: () => {
+              statusBox.hidden = true;
+              document.getElementById('canvas').focus();
+              tell('doom:running', { role });
+              Module.callMain(args);
+            },
+            print: (text) => {
+              console.log(text);
+              window.doomStatus(text);
+            },
+            printErr: (text) => console.warn(text),
+            onAbort: (what) => tell('doom:exit', { reason: String(what) }),
+            onExit: (code) => tell('doom:exit', { reason: `exited (${code})` }),
+          };
+          const script = document.createElement('script');
+          script.src = 'websockets-doom.js';
+          document.body.appendChild(script);
+        };
+
+        const boot = async () => {
+          retry.hidden = true;
+          setBar(0);
+          try {
+            const cfg = new Uint8Array(await (await fetch('default.cfg')).arrayBuffer());
+            say('Downloading Freedoom…');
+            const wad = await downloadWad((frac, received, total, cached) => {
+              setBar(cached ? 1 : frac);
+              if (cached) say('Loading Freedoom…');
+              else if (total) say(`Downloading Freedoom… ${mb(received)} / ${mb(total)} MB`);
+              else say(`Downloading Freedoom… ${mb(received)} MB`);
+            });
+            setBar(1);
+            say('Starting…');
+            startEngine(wad, cfg);
+          } catch (error) {
+            say(`Could not load Freedoom: ${error.message}`);
+            setBar(0);
+            retry.hidden = false;
+          }
+        };
+
+        retry.addEventListener('click', boot);
         window.addEventListener('error', (event) => tell('doom:exit', { reason: String(event.message) }));
+        boot();
       })();
     </script>
-    <script src="websockets-doom.js"></script>
   </body>
 </html>
