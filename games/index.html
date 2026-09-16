@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Games · rheophile</title>
+<meta name="description" content="Games by rheophile: browser games that run from a single page, with their assets loaded from a file you keep.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐢%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#0a0b0d;--panel:#101215;--fg:#e7e9ec;--muted:#8b929c;--rule:#20242a;--accent:#2dd4bf}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.75 ui-serif,Charter,Georgia,Cambria,"Times New Roman",serif;-webkit-font-smoothing:antialiased}
+.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.masthead{max-width:780px;margin:0 auto;padding:52px 24px 22px}
+.brand{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--fg);text-decoration:none;text-transform:lowercase}
+.brand:hover{color:var(--accent)}
+.tagline{margin:2px 0 18px;color:var(--muted);font-size:14px}
+.menu{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;line-height:1;text-transform:uppercase;letter-spacing:.14em}
+.menu a{color:var(--muted);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+.menu a:hover,.menu a[aria-current]{color:var(--accent);border-bottom-color:var(--accent)}
+main{max-width:780px;margin:0 auto;padding:14px 24px 72px}
+.page-title{font-size:38px;line-height:1.15;letter-spacing:-.03em;margin:.35em 0 .25em;font-weight:700}
+.subtitle{color:var(--muted);font-size:19px;margin:-.1em 0 1.4em}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.game{display:flex;flex-direction:column;gap:4px;padding:0 0 16px;border:1px solid var(--rule);border-radius:14px;text-decoration:none;color:var(--fg);background:var(--panel);overflow:hidden}
+.game:hover{border-color:var(--accent)}
+.art{display:grid;place-items:center;height:170px;background:radial-gradient(circle at 50% 45%,#0f2b27,#0b0d0f 70%)}
+.art svg{width:150px;height:150px}
+.game h2{margin:10px 17px 0;font-size:19px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.tag{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#b5d21e;border:1px solid #b5d21e66;border-radius:999px;padding:2px 8px;font-weight:600}
+.game p{margin:0 17px;color:var(--muted);font-size:14px;line-height:1.55}
+.facts{margin:6px 17px 0;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+footer{max-width:780px;margin:0 auto;padding:0 24px 48px;color:var(--muted);font-size:13px}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="masthead sans">
+  <a class="brand" href="/">rheophile</a>
+  <div class="tagline">Software without servers, and a few games</div>
+  <nav class="menu"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/chat/">Chat</a><a href="/games/" aria-current="page">Games</a></nav>
+</header>
+<main>
+  <h1 class="page-title">Games</h1>
+  <p class="subtitle">Browser games that run from a single page. Nothing is installed and nothing is uploaded; games that need content read it from a file you keep.</p>
+  <div class="grid">
+    <a class="game" href="/games/rheopanzer/">
+      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="rheopanzer: a frog in a tank">  <defs>    <radialGradient id="glow" cx="50%" cy="46%" r="52%">      <stop offset="0" stop-color="#14b8a6" stop-opacity=".45"/>      <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>    </radialGradient>    <linearGradient id="armour" x1="0" y1="0" x2="0" y2="1">      <stop offset="0" stop-color="#4b5a55"/>      <stop offset="1" stop-color="#2b3532"/>    </linearGradient>  </defs>  <circle cx="128" cy="128" r="124" fill="url(#glow)"/>  <!-- frog -->  <g transform="translate(0 -14)">    <path d="M78 104c-8-22 4-44 26-44 12 0 20 7 24 16 4-9 12-16 24-16 22 0 34 22 26 44 6 10 8 20 6 30H72c-2-10 0-20 6-30z" fill="#b5d21e"/>    <ellipse cx="103" cy="84" rx="10" ry="12" fill="#2a2a2a"/>    <ellipse cx="153" cy="84" rx="10" ry="12" fill="#2a2a2a"/>    <circle cx="106" cy="80" r="3" fill="#f4f4f4"/>    <circle cx="156" cy="80" r="3" fill="#f4f4f4"/>    <circle cx="120" cy="104" r="3.4" fill="#2a2a2a"/>    <circle cx="136" cy="104" r="3.4" fill="#2a2a2a"/>    <path d="M92 114c14 10 58 10 72 0 2 12-14 22-36 22s-38-10-36-22z" fill="#ff6a14"/>    <path d="M92 114c4 3 9 5 15 6-6 4-14 2-15-6zM164 114c-4 3-9 5-15 6 6 4 14 2 15-6z" fill="#7a5549"/>  </g>  <!-- turret, hatch rim and gun -->  <path d="M60 130h136l-10 30H70z" fill="url(#armour)"/>  <rect x="62" y="124" width="132" height="10" rx="5" fill="#5d6d67"/>  <path d="M186 140h60v12h-60z" fill="#3a4642"/>  <rect x="240" y="137" width="12" height="18" rx="3" fill="#2b3532"/>  <!-- hull -->  <path d="M26 160h204l-18 30H44z" fill="url(#armour)"/>  <rect x="26" y="158" width="204" height="8" rx="4" fill="#5d6d67"/>  <!-- tracks -->  <rect x="30" y="186" width="196" height="40" rx="20" fill="#1d2422"/>  <g fill="#6b7a74">    <circle cx="52" cy="206" r="13"/><circle cx="90" cy="206" r="13"/><circle cx="128" cy="206" r="13"/><circle cx="166" cy="206" r="13"/><circle cx="204" cy="206" r="13"/>  </g>  <g fill="#1d2422">    <circle cx="52" cy="206" r="5"/><circle cx="90" cy="206" r="5"/><circle cx="128" cy="206" r="5"/><circle cx="166" cy="206" r="5"/><circle cx="204" cy="206" r="5"/>  </g></svg></div>
+      <h2 class="sans">rheopanzer <span class="tag">bring your own assets</span></h2>
+      <p>Panzer General 2 rebuilt as data: the whole game state is a fold over its moves, so turns sync peer to peer over WebRTC. Combat forecasts that show their arithmetic, leaders, overstrength, and a soundtrack of deeply inappropriate clown music. A demo scenario plays straight away; for the PG2 scenarios and campaigns, drop your own asset bundle on the page.</p>
+      <div class="facts sans">operational wargame · WW2 · multiplayer</div>
+    </a>
+  </div>
+</main>
+<footer class="sans">Game content stays on your device: the page reads the bundle you hand it and remembers it in this browser.</footer>
+</body>
+</html>
