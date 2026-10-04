@@ -2,7 +2,8 @@
   "source": {
     "text": "Zhuangzi, Qiushui (秋水) §17 — tortoise invitation",
     "ids": "cjkvi-ids (CHISE-based)",
-    "definitions": "Unicode Unihan kDefinition + supplemental glosses"
+    "definitions": "Unicode Unihan kDefinition + supplemental glosses",
+    "glyphs": "GlyphWiki (glyphwiki.org) SVG outlines for the components in the CJK extension blocks, 200×200 units"
   },
   "passage": "莊子釣於濮水，楚王使大夫二人往先焉，曰：「願以境內累矣！」莊子持竿不顧，曰：「吾聞楚有神龜，死已三千歲矣，王巾笥而藏之廟堂之上。此龜者，寧其死為留骨而貴乎？寧其生而曳尾於塗中乎？」二大夫曰：「寧生而曳尾塗中。」莊子曰：「往矣！吾將曳尾於塗中。」",
   "characters": {
@@ -306,7 +307,7 @@
       "children": [
         {
           "char": "𠂊",
-          "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
           "leaf": true
         },
         {
@@ -349,7 +350,7 @@
         },
         {
           "char": "𫝀",
-          "english": "component U+2B740, a part of 五; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2B740 (CJK extension block), a part of 五",
           "leaf": true
         }
       ],
@@ -628,7 +629,7 @@
       "children": [
         {
           "char": "𠂒",
-          "english": "component U+20092, a part of 先; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+20092 (CJK extension block), a part of 先",
           "leaf": true
         },
         {
@@ -690,7 +691,7 @@
       "children": [
         {
           "char": "◆",
-          "english": "top-bottom composition",
+          "english": "a group of parts, not a character: one part above the other",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -738,7 +739,7 @@
       "children": [
         {
           "char": "𠃌",
-          "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
           "leaf": true
         },
         {
@@ -834,7 +835,7 @@
         },
         {
           "char": "◆",
-          "english": "top-bottom composition",
+          "english": "a group of parts, not a character: one part above the other",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -877,12 +878,12 @@
       "children": [
         {
           "char": "𠃌",
-          "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
           "leaf": true
         },
         {
           "char": "𠮛",
-          "english": "component U+20B9B, a part of 司; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+20B9B (CJK extension block), a part of 司",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -940,7 +941,7 @@
             },
             {
               "char": "𫝀",
-              "english": "component U+2B740, a part of 五; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2B740 (CJK extension block), a part of 五",
               "leaf": true
             }
           ],
@@ -981,7 +982,7 @@
       "children": [
         {
           "char": "𫩠",
-          "english": "component U+2BA60, a part of 堂; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2BA60 (CJK extension block), a part of 堂",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -1154,7 +1155,7 @@
                   "children": [
                     {
                       "char": "◆",
-                      "english": "top-bottom composition",
+                      "english": "a group of parts, not a character: one part above the other",
                       "composition": "top-bottom composition",
                       "operator": "⿱",
                       "children": [
@@ -1286,7 +1287,7 @@
       "children": [
         {
           "char": "𠂊",
-          "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
           "leaf": true
         },
         {
@@ -1372,7 +1373,7 @@
         },
         {
           "char": "𬐘",
-          "english": "component U+2C418, a part of 寍; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2C418 (CJK extension block), a part of 寍",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -1411,7 +1412,7 @@
             },
             {
               "char": "𬐘",
-              "english": "component U+2C418, a part of 寍; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2C418 (CJK extension block), a part of 寍",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -1504,19 +1505,19 @@
         },
         {
           "char": "◆",
-          "english": "top-bottom composition",
+          "english": "a group of parts, not a character: one part above the other",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "◆",
-              "english": "full surround",
+              "english": "a group of parts, not a character: one part fully around the other",
               "composition": "full surround",
               "operator": "⿴",
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
                   "leaf": true
                 },
                 {
@@ -1572,7 +1573,7 @@
             },
             {
               "char": "◆",
-              "english": "overlay / intertwined",
+              "english": "a group of parts, not a character: the parts overlap",
               "composition": "overlay / intertwined",
               "operator": "⿻",
               "children": [
@@ -1667,7 +1668,7 @@
           "children": [
             {
               "char": "𠦝",
-              "english": "component U+2099D, a part of 朝; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2099D (CJK extension block), a part of 朝",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -1717,7 +1718,7 @@
       "children": [
         {
           "char": "𫠠",
-          "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2B820 (CJK extension block), a part of 弋",
           "composition": "overlay / intertwined",
           "operator": "⿻",
           "children": [
@@ -1827,7 +1828,7 @@
           "children": [
             {
               "char": "𫠠",
-              "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2B820 (CJK extension block), a part of 弋",
               "composition": "overlay / intertwined",
               "operator": "⿻",
               "children": [
@@ -1909,7 +1910,7 @@
               "children": [
                 {
                   "char": "𫠠",
-                  "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2B820 (CJK extension block), a part of 弋",
                   "composition": "overlay / intertwined",
                   "operator": "⿻",
                   "children": [
@@ -2043,7 +2044,7 @@
         },
         {
           "char": "◆",
-          "english": "left-right composition",
+          "english": "a group of parts, not a character: one part beside the other, left and right",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -2054,7 +2055,7 @@
             },
             {
               "char": "𠃌",
-              "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
               "leaf": true
             }
           ],
@@ -2096,7 +2097,7 @@
             },
             {
               "char": "◆",
-              "english": "left-right composition",
+              "english": "a group of parts, not a character: one part beside the other, left and right",
               "composition": "left-right composition",
               "operator": "⿰",
               "children": [
@@ -2107,7 +2108,7 @@
                 },
                 {
                   "char": "𠃌",
-                  "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
                   "leaf": true
                 }
               ],
@@ -2218,7 +2219,7 @@
       "children": [
         {
           "char": "𠂇",
-          "english": "component U+20087, a part of 有; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+20087 (CJK extension block), a part of 有",
           "leaf": true
         },
         {
@@ -2237,7 +2238,7 @@
       "children": [
         {
           "char": "𠦝",
-          "english": "component U+2099D, a part of 朝; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2099D (CJK extension block), a part of 朝",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -2408,7 +2409,7 @@
         },
         {
           "char": "◆",
-          "english": "top surround",
+          "english": "a group of parts, not a character: one part around the top of the other",
           "composition": "top surround",
           "operator": "⿵",
           "children": [
@@ -2433,7 +2434,7 @@
             },
             {
               "char": "𣥂",
-              "english": "component U+23942, a part of 歲; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+23942 (CJK extension block), a part of 歲",
               "leaf": true
             }
           ],
@@ -2461,7 +2462,7 @@
           "children": [
             {
               "char": "𠂊",
-              "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
               "leaf": true
             },
             {
@@ -2500,7 +2501,7 @@
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
                   "leaf": true
                 },
                 {
@@ -2549,7 +2550,7 @@
         },
         {
           "char": "◆",
-          "english": "overlay / intertwined",
+          "english": "a group of parts, not a character: the parts overlap",
           "composition": "overlay / intertwined",
           "operator": "⿻",
           "children": [
@@ -2601,7 +2602,7 @@
         },
         {
           "char": "◆",
-          "english": "left-bottom surround",
+          "english": "a group of parts, not a character: one part around the bottom left of the other",
           "composition": "left-bottom surround",
           "operator": "⿺",
           "children": [
@@ -2818,7 +2819,7 @@
         },
         {
           "char": "◆",
-          "english": "right-top surround",
+          "english": "a group of parts, not a character: one part around the top right of the other",
           "composition": "right-top surround",
           "operator": "⿹",
           "children": [
@@ -2899,7 +2900,7 @@
       "children": [
         {
           "char": "◆",
-          "english": "left-right composition",
+          "english": "a group of parts, not a character: one part beside the other, left and right",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -2916,7 +2917,7 @@
               "children": [
                 {
                   "char": "𠃌",
-                  "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
                   "leaf": true
                 },
                 {
@@ -2966,7 +2967,7 @@
       "children": [
         {
           "char": "𠂉",
-          "english": "component U+20089, a part of 矢; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+20089 (CJK extension block), a part of 矢",
           "leaf": true
         },
         {
@@ -3010,7 +3011,7 @@
           "children": [
             {
               "char": "𠂉",
-              "english": "component U+20089, a part of 矢; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+20089 (CJK extension block), a part of 矢",
               "leaf": true
             },
             {
@@ -3070,7 +3071,7 @@
       "children": [
         {
           "char": "◆",
-          "english": "top-bottom composition",
+          "english": "a group of parts, not a character: one part above the other",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -3129,7 +3130,7 @@
               "children": [
                 {
                   "char": "◆",
-                  "english": "top-bottom composition",
+                  "english": "a group of parts, not a character: one part above the other",
                   "composition": "top-bottom composition",
                   "operator": "⿱",
                   "children": [
@@ -3212,7 +3213,7 @@
           "children": [
             {
               "char": "𠂊",
-              "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
               "leaf": true
             },
             {
@@ -3231,7 +3232,7 @@
           "children": [
             {
               "char": "𠂊",
-              "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
               "leaf": true
             },
             {
@@ -3265,7 +3266,7 @@
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
                   "leaf": true
                 },
                 {
@@ -3284,7 +3285,7 @@
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
                   "leaf": true
                 },
                 {
@@ -3326,7 +3327,7 @@
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
                   "leaf": true
                 },
                 {
@@ -3345,7 +3346,7 @@
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+                  "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
                   "leaf": true
                 },
                 {
@@ -3367,12 +3368,12 @@
           "children": [
             {
               "char": "𠃌",
-              "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
               "leaf": true
             },
             {
               "char": "𠮛",
-              "english": "component U+20B9B, a part of 司; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+20B9B (CJK extension block), a part of 司",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -3512,7 +3513,7 @@
         },
         {
           "char": "𦓐",
-          "english": "component U+264D0, a part of 而; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+264D0 (CJK extension block), a part of 而",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -3523,7 +3524,7 @@
             },
             {
               "char": "𦉫",
-              "english": "component U+2626B, a part of a rare character; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+2626B (CJK extension block), a part of a rare character",
               "composition": "top surround",
               "operator": "⿵",
               "children": [
@@ -3534,7 +3535,7 @@
                 },
                 {
                   "char": "◆",
-                  "english": "left-right composition",
+                  "english": "a group of parts, not a character: one part beside the other, left and right",
                   "composition": "left-right composition",
                   "operator": "⿰",
                   "children": [
@@ -3579,12 +3580,12 @@
           "children": [
             {
               "char": "𠁣",
-              "english": "component U+20063, a part of 門; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+20063 (CJK extension block), a part of 門",
               "leaf": true
             },
             {
               "char": "𠃛",
-              "english": "component U+200DB, a part of 門; it is in a CJK extension block, and some fonts do not show it",
+              "english": "component U+200DB (CJK extension block), a part of 門",
               "leaf": true
             }
           ],
@@ -3634,7 +3635,7 @@
                   "children": [
                     {
                       "char": "𫠠",
-                      "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
+                      "english": "component U+2B820 (CJK extension block), a part of 弋",
                       "composition": "overlay / intertwined",
                       "operator": "⿻",
                       "children": [
@@ -3894,7 +3895,7 @@
                       "children": [
                         {
                           "char": "𫠠",
-                          "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
+                          "english": "component U+2B820 (CJK extension block), a part of 弋",
                           "composition": "overlay / intertwined",
                           "operator": "⿻",
                           "children": [
@@ -3968,7 +3969,7 @@
       "children": [
         {
           "char": "𠀐",
-          "english": "component U+20010, a part of 貴; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+20010 (CJK extension block), a part of 貴",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -4034,7 +4035,7 @@
         },
         {
           "char": "◆",
-          "english": "overlay / intertwined",
+          "english": "a group of parts, not a character: the parts overlap",
           "composition": "overlay / intertwined",
           "operator": "⿻",
           "children": [
@@ -4101,7 +4102,7 @@
             },
             {
               "char": "◆",
-              "english": "overlay / intertwined",
+              "english": "a group of parts, not a character: the parts overlap",
               "composition": "overlay / intertwined",
               "operator": "⿻",
               "children": [
@@ -4179,12 +4180,12 @@
       "children": [
         {
           "char": "𠁣",
-          "english": "component U+20063, a part of 門; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+20063 (CJK extension block), a part of 門",
           "leaf": true
         },
         {
           "char": "𠃛",
-          "english": "component U+200DB, a part of 門; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+200DB (CJK extension block), a part of 門",
           "leaf": true
         }
       ],
@@ -4242,7 +4243,7 @@
           "children": [
             {
               "char": "◆",
-              "english": "top-bottom composition",
+              "english": "a group of parts, not a character: one part above the other",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -4313,7 +4314,7 @@
             },
             {
               "char": "◆",
-              "english": "top-bottom composition",
+              "english": "a group of parts, not a character: one part above the other",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -4415,12 +4416,12 @@
       "children": [
         {
           "char": "𠂊",
-          "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
           "leaf": true
         },
         {
           "char": "◆",
-          "english": "overlay / intertwined",
+          "english": "a group of parts, not a character: the parts overlap",
           "composition": "overlay / intertwined",
           "operator": "⿻",
           "children": [
@@ -4475,7 +4476,7 @@
     },
     "𠀐": {
       "char": "𠀐",
-      "english": "component U+20010, a part of 貴; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+20010 (CJK extension block), a part of 貴",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4508,42 +4509,42 @@
     },
     "𠁣": {
       "char": "𠁣",
-      "english": "component U+20063, a part of 門; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+20063 (CJK extension block), a part of 門",
       "leaf": true
     },
     "𠂇": {
       "char": "𠂇",
-      "english": "component U+20087, a part of 有; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+20087 (CJK extension block), a part of 有",
       "leaf": true
     },
     "𠂉": {
       "char": "𠂉",
-      "english": "component U+20089, a part of 矢; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+20089 (CJK extension block), a part of 矢",
       "leaf": true
     },
     "𠂊": {
       "char": "𠂊",
-      "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2008A (CJK extension block), a part of 亇, 夕, 將, 龜",
       "leaf": true
     },
     "𠂒": {
       "char": "𠂒",
-      "english": "component U+20092, a part of 先; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+20092 (CJK extension block), a part of 先",
       "leaf": true
     },
     "𠃌": {
       "char": "𠃌",
-      "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+200CC (CJK extension block), a part of 刀, 司, 方",
       "leaf": true
     },
     "𠃛": {
       "char": "𠃛",
-      "english": "component U+200DB, a part of 門; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+200DB (CJK extension block), a part of 門",
       "leaf": true
     },
     "𠦝": {
       "char": "𠦝",
-      "english": "component U+2099D, a part of 朝; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2099D (CJK extension block), a part of 朝",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4576,7 +4577,7 @@
     },
     "𠮛": {
       "char": "𠮛",
-      "english": "component U+20B9B, a part of 司; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+20B9B (CJK extension block), a part of 司",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4595,12 +4596,12 @@
     },
     "𣥂": {
       "char": "𣥂",
-      "english": "component U+23942, a part of 歲; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+23942 (CJK extension block), a part of 歲",
       "leaf": true
     },
     "𦉫": {
       "char": "𦉫",
-      "english": "component U+2626B, a part of a rare character; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2626B (CJK extension block), a part of a rare character",
       "composition": "top surround",
       "operator": "⿵",
       "children": [
@@ -4611,7 +4612,7 @@
         },
         {
           "char": "◆",
-          "english": "left-right composition",
+          "english": "a group of parts, not a character: one part beside the other, left and right",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -4633,7 +4634,7 @@
     },
     "𦓐": {
       "char": "𦓐",
-      "english": "component U+264D0, a part of 而; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+264D0 (CJK extension block), a part of 而",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4644,7 +4645,7 @@
         },
         {
           "char": "𦉫",
-          "english": "component U+2626B, a part of a rare character; it is in a CJK extension block, and some fonts do not show it",
+          "english": "component U+2626B (CJK extension block), a part of a rare character",
           "composition": "top surround",
           "operator": "⿵",
           "children": [
@@ -4655,7 +4656,7 @@
             },
             {
               "char": "◆",
-              "english": "left-right composition",
+              "english": "a group of parts, not a character: one part beside the other, left and right",
               "composition": "left-right composition",
               "operator": "⿰",
               "children": [
@@ -4680,12 +4681,12 @@
     },
     "𫝀": {
       "char": "𫝀",
-      "english": "component U+2B740, a part of 五; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2B740 (CJK extension block), a part of 五",
       "leaf": true
     },
     "𫠠": {
       "char": "𫠠",
-      "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2B820 (CJK extension block), a part of 弋",
       "composition": "overlay / intertwined",
       "operator": "⿻",
       "children": [
@@ -4704,7 +4705,7 @@
     },
     "𫩠": {
       "char": "𫩠",
-      "english": "component U+2BA60, a part of 堂; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2BA60 (CJK extension block), a part of 堂",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4737,7 +4738,7 @@
     },
     "𬐘": {
       "char": "𬐘",
-      "english": "component U+2C418, a part of 寍; it is in a CJK extension block, and some fonts do not show it",
+      "english": "component U+2C418 (CJK extension block), a part of 寍",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4754,5 +4755,24 @@
       ],
       "leaf": false
     }
+  },
+  "glyphs": {
+    "20010": "M 14.0 173.0 L 94.0 173.0 L 94.0 122.0 L 46.0 122.0 L 46.0 134.0 L 34.0 140.0 L 34.0 58.0 L 46.0 64.0 L 94.0 64.0 L 94.0 19.0 L 106.0 21.0 L 109.0 23.0 L 106.0 24.8 L 106.0 64.0 L 154.0 64.0 L 160.0 59.0 L 171.0 68.0 L 166.0 72.0 L 166.0 128.0 L 154.0 134.0 L 154.0 122.0 L 106.0 122.0 L 106.0 173.0 L 164.0 173.0 L 174.0 163.0 L 186.0 173.0 L 186.0 177.0 L 14.0 177.0 Z M 46.0 68.0 L 46.0 118.0 L 94.0 118.0 L 94.0 68.0 Z M 106.0 68.0 L 106.0 118.0 L 154.0 118.0 L 154.0 68.0 Z",
+    "20063": "M 60.0 23.0 L 140.0 23.0 L 146.0 18.0 L 157.0 27.0 L 152.0 31.0 L 152.0 93.0 L 140.0 99.0 L 140.0 87.0 L 60.0 87.0 L 60.0 182.0 L 48.0 188.0 L 48.0 17.0 Z M 60.0 57.0 L 60.0 83.0 L 140.0 83.0 L 140.0 57.0 Z M 60.0 27.0 L 60.0 53.0 L 140.0 53.0 L 140.0 27.0 Z",
+    "20087": "M 113.0 14.0 L 116.0 16.0 L 113.0 17.8 L 113.0 83.0 L 163.0 83.0 L 173.0 73.0 L 185.0 83.0 L 185.0 87.0 L 112.75925922393799 87.0 L 111.7 100.2 L 108.7 115.3 L 103.8 129.2 L 97.0 141.9 L 88.5 153.2 L 78.1 163.1 L 66.1 171.7 L 52.5 178.8 L 37.1 184.6 L 20.2 188.8 L 19.7 187.1 L 35.8 181.0 L 50.1 174.0 L 62.5 166.2 L 73.1 157.4 L 81.9 147.7 L 89.0 137.1 L 94.5 125.4 L 98.3 112.7 L 100.4 98.9 L 100.87919464111329 87.0 L 22.0 87.0 L 22.0 83.0 L 101.0 83.0 L 101.0 12.0 Z",
+    "20089": "M 78.4 43.7 L 80.6 46.6 L 76.98078680038452 47.425434589385986 L 74.4 54.2 L 70.0 64.2 L 65.1 73.9 L 59.8 83.2 L 57.995555591583255 86.0 L 159.0 86.0 L 169.0 76.0 L 181.0 86.0 L 181.0 90.0 L 55.41777782440185 90.0 L 54.0 92.2 L 47.7 100.8 L 40.9 108.9 L 33.7 116.7 L 25.9 123.9 L 17.6 130.6 L 16.3 129.3 L 23.2 121.3 L 29.6 113.1 L 35.8 104.9 L 41.5 96.4 L 46.8 87.7 L 51.7 78.7 L 56.1 69.5 L 60.2 59.9 L 63.8 50.2 L 66.62220306396485 41.00508031845093 L 66.6 41.0 L 67.4 38.5 Z",
+    "2008a": "M 98.4 19.6 L 100.7 22.4 L 97.10930233001709 23.297674465179444 L 94.7 30.2 L 90.5 40.5 L 85.9 50.5 L 83.509375 55.0 L 150.0 55.0 L 156.0 50.0 L 167.0 59.0 L 162.0 62.0 L 160.95336198806763 62.43609914779663 L 158.0 76.9 L 152.1 94.6 L 144.3 111.0 L 134.6 125.9 L 123.0 139.4 L 109.6 151.3 L 94.4 161.8 L 77.5 170.7 L 58.7 178.1 L 38.2 183.8 L 37.7 182.1 L 57.4 174.5 L 75.1 165.9 L 90.9 156.2 L 104.8 145.5 L 116.9 133.5 L 127.1 120.5 L 135.4 106.2 L 142.1 90.8 L 146.9 74.1 L 149.5005555152893 59.0 L 81.384375 59.0 L 80.8 60.1 L 75.3 69.3 L 69.3 78.2 L 62.9 86.7 L 56.0 94.8 L 48.6 102.5 L 40.6 109.6 L 39.3 108.3 L 45.7 99.9 L 51.8 91.5 L 57.6 82.9 L 63.0 74.1 L 68.0 65.1 L 72.6 55.8 L 76.8 46.3 L 80.5 36.5 L 83.9 26.5 L 86.60824918746948 17.201677799224854 L 86.6 17.2 L 86.76363639831543 16.668181800842284 L 86.9 16.2 L 86.90705089569092 16.202084636688234 L 87.4 14.6 Z",
+    "20092": "M 15.0 168.0 L 96.0 168.0 L 96.0 86.0 L 50.05161294937134 86.0 L 46.8 93.2 L 42.1 102.0 L 36.8 110.4 L 31.0 118.3 L 24.6 125.7 L 17.6 132.5 L 16.3 131.4 L 21.6 123.4 L 26.6 115.3 L 31.2 107.0 L 35.3 98.5 L 39.0 89.7 L 42.3 80.6 L 45.1 71.2 L 47.5 61.5 L 49.4 51.5 L 50.755303955078126 42.10322608947754 L 50.7 42.1 L 51.2 39.1 L 62.7 42.8 L 65.4 45.2 L 61.95491390228271 46.66735143661499 L 60.6 53.7 L 57.9 64.1 L 54.7 74.2 L 51.72474222183227 82.0 L 96.0 82.0 L 96.0 18.0 L 108.0 20.0 L 111.0 22.0 L 108.0 23.8 L 108.0 82.0 L 146.0 82.0 L 156.0 72.0 L 168.0 82.0 L 168.0 86.0 L 108.0 86.0 L 108.0 168.0 L 164.0 168.0 L 174.0 158.0 L 186.0 168.0 L 186.0 172.0 L 15.0 172.0 Z",
+    "200cc": "M 140.4 181.8 L 138.6 183.4 L 136.7 184.9 L 134.7 186.1 L 132.5 187.2 L 130.2 188.0 L 127.9 188.5 L 125.4 188.8 L 123.0 189.0 L 123.0 183.0 L 103.0 180.0 L 103.0 177.0 L 123.0 177.0 L 124.4 176.9 L 125.7 176.7 L 126.9 176.4 L 128.0 176.1 L 129.0 175.6 L 129.9 175.0 L 130.8 174.3 L 131.7 173.5 L 132.6 172.5 L 133.4 171.3 L 137.2 164.7 L 140.8 156.4 L 144.1 146.6 L 147.2 135.2 L 149.9 122.2 L 152.4 107.8 L 154.5 91.8 L 156.3 74.2 L 157.8 55.2 L 158.86536588668824 37.0 L 21.0 37.0 L 21.0 33.0 L 159.0 33.0 L 165.0 28.0 L 176.0 37.0 L 171.0 40.0 L 170.63818111419678 40.15075788497925 L 169.8 56.0 L 168.3 75.3 L 166.4 93.2 L 164.2 109.5 L 161.7 124.5 L 158.8 138.0 L 155.6 150.0 L 152.0 160.7 L 148.0 170.0 L 143.5 177.9 L 142.0 179.9 Z",
+    "200db": "M 116.0 176.0 L 136.0 176.0 L 137.2 175.9 L 138.1 175.7 L 139.0 175.4 L 139.4 175.0 L 139.7 174.1 L 139.9 173.2 L 140.0 172.0 L 140.0 87.0 L 60.0 87.0 L 60.0 99.0 L 48.0 105.0 L 48.0 17.0 L 60.0 23.0 L 140.0 23.0 L 146.0 18.0 L 157.0 27.0 L 152.0 31.0 L 152.0 172.0 L 151.8 174.5 L 151.4 177.0 L 150.6 179.4 L 149.3 181.7 L 147.7 183.7 L 145.7 185.3 L 143.4 186.6 L 141.0 187.4 L 138.5 187.8 L 136.0 188.0 L 136.0 182.0 L 116.0 179.0 Z M 60.0 57.0 L 60.0 83.0 L 140.0 83.0 L 140.0 57.0 Z M 60.0 27.0 L 60.0 53.0 L 140.0 53.0 L 140.0 27.0 Z",
+    "2099d": "M 106.0 16.0 L 109.0 18.0 L 106.0 19.8 L 106.0 38.0 L 138.0 38.0 L 148.0 28.0 L 160.0 38.0 L 160.0 42.0 L 106.0 42.0 L 106.0 63.0 L 134.0 63.0 L 140.0 58.0 L 151.0 67.0 L 146.0 71.0 L 146.0 129.0 L 134.0 135.0 L 134.0 125.0 L 106.0 125.0 L 106.0 148.0 L 143.0 148.0 L 153.0 138.0 L 165.0 148.0 L 165.0 152.0 L 106.0 152.0 L 106.0 182.0 L 94.0 188.0 L 94.0 152.0 L 35.0 152.0 L 35.0 148.0 L 94.0 148.0 L 94.0 125.0 L 66.0 125.0 L 66.0 132.0 L 54.0 138.0 L 54.0 57.0 L 66.0 63.0 L 94.0 63.0 L 94.0 42.0 L 40.0 42.0 L 40.0 38.0 L 94.0 38.0 L 94.0 14.0 Z M 66.0 96.0 L 66.0 121.0 L 134.0 121.0 L 134.0 96.0 Z M 66.0 92.0 L 134.0 92.0 L 134.0 67.0 L 66.0 67.0 Z",
+    "20b9b": "M 48.0 78.3 L 152.0 78.3 L 158.0 73.3 L 169.0 82.3 L 164.0 86.3 L 164.0 173.6 L 152.0 179.6 L 152.0 167.6 L 48.0 167.6 L 48.0 179.6 L 36.0 185.6 L 36.0 72.3 Z M 48.0 82.3 L 48.0 163.6 L 152.0 163.6 L 152.0 82.3 Z M 184.0 34.0 L 184.0 38.0 L 18.0 38.0 L 18.0 34.0 L 162.0 34.0 L 172.0 24.0 Z",
+    "23942": "M 176.7 69.7 L 178.4 72.9 L 174.67723293304442 73.0283712387085 L 165.7 87.8 L 153.5 104.5 L 140.4 119.8 L 126.3 133.5 L 111.2 145.8 L 95.1 156.5 L 78.0 165.8 L 60.0 173.4 L 41.0 179.5 L 21.2 183.8 L 20.7 182.1 L 39.9 175.8 L 58.0 168.5 L 75.0 159.9 L 91.0 150.1 L 106.0 139.1 L 120.0 126.7 L 133.0 113.0 L 145.0 98.0 L 156.1 81.7 L 165.734686088562 64.8154510498047 L 165.7 64.8 L 166.7 63.0 Z M 70.0 119.0 L 90.0 119.0 L 91.2 118.9 L 92.1 118.7 L 93.0 118.4 L 93.4 118.0 L 93.7 117.1 L 93.9 116.2 L 94.0 115.0 L 94.0 18.0 L 106.0 20.0 L 109.0 22.0 L 106.0 23.8 L 106.0 115.0 L 105.8 117.5 L 105.4 120.0 L 104.6 122.4 L 103.3 124.7 L 101.7 126.7 L 99.7 128.3 L 97.4 129.6 L 95.0 130.4 L 92.5 130.8 L 90.0 131.0 L 90.0 125.0 L 70.0 122.0 Z M 66.3 52.9 L 68.5 55.8 L 64.77411680221557 56.50663299560547 L 63.0 60.7 L 59.5 68.4 L 55.6 76.0 L 51.5 83.3 L 47.0 90.6 L 42.3 97.6 L 37.2 104.5 L 31.7 111.1 L 25.9 117.5 L 19.6 123.5 L 18.3 122.4 L 22.9 115.1 L 27.4 107.9 L 31.7 100.8 L 35.8 93.6 L 39.7 86.3 L 43.3 79.0 L 46.6 71.6 L 49.7 64.1 L 52.4 56.6 L 54.657370471954344 49.914710426330565 L 54.6 49.9 L 55.5 47.5 Z",
+    "2626b": "M 137.0 174.0 L 157.0 174.0 L 158.2 173.9 L 159.1 173.7 L 160.0 173.4 L 160.4 173.0 L 160.7 172.1 L 160.9 171.2 L 161.0 170.0 L 161.0 29.0 L 127.0 29.0 L 127.0 175.0 L 115.0 181.0 L 115.0 29.0 L 84.0 29.0 L 84.0 175.0 L 72.0 181.0 L 72.0 29.0 L 40.0 29.0 L 40.0 181.0 L 28.0 187.0 L 28.0 19.0 L 40.0 25.0 L 161.0 25.0 L 167.0 20.0 L 178.0 29.0 L 173.0 33.0 L 173.0 170.0 L 172.8 172.5 L 172.4 175.0 L 171.6 177.4 L 170.3 179.7 L 168.7 181.7 L 166.7 183.3 L 164.4 184.6 L 162.0 185.4 L 159.5 185.8 L 157.0 186.0 L 157.0 180.0 L 137.0 177.0 Z",
+    "264d0": "M 137.0 177.0 L 157.0 177.0 L 158.2 176.9 L 159.1 176.7 L 160.0 176.4 L 160.4 176.0 L 160.7 175.1 L 160.9 174.2 L 161.0 173.0 L 161.0 54.9 L 127.0 54.9 L 127.0 178.3 L 115.0 184.3 L 115.0 54.9 L 84.0 54.9 L 84.0 178.3 L 72.0 184.3 L 72.0 54.9 L 40.0 54.9 L 40.0 183.4 L 28.0 189.4 L 28.0 44.9 L 40.0 50.9 L 82.175 50.9 L 82.7 49.5 L 84.1 45.5 L 85.6 41.5 L 87.2 37.5 L 88.7 33.6 L 93.2 21.6 L 94.6 17.6 L 95.6832857131958 14.42752046585083 L 95.6 14.4 L 95.97254905700683 13.580392169952393 L 96.0 13.5 L 96.00762367248535 13.503227996826173 L 96.6 12.2 L 107.1 18.2 L 109.0 21.3 L 105.22939519882202 21.763056755065918 L 105.0 22.2 L 102.8 26.0 L 100.6 29.9 L 96.0 37.3 L 93.5 40.9 L 91.0 44.4 L 88.4 47.9 L 85.85454549789429 50.9 L 161.0 50.9 L 167.0 45.9 L 178.0 54.9 L 173.0 58.9 L 173.0 173.0 L 172.8 175.5 L 172.4 178.0 L 171.6 180.4 L 170.3 182.7 L 168.7 184.7 L 166.7 186.3 L 164.4 187.6 L 162.0 188.4 L 159.5 188.8 L 157.0 189.0 L 157.0 183.0 L 137.0 180.0 Z",
+    "2b740": "M 17.0 174.0 L 61.226451587677005 174.0 L 74.77419357299804 91.0 L 32.0 91.0 L 32.0 87.0 L 75.42709674835206 87.0 L 86.2 21.0 L 97.7 24.9 L 100.3 27.4 L 97.13198604583741 28.374773502349854 L 87.54864330291748 87.0 L 141.0 87.0 L 147.0 82.0 L 158.0 91.0 L 153.0 95.0 L 153.0 174.0 L 165.0 174.0 L 175.0 164.0 L 187.0 174.0 L 187.0 178.0 L 17.0 178.0 Z M 86.89477167129516 91.0 L 73.32693576812744 174.0 L 141.0 174.0 L 141.0 91.0 Z",
+    "2b820": "M 143.6 165.3 L 129.9 152.4 L 117.8 137.9 L 107.5 121.9 L 98.9 104.3 L 92.1 85.2 L 90.48097515106201 78.6921549797058 L 15.1 84.9 L 14.8 81.0 L 89.52418737411499 74.84624338150024 L 87.0 64.7 L 83.6 42.6 L 82.06754856109619 20.09211931228638 L 82.0 20.1 L 81.9 16.8 L 94.0 18.7 L 97.0 20.6 L 94.26114273071289 22.388641452789308 L 95.6 41.3 L 98.8 62.3 L 101.64264678955078 73.84825258255005 L 162.77920551300048 68.81347723007202 L 172.0 58.0 L 184.8 67.0 L 185.1 70.9 L 102.58953342437744 77.69497957229615 L 103.6 81.8 L 110.0 99.7 L 117.9 116.0 L 127.5 130.8 L 138.6 144.2 L 151.3 156.1 L 165.6 166.5 L 174.07938804626465 171.32265195846557 L 179.0 150.0 L 181.0 150.0 L 179.1384614944458 174.2 L 181.6 175.6 L 184.6 179.0 L 184.3 183.6 L 180.9 186.6 L 176.3 186.3 L 159.1 176.6 Z",
+    "2ba60": "M 58.4 88.6 L 141.5 88.6 L 147.5 83.6 L 158.5 92.6 L 153.5 96.6 L 153.5 175.3 L 141.5 181.3 L 141.5 169.3 L 58.4 169.3 L 58.4 181.3 L 46.4 187.3 L 46.4 82.6 Z M 58.4 92.6 L 58.4 165.3 L 141.5 165.3 L 141.5 92.6 Z M 32.4 59.6 L 32.1 65.3 L 31.4 70.6 L 30.2 75.5 L 28.6 80.0 L 26.6 84.1 L 24.0 87.8 L 21.0 91.0 L 16.5 92.0 L 12.5 89.8 L 11.5 85.3 L 13.7 81.4 L 15.8 79.9 L 17.8 78.0 L 19.8 75.4 L 21.6 72.2 L 23.3 68.4 L 24.8 63.9 L 26.1 58.8 L 27.2 53.2 L 28.2 46.9 L 29.1 40.0 L 30.9 39.9 L 31.9 46.9 L 32.28636360168457 52.0 L 94.0 52.0 L 94.0 13.0 L 106.0 15.0 L 109.0 17.0 L 106.0 18.8 L 106.0 52.0 L 125.24791669845581 52.0 L 127.8 48.5 L 131.0 43.9 L 133.9 39.7 L 136.7 35.7 L 139.2 32.1 L 141.4 28.7 L 143.3 25.5 L 144.9 22.6 L 146.3 20.1 L 146.8901803970337 18.74258518218994 L 146.8 18.7 L 147.8 16.9 L 157.6 23.8 L 159.2 27.1 L 154.97307691574096 27.1 L 153.6 28.8 L 151.2 31.4 L 148.5 34.3 L 145.5 37.3 L 142.2 40.4 L 138.5 43.8 L 134.6 47.2 L 130.2 50.8 L 128.7473684310913 52.0 L 171.0 52.0 L 171.49714288711547 51.58571424484253 L 171.6 51.3 L 171.75052757263182 51.37456035614014 L 177.0 47.0 L 188.0 56.0 L 183.0 59.0 L 179.67428569793702 60.38571424484253 L 178.8 61.6 L 176.8 64.3 L 174.7 67.1 L 172.3 70.1 L 169.8 73.1 L 167.1 76.3 L 164.1 79.6 L 160.9 82.9 L 157.7 86.5 L 156.2 85.4 L 158.4 81.2 L 160.3 77.0 L 162.2 73.1 L 164.0 69.4 L 165.6 65.8 L 167.1 62.5 L 168.4 59.4 L 169.6 56.5 L 169.8037036895752 56.0 L 32.4 56.0 Z M 57.2 40.4 L 56.0 37.8 L 54.5 35.1 L 52.9 32.5 L 51.2 29.8 L 49.2 27.2 L 47.1 24.5 L 44.9 21.7 L 42.3 19.3 L 43.3 17.8 L 49.9 21.2 L 53.0 23.1 L 55.9 25.1 L 58.7 27.4 L 61.3 29.7 L 63.8 32.3 L 66.1 34.9 L 68.2 37.7 L 70.1 40.7 L 70.3 45.2 L 67.2 48.7 L 62.7 48.8 L 59.2 45.8 L 58.3 43.1 Z",
+    "2c418": "M 14.0 176.0 L 40.0 176.0 L 40.0 122.9 L 52.0 128.9 L 148.0 128.9 L 154.0 123.9 L 165.0 132.9 L 160.0 136.9 L 160.0 176.0 L 164.0 176.0 L 174.0 166.0 L 186.0 176.0 L 186.0 180.0 L 14.0 180.0 Z M 52.0 132.9 L 52.0 176.0 L 76.0 176.0 L 76.0 132.9 Z M 88.0 132.9 L 88.0 176.0 L 112.0 176.0 L 112.0 132.9 Z M 124.0 132.9 L 124.0 176.0 L 148.0 176.0 L 148.0 132.9 Z M 73.4 112.2 L 71.0 111.8 L 68.6 111.0 L 66.4 109.9 L 64.4 108.3 L 62.7 106.4 L 61.5 104.2 L 60.6 101.8 L 60.1 99.3 L 60.0 96.8 L 60.0 30.3 L 72.0 32.3 L 75.0 34.3 L 72.0 36.1 L 72.0 98.0 L 72.1 98.9 L 72.2 99.5 L 72.4 99.9 L 72.5 100.2 L 72.7 100.4 L 73.1 100.7 L 73.7 100.9 L 74.7 101.1 L 76.0 101.3 L 138.5 101.3 L 144.0 80.3 L 146.0 80.3 L 144.0 101.3 L 147.3 103.5 L 149.5 106.8 L 147.3 110.1 L 144.0 112.3 L 76.0 112.3 Z M 19.9 99.1 L 18.1 94.8 L 19.8 90.6 L 22.1 88.2 L 24.5 85.3 L 26.8 81.7 L 28.9 77.4 L 30.9 72.5 L 32.7 67.0 L 34.4 60.9 L 36.0 54.1 L 37.5 46.8 L 39.0 38.8 L 40.8 38.9 L 41.3 47.1 L 41.3 54.7 L 40.9 61.9 L 40.1 68.6 L 39.0 74.8 L 37.6 80.6 L 35.9 85.8 L 33.8 90.7 L 31.3 95.0 L 28.3 99.0 L 24.1 100.7 Z M 166.7 79.7 L 165.0 74.3 L 163.1 68.9 L 160.9 63.5 L 158.5 58.1 L 155.8 52.6 L 153.0 47.2 L 150.0 41.6 L 146.9 35.9 L 148.3 34.8 L 153.0 39.4 L 157.4 44.2 L 161.4 49.2 L 165.1 54.3 L 168.4 59.6 L 171.5 65.0 L 174.3 70.5 L 176.8 76.1 L 179.1 81.8 L 181.0 87.6 L 180.3 92.1 L 176.7 94.9 L 172.2 94.2 L 169.4 90.6 L 168.2 85.1 Z M 107.4 47.0 L 105.2 42.4 L 102.9 37.9 L 100.5 33.7 L 97.9 29.6 L 95.1 25.7 L 92.3 22.0 L 89.3 18.3 L 86.2 14.6 L 87.3 13.1 L 91.7 15.4 L 95.9 18.1 L 99.9 21.3 L 103.7 24.8 L 107.3 28.7 L 110.7 32.8 L 113.9 37.3 L 116.9 42.1 L 119.7 47.2 L 122.4 52.5 L 122.3 57.1 L 119.1 60.3 L 114.5 60.2 L 111.3 57.0 L 109.4 51.9 Z"
   }
 }

@@ -90,6 +90,7 @@
       border-color: rgba(20,184,166,0.7);
       background: rgba(20,184,166,0.12);
     }
+    .ext-glyph { width: 1em; height: 1em; display: inline-block; vertical-align: -0.12em; }
     .tree-glyph {
       font-family: 'Noto Serif TC', serif;
       font-size: 1.35rem;
@@ -159,13 +160,16 @@
       <p class="mt-2">
         The trees show <em>structural</em> decompositions: how parts make the glyph. They are not full etymological
         histories. Some characters are atomic in the IDS database, and the tree shows them as leaves. Old
-        pictographs such as 曳 are examples, although scholars discuss older origins. A node with the mark ◆
-        describes a composition pattern (for example left-right or top-bottom), not a written character.
+        pictographs such as 曳 are examples, although scholars discuss older origins. A node with the mark ◆ is a
+        group of parts that has no character of its own. Its gloss gives the position of the parts (for example one
+        part beside the other, or parts that overlap).
       </p>
       <p class="mt-3">
         Some components are in the CJK extension blocks of Unicode. If your device has no font for them, the tree
-        shows a box, and the gloss gives the code point. A circled number is a component that Unicode does not
-        encode. The number is its stroke count.
+        cannot draw them. For those components, the page draws the outline from
+        <a class="text-teal-400 hover:underline" href="https://glyphwiki.org/" target="_blank" rel="noopener">GlyphWiki</a>
+        data, and the gloss gives the code point. A circled number is a component that Unicode does not encode.
+        The number is its stroke count.
       </p>
     </section>
 
@@ -190,6 +194,15 @@
 
     const DATA_URL = '/assets/zhuangzi-char-data.json';
     let charData = {};
+    let extGlyphs = {};
+
+    // A component in a CJK extension block: many fonts have no glyph for it, so draw the outline.
+    function glyphHtml(ch) {
+      const cp = ch.codePointAt(0);
+      const d = cp > 0xFFFF && extGlyphs[cp.toString(16)];
+      if (!d) return escapeHtml(ch);
+      return `<svg class="ext-glyph" viewBox="0 0 200 200" role="img" aria-label="${escapeHtml(ch)}"><path fill="currentColor" d="${d}"/></svg>`;
+    }
     let activeChar = null;
     let selectedNodePath = 'root';
 
@@ -221,7 +234,7 @@
       document.querySelectorAll('.hanzi').forEach(n => n.classList.remove('active'));
       if (el) el.classList.add('active');
       const node = charData[ch];
-      document.getElementById('selection-label').textContent = ch;
+      document.getElementById('selection-label').innerHTML = glyphHtml(ch);
       document.getElementById('selection-gloss').textContent = node?.english || 'No data for this character.';
       renderTree(node, document.getElementById('tree'));
     }
@@ -243,13 +256,13 @@
       chip.type = 'button';
       chip.className = 'tree-chip' + (selectedNodePath === path ? ' selected' : '');
       chip.innerHTML = `
-        <span class="tree-glyph">${node.char}</span>
+        <span class="tree-glyph">${glyphHtml(node.char)}</span>
         <span class="tree-meta">${escapeHtml(node.english || '')}</span>
       `;
       chip.addEventListener('click', (e) => {
         e.stopPropagation();
         selectedNodePath = path;
-        document.getElementById('selection-label').textContent = node.char === '◆' ? (activeChar || '◆') : node.char;
+        document.getElementById('selection-label').innerHTML = glyphHtml(node.char === '◆' ? (activeChar || '◆') : node.char);
         document.getElementById('selection-gloss').textContent = node.english || '';
         document.querySelectorAll('.tree-chip').forEach(c => c.classList.remove('selected'));
         chip.classList.add('selected');
@@ -276,6 +289,7 @@
       const res = await fetch(DATA_URL);
       const data = await res.json();
       charData = data.characters;
+      extGlyphs = data.glyphs || {};
       renderPassage(data.passage);
       const first = [...data.passage].find(isHanzi);
       const firstEl = document.querySelector('.hanzi');
