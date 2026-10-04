@@ -50,7 +50,7 @@ await new Promise((ok) => server.listen(0, '127.0.0.1', ok));
 const BASE = `http://127.0.0.1:${server.address().port}`;
 
 const PAGES = [
-  ['/', 1], ['/manifesto.html', 1], ['/blog/localrbac-crypto-rbac.html', 4], ['/blog/offline-forms.html', 2],
+  ['/', 1], ['/manifesto.html', 1], ['/blog/localrbac-crypto-rbac.html', 5], ['/blog/wa-sqlite-idb-demand-paged.html', 3], ['/blog/offline-forms.html', 2],
   ['/blog/offline-hris-juarez.html', 2], ['/blog/rheoserv-waumpaum.html', 2], ['/blog/chaosedgesteg-plastron.html', 2],
 ];
 
@@ -118,6 +118,6 @@ for (const [width, name] of [[1280, 'desktop'], [390, 'phone']]) {
 await browser.close();
 server.close();
 
-console.log(`\ndiagrams-render: ${seen} diagram views (14 diagrams × 2 widths), ${failed} failed`);
+console.log(`\ndiagrams-render: ${seen} diagram views (18 diagrams × 2 widths), ${failed} failed`);
 console.log(`video: ${video}`);
 process.exit(failed ? 1 : 0);

@@ -6,61 +6,6 @@
   },
   "passage": "莊子釣於濮水，楚王使大夫二人往先焉，曰：「願以境內累矣！」莊子持竿不顧，曰：「吾聞楚有神龜，死已三千歲矣，王巾笥而藏之廟堂之上。此龜者，寧其死為留骨而貴乎？寧其生而曳尾於塗中乎？」二大夫曰：「寧生而曳尾塗中。」莊子曰：「往矣！吾將曳尾於塗中。」",
   "characters": {
-    "G": {
-      "char": "G",
-      "english": "G",
-      "leaf": true
-    },
-    "J": {
-      "char": "J",
-      "english": "J",
-      "leaf": true
-    },
-    "K": {
-      "char": "K",
-      "english": "K",
-      "leaf": true
-    },
-    "T": {
-      "char": "T",
-      "english": "T",
-      "leaf": true
-    },
-    "V": {
-      "char": "V",
-      "english": "V",
-      "leaf": true
-    },
-    "[": {
-      "char": "[",
-      "english": "[",
-      "leaf": true
-    },
-    "]": {
-      "char": "]",
-      "english": "]",
-      "leaf": true
-    },
-    "②": {
-      "char": "②",
-      "english": "②",
-      "leaf": true
-    },
-    "③": {
-      "char": "③",
-      "english": "③",
-      "leaf": true
-    },
-    "④": {
-      "char": "④",
-      "english": "④",
-      "leaf": true
-    },
-    "⑤": {
-      "char": "⑤",
-      "english": "⑤",
-      "leaf": true
-    },
     "⺀": {
       "char": "⺀",
       "english": "two dots radical",
@@ -97,13 +42,13 @@
     },
     "䒑": {
       "char": "䒑",
-      "english": "䒑",
+      "english": "component: grass-like top with two dots (as in 業, 叢)",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "丷",
-          "english": "CJK character U+4E37",
+          "english": "component: two dots on top (as in 半, 前)",
           "leaf": true
         },
         {
@@ -121,7 +66,7 @@
     },
     "丁": {
       "char": "丁",
-      "english": "CJK character U+4E01",
+      "english": "ding — nail; fourth heavenly stem",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -203,7 +148,7 @@
         },
         {
           "char": "③",
-          "english": "③",
+          "english": "an unencoded component of 3 strokes (no Unicode character exists for it)",
           "leaf": true
         }
       ],
@@ -211,13 +156,13 @@
     },
     "业": {
       "char": "业",
-      "english": "CJK character U+4E1A",
+      "english": "ye — business, trade (simplified form of 業); also a component",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "④",
-          "english": "④",
+          "english": "an unencoded component of 4 strokes (no Unicode character exists for it)",
           "leaf": true
         },
         {
@@ -259,18 +204,18 @@
     },
     "丷": {
       "char": "丷",
-      "english": "CJK character U+4E37",
+      "english": "component: two dots on top (as in 半, 前)",
       "leaf": true
     },
     "主": {
       "char": "主",
-      "english": "CJK character U+4E3B",
+      "english": "zhu — master, host, main",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "亠",
-          "english": "CJK character U+4EA0",
+          "english": "component: lid, \"head\" radical (as in 京, 亡)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -295,7 +240,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -332,7 +277,7 @@
         },
         {
           "char": "②",
-          "english": "②",
+          "english": "an unencoded component of 2 strokes (no Unicode character exists for it)",
           "leaf": true
         }
       ],
@@ -355,13 +300,13 @@
     },
     "亇": {
       "char": "亇",
-      "english": "CJK character U+4E87",
+      "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "𠂊",
-          "english": "𠂊",
+          "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
@@ -393,7 +338,7 @@
     },
     "五": {
       "char": "五",
-      "english": "CJK character U+4E94",
+      "english": "wu — five",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -404,7 +349,7 @@
         },
         {
           "char": "𫝀",
-          "english": "𫝀",
+          "english": "component U+2B740, a part of 五; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         }
       ],
@@ -412,7 +357,7 @@
     },
     "亠": {
       "char": "亠",
-      "english": "CJK character U+4EA0",
+      "english": "component: lid, \"head\" radical (as in 京, 亡)",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -441,7 +386,7 @@
     },
     "亼": {
       "char": "亼",
-      "english": "CJK character U+4EBC",
+      "english": "component: a cover over a gathering (top of 今, 合)",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -460,7 +405,7 @@
     },
     "仒": {
       "char": "仒",
-      "english": "CJK character U+4ED2",
+      "english": "component: a person over a dot (a variant of 令 parts)",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -498,13 +443,13 @@
     },
     "余": {
       "char": "余",
-      "english": "CJK character U+4F59",
+      "english": "yu — I, me; surplus",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "亼",
-          "english": "CJK character U+4EBC",
+          "english": "component: a cover over a gathering (top of 今, 合)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -523,7 +468,7 @@
         },
         {
           "char": "朩",
-          "english": "CJK character U+6729",
+          "english": "component: a variant of 木, tree",
           "leaf": true
         }
       ],
@@ -542,7 +487,7 @@
         },
         {
           "char": "吏",
-          "english": "CJK character U+540F",
+          "english": "li — official, clerk",
           "composition": "overlay / intertwined",
           "operator": "⿻",
           "children": [
@@ -553,7 +498,7 @@
             },
             {
               "char": "史",
-              "english": "CJK character U+53F2",
+              "english": "shi — history; scribe",
               "leaf": true
             }
           ],
@@ -564,7 +509,7 @@
     },
     "僕": {
       "char": "僕",
-      "english": "CJK character U+50D5",
+      "english": "pu — servant",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
@@ -575,19 +520,19 @@
         },
         {
           "char": "菐",
-          "english": "CJK character U+83D0",
+          "english": "pu — component of 僕; a thicket of thorns",
           "composition": "top-middle-bottom",
           "operator": "⿳",
           "children": [
             {
               "char": "业",
-              "english": "CJK character U+4E1A",
+              "english": "ye — business, trade (simplified form of 業); also a component",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "④",
-                  "english": "④",
+                  "english": "an unencoded component of 4 strokes (no Unicode character exists for it)",
                   "leaf": true
                 },
                 {
@@ -600,13 +545,13 @@
             },
             {
               "char": "䒑",
-              "english": "䒑",
+              "english": "component: grass-like top with two dots (as in 業, 叢)",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "丷",
-                  "english": "CJK character U+4E37",
+                  "english": "component: two dots on top (as in 半, 前)",
                   "leaf": true
                 },
                 {
@@ -658,7 +603,7 @@
     },
     "儿": {
       "char": "儿",
-      "english": "CJK character U+513F",
+      "english": "er — legs radical; child",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
@@ -683,12 +628,12 @@
       "children": [
         {
           "char": "𠂒",
-          "english": "𠂒",
+          "english": "component U+20092, a part of 先; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
           "char": "儿",
-          "english": "CJK character U+513F",
+          "english": "er — legs radical; child",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -710,7 +655,7 @@
     },
     "入": {
       "char": "入",
-      "english": "CJK character U+5165",
+      "english": "ru — to enter",
       "leaf": true
     },
     "內": {
@@ -726,7 +671,7 @@
         },
         {
           "char": "入",
-          "english": "CJK character U+5165",
+          "english": "ru — to enter",
           "leaf": true
         }
       ],
@@ -734,7 +679,7 @@
     },
     "八": {
       "char": "八",
-      "english": "CJK character U+516B",
+      "english": "ba — eight; also \"divide\" radical",
       "leaf": true
     },
     "其": {
@@ -751,7 +696,7 @@
           "children": [
             {
               "char": "⑤",
-              "english": "⑤",
+              "english": "an unencoded component of 5 strokes (no Unicode character exists for it)",
               "leaf": true
             },
             {
@@ -764,7 +709,7 @@
         },
         {
           "char": "八",
-          "english": "CJK character U+516B",
+          "english": "ba — eight; also \"divide\" radical",
           "leaf": true
         }
       ],
@@ -782,18 +727,18 @@
     },
     "冫": {
       "char": "冫",
-      "english": "CJK character U+51AB",
+      "english": "component: ice radical (two dots)",
       "leaf": true
     },
     "刀": {
       "char": "刀",
-      "english": "CJK character U+5200",
+      "english": "dao — knife",
       "composition": "right-top surround",
       "operator": "⿹",
       "children": [
         {
           "char": "𠃌",
-          "english": "𠃌",
+          "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
@@ -806,18 +751,18 @@
     },
     "勹": {
       "char": "勹",
-      "english": "CJK character U+52F9",
+      "english": "component: wrap radical",
       "leaf": true
     },
     "勺": {
       "char": "勺",
-      "english": "CJK character U+52FA",
+      "english": "shao — spoon, ladle",
       "composition": "right-top surround",
       "operator": "⿹",
       "children": [
         {
           "char": "勹",
-          "english": "CJK character U+52F9",
+          "english": "component: wrap radical",
           "leaf": true
         },
         {
@@ -830,7 +775,7 @@
     },
     "匕": {
       "char": "匕",
-      "english": "CJK character U+5315",
+      "english": "bi — spoon; dagger radical",
       "composition": "left-bottom surround",
       "operator": "⿺",
       "children": [
@@ -849,7 +794,7 @@
     },
     "十": {
       "char": "十",
-      "english": "CJK character U+5341",
+      "english": "shi — ten",
       "leaf": true
     },
     "千": {
@@ -865,7 +810,7 @@
         },
         {
           "char": "十",
-          "english": "CJK character U+5341",
+          "english": "shi — ten",
           "leaf": true
         }
       ],
@@ -873,18 +818,18 @@
     },
     "厂": {
       "char": "厂",
-      "english": "CJK character U+5382",
+      "english": "component: cliff radical",
       "leaf": true
     },
     "原": {
       "char": "原",
-      "english": "CJK character U+539F",
+      "english": "yuan — source, origin; plain",
       "composition": "left-top surround",
       "operator": "⿸",
       "children": [
         {
           "char": "厂",
-          "english": "CJK character U+5382",
+          "english": "component: cliff radical",
           "leaf": true
         },
         {
@@ -921,23 +866,23 @@
     },
     "史": {
       "char": "史",
-      "english": "CJK character U+53F2",
+      "english": "shi — history; scribe",
       "leaf": true
     },
     "司": {
       "char": "司",
-      "english": "CJK character U+53F8",
+      "english": "si — to manage; office",
       "composition": "right-top surround",
       "operator": "⿹",
       "children": [
         {
           "char": "𠃌",
-          "english": "𠃌",
+          "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
           "char": "𠮛",
-          "english": "𠮛",
+          "english": "component U+20B9B, a part of 司; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -959,7 +904,7 @@
     },
     "吏": {
       "char": "吏",
-      "english": "CJK character U+540F",
+      "english": "li — official, clerk",
       "composition": "overlay / intertwined",
       "operator": "⿻",
       "children": [
@@ -970,7 +915,7 @@
         },
         {
           "char": "史",
-          "english": "CJK character U+53F2",
+          "english": "shi — history; scribe",
           "leaf": true
         }
       ],
@@ -984,7 +929,7 @@
       "children": [
         {
           "char": "五",
-          "english": "CJK character U+4E94",
+          "english": "wu — five",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -995,7 +940,7 @@
             },
             {
               "char": "𫝀",
-              "english": "𫝀",
+              "english": "component U+2B740, a part of 五; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             }
           ],
@@ -1017,7 +962,7 @@
       "children": [
         {
           "char": "十",
-          "english": "CJK character U+5341",
+          "english": "shi — ten",
           "leaf": true
         },
         {
@@ -1036,13 +981,13 @@
       "children": [
         {
           "char": "𫩠",
-          "english": "𫩠",
+          "english": "component U+2BA60, a part of 堂; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "龸",
-              "english": "CJK character U+9FB8",
+              "english": "component: the top of 堂, 常, 當 (a variant of 尚)",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -1075,7 +1020,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -1097,7 +1042,7 @@
       "children": [
         {
           "char": "涂",
-          "english": "CJK character U+6D82",
+          "english": "tu — mud; to smear (as in 塗)",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -1108,13 +1053,13 @@
             },
             {
               "char": "余",
-              "english": "CJK character U+4F59",
+              "english": "yu — I, me; surplus",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "亼",
-                  "english": "CJK character U+4EBC",
+                  "english": "component: a cover over a gathering (top of 今, 合)",
                   "composition": "top-bottom composition",
                   "operator": "⿱",
                   "children": [
@@ -1133,7 +1078,7 @@
                 },
                 {
                   "char": "朩",
-                  "english": "CJK character U+6729",
+                  "english": "component: a variant of 木, tree",
                   "leaf": true
                 }
               ],
@@ -1150,7 +1095,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -1178,7 +1123,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -1191,7 +1136,7 @@
         },
         {
           "char": "竟",
-          "english": "CJK character U+7ADF",
+          "english": "jing — to finish; after all",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -1215,7 +1160,7 @@
                       "children": [
                         {
                           "char": "亠",
-                          "english": "CJK character U+4EA0",
+                          "english": "component: lid, \"head\" radical (as in 京, 亡)",
                           "composition": "top-bottom composition",
                           "operator": "⿱",
                           "children": [
@@ -1234,7 +1179,7 @@
                         },
                         {
                           "char": "丷",
-                          "english": "CJK character U+4E37",
+                          "english": "component: two dots on top (as in 半, 前)",
                           "leaf": true
                         }
                       ],
@@ -1258,7 +1203,7 @@
             },
             {
               "char": "儿",
-              "english": "CJK character U+513F",
+              "english": "er — legs radical; child",
               "composition": "left-right composition",
               "operator": "⿰",
               "children": [
@@ -1283,13 +1228,13 @@
     },
     "士": {
       "char": "士",
-      "english": "CJK character U+58EB",
+      "english": "shi — scholar, officer; a man",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "十",
-          "english": "CJK character U+5341",
+          "english": "shi — ten",
           "leaf": true
         },
         {
@@ -1302,7 +1247,7 @@
     },
     "壯": {
       "char": "壯",
-      "english": "CJK character U+58EF",
+      "english": "zhuang — strong, robust",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
@@ -1313,13 +1258,13 @@
         },
         {
           "char": "士",
-          "english": "CJK character U+58EB",
+          "english": "shi — scholar, officer; a man",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -1335,13 +1280,13 @@
     },
     "夕": {
       "char": "夕",
-      "english": "CJK character U+5915",
+      "english": "xi — evening",
       "composition": "full surround",
       "operator": "⿴",
       "children": [
         {
           "char": "𠂊",
-          "english": "𠂊",
+          "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
@@ -1416,7 +1361,7 @@
     },
     "寍": {
       "char": "寍",
-      "english": "CJK character U+5BCD",
+      "english": "ning — peaceful (old form of 寧)",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -1427,7 +1372,7 @@
         },
         {
           "char": "𬐘",
-          "english": "𬐘",
+          "english": "component U+2C418, a part of 寍; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -1455,7 +1400,7 @@
       "children": [
         {
           "char": "寍",
-          "english": "CJK character U+5BCD",
+          "english": "ning — peaceful (old form of 寧)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -1466,7 +1411,7 @@
             },
             {
               "char": "𬐘",
-              "english": "𬐘",
+              "english": "component U+2C418, a part of 寍; it is in a CJK extension block, and some fonts do not show it",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -1488,7 +1433,7 @@
         },
         {
           "char": "丁",
-          "english": "CJK character U+4E01",
+          "english": "ding — nail; fourth heavenly stem",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -1515,7 +1460,7 @@
     },
     "寺": {
       "char": "寺",
-      "english": "CJK character U+5BFA",
+      "english": "si — temple; office",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -1527,7 +1472,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -1571,12 +1516,12 @@
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "𠂊",
+                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
                   "char": "冫",
-                  "english": "CJK character U+51AB",
+                  "english": "component: ice radical (two dots)",
                   "leaf": true
                 }
               ],
@@ -1600,7 +1545,7 @@
     },
     "尸": {
       "char": "尸",
-      "english": "CJK character U+5C38",
+      "english": "shi — corpse radical; a body",
       "leaf": true
     },
     "尾": {
@@ -1611,7 +1556,7 @@
       "children": [
         {
           "char": "尸",
-          "english": "CJK character U+5C38",
+          "english": "shi — corpse radical; a body",
           "leaf": true
         },
         {
@@ -1676,18 +1621,18 @@
     },
     "干": {
       "char": "干",
-      "english": "CJK character U+5E72",
+      "english": "gan — shield; dry; to do",
       "leaf": true
     },
     "幺": {
       "char": "幺",
-      "english": "CJK character U+5E7A",
+      "english": "yao — tiny; youngest; thread component",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
         {
           "char": "②",
-          "english": "②",
+          "english": "an unencoded component of 2 strokes (no Unicode character exists for it)",
           "leaf": true
         },
         {
@@ -1716,24 +1661,24 @@
         },
         {
           "char": "朝",
-          "english": "CJK character U+671D",
+          "english": "chao / zhao — court; morning",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
             {
               "char": "𠦝",
-              "english": "𠦝",
+              "english": "component U+2099D, a part of 朝; it is in a CJK extension block, and some fonts do not show it",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "十",
-                  "english": "CJK character U+5341",
+                  "english": "shi — ten",
                   "leaf": true
                 },
                 {
                   "char": "早",
-                  "english": "CJK character U+65E9",
+                  "english": "zao — early; morning",
                   "composition": "top-bottom composition",
                   "operator": "⿱",
                   "children": [
@@ -1744,7 +1689,7 @@
                     },
                     {
                       "char": "十",
-                      "english": "CJK character U+5341",
+                      "english": "shi — ten",
                       "leaf": true
                     }
                   ],
@@ -1766,13 +1711,13 @@
     },
     "弋": {
       "char": "弋",
-      "english": "CJK character U+5F0B",
+      "english": "yi — to shoot with a tethered arrow; stake",
       "composition": "left-bottom surround",
       "operator": "⿺",
       "children": [
         {
           "char": "𫠠",
-          "english": "𫠠",
+          "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
           "composition": "overlay / intertwined",
           "operator": "⿻",
           "children": [
@@ -1815,13 +1760,13 @@
         },
         {
           "char": "主",
-          "english": "CJK character U+4E3B",
+          "english": "zhu — master, host, main",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "亠",
-              "english": "CJK character U+4EA0",
+              "english": "component: lid, \"head\" radical (as in 京, 亡)",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -1846,7 +1791,7 @@
               "children": [
                 {
                   "char": "十",
-                  "english": "CJK character U+5341",
+                  "english": "shi — ten",
                   "leaf": true
                 },
                 {
@@ -1876,13 +1821,13 @@
       "children": [
         {
           "char": "弋",
-          "english": "CJK character U+5F0B",
+          "english": "yi — to shoot with a tethered arrow; stake",
           "composition": "left-bottom surround",
           "operator": "⿺",
           "children": [
             {
               "char": "𫠠",
-              "english": "𫠠",
+              "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
               "composition": "overlay / intertwined",
               "operator": "⿻",
               "children": [
@@ -1917,18 +1862,18 @@
     },
     "戊": {
       "char": "戊",
-      "english": "CJK character U+620A",
+      "english": "wu — fifth heavenly stem",
       "leaf": true
     },
     "戌": {
       "char": "戌",
-      "english": "CJK character U+620C",
+      "english": "xu — eleventh earthly branch",
       "composition": "top surround",
       "operator": "⿵",
       "children": [
         {
           "char": "戊",
-          "english": "CJK character U+620A",
+          "english": "wu — fifth heavenly stem",
           "leaf": true
         },
         {
@@ -1941,7 +1886,7 @@
     },
     "戕": {
       "char": "戕",
-      "english": "CJK character U+6215",
+      "english": "qiang — to kill, to injure",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
@@ -1958,13 +1903,13 @@
           "children": [
             {
               "char": "弋",
-              "english": "CJK character U+5F0B",
+              "english": "yi — to shoot with a tethered arrow; stake",
               "composition": "left-bottom surround",
               "operator": "⿺",
               "children": [
                 {
                   "char": "𫠠",
-                  "english": "𫠠",
+                  "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
                   "composition": "overlay / intertwined",
                   "operator": "⿻",
                   "children": [
@@ -2002,7 +1947,7 @@
     },
     "户": {
       "char": "户",
-      "english": "CJK character U+6237",
+      "english": "hu — door; household",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -2013,7 +1958,7 @@
         },
         {
           "char": "尸",
-          "english": "CJK character U+5C38",
+          "english": "shi — corpse radical; a body",
           "leaf": true
         }
       ],
@@ -2037,7 +1982,7 @@
         },
         {
           "char": "寺",
-          "english": "CJK character U+5BFA",
+          "english": "si — temple; office",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -2049,7 +1994,7 @@
               "children": [
                 {
                   "char": "十",
-                  "english": "CJK character U+5341",
+                  "english": "shi — ten",
                   "leaf": true
                 },
                 {
@@ -2079,7 +2024,7 @@
       "children": [
         {
           "char": "亠",
-          "english": "CJK character U+4EA0",
+          "english": "component: lid, \"head\" radical (as in 京, 亡)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -2109,7 +2054,7 @@
             },
             {
               "char": "𠃌",
-              "english": "𠃌",
+              "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             }
           ],
@@ -2132,7 +2077,7 @@
           "children": [
             {
               "char": "亠",
-              "english": "CJK character U+4EA0",
+              "english": "component: lid, \"head\" radical (as in 京, 亡)",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -2162,7 +2107,7 @@
                 },
                 {
                   "char": "𠃌",
-                  "english": "𠃌",
+                  "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 }
               ],
@@ -2173,7 +2118,7 @@
         },
         {
           "char": "仒",
-          "english": "CJK character U+4ED2",
+          "english": "component: a person over a dot (a variant of 令 parts)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -2214,7 +2159,7 @@
     },
     "早": {
       "char": "早",
-      "english": "CJK character U+65E9",
+      "english": "zao — early; morning",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -2225,7 +2170,7 @@
         },
         {
           "char": "十",
-          "english": "CJK character U+5341",
+          "english": "shi — ten",
           "leaf": true
         }
       ],
@@ -2267,13 +2212,13 @@
     },
     "有": {
       "char": "有",
-      "english": "CJK character U+6709",
+      "english": "you — to have; there is",
       "composition": "left-top surround",
       "operator": "⿸",
       "children": [
         {
           "char": "𠂇",
-          "english": "𠂇",
+          "english": "component U+20087, a part of 有; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
@@ -2286,24 +2231,24 @@
     },
     "朝": {
       "char": "朝",
-      "english": "CJK character U+671D",
+      "english": "chao / zhao — court; morning",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
         {
           "char": "𠦝",
-          "english": "𠦝",
+          "english": "component U+2099D, a part of 朝; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
               "char": "早",
-              "english": "CJK character U+65E9",
+              "english": "zao — early; morning",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -2314,7 +2259,7 @@
                 },
                 {
                   "char": "十",
-                  "english": "CJK character U+5341",
+                  "english": "shi — ten",
                   "leaf": true
                 }
               ],
@@ -2338,12 +2283,12 @@
     },
     "朩": {
       "char": "朩",
-      "english": "CJK character U+6729",
+      "english": "component: a variant of 木, tree",
       "leaf": true
     },
     "林": {
       "char": "林",
-      "english": "CJK character U+6797",
+      "english": "lin — forest, grove",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
@@ -2368,7 +2313,7 @@
       "children": [
         {
           "char": "林",
-          "english": "CJK character U+6797",
+          "english": "lin — forest, grove",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -2400,7 +2345,7 @@
     },
     "正": {
       "char": "正",
-      "english": "CJK character U+6B63",
+      "english": "zheng — correct; upright",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -2430,7 +2375,7 @@
         },
         {
           "char": "匕",
-          "english": "CJK character U+5315",
+          "english": "bi — spoon; dagger radical",
           "composition": "left-bottom surround",
           "operator": "⿺",
           "children": [
@@ -2469,13 +2414,13 @@
           "children": [
             {
               "char": "戌",
-              "english": "CJK character U+620C",
+              "english": "xu — eleventh earthly branch",
               "composition": "top surround",
               "operator": "⿵",
               "children": [
                 {
                   "char": "戊",
-                  "english": "CJK character U+620A",
+                  "english": "wu — fifth heavenly stem",
                   "leaf": true
                 },
                 {
@@ -2488,7 +2433,7 @@
             },
             {
               "char": "𣥂",
-              "english": "𣥂",
+              "english": "component U+23942, a part of 歲; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             }
           ],
@@ -2510,13 +2455,13 @@
         },
         {
           "char": "夕",
-          "english": "CJK character U+5915",
+          "english": "xi — evening",
           "composition": "full surround",
           "operator": "⿴",
           "children": [
             {
               "char": "𠂊",
-              "english": "𠂊",
+              "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             },
             {
@@ -2549,13 +2494,13 @@
             },
             {
               "char": "夕",
-              "english": "CJK character U+5915",
+              "english": "xi — evening",
               "composition": "full surround",
               "operator": "⿴",
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "𠂊",
+                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
@@ -2571,7 +2516,7 @@
         },
         {
           "char": "匕",
-          "english": "CJK character U+5315",
+          "english": "bi — spoon; dagger radical",
           "composition": "left-bottom surround",
           "operator": "⿺",
           "children": [
@@ -2683,7 +2628,7 @@
     },
     "涂": {
       "char": "涂",
-      "english": "CJK character U+6D82",
+      "english": "tu — mud; to smear (as in 塗)",
       "composition": "left-right composition",
       "operator": "⿰",
       "children": [
@@ -2694,13 +2639,13 @@
         },
         {
           "char": "余",
-          "english": "CJK character U+4F59",
+          "english": "yu — I, me; surplus",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "亼",
-              "english": "CJK character U+4EBC",
+              "english": "component: a cover over a gathering (top of 今, 合)",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -2719,7 +2664,7 @@
             },
             {
               "char": "朩",
-              "english": "CJK character U+6729",
+              "english": "component: a variant of 木, tree",
               "leaf": true
             }
           ],
@@ -2741,7 +2686,7 @@
         },
         {
           "char": "僕",
-          "english": "CJK character U+50D5",
+          "english": "pu — servant",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -2752,19 +2697,19 @@
             },
             {
               "char": "菐",
-              "english": "CJK character U+83D0",
+              "english": "pu — component of 僕; a thicket of thorns",
               "composition": "top-middle-bottom",
               "operator": "⿳",
               "children": [
                 {
                   "char": "业",
-                  "english": "CJK character U+4E1A",
+                  "english": "ye — business, trade (simplified form of 業); also a component",
                   "composition": "top-bottom composition",
                   "operator": "⿱",
                   "children": [
                     {
                       "char": "④",
-                      "english": "④",
+                      "english": "an unencoded component of 4 strokes (no Unicode character exists for it)",
                       "leaf": true
                     },
                     {
@@ -2777,13 +2722,13 @@
                 },
                 {
                   "char": "䒑",
-                  "english": "䒑",
+                  "english": "component: grass-like top with two dots (as in 業, 叢)",
                   "composition": "top-bottom composition",
                   "operator": "⿱",
                   "children": [
                     {
                       "char": "丷",
-                      "english": "CJK character U+4E37",
+                      "english": "component: two dots on top (as in 半, 前)",
                       "leaf": true
                     },
                     {
@@ -2854,7 +2799,7 @@
       "children": [
         {
           "char": "正",
-          "english": "CJK character U+6B63",
+          "english": "zheng — correct; upright",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -2879,7 +2824,7 @@
           "children": [
             {
               "char": "②",
-              "english": "②",
+              "english": "an unencoded component of 2 strokes (no Unicode character exists for it)",
               "leaf": true
             },
             {
@@ -2917,7 +2862,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -2943,7 +2888,7 @@
     },
     "申": {
       "char": "申",
-      "english": "CJK character U+7533",
+      "english": "shen — to state; ninth earthly branch",
       "leaf": true
     },
     "留": {
@@ -2960,18 +2905,18 @@
           "children": [
             {
               "char": "③",
-              "english": "③",
+              "english": "an unencoded component of 3 strokes (no Unicode character exists for it)",
               "leaf": true
             },
             {
               "char": "刀",
-              "english": "CJK character U+5200",
+              "english": "dao — knife",
               "composition": "right-top surround",
               "operator": "⿹",
               "children": [
                 {
                   "char": "𠃌",
-                  "english": "𠃌",
+                  "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
@@ -3015,13 +2960,13 @@
     },
     "矢": {
       "char": "矢",
-      "english": "CJK character U+77E2",
+      "english": "shi — arrow",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "𠂉",
-          "english": "𠂉",
+          "english": "component U+20089, a part of 矢; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
@@ -3059,13 +3004,13 @@
         },
         {
           "char": "矢",
-          "english": "CJK character U+77E2",
+          "english": "shi — arrow",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "𠂉",
-              "english": "𠂉",
+              "english": "component U+20089, a part of 矢; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             },
             {
@@ -3111,7 +3056,7 @@
         },
         {
           "char": "申",
-          "english": "CJK character U+7533",
+          "english": "shen — to state; ninth earthly branch",
           "leaf": true
         }
       ],
@@ -3131,7 +3076,7 @@
           "children": [
             {
               "char": "亠",
-              "english": "CJK character U+4EA0",
+              "english": "component: lid, \"head\" radical (as in 京, 亡)",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -3150,7 +3095,7 @@
             },
             {
               "char": "丷",
-              "english": "CJK character U+4E37",
+              "english": "component: two dots on top (as in 半, 前)",
               "leaf": true
             }
           ],
@@ -3166,7 +3111,7 @@
     },
     "竟": {
       "char": "竟",
-      "english": "CJK character U+7ADF",
+      "english": "jing — to finish; after all",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -3190,7 +3135,7 @@
                   "children": [
                     {
                       "char": "亠",
-                      "english": "CJK character U+4EA0",
+                      "english": "component: lid, \"head\" radical (as in 京, 亡)",
                       "composition": "top-bottom composition",
                       "operator": "⿱",
                       "children": [
@@ -3209,7 +3154,7 @@
                     },
                     {
                       "char": "丷",
-                      "english": "CJK character U+4E37",
+                      "english": "component: two dots on top (as in 半, 前)",
                       "leaf": true
                     }
                   ],
@@ -3233,7 +3178,7 @@
         },
         {
           "char": "儿",
-          "english": "CJK character U+513F",
+          "english": "er — legs radical; child",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -3261,13 +3206,13 @@
       "children": [
         {
           "char": "亇",
-          "english": "CJK character U+4E87",
+          "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "𠂊",
-              "english": "𠂊",
+              "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             },
             {
@@ -3280,13 +3225,13 @@
         },
         {
           "char": "亇",
-          "english": "CJK character U+4E87",
+          "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "𠂊",
-              "english": "𠂊",
+              "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             },
             {
@@ -3314,13 +3259,13 @@
           "children": [
             {
               "char": "亇",
-              "english": "CJK character U+4E87",
+              "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "𠂊",
+                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
@@ -3333,13 +3278,13 @@
             },
             {
               "char": "亇",
-              "english": "CJK character U+4E87",
+              "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "𠂊",
+                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
@@ -3355,7 +3300,7 @@
         },
         {
           "char": "干",
-          "english": "CJK character U+5E72",
+          "english": "gan — shield; dry; to do",
           "leaf": true
         }
       ],
@@ -3375,13 +3320,13 @@
           "children": [
             {
               "char": "亇",
-              "english": "CJK character U+4E87",
+              "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "𠂊",
+                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
@@ -3394,13 +3339,13 @@
             },
             {
               "char": "亇",
-              "english": "CJK character U+4E87",
+              "english": "component: a form of 个, \"one item\"; the top of 亇 is a hook",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "𠂊",
-                  "english": "𠂊",
+                  "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
                   "leaf": true
                 },
                 {
@@ -3416,18 +3361,18 @@
         },
         {
           "char": "司",
-          "english": "CJK character U+53F8",
+          "english": "si — to manage; office",
           "composition": "right-top surround",
           "operator": "⿹",
           "children": [
             {
               "char": "𠃌",
-              "english": "𠃌",
+              "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             },
             {
               "char": "𠮛",
-              "english": "𠮛",
+              "english": "component U+20B9B, a part of 司; it is in a CJK extension block, and some fonts do not show it",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -3458,13 +3403,13 @@
       "children": [
         {
           "char": "幺",
-          "english": "CJK character U+5E7A",
+          "english": "yao — tiny; youngest; thread component",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
             {
               "char": "②",
-              "english": "②",
+              "english": "an unencoded component of 2 strokes (no Unicode character exists for it)",
               "leaf": true
             },
             {
@@ -3502,13 +3447,13 @@
           "children": [
             {
               "char": "幺",
-              "english": "CJK character U+5E7A",
+              "english": "yao — tiny; youngest; thread component",
               "composition": "left-right composition",
               "operator": "⿰",
               "children": [
                 {
                   "char": "②",
-                  "english": "②",
+                  "english": "an unencoded component of 2 strokes (no Unicode character exists for it)",
                   "leaf": true
                 },
                 {
@@ -3532,7 +3477,7 @@
     },
     "耂": {
       "char": "耂",
-      "english": "CJK character U+8002",
+      "english": "component: old radical (top of 老, 者)",
       "leaf": true
     },
     "者": {
@@ -3543,7 +3488,7 @@
       "children": [
         {
           "char": "耂",
-          "english": "CJK character U+8002",
+          "english": "component: old radical (top of 老, 者)",
           "leaf": true
         },
         {
@@ -3567,7 +3512,7 @@
         },
         {
           "char": "𦓐",
-          "english": "𦓐",
+          "english": "component U+264D0, a part of 而; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -3578,7 +3523,7 @@
             },
             {
               "char": "𦉫",
-              "english": "𦉫",
+              "english": "component U+2626B, a part of a rare character; it is in a CJK extension block, and some fonts do not show it",
               "composition": "top surround",
               "operator": "⿵",
               "children": [
@@ -3634,12 +3579,12 @@
           "children": [
             {
               "char": "𠁣",
-              "english": "𠁣",
+              "english": "component U+20063, a part of 門; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             },
             {
               "char": "𠃛",
-              "english": "𠃛",
+              "english": "component U+200DB, a part of 門; it is in a CJK extension block, and some fonts do not show it",
               "leaf": true
             }
           ],
@@ -3660,13 +3605,13 @@
     },
     "臧": {
       "char": "臧",
-      "english": "CJK character U+81E7",
+      "english": "zang — good; a slave",
       "composition": "top surround",
       "operator": "⿵",
       "children": [
         {
           "char": "戕",
-          "english": "CJK character U+6215",
+          "english": "qiang — to kill, to injure",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -3683,13 +3628,13 @@
               "children": [
                 {
                   "char": "弋",
-                  "english": "CJK character U+5F0B",
+                  "english": "yi — to shoot with a tethered arrow; stake",
                   "composition": "left-bottom surround",
                   "operator": "⿺",
                   "children": [
                     {
                       "char": "𫠠",
-                      "english": "𫠠",
+                      "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
                       "composition": "overlay / intertwined",
                       "operator": "⿻",
                       "children": [
@@ -3741,7 +3686,7 @@
       "children": [
         {
           "char": "十",
-          "english": "CJK character U+5341",
+          "english": "shi — ten",
           "leaf": true
         },
         {
@@ -3766,7 +3711,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -3779,7 +3724,7 @@
         },
         {
           "char": "壯",
-          "english": "CJK character U+58EF",
+          "english": "zhuang — strong, robust",
           "composition": "left-right composition",
           "operator": "⿰",
           "children": [
@@ -3790,13 +3735,13 @@
             },
             {
               "char": "士",
-              "english": "CJK character U+58EB",
+              "english": "shi — scholar, officer; a man",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
                 {
                   "char": "十",
-                  "english": "CJK character U+5341",
+                  "english": "shi — ten",
                   "leaf": true
                 },
                 {
@@ -3815,19 +3760,19 @@
     },
     "菐": {
       "char": "菐",
-      "english": "CJK character U+83D0",
+      "english": "pu — component of 僕; a thicket of thorns",
       "composition": "top-middle-bottom",
       "operator": "⿳",
       "children": [
         {
           "char": "业",
-          "english": "CJK character U+4E1A",
+          "english": "ye — business, trade (simplified form of 業); also a component",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "④",
-              "english": "④",
+              "english": "an unencoded component of 4 strokes (no Unicode character exists for it)",
               "leaf": true
             },
             {
@@ -3840,13 +3785,13 @@
         },
         {
           "char": "䒑",
-          "english": "䒑",
+          "english": "component: grass-like top with two dots (as in 業, 叢)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
             {
               "char": "丷",
-              "english": "CJK character U+4E37",
+              "english": "component: two dots on top (as in 半, 前)",
               "leaf": true
             },
             {
@@ -3907,7 +3852,7 @@
           "children": [
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             },
             {
@@ -3920,13 +3865,13 @@
         },
         {
           "char": "臧",
-          "english": "CJK character U+81E7",
+          "english": "zang — good; a slave",
           "composition": "top surround",
           "operator": "⿵",
           "children": [
             {
               "char": "戕",
-              "english": "CJK character U+6215",
+              "english": "qiang — to kill, to injure",
               "composition": "left-right composition",
               "operator": "⿰",
               "children": [
@@ -3943,13 +3888,13 @@
                   "children": [
                     {
                       "char": "弋",
-                      "english": "CJK character U+5F0B",
+                      "english": "yi — to shoot with a tethered arrow; stake",
                       "composition": "left-bottom surround",
                       "operator": "⿺",
                       "children": [
                         {
                           "char": "𫠠",
-                          "english": "𫠠",
+                          "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
                           "composition": "overlay / intertwined",
                           "operator": "⿻",
                           "children": [
@@ -4009,7 +3954,7 @@
         },
         {
           "char": "八",
-          "english": "CJK character U+516B",
+          "english": "ba — eight; also \"divide\" radical",
           "leaf": true
         }
       ],
@@ -4023,7 +3968,7 @@
       "children": [
         {
           "char": "𠀐",
-          "english": "𠀐",
+          "english": "component U+20010, a part of 貴; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -4067,7 +4012,7 @@
             },
             {
               "char": "八",
-              "english": "CJK character U+516B",
+              "english": "ba — eight; also \"divide\" radical",
               "leaf": true
             }
           ],
@@ -4112,7 +4057,7 @@
                   "children": [
                     {
                       "char": "十",
-                      "english": "CJK character U+5341",
+                      "english": "shi — ten",
                       "leaf": true
                     },
                     {
@@ -4128,7 +4073,7 @@
             },
             {
               "char": "丷",
-              "english": "CJK character U+4E37",
+              "english": "component: two dots on top (as in 半, 前)",
               "leaf": true
             }
           ],
@@ -4179,7 +4124,7 @@
                       "children": [
                         {
                           "char": "十",
-                          "english": "CJK character U+5341",
+                          "english": "shi — ten",
                           "leaf": true
                         },
                         {
@@ -4195,7 +4140,7 @@
                 },
                 {
                   "char": "丷",
-                  "english": "CJK character U+4E37",
+                  "english": "component: two dots on top (as in 半, 前)",
                   "leaf": true
                 }
               ],
@@ -4206,13 +4151,13 @@
         },
         {
           "char": "勺",
-          "english": "CJK character U+52FA",
+          "english": "shao — spoon, ladle",
           "composition": "right-top surround",
           "operator": "⿹",
           "children": [
             {
               "char": "勹",
-              "english": "CJK character U+52F9",
+              "english": "component: wrap radical",
               "leaf": true
             },
             {
@@ -4234,12 +4179,12 @@
       "children": [
         {
           "char": "𠁣",
-          "english": "𠁣",
+          "english": "component U+20063, a part of 門; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
           "char": "𠃛",
-          "english": "𠃛",
+          "english": "component U+200DB, a part of 門; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         }
       ],
@@ -4252,13 +4197,13 @@
     },
     "雇": {
       "char": "雇",
-      "english": "CJK character U+96C7",
+      "english": "gu — to hire; a bird name",
       "composition": "left-top surround",
       "operator": "⿸",
       "children": [
         {
           "char": "户",
-          "english": "CJK character U+6237",
+          "english": "hu — door; household",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -4269,7 +4214,7 @@
             },
             {
               "char": "尸",
-              "english": "CJK character U+5C38",
+              "english": "shi — corpse radical; a body",
               "leaf": true
             }
           ],
@@ -4303,7 +4248,7 @@
               "children": [
                 {
                   "char": "亠",
-                  "english": "CJK character U+4EA0",
+                  "english": "component: lid, \"head\" radical (as in 京, 亡)",
                   "composition": "top-bottom composition",
                   "operator": "⿱",
                   "children": [
@@ -4322,7 +4267,7 @@
                 },
                 {
                   "char": "丷",
-                  "english": "CJK character U+4E37",
+                  "english": "component: two dots on top (as in 半, 前)",
                   "leaf": true
                 }
               ],
@@ -4357,13 +4302,13 @@
       "children": [
         {
           "char": "原",
-          "english": "CJK character U+539F",
+          "english": "yuan — source, origin; plain",
           "composition": "left-top surround",
           "operator": "⿸",
           "children": [
             {
               "char": "厂",
-              "english": "CJK character U+5382",
+              "english": "component: cliff radical",
               "leaf": true
             },
             {
@@ -4404,13 +4349,13 @@
       "children": [
         {
           "char": "雇",
-          "english": "CJK character U+96C7",
+          "english": "gu — to hire; a bird name",
           "composition": "left-top surround",
           "operator": "⿸",
           "children": [
             {
               "char": "户",
-              "english": "CJK character U+6237",
+              "english": "hu — door; household",
               "composition": "top-bottom composition",
               "operator": "⿱",
               "children": [
@@ -4421,7 +4366,7 @@
                 },
                 {
                   "char": "尸",
-                  "english": "CJK character U+5C38",
+                  "english": "shi — corpse radical; a body",
                   "leaf": true
                 }
               ],
@@ -4451,7 +4396,7 @@
       "children": [
         {
           "char": "⑤",
-          "english": "⑤",
+          "english": "an unencoded component of 5 strokes (no Unicode character exists for it)",
           "leaf": true
         },
         {
@@ -4470,7 +4415,7 @@
       "children": [
         {
           "char": "𠂊",
-          "english": "𠂊",
+          "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
           "leaf": true
         },
         {
@@ -4486,7 +4431,7 @@
             },
             {
               "char": "电",
-              "english": "电",
+              "english": "dian — electricity (simplified form of 電); here only a shape in 龜",
               "composition": "overlay / intertwined",
               "operator": "⿻",
               "children": [
@@ -4511,7 +4456,7 @@
     },
     "龸": {
       "char": "龸",
-      "english": "CJK character U+9FB8",
+      "english": "component: the top of 堂, 常, 當 (a variant of 尚)",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4530,7 +4475,7 @@
     },
     "𠀐": {
       "char": "𠀐",
-      "english": "𠀐",
+      "english": "component U+20010, a part of 貴; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4563,53 +4508,53 @@
     },
     "𠁣": {
       "char": "𠁣",
-      "english": "𠁣",
+      "english": "component U+20063, a part of 門; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠂇": {
       "char": "𠂇",
-      "english": "𠂇",
+      "english": "component U+20087, a part of 有; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠂉": {
       "char": "𠂉",
-      "english": "𠂉",
+      "english": "component U+20089, a part of 矢; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠂊": {
       "char": "𠂊",
-      "english": "𠂊",
+      "english": "component U+2008A, a part of 亇, 夕, 將, 龜; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠂒": {
       "char": "𠂒",
-      "english": "𠂒",
+      "english": "component U+20092, a part of 先; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠃌": {
       "char": "𠃌",
-      "english": "𠃌",
+      "english": "component U+200CC, a part of 刀, 司, 方; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠃛": {
       "char": "𠃛",
-      "english": "𠃛",
+      "english": "component U+200DB, a part of 門; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𠦝": {
       "char": "𠦝",
-      "english": "𠦝",
+      "english": "component U+2099D, a part of 朝; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "十",
-          "english": "CJK character U+5341",
+          "english": "shi — ten",
           "leaf": true
         },
         {
           "char": "早",
-          "english": "CJK character U+65E9",
+          "english": "zao — early; morning",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -4620,7 +4565,7 @@
             },
             {
               "char": "十",
-              "english": "CJK character U+5341",
+              "english": "shi — ten",
               "leaf": true
             }
           ],
@@ -4631,7 +4576,7 @@
     },
     "𠮛": {
       "char": "𠮛",
-      "english": "𠮛",
+      "english": "component U+20B9B, a part of 司; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4650,12 +4595,12 @@
     },
     "𣥂": {
       "char": "𣥂",
-      "english": "𣥂",
+      "english": "component U+23942, a part of 歲; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𦉫": {
       "char": "𦉫",
-      "english": "𦉫",
+      "english": "component U+2626B, a part of a rare character; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top surround",
       "operator": "⿵",
       "children": [
@@ -4688,7 +4633,7 @@
     },
     "𦓐": {
       "char": "𦓐",
-      "english": "𦓐",
+      "english": "component U+264D0, a part of 而; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
@@ -4699,7 +4644,7 @@
         },
         {
           "char": "𦉫",
-          "english": "𦉫",
+          "english": "component U+2626B, a part of a rare character; it is in a CJK extension block, and some fonts do not show it",
           "composition": "top surround",
           "operator": "⿵",
           "children": [
@@ -4735,12 +4680,12 @@
     },
     "𫝀": {
       "char": "𫝀",
-      "english": "𫝀",
+      "english": "component U+2B740, a part of 五; it is in a CJK extension block, and some fonts do not show it",
       "leaf": true
     },
     "𫠠": {
       "char": "𫠠",
-      "english": "𫠠",
+      "english": "component U+2B820, a part of 弋; it is in a CJK extension block, and some fonts do not show it",
       "composition": "overlay / intertwined",
       "operator": "⿻",
       "children": [
@@ -4759,13 +4704,13 @@
     },
     "𫩠": {
       "char": "𫩠",
-      "english": "𫩠",
+      "english": "component U+2BA60, a part of 堂; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [
         {
           "char": "龸",
-          "english": "CJK character U+9FB8",
+          "english": "component: the top of 堂, 常, 當 (a variant of 尚)",
           "composition": "top-bottom composition",
           "operator": "⿱",
           "children": [
@@ -4792,7 +4737,7 @@
     },
     "𬐘": {
       "char": "𬐘",
-      "english": "𬐘",
+      "english": "component U+2C418, a part of 寍; it is in a CJK extension block, and some fonts do not show it",
       "composition": "top-bottom composition",
       "operator": "⿱",
       "children": [

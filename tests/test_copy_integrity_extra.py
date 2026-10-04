@@ -36,7 +36,7 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent.parent
 APPS = ROOT.parent / "apps"
 BASE = os.environ.get("STE_BASE", "HEAD")
-TEXT_KEYS = {"title", "ogTitle", "excerpt", "tagline"}
+TEXT_KEYS = {"title", "ogTitle", "excerpt", "tagline", "ogImage", "ogImageJpg"}  # the OG card can be redrawn
 
 spec = importlib.util.spec_from_file_location("copy_integrity", ROOT / "tests" / "test_copy_integrity.py")
 ci = importlib.util.module_from_spec(spec)
@@ -126,6 +126,7 @@ def main() -> int:
                            capture_output=True, text=True).stdout.split()
     for rel in ["index.html", "manifesto.html", "404.html"] + [n for n in names if n.endswith(".html")]:
         gone = grab(show(ROOT, rel)) - grab((ROOT / rel).read_text(encoding="utf-8"))
+        gone -= {"https://rheophile.ca/assets/og-card.png"}  # a post gets its own OG card when the build draws one
         check(not gone, f"ATTRS {rel}", str(sorted(gone)))
 
     print(f"test_copy_integrity_extra: {failed} failed (base {BASE})")

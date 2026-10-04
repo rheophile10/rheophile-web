@@ -5,7 +5,7 @@ The design test plan says: "On the pre-change tree it exits 1 with several
 hundred errors." No delivered test proves that. This file does, and it also
 covers text sources that tests/test_ste_lint.py does not sample.
 
-  1. BASE     the copy at a git ref (default HEAD, or STE_BASE=<ref>) fails the
+  1. BASE     the copy at a git ref (default e99cc31, or STE_BASE=<ref>) fails the
               checker with several hundred errors, and each error rule fires.
               The files come from `git show`; the working tree is not touched.
   2. NOW      the working tree has zero errors.
@@ -33,7 +33,8 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent.parent
 APPS = ROOT.parent / "apps"
-BASE = os.environ.get("STE_BASE", "HEAD")
+# e99cc31 is the last commit before the STE rewrite: the old copy lives there.
+BASE = os.environ.get("STE_BASE", "e99cc31")
 RULES = ("LEN", "CONTR", "SEMI", "DASH", "WORD", "TENSE")
 
 

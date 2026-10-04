@@ -532,81 +532,138 @@
         <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 4. A 4-of-5 quorum: four shares reconstruct the custody key, and three shares reveal nothing.</figcaption>
       </figure>
 
-<!-- NEW-SECTION-START -->
+      <h2>Where the database is: demand-paged onto encrypted IndexedDB</h2>
+      <p>
+        Ordinary SQLite is <strong>demand-paged</strong>. Its pager reads and writes single <strong>pages</strong>
+        from the file when a query touches them. (A page is 4&nbsp;KB by default.) The pager holds only a small page
+        cache in RAM. Thus a 50&nbsp;GB database runs in a few megabytes. Only a <code>:memory:</code> database is
+        fully in RAM.
+      </p>
+      <p>
+        Most SQLite-in-the-browser builds discard this model. <code>sql.js</code> loads the <em>whole</em> file into
+        a <code>Uint8Array</code> on the WASM heap. localRbac keeps the demand-paged model in the browser. It injects
+        a <strong>VFS</strong>, the virtual-filesystem interface of SQLite. Thus the block reads and writes of the pager go
+        to <strong>IndexedDB</strong>, one page at a time. The whole file is never in memory.
+      </p>
+      <p>
+        The persistent connection opens through <code>EncryptedIDBVFS</code>. This is a vendored copy of
+        <code>IDBBatchAtomicVFS</code> from wa-sqlite. Each SQLite page becomes an IndexedDB block with the key
+        <code>[path,&nbsp;offset,&nbsp;version]</code>. The VFS fetches and writes each block on demand. The VFS layer
+        does <strong>transparent per-page AES encryption</strong> and batch-atomic commits. Figure 5 shows the path.
+      </p>
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 404" width="100%" role="img" aria-labelledby="dgm-pager-t dgm-pager-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-pager-t">The demand-paged path from a query to encrypted IndexedDB</title>
+          <desc id="dgm-pager-d">A query goes to the SQLite pager. The pager reads and writes one 4 KB page at a time through EncryptedIDBVFS, and each page becomes an encrypted block in IndexedDB. A separate staging connection in :memory: authorizes an incoming changeset before the merge.</desc>
+          <defs>
+            <marker id="dgm-pager-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+          <!-- left column: the persistent path -->
+          <rect x="30" y="16" width="190" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="125" y="43" text-anchor="middle" fill="#e4e4e7">SQL query</text>
+          <line x1="125" y1="60" x2="125" y2="96" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-pager-arrow)"/>
+          <rect x="30" y="96" width="190" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="125" y="120" text-anchor="middle" fill="#e4e4e7">SQLite pager</text>
+          <text x="125" y="139" text-anchor="middle" fill="#a1a1aa" font-size="13">small page cache in RAM</text>
+          <line x1="125" y1="152" x2="125" y2="204" stroke="#2dd4bf" stroke-width="1.5" marker-start="url(#dgm-pager-arrow)" marker-end="url(#dgm-pager-arrow)"/>
+          <text x="136" y="183" fill="#a1a1aa" font-size="13">one 4 KB page at a time</text>
+          <rect x="30" y="204" width="190" height="56" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="125" y="228" text-anchor="middle" fill="#e4e4e7">EncryptedIDBVFS</text>
+          <text x="125" y="247" text-anchor="middle" fill="#a1a1aa" font-size="13">AES on each page</text>
+          <line x1="125" y1="260" x2="125" y2="312" stroke="#2dd4bf" stroke-width="1.5" marker-start="url(#dgm-pager-arrow)" marker-end="url(#dgm-pager-arrow)"/>
+          <text x="136" y="291" fill="#a1a1aa" font-size="13">batch-atomic commits</text>
+          <rect x="30" y="312" width="190" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="125" y="336" text-anchor="middle" fill="#e4e4e7">IndexedDB</text>
+          <text x="125" y="355" text-anchor="middle" fill="#a1a1aa" font-size="13">[path, offset, version]</text>
+          <text x="125" y="392" text-anchor="middle" fill="#a1a1aa" font-size="13">the store of record</text>
+          <!-- right column: the staging connection -->
+          <rect x="320" y="16" width="180" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="410" y="43" text-anchor="middle" fill="#e4e4e7">Incoming changeset</text>
+          <line x1="410" y1="60" x2="410" y2="96" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-pager-arrow)"/>
+          <rect x="320" y="96" width="180" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)" stroke-dasharray="5 4"/>
+          <text x="410" y="120" text-anchor="middle" fill="#e4e4e7">Staging connection</text>
+          <text x="410" y="139" text-anchor="middle" fill="#a1a1aa" font-size="13">:memory:, throwaway</text>
+          <text x="410" y="176" text-anchor="middle" fill="#a1a1aa" font-size="13">authorizes the changeset</text>
+          <text x="410" y="194" text-anchor="middle" fill="#a1a1aa" font-size="13">(checks from Figure 2)</text>
+          <line x1="320" y1="124" x2="220" y2="124" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-pager-arrow)"/>
+          <text x="270" y="112" text-anchor="middle" fill="#a1a1aa" font-size="13">merge</text>
+          <text x="270" y="141" text-anchor="middle" fill="#a1a1aa" font-size="13">after checks</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 5. The persistent path: the pager moves one encrypted page at a time to IndexedDB. Only the staging connection is in <code>:memory:</code>.</figcaption>
+      </figure>
+      <p>
+        The only <code>:memory:</code> database is the throwaway <strong>staging</strong> connection. This connection
+        authorizes an incoming changeset before the changeset merges. This is the same staging step from
+        <em>Write control</em>, above. The store of record is always the encrypted IndexedDB VFS.
+      </p>
+      <p>
+        Two properties let localRbac run from <code>file://</code>. Most persistent-SQLite options cannot run there:
+      </p>
+      <ul>
+        <li>
+          The VFS is <strong>Asyncify</strong>-based. Thus it does not use <code>SharedArrayBuffer</code>, and it does
+          not depend on the <code>COOP</code>/<code>COEP</code> cross-origin-isolation headers. absurd-sql and
+          threaded-OPFS builds must have those headers.
+        </li>
+        <li>
+          The <code>crsqlite.mjs</code> WASM is base64-inlined as a <code>data:</code> URI. Thus the engine opens with
+          zero network fetches.
+        </li>
+      </ul>
+      <p>
+        The result is a demand-paged, encrypted, offline database in a double-clicked HTML file. The standalone
+        write-up <a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a>
+        describes only this VFS, without the encryption or the CRDT.
+      </p>
 
-      <h2>Where the database lives: demand-paged onto encrypted IndexedDB</h2>
+      <h3>The binary: built here, not installed</h3>
       <p>
-        Ordinary SQLite is <strong>demand-paged</strong>: its pager reads and writes individual <strong>pages</strong>
-        (4&nbsp;KB by default) from the file as queries touch them, holding only a small page cache in RAM — a 50&nbsp;GB
-        database runs in a few megabytes, and only a <code>:memory:</code> database lives entirely in RAM. Most
-        SQLite-in-the-browser throws that away: <code>sql.js</code> loads the <em>whole</em> file into a
-        <code>Uint8Array</code> on the WASM heap. localRbac keeps the demand-paged model in the browser by injecting a
-        <strong>VFS</strong> — SQLite's virtual-filesystem seam — so the pager's block reads and writes land in
-        <strong>IndexedDB</strong>, one page at a time, never the whole file in memory.
+        The engine underneath is not the published <code>@vlcn.io/wa-sqlite</code>.
+        <a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a> compiles the engine from
+        pinned source. It uses the <code>base</code> variant (cr-sqlite + FTS5). This variant is the recipe that
+        reproduces the published package.
       </p>
       <p>
-        The persistent connection opens <em>through</em> <code>EncryptedIDBVFS</code>, a vendored copy of wa-sqlite's
-        <code>IDBBatchAtomicVFS</code>. Each SQLite page becomes an IndexedDB block keyed
-        <code>[path,&nbsp;offset,&nbsp;version]</code>, fetched and written on demand, with <strong>transparent
-        per-page AES encryption</strong> in the VFS layer and batch-atomic commits. The only <code>:memory:</code>
-        database is the throwaway <strong>staging</strong> connection that authorizes an incoming changeset before it
-        merges (the same staging step from <em>Write control</em>, above) — the store of record is always the encrypted
-        IndexedDB VFS.
+        This matters here more than in other projects, because the build sets
+        <strong><code>SQLITE_OMIT_LOAD_EXTENSION</code></strong>. Nothing can load at runtime. Thus every capability
+        must be <em>in the binary</em>. If you install the published build, you accept the answer of another person
+        to one question: what extensions does this database have? The whole argument of this project is that the
+        rules must survive a copy of the file. Thus it is strange to leave that answer to a registry.
       </p>
       <p>
-        Two properties let this run from <code>file://</code>, where most persistent-SQLite options can't: the VFS is
-        <strong>Asyncify</strong>-based, so it needs no <code>SharedArrayBuffer</code> and therefore none of the
-        <code>COOP</code>/<code>COEP</code> cross-origin-isolation headers that absurd-sql or threaded-OPFS builds
-        require; and the <code>crsqlite.mjs</code> WASM is base64-inlined as a <code>data:</code> URI, so opening the
-        engine costs zero network fetches. Demand-paged, encrypted, offline — from a double-clicked HTML file.
-        <em>(For the bare mechanism — just this VFS, without the encryption or CRDT — see the standalone write-up:
-        <a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a>.)</em>
-      </p>
-
-      <h3>The binary is built here, not installed</h3>
-      <p>
-        The engine underneath is not the published <code>@vlcn.io/wa-sqlite</code> — it is compiled from pinned
-        source by <a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a>, using the
-        <code>base</code> variant (cr-sqlite + FTS5), the recipe that reproduces the published package. That
-        matters here more than it would elsewhere, because
-        <strong><code>SQLITE_OMIT_LOAD_EXTENSION</code> is set</strong>: nothing can be loaded at runtime, so every
-        capability has to be <em>in the binary</em>. Installing the published build means accepting someone else's
-        answer to "which extensions does this database have" — and for a project whose whole argument is that the
-        rules must survive the file being copied, that is an odd thing to leave to a registry.
-      </p>
-      <p>
-        Because the variant declares itself under the same package name and exposes the same import specifiers,
-        adopting it moved one line and no source:
+        The variant declares itself under the same package name and exposes the same import specifiers. Thus the
+        change to the variant moved one line and no source:
       </p>
       <pre><code>"@vlcn.io/wa-sqlite": "file:../../../sqlite-wasm-build/dist/base"</code></pre>
       <p>
-        Swapping in <code>geo</code> (R*Tree, Geopoly) or <code>vec</code> (sqlite-vec) is the same line with a
-        different word — which is the reason for building them as separate variants rather than one everything
-        binary. The build, the four variants and the six toolchain failures behind them are written up in
-        <a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a>.
+        The <code>geo</code> variant (R*Tree, Geopoly) or the <code>vec</code> variant (sqlite-vec) is the same line
+        with a different word. This is the reason to build them as separate variants and not as one binary with
+        everything. <a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a>
+        describes the build, the four variants, and the six toolchain failures behind them.
       </p>
       <div class="callout">
-        <strong>One trap worth repeating.</strong> The swap can look like it worked while the registry binary is
-        still the one loading. <code>@vlcn.io/crsqlite-wasm</code> was a dependency nothing imported, and it pulled
-        the published <code>wa-sqlite</code> in transitively — which npm then hoisted over the local
-        <code>file:</code> dependency without a word. Check the bytes, not the lockfile:
-        <code>sha256sum node_modules/@vlcn.io/wa-sqlite/crsqlite.wasm dist/base/crsqlite.wasm</code>.
+        <strong>Check the bytes, not the lockfile:</strong>
+        <code>sha256sum node_modules/@vlcn.io/wa-sqlite/crsqlite.wasm dist/base/crsqlite.wasm</code>. The swap can
+        look correct while the registry binary still loads. <code>@vlcn.io/crsqlite-wasm</code> was a dependency that
+        nothing imported, and it pulled the published <code>wa-sqlite</code> in transitively. Then npm hoisted that
+        package above the local <code>file:</code> dependency, with no warning.
       </div>
 
       <div class="tour">
         <h3>The storage engine — line items</h3>
         <p class="path">packages/datalayer/src/engine/ · localRbac@fcc4079</p>
         <ul>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L20-L25"><code>boot-browser.ts</code> L20–L25</a> — <code>openMain</code> registers <code>EncryptedIDBVFS</code> and opens <code>/&lt;name&gt;.db</code> through it; <code>openStaging</code> is the throwaway <code>:memory:</code> db.</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L1-L5"><code>boot-browser.ts</code> L1–L5</a> — the design note in prose: persistent main = encrypted IndexedDB VFS, staging = <code>:memory:</code>, wasm inlined so it "works on <code>file://</code>".</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L2"><code>EncryptedIDBVFS.js</code> L2</a> — vendored from <code>@vlcn.io/wa-sqlite/src/examples/IDBBatchAtomicVFS.js</code>.</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L34"><code>EncryptedIDBVFS.js</code> L34</a> — each page is a <code>FileBlock</code> IndexedDB object keyed <code>[path, offset, version]</code>.</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L220"><code>EncryptedIDBVFS.js</code> L220</a> — the VFS is <strong>Asyncify</strong> (async I/O, no <code>SharedArrayBuffer</code>).</li>
-          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/sqlite.ts#L111-L116"><code>sqlite.ts</code> L111–L116</a> — imports <code>@vlcn.io/wa-sqlite/dist/crsqlite.mjs</code>; <code>openMemory()</code> is the <code>:memory:</code> staging connection.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L20-L25"><code>boot-browser.ts</code> L20–L25</a>: <code>openMain</code> registers <code>EncryptedIDBVFS</code> and opens <code>/&lt;name&gt;.db</code> through it. <code>openStaging</code> is the throwaway <code>:memory:</code> db.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/boot-browser.ts#L1-L5"><code>boot-browser.ts</code> L1–L5</a>: the design note in prose. The persistent main is the encrypted IndexedDB VFS, the staging is <code>:memory:</code>, and the wasm is inline so that it "works on <code>file://</code>".</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L2"><code>EncryptedIDBVFS.js</code> L2</a>: vendored from <code>@vlcn.io/wa-sqlite/src/examples/IDBBatchAtomicVFS.js</code>.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L34"><code>EncryptedIDBVFS.js</code> L34</a>: each page is a <code>FileBlock</code> IndexedDB object with the key <code>[path, offset, version]</code>.</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/EncryptedIDBVFS.js#L220"><code>EncryptedIDBVFS.js</code> L220</a>: the VFS is <strong>Asyncify</strong> (async I/O, no <code>SharedArrayBuffer</code>).</li>
+          <li><a href="https://github.com/rheophile10/localRbac/blob/fcc407900f9d6baba20bd3023aa29fafc9cb7de0/packages/datalayer/src/engine/sqlite.ts#L111-L116"><code>sqlite.ts</code> L111–L116</a>: imports <code>@vlcn.io/wa-sqlite/dist/crsqlite.mjs</code>. <code>openMemory()</code> is the <code>:memory:</code> staging connection.</li>
         </ul>
       </div>
-
-<!-- NEW-SECTION-END -->
 
       <h2>The parts of the datalayer</h2>
       <p>
@@ -725,6 +782,10 @@
         <li><a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA">Cargo cult</a>: access control without enforcement is only an appearance of control</li>
         <li><a href="https://xkcd.com/538/">xkcd 538, <em>Security</em></a>: the reason that no single keyholder must be a useful target for physical force</li>
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>: convergent, replicated SQLite (the CRDT engine)</li>
+        <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a>: async WASM SQLite with <code>IDBBatchAtomicVFS</code>, the VFS that demand-pages onto IndexedDB (the storage engine, wrapped as <code>EncryptedIDBVFS</code>)</li>
+        <li><a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a>: the bare wa-sqlite and IndexedDB-VFS version, without the encryption or the CRDT</li>
+        <li><a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a>: the pinned-source build that this project runs on, with four variants, each a drop-in <code>@vlcn.io/wa-sqlite</code></li>
+        <li><a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a>: the reason that the build exists, and the six toolchain failures on the way</li>
         <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a>: the earlier offline-CRDT work that this project continues</li>
       </ul>
     </article>

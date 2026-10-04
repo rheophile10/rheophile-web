@@ -307,6 +307,9 @@ def feed_blocks(path: Path) -> list[Block]:
 def default_files() -> list[Path]:
     files = [ROOT / "index.html", ROOT / "manifesto.html", ROOT / "404.html"]
     files += sorted((ROOT / "blog").glob("*.html"))
+    # the pages of the apps (chat, games, plastron): their static text only
+    files += sorted(f for f in ROOT.glob("*/index.html") if f.parent.name not in ("apps", "blog", "reference"))
+    files += sorted(f for f in ROOT.glob("*/*/index.html") if f.parts[-3] not in ("apps", "reference", "assets"))
     files += [ROOT / "assets" / "projects.json", ROOT / "assets" / "blog-posts.json", ROOT / "feed.xml"]
     files += sorted((ROOT.parent / "apps" / "brand" / "templates").glob("*.html"))
     return [f for f in files if f.exists()]

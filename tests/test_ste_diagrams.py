@@ -36,7 +36,8 @@ ROOT = Path(__file__).resolve().parent.parent
 EXPECTED = {
     "index.html": 1,
     "manifesto.html": 1,
-    "blog/localrbac-crypto-rbac.html": 4,
+    "blog/localrbac-crypto-rbac.html": 5,
+    "blog/wa-sqlite-idb-demand-paged.html": 3,
     "blog/offline-forms.html": 2,
     "blog/offline-hris-juarez.html": 2,
     "blog/rheoserv-waumpaum.html": 2,

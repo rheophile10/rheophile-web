@@ -14,11 +14,11 @@
         "crdt"
       ],
       "emoji": "🗄️",
-      "title": "SQLite that persists without hoarding RAM 🗄️",
-      "ogTitle": "Demand-paged SQLite in the browser: wa-sqlite + an IndexedDB VFS",
-      "excerpt": "sql.js loads the whole database into memory; ordinary SQLite doesn't. A TypeScript demo puts the demand-paged model back in the browser — SQLite whose pages live in IndexedDB, read on demand, with FTS5 and CRDT in the same build — running from a double-clicked file:// page.",
-      "ogImage": "https://rheophile.ca/assets/og-card.png",
-      "ogImageJpg": "https://rheophile.ca/assets/og-card.png"
+      "title": "SQLite in the browser that reads pages on demand 🗄️",
+      "ogTitle": "SQLite in the browser that reads pages on demand",
+      "excerpt": "sql.js loads the full database file into memory, but ordinary SQLite reads one page at a time. This demo keeps that demand-paged model in the browser, with pages in IndexedDB, FTS5 and CRDT in one build, from a file:// page.",
+      "ogImage": "https://rheophile.ca/assets/og/wa-sqlite-idb-demand-paged.png",
+      "ogImageJpg": "https://rheophile.ca/assets/og/wa-sqlite-idb-demand-paged.jpg"
     },
     {
       "slug": "localrbac-crypto-rbac",
