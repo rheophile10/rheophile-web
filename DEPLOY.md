@@ -26,7 +26,7 @@ Layout:
 ## Fastest path (GitHub Pages, free, fits the artifact strategy)
 
 ```bash
-cd ~/projects/rheophile/website
+cd ~/projects/hq/rheophile/code/website
 git init && git add index.html blog assets feed.xml scripts DEPLOY.md README.md CNAME && git commit -m "rheophile.ca"
 gh repo create rheophile10/rheophile.ca --public --source=. --push
 gh api repos/rheophile10/rheophile.ca/pages -X POST -f "source[branch]=master" -f "source[path]=/"
@@ -43,7 +43,7 @@ Alternative: Netlify drop (drag the folder at app.netlify.com/drop, then add dom
 
 Login lives in the **portal**, not this page: the nav Login button links to
 `/apps/`, which is the rheophile-branded appkit portal built from
-`~/projects/rheophile/apps` (see that repo + `~/projects/appkit/SETUP.md`).
+`~/projects/hq/rheophile/code/apps` (see that repo + `~/projects/appkit/SETUP.md`).
 Because it's served from the same origin and Supabase project, this homepage
 notices the portal session in localStorage and swaps Login for an account chip
 (see the SESSION CHIP script at the bottom of `index.html`) — no Supabase code
@@ -52,7 +52,7 @@ ships with the homepage itself.
 Publishing/updating the portal page:
 
 ```bash
-cd ~/projects/rheophile/apps
+cd ~/projects/hq/rheophile/code/apps
 npm run deploy:site    # builds with the rheophile brand → ../website/apps/index.html
 # then commit + push this repo
 ```
@@ -69,7 +69,15 @@ the project's Auth → Redirect URLs.
 Whatever you change, finish with **`bash scripts/build.sh`**, then commit. The
 build is idempotent and needs `python3` + `npx` (it fetches Tailwind v3 on first
 run). It runs, in order: `sync-blog-meta` → `prerender` → `generate-rss` →
-`generate-sitemap` → `normalize-head` → Tailwind compile.
+`generate-sitemap` → `normalize-head` → Tailwind compile → `ste-lint`.
+
+**All site copy is ASD-STE100 (Simplified Technical English).** The build
+fails if `scripts/ste-lint.py` finds an error (long sentence, contraction,
+semicolon, em-dash aside, unapproved word, progressive or perfect tense). The
+rules are in `docs/rheophile/design/ste100-site-copy.md`; new unapproved words
+go in `scripts/ste_words.py`. Mark a quotation or non-English text
+`data-ste="skip"`. If a post title changes, also run
+`python3 scripts/generate-blog-og-cards.py` to redraw its OG card.
 
 **Add a project:** append an object to `assets/projects.json` (set
 `"featured": true` to make it the plastron-style lead; otherwise it lands in

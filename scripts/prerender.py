@@ -85,7 +85,7 @@ def post_card(post: dict, heading: str) -> str:
         f"</{heading}>"
         f'<p class="mt-3 text-sm text-zinc-400 line-clamp-3">{esc(post["excerpt"])}</p>'
         '<div class="mt-5 text-xs text-teal-400 flex items-center gap-1">'
-        'Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>'
+        'Read the post <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>'
         "</div></article>"
     )
 

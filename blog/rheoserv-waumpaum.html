@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- rheophile:og:start -->
   <link rel="canonical" href="https://rheophile.ca/blog/rheoserv-waumpaum.html">
-  <meta name="description" content="A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.">
+  <meta name="description" content="RheoServ Waumpaum is a credit-union core banking system in one encrypted HTML file. A CRDT merges the offline changes of the operators, and institutions settle with waumpaums.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="rheophile.ca">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/blog/rheoserv-waumpaum.html">
   <meta property="og:title" content="RheoServ Waumpaum — a credit-union core in one HTML file">
-  <meta property="og:description" content="A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.">
+  <meta property="og:description" content="RheoServ Waumpaum is a credit-union core banking system in one encrypted HTML file. A CRDT merges the offline changes of the operators, and institutions settle with waumpaums.">
   <meta property="og:image" content="https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg">
   <meta property="og:image:secure_url" content="https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -24,11 +24,11 @@
   <meta name="twitter:creator" content="@rheophile10">
   <meta name="twitter:url" content="https://rheophile.ca/blog/rheoserv-waumpaum.html">
   <meta name="twitter:title" content="RheoServ Waumpaum — a credit-union core in one HTML file">
-  <meta name="twitter:description" content="A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.">
+  <meta name="twitter:description" content="RheoServ Waumpaum is a credit-union core banking system in one encrypted HTML file. A CRDT merges the offline changes of the operators, and institutions settle with waumpaums.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg">
   <meta name="twitter:image:alt" content="RheoServ Waumpaum — a credit-union core in one HTML file — rheophile.ca dev log">
   <meta name="robots" content="max-image-preview:large">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "RheoServ Waumpaum — a credit-union core in one HTML file", "description": "A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.", "image": "https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg", "datePublished": "2026-07-07", "url": "https://rheophile.ca/blog/rheoserv-waumpaum.html", "mainEntityOfPage": "https://rheophile.ca/blog/rheoserv-waumpaum.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "RheoServ Waumpaum — a credit-union core in one HTML file", "description": "RheoServ Waumpaum is a credit-union core banking system in one encrypted HTML file. A CRDT merges the offline changes of the operators, and institutions settle with waumpaums.", "image": "https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg", "datePublished": "2026-07-07", "url": "https://rheophile.ca/blog/rheoserv-waumpaum.html", "mainEntityOfPage": "https://rheophile.ca/blog/rheoserv-waumpaum.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
   <!-- rheophile:og:end -->
   <title>RheoServ Waumpaum · rheophile.ca</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +77,9 @@
       padding-left: 1.35rem;
     }
     .prose-blog li { margin-bottom: 0.4rem; }
+    /* Tailwind preflight removes list markers. A procedure must show its step numbers. */
+    .prose-blog ol { list-style: decimal; }
+    .prose-blog ul { list-style: disc; }
     .prose-blog a {
       color: #2dd4bf;
       text-decoration: underline;
@@ -172,13 +175,26 @@
         RheoServ Waumpaum — a credit-union core in one HTML file <span class="text-3xl">🏦</span>
       </h1>
       <p class="mt-4 text-zinc-400 text-base leading-relaxed">
-        <strong class="text-zinc-300">RheoServ Waumpaum</strong> is a sovereign, offline-first counterpart to
-        enterprise core banking: the same <strong class="text-zinc-300">person-centered</strong>, real-time posting
-        model you'd find in a big core, but convergent
-        (<a href="https://github.com/vlcn-io/cr-sqlite" class="text-teal-400/90 hover:text-teal-300">CRDT</a>) instead
-        of always-online, encrypted-portable instead of data-centre-bound, and settled between institutions with
-        <strong class="text-zinc-300">waumpaums</strong> instead of proprietary gateways. It runs as one
-        self-contained HTML file — no server, no network, encrypted at rest — skinned for a fictional
+        <strong class="text-zinc-300">RheoServ Waumpaum</strong> is a core banking system that a credit union owns,
+        controls, and uses offline. It is an alternative to enterprise core banking. It has the same
+        <strong class="text-zinc-300">person-centered</strong> model and the same real-time transaction posts as a
+        large enterprise core. But it is different in three areas:
+      </p>
+      <ul class="mt-3 text-zinc-400 text-base leading-relaxed" style="list-style:disc;padding-left:1.35rem;">
+        <li>
+          It converges with a
+          <a href="https://github.com/vlcn-io/cr-sqlite" class="text-teal-400/90 hover:text-teal-300">CRDT</a>.
+          An enterprise core must always be online.
+        </li>
+        <li>It keeps its data in encrypted, portable files. An enterprise core keeps its data in a data centre.</li>
+        <li>
+          Institutions settle with <strong class="text-zinc-300">waumpaums</strong>. An enterprise core settles
+          through proprietary gateways.
+        </li>
+      </ul>
+      <p class="mt-3 text-zinc-400 text-base leading-relaxed">
+        RheoServ Waumpaum is one self-contained HTML file. It uses no server and no network, and it encrypts the data
+        at rest. The interface shows the brand of a fictional credit union,
         <strong class="text-zinc-300">Prairie Rivers Credit Union</strong>.
       </p>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
@@ -186,7 +202,7 @@
           Try the app →
         </a>
         <a href="https://github.com/rheophile10/rheoServ-waumpaum" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
-          Source on GitHub
+          Source code on GitHub
         </a>
         <a href="https://github.com/rheophile10/rheoServ-waumpaum/blob/main/USER-MANUAL.md" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
           User manual
@@ -197,216 +213,415 @@
     <article class="prose-blog mt-10">
 
       <div class="callout">
-        <strong>Proof of concept only.</strong> No Privacy Impact Assessment, threat/risk assessment, or security
-        authorization. <strong>Prairie Rivers Credit Union</strong> is entirely synthetic — invented members,
-        accounts, and balances, no real PANs or member PII. Do not load real data.
+        <strong>Do not load real data.</strong> This app is a proof of concept only. It has no Privacy Impact
+        Assessment, no threat and risk assessment, and no security authorization.
+        <strong>Prairie Rivers Credit Union</strong> is fully synthetic. The members, the accounts, and the balances
+        are not real. The data contains no real PANs and no PII of real members.
       </div>
 
-      <h2>From an HRIS detour to a banking core</h2>
+      <h2>From the offline HRIS to a banking core</h2>
       <p>
-        This grew out of the <a href="/blog/offline-hris-juarez.html">offline HRIS</a> experiment — CRDT SQLite in one
-        HTML file — which was itself a detour from <a href="https://plastron.ca">plastron</a>. The HRIS proved the
-        hard parts: an in-memory <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> engine inlined as WASM,
-        AES-256-GCM encrypted portable dumps, an in-browser multi-operator merge, and a strict
-        <code>connect-src 'none'</code> so nothing can leave the page. RheoServ Waumpaum reuses that whole spine and
-        points it at a much bigger domain: <strong>credit-union core banking</strong>.
+        RheoServ Waumpaum came from the <a href="/blog/offline-hris-juarez.html">offline HRIS</a> experiment. That
+        experiment put CRDT SQLite in one HTML file. The experiment was a temporary change from the work on
+        <a href="https://plastron.ca">plastron</a>. The HRIS showed that the difficult parts operate correctly:
+      </p>
+      <ul>
+        <li>an in-memory <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> engine, inlined as WASM</li>
+        <li>portable dumps, encrypted with AES-256-GCM</li>
+        <li>a merge for many operators, in the browser</li>
+        <li>a strict <code>connect-src 'none'</code> policy, thus no data can go out of the page</li>
+      </ul>
+      <p>
+        RheoServ Waumpaum uses all these parts again. It applies them to a much larger domain:
+        <strong>credit-union core banking</strong>.
       </p>
 
-      <h2>Familiar, not a clone</h2>
+      <h2>Familiar, but not a copy</h2>
       <p>
-        Enterprise core banking is the reference: a <strong>person-centered</strong> core where you search a person,
-        walk to their accounts, then to real-time transactions. Waumpaum borrows that shape — the table and column
-        names (<code>Pers</code>, <code>Acct</code>, <code>Rtxn</code>, <code>AcctHold</code>, <code>AcctRole</code>),
-        the screen titles (<em>Person Search</em>, <em>Account Inquiry</em>, <em>Real-Time Transaction Post</em>), and
-        the spaced-abbreviation labels an experienced operator expects (<code>Acct Nbr</code>, <code>Rtxn Typ Cd</code>,
-        <code>Cur Bal</code>, <code>Avail Bal</code>). It is deliberately <strong>not</strong> a clone or integration
-        of any product — just a familiar-feeling, offline, open re-imagining of the same model.
+        Enterprise core banking is the reference. It is a <strong>person-centered</strong> core. You search for a
+        person. Then you go to the accounts of that person, and then to the real-time transactions. RheoServ Waumpaum
+        uses the same structure:
+      </p>
+      <ul>
+        <li>
+          the table names and the column names (<code>Pers</code>, <code>Acct</code>, <code>Rtxn</code>,
+          <code>AcctHold</code>, <code>AcctRole</code>)
+        </li>
+        <li>
+          the screen titles (<em>Person Search</em>, <em>Account Inquiry</em>, <em>Real-Time Transaction Post</em>)
+        </li>
+        <li>
+          the labels with spaced abbreviations that an experienced operator expects (<code>Acct Nbr</code>,
+          <code>Rtxn Typ Cd</code>, <code>Cur Bal</code>, <code>Avail Bal</code>)
+        </li>
+      </ul>
+      <p>
+        RheoServ Waumpaum is deliberately <strong>not</strong> a copy of a product. It does not integrate with a
+        product. It is a new, offline, open design of the same model, and it is familiar to an operator.
       </p>
 
       <h2>What a waumpaum is</h2>
       <p>
-        A <strong>waumpaum</strong> is not a parallel ledger and not a table. It is a <strong>slice of the
-        <code>Rtxn</code> table</strong> — one or more transactions flagged (<code>WaumpaumInd&nbsp;=&nbsp;1</code>,
-        <code>WaumpaumBeltId</code>, <code>WaumpaumPeerInstCd</code>) and earmarked for exchange with another
-        institution. The name borrows, respectfully and as a design metaphor, from
-        <a href="https://www.onondaganation.org/culture/wampum/">wampum</a> — the belts that memorialized agreements
-        between nations. Here a waumpaum is a signed record that attests a ledger state so two credit unions can settle
-        without opening their encrypted books to each other. (It is a metaphor, not a claim of Indigenous ownership.)
+        A <strong>waumpaum</strong> is not a parallel ledger, and it is not a table. It is a <strong>slice of the
+        <code>Rtxn</code> table</strong>: one or more transactions that have flags. The flags are
+        <code>WaumpaumInd&nbsp;=&nbsp;1</code>, <code>WaumpaumBeltId</code>, and <code>WaumpaumPeerInstCd</code>.
+        The flags set the transactions apart for exchange with a different institution.
+      </p>
+      <p>
+        The name comes from <a href="https://www.onondaganation.org/culture/wampum/">wampum</a>, with respect, as a
+        design metaphor. Wampum belts recorded agreements between nations. In this system, a waumpaum is a signed
+        record that attests a ledger state. Thus two credit unions can settle, and they do not show their encrypted
+        ledgers to each other. (The name is a metaphor, not a claim of Indigenous ownership.)
       </p>
 
       <h2>Three audiences</h2>
+      <p>The remaining sections of this post give instructions for three audiences:</p>
+      <ul>
+        <li>The <strong>teller</strong> operates in one credit union.</li>
+        <li>The <strong>credit union</strong> merges one day of offline changes.</li>
+        <li>The <strong>payment provider</strong> settles between institutions.</li>
+      </ul>
       <p>
-        The rest of this post is a walkthrough for the three people who touch the system — the <strong>teller</strong>
-        inside one CU, the <strong>credit union</strong> merging a day of offline work, and the <strong>payment
-        provider</strong> settling between institutions. Each story has a short recording from the live app (the same
-        Playwright tests that ship in the repo). The written version is
+        Each story has a short video from the live app. The videos come from the same Playwright tests that the repo
+        includes. The written instructions are in
         <a href="https://github.com/rheophile10/rheoServ-waumpaum/blob/main/USER-MANUAL.md">USER-MANUAL.md</a>.
       </p>
 
       <div class="callout">
-        <strong>One file.</strong> Open <a href="https://rheophile10.github.io/rheoServ-waumpaum/app.html">the built
-        app</a>, choose <em>Demo data</em>, set any passphrase, and pick an operator. It works offline — the download
-        <em>is</em> the product. Export your changes before locking; unsaved work is lost by design.
+        <strong>One file.</strong> The app operates offline. The file that you download <em>is</em> the product.
+        <ol style="margin:0.6rem 0;">
+          <li>Open <a href="https://rheophile10.github.io/rheoServ-waumpaum/app.html">the built app</a>.</li>
+          <li>Select <em>Demo data</em>.</li>
+          <li>Set a passphrase of your choice.</li>
+          <li>Select an operator.</li>
+        </ol>
+        Export your changes before you lock the session. By design, you lose the changes that you did not export.
       </div>
 
       <h2>Part 1 — The teller</h2>
 
       <div class="howto-story">
         <h3>Start a session <span class="howto-tag">US-1</span></h3>
-        <p class="howto-role">Load the day's data behind a passphrase, pick your operator identity (role sets your screens).</p>
+        <p class="howto-role">Load the data for the day with a passphrase. Then select your operator identity. (Your role sets your screens.)</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us1-start-session.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li>Open the file — a locked gate first.</li>
-          <li>Keep <em>Demo data</em>, enter a passphrase, <strong>Start session</strong>.</li>
-          <li>Pick an operator; the Dashboard shows members, balances, holds, and unsettled waumpaums.</li>
+          <li>Open the file. The app shows a locked gate screen first.</li>
+          <li>Keep <em>Demo data</em> selected.</li>
+          <li>Type a passphrase.</li>
+          <li>Click <strong>Start session</strong>.</li>
+          <li>Select an operator. The Dashboard shows the members, the balances, the holds, and the unsettled waumpaums.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Person Search → Account Inquiry <span class="howto-tag">US-2</span></h3>
-        <p class="howto-role">Person-first: find a member, walk to their accounts, open one.</p>
+        <p class="howto-role">Start with the person. Find a member, go to the accounts of that member, and open one account.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us2-person-search.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Person Search</strong> — type a name (e.g. <em>Broadwater</em>); click the member.</li>
-          <li>Their accounts appear via <code>AcctRole</code>; open one.</li>
-          <li><strong>Account Inquiry</strong> header shows <strong>Cur Bal</strong> and <strong>Avail Bal</strong>; tabs for History, Holds, Roles.</li>
+          <li>In <strong>Person Search</strong>, type a name (for example, <em>Broadwater</em>).</li>
+          <li>Click the member. The app shows the accounts of the member through <code>AcctRole</code>.</li>
+          <li>Open one account.</li>
         </ol>
+        <p>
+          The <strong>Account Inquiry</strong> header shows <strong>Cur Bal</strong> and <strong>Avail Bal</strong>.
+          The tabs are History, Holds, and Roles.
+        </p>
       </div>
 
       <div class="howto-story">
         <h3>Real-Time Transaction Post <span class="howto-tag">US-3</span></h3>
-        <p class="howto-role">Post a deposit, withdrawal, transfer, or fee; the ledger moves in real time.</p>
+        <p class="howto-role">Post a deposit, a withdrawal, a transfer, or a fee. The ledger changes in real time.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us3-post-rtxn.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li>Pick an <code>Acct Nbr</code>, set <strong>Rtxn Typ Cd</strong> (<code>WD</code>) and <strong>Post Amt</strong>, post.</li>
-          <li>A debit over available is refused with <code>Insufficient Funds</code>; otherwise the <code>Rtxn</code> posts and the balance drops.</li>
-          <li>Every post writes an attributed <code>change_event</code>.</li>
+          <li>Select an <code>Acct Nbr</code>.</li>
+          <li>Set <strong>Rtxn Typ Cd</strong> (for example, <code>WD</code>).</li>
+          <li>Set <strong>Post Amt</strong>.</li>
+          <li>Post the transaction.</li>
         </ol>
+        <p>
+          If a debit is more than the available balance, the app refuses the debit with
+          <code>Insufficient Funds</code>. If not, the <code>Rtxn</code> posts and the balance decreases. Each post
+          writes a <code>change_event</code> that identifies the operator.
+        </p>
       </div>
 
       <div class="howto-story">
-        <h3>Hold Inquiry — place &amp; release a card hold <span class="howto-tag">US-4</span></h3>
-        <p class="howto-role">A card authorization reduces available balance without moving the ledger.</p>
+        <h3>Hold Inquiry — place and release a card hold <span class="howto-tag">US-4</span></h3>
+        <p class="howto-role">A card authorization decreases the available balance. It does not change the ledger.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us4-hold.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Place Hold</strong> creates an <code>AcctHold</code> + AUTH <code>Rtxn</code>; <strong>Avail Bal</strong> drops, <strong>Cur Bal</strong> unchanged.</li>
-          <li>A hold over available is refused with <code>Hold Amt Exceeds Avail Bal</code>.</li>
-          <li><strong>Release Hold</strong> restores available (hold → <code>RLSD</code>, AUTH → <code>RVSD</code>).</li>
+          <li>
+            Click <strong>Place Hold</strong>. The app creates an <code>AcctHold</code> and an AUTH <code>Rtxn</code>.
+            <strong>Avail Bal</strong> decreases, and <strong>Cur Bal</strong> does not change.
+          </li>
+          <li>
+            Click <strong>Release Hold</strong>. The available balance increases again. The hold changes to
+            <code>RLSD</code>, and the AUTH changes to <code>RVSD</code>.
+          </li>
         </ol>
+        <p>
+          If a hold is more than the available balance, the app refuses the hold with
+          <code>Hold Amt Exceeds Avail Bal</code>.
+        </p>
       </div>
 
       <div class="howto-story">
         <h3>Lock the session <span class="howto-tag">US-6</span></h3>
-        <p class="howto-role">Wipe decrypted data from memory when you step away.</p>
+        <p class="howto-role">Erase the decrypted data from memory when you go away from the computer.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us6-lock-session.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Lock session</strong> — returns to the gate; clears DB, key, passphrase, and identity.</li>
-          <li>Export changes first; unsaved work is gone by design.</li>
+          <li>Export your changes first. By design, you lose the changes that you did not export.</li>
+          <li>
+            Click <strong>Lock session</strong>. The app goes back to the gate screen. It erases the database, the
+            key, the passphrase, and the identity.
+          </li>
         </ol>
       </div>
 
-      <h2>Part 2 — The credit union: merging a day</h2>
+      <h2>Part 2 — The credit union merges one day of changes</h2>
       <p>
-        Several tellers work the <em>same</em> morning truth offline. Because cr-sqlite is a CRDT, their days converge
-        with no server and no last-writer-wins clobbering — the coordinator merges everyone's encrypted deltas right
-        in the browser.
+        Several tellers start with the <em>same</em> morning truth. Each teller makes changes offline. cr-sqlite is a
+        CRDT, thus the changes of all tellers converge with no server. No last-writer-wins rule overwrites the changes
+        of a teller. The coordinator merges the encrypted changes of all tellers in the browser.
       </p>
 
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 446" width="100%" role="img" aria-labelledby="dgm-rsw-merge-t dgm-rsw-merge-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-rsw-merge-t">The offline merge in one credit union</title>
+          <desc id="dgm-rsw-merge-d">Three tellers start with the same morning truth and edit offline. Each teller exports an encrypted changes file. The coordinator merges the files in the browser and exports the merged truth for tomorrow.</desc>
+          <defs>
+            <marker id="dgm-rsw-merge-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+          <!-- morning truth -->
+          <rect x="150" y="16" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="43" text-anchor="middle" fill="#e4e4e7">The same morning truth</text>
+          <!-- fan out to the tellers -->
+          <path d="M260 60 V80 M88 80 H432" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+          <line x1="88" y1="80" x2="88" y2="104" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <line x1="260" y1="80" x2="260" y2="104" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <line x1="432" y1="80" x2="432" y2="104" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <!-- tellers -->
+          <rect x="10" y="104" width="156" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="88" y="126" text-anchor="middle" fill="#e4e4e7">Teller 1</text>
+          <text x="88" y="145" text-anchor="middle" fill="#a1a1aa" font-size="13">edits offline</text>
+          <rect x="182" y="104" width="156" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="126" text-anchor="middle" fill="#e4e4e7">Teller 2</text>
+          <text x="260" y="145" text-anchor="middle" fill="#a1a1aa" font-size="13">edits offline</text>
+          <rect x="354" y="104" width="156" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="432" y="126" text-anchor="middle" fill="#e4e4e7">Teller 3</text>
+          <text x="432" y="145" text-anchor="middle" fill="#a1a1aa" font-size="13">edits offline</text>
+          <!-- each teller exports -->
+          <line x1="88" y1="156" x2="88" y2="196" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <text x="98" y="180" fill="#a1a1aa" font-size="13">exports</text>
+          <line x1="260" y1="156" x2="260" y2="196" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <text x="270" y="180" fill="#a1a1aa" font-size="13">exports</text>
+          <line x1="432" y1="156" x2="432" y2="196" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <text x="442" y="180" fill="#a1a1aa" font-size="13">exports</text>
+          <!-- encrypted changes files -->
+          <rect x="10" y="196" width="156" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="88" y="218" text-anchor="middle" fill="#e4e4e7">Encrypted changes</text>
+          <text x="88" y="237" text-anchor="middle" fill="#a1a1aa" font-size="13">.waumpaumchanges</text>
+          <rect x="182" y="196" width="156" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="218" text-anchor="middle" fill="#e4e4e7">Encrypted changes</text>
+          <text x="260" y="237" text-anchor="middle" fill="#a1a1aa" font-size="13">.waumpaumchanges</text>
+          <rect x="354" y="196" width="156" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="432" y="218" text-anchor="middle" fill="#e4e4e7">Encrypted changes</text>
+          <text x="432" y="237" text-anchor="middle" fill="#a1a1aa" font-size="13">.waumpaumchanges</text>
+          <!-- fan in to the coordinator -->
+          <path d="M88 248 V270 H432 V248" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+          <line x1="260" y1="248" x2="260" y2="294" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <!-- coordinator -->
+          <rect x="110" y="294" width="300" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="260" y="321" text-anchor="middle" fill="#e4e4e7">The coordinator merges in the browser</text>
+          <line x1="260" y1="338" x2="260" y2="386" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-merge-arrow)"/>
+          <text x="272" y="366" fill="#a1a1aa" font-size="13">Export merged truth</text>
+          <!-- merged truth -->
+          <rect x="150" y="386" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="413" text-anchor="middle" fill="#e4e4e7">Merged truth for tomorrow</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 1. The coordinator merges the encrypted changes of all tellers in the same HTML file.</figcaption>
+      </figure>
+
       <div class="howto-story">
-        <h3>Export changes &amp; merge (no Node) <span class="howto-tag">US-5</span></h3>
-        <p class="howto-role">The coordinator converges everyone's offline edits inside the same HTML file.</p>
+        <h3>Export changes and merge (no Node) <span class="howto-tag">US-5</span></h3>
+        <p class="howto-role">The coordinator makes the offline edits of all operators converge in the same HTML file.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us5-export-and-merge.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li>Operator: <strong>Export my changes</strong> → encrypted <code>.waumpaumchanges</code>.</li>
-          <li>Coordinator: <strong>Data &amp; Security → Merge Operator Changes</strong> → select the deltas.</li>
-          <li><strong>Export merged truth</strong> for tomorrow. cr-sqlite converges divergent edits per column.</li>
+          <li>Operator: click <strong>Export my changes</strong>. The app makes an encrypted <code>.waumpaumchanges</code> file.</li>
+          <li>Coordinator: open <strong>Data &amp; Security → Merge Operator Changes</strong>.</li>
+          <li>Coordinator: select the changes files of the operators.</li>
+          <li>Coordinator: click <strong>Export merged truth</strong> for tomorrow.</li>
         </ol>
+        <p>cr-sqlite makes the divergent edits converge for each column.</p>
       </div>
 
       <div class="howto-story">
-        <h3>Attribution survives the merge <span class="howto-tag">US-12</span></h3>
-        <p class="howto-role">See who changed what — audit that travels with each changeset.</p>
+        <h3>The merge keeps the attribution <span class="howto-tag">US-12</span></h3>
+        <p class="howto-role">See the operator that made each change. The audit data goes with each changeset.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us12-audit.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Audit</strong> — change log (operator, entity, action) + session events.</li>
-          <li><code>change_event</code> and <code>session_log</code> are CRRs; they merge into the truth with everything else.</li>
+          <li>Open <strong>Audit</strong>. It shows the change log (operator, entity, action) and the session events.</li>
         </ol>
+        <p>
+          <code>change_event</code> and <code>session_log</code> are CRRs. They merge into the truth together with
+          all the other data.
+        </p>
       </div>
 
-      <h2>Part 3 — Payment providers &amp; the Waumpaum Exchange</h2>
+      <h2>Part 3 — Payment providers and the Waumpaum Exchange</h2>
       <p>
-        CRDT merge converges edits <em>inside</em> one CU. <em>Between</em> CUs, a separate networked
-        <strong>Waumpaum Exchange</strong> nets obligations. A waumpaum — a signed slice of <code>Rtxn</code> — is the
-        record that crosses the boundary: the CU issues a <code>.waumpaumproof</code>, the Exchange weaves proofs into
-        a <code>.clearbelt</code>, and each CU reads the belt back into its ledger.
+        The CRDT merge makes edits converge <em>in</em> one credit union. <em>Between</em> credit unions, a separate
+        <strong>Waumpaum Exchange</strong> nets the obligations. The Exchange is on a network. A waumpaum is a signed
+        slice of <code>Rtxn</code>. It is the record that goes from one institution to the other. Figure 2 shows the
+        three steps of the settlement.
       </p>
+
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 392" width="100%" role="img" aria-labelledby="dgm-rsw-settle-t dgm-rsw-settle-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-rsw-settle-t">Settlement between credit unions</title>
+          <desc id="dgm-rsw-settle-d">Each credit union issues a waumpaum and sends a signed proof to the Waumpaum Exchange. The Exchange nets the obligations and makes one settlement belt. Each credit union reads the belt back into its ledger.</desc>
+          <defs>
+            <marker id="dgm-rsw-settle-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+          <!-- the credit unions issue -->
+          <rect x="20" y="16" width="220" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="130" y="38" text-anchor="middle" fill="#e4e4e7">Credit union A</text>
+          <text x="130" y="57" text-anchor="middle" fill="#a1a1aa" font-size="13">issues a waumpaum</text>
+          <rect x="280" y="16" width="220" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="390" y="38" text-anchor="middle" fill="#e4e4e7">Credit union B</text>
+          <text x="390" y="57" text-anchor="middle" fill="#a1a1aa" font-size="13">issues a waumpaum</text>
+          <!-- proofs to the Exchange -->
+          <line x1="170" y1="68" x2="170" y2="132" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-settle-arrow)"/>
+          <text x="160" y="96" text-anchor="end" fill="#a1a1aa" font-size="13">signed proof</text>
+          <text x="160" y="113" text-anchor="end" fill="#a1a1aa" font-size="13">.waumpaumproof</text>
+          <line x1="350" y1="68" x2="350" y2="132" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-settle-arrow)"/>
+          <text x="360" y="96" fill="#a1a1aa" font-size="13">signed proof</text>
+          <text x="360" y="113" fill="#a1a1aa" font-size="13">.waumpaumproof</text>
+          <!-- the Exchange -->
+          <rect x="110" y="132" width="300" height="52" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="260" y="154" text-anchor="middle" fill="#e4e4e7">Waumpaum Exchange</text>
+          <text x="260" y="173" text-anchor="middle" fill="#a1a1aa" font-size="13">nets the obligations</text>
+          <line x1="260" y1="184" x2="260" y2="232" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-settle-arrow)"/>
+          <text x="272" y="213" fill="#a1a1aa" font-size="13">makes a settlement belt</text>
+          <!-- the belt -->
+          <rect x="150" y="232" width="220" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="254" text-anchor="middle" fill="#e4e4e7">Settlement belt</text>
+          <text x="260" y="273" text-anchor="middle" fill="#a1a1aa" font-size="13">.clearbelt</text>
+          <!-- back to each ledger -->
+          <path d="M260 284 V300 M130 300 H390" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+          <line x1="130" y1="300" x2="130" y2="332" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-settle-arrow)"/>
+          <line x1="390" y1="300" x2="390" y2="332" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-rsw-settle-arrow)"/>
+          <text x="260" y="322" text-anchor="middle" fill="#a1a1aa" font-size="13">Read the Belt</text>
+          <rect x="20" y="332" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="130" y="359" text-anchor="middle" fill="#e4e4e7">Ledger of credit union A</text>
+          <rect x="280" y="332" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="390" y="359" text-anchor="middle" fill="#e4e4e7">Ledger of credit union B</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 2. Signed proofs go to the Exchange, and one settlement belt comes back to each credit union.</figcaption>
+      </figure>
 
       <div class="howto-story">
         <h3>Issue a waumpaum <span class="howto-tag">US-7</span></h3>
-        <p class="howto-role">Flag a transaction for exchange and export its signed attestation.</p>
+        <p class="howto-role">Flag a transaction for exchange. Then export its signed attestation.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us7-issue-waumpaum.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Waumpaum Desk</strong> — pick a recent <code>Rtxn</code>, <strong>Issue a Waumpaum</strong>, choose the counterparty (<code>WaumpaumPeerInstCd</code>).</li>
-          <li>The row is flagged <code>WaumpaumInd = 1</code> (it enters <code>v_WaumpaumRtxn</code>).</li>
-          <li>A signed <code>.waumpaumproof</code> is exported — the atomic negotiable record for the Exchange.</li>
+          <li>Open the <strong>Waumpaum Desk</strong>.</li>
+          <li>Select a recent <code>Rtxn</code>.</li>
+          <li>Click <strong>Issue a Waumpaum</strong>.</li>
+          <li>Select the counterparty (<code>WaumpaumPeerInstCd</code>).</li>
         </ol>
+        <p>
+          The app sets the flag <code>WaumpaumInd = 1</code> on the row. (The row goes into
+          <code>v_WaumpaumRtxn</code>.) The app exports a signed <code>.waumpaumproof</code>. This file is the atomic
+          negotiable record for the Exchange.
+        </p>
       </div>
 
       <div class="howto-story">
-        <h3>The Exchange weaves a belt <span class="howto-tag">CLI</span></h3>
-        <p class="howto-role">Single-writer netting collects proofs into a settlement belt (runs outside the offline core).</p>
+        <h3>The Exchange makes a belt <span class="howto-tag">CLI</span></h3>
+        <p class="howto-role">Netting with a single writer collects the proofs into a settlement belt. (The netting runs outside the offline core.)</p>
         <pre style="background:#0a0a0c;border:1px solid rgba(255,255,255,0.1);border-radius:0.6rem;padding:0.8rem 1rem;overflow:auto;font-size:0.8rem;color:#d4d4d8;">cd exchange
 node net-belt.mjs --proofs ./proofs --belt-id 2026-07-07T18:00Z --out ../fixtures/woven.clearbelt</pre>
-        <p>It sums each proof's settlement amount by <code>(AcctNbr, counterparty)</code> and emits a <code>.clearbelt</code> the CU can read.</p>
+        <p>
+          The script adds the settlement amounts of the proofs for each <code>(AcctNbr, counterparty)</code> pair. Then
+          it writes a <code>.clearbelt</code> that the credit union can read.
+        </p>
       </div>
 
       <div class="howto-story">
         <h3>Read the Belt <span class="howto-tag">US-10</span></h3>
-        <p class="howto-role">Import the Exchange's settlement belt back into the ledger.</p>
+        <p class="howto-role">Import the settlement belt of the Exchange back into the ledger.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us10-read-belt.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Read the Belt</strong> — load the <code>.clearbelt</code>, preview each settlement string.</li>
-          <li>Post: each becomes a <code>Rtxn</code> (<code>RtxnTypCd='CLR'</code>) tagged with the belt id, updating balances.</li>
-          <li>Unknown accounts are skipped and reported — never invented.</li>
+          <li>Open <strong>Read the Belt</strong>.</li>
+          <li>Load the <code>.clearbelt</code>.</li>
+          <li>Preview each settlement string.</li>
+          <li>
+            Post the settlement strings. Each string becomes a <code>Rtxn</code> (<code>RtxnTypCd='CLR'</code>) that
+            has the belt id. The post updates the balances.
+          </li>
         </ol>
+        <p>
+          The app does not post a string for an unknown account. It reports the unknown accounts, and it never invents
+          an account.
+        </p>
       </div>
 
       <p class="text-zinc-500 text-sm">
-        <strong>Post to the longhouse (deferred).</strong> Signaling "a new belt is ready" over a public image feed via
-        <a href="/blog/chaosedgesteg-plastron.html">ChaosEdgeSteg</a> steganography is designed but not shipped — it
-        relaxes CSP, so it belongs in a separate build flavor, never the teller core.
+        <strong>Post to the longhouse (deferred).</strong> This feature sends the signal "a new belt is ready" through
+        a public image feed. It uses <a href="/blog/chaosedgesteg-plastron.html">ChaosEdgeSteg</a> steganography. The
+        feature has a design, but the app does not include it. The feature makes the CSP less strict. Thus it belongs
+        in a separate build variant, and never in the teller core.
       </p>
 
       <h2>The other roles</h2>
 
       <div class="howto-story">
         <h3>Loan officer — Loan Payment Post <span class="howto-tag">US-8</span></h3>
-        <p class="howto-role">Work the loan book and apply a payment.</p>
+        <p class="howto-role">Examine the loan book and apply a payment.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us8-loan-payment.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Loan Pipeline</strong> → <strong>Loan Inquiry</strong> — balances, next due, rate, payment history.</li>
-          <li><strong>Loan Payment Post</strong> — a <code>DP</code> <code>Rtxn</code> moves the balance toward zero and records <code>AcctPmtHist</code>.</li>
+          <li>Open <strong>Loan Pipeline</strong>.</li>
+          <li>
+            Open <strong>Loan Inquiry</strong>. The screens show the balances, the next payment due, the rate, and the
+            payment history.
+          </li>
+          <li>
+            Use <strong>Loan Payment Post</strong> to apply a payment. A <code>DP</code> <code>Rtxn</code> moves the
+            balance nearer to zero and records <code>AcctPmtHist</code>.
+          </li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Planner — Reports → encrypted CSV <span class="howto-tag">US-9</span></h3>
-        <p class="howto-role">Run canned reports; exports are encrypted only.</p>
+        <p class="howto-role">Run the predefined reports. The app exports encrypted files only.</p>
         <video class="howto-video" src="/assets/rheoserv-waumpaum-howto/us9-report-csv.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Member 360</strong> is the book of business (deposits, loans per member).</li>
-          <li><strong>Reports</strong> → run → <strong>Export CSV</strong> produces <code>.csv.enc</code> only — never plain CSV.</li>
+          <li>Open <strong>Member 360</strong>. It is the book of business (the deposits and the loans for each member).</li>
+          <li>Open <strong>Reports</strong>.</li>
+          <li>Run a report.</li>
+          <li>
+            Click <strong>Export CSV</strong>. The app makes a <code>.csv.enc</code> file only. It never makes a plain
+            CSV file.
+          </li>
         </ol>
       </div>
 
       <h2>References</h2>
       <ul>
-        <li><a href="https://github.com/rheophile10/rheoServ-waumpaum">rheophile10/rheoServ-waumpaum</a> — source &amp; build</li>
-        <li><a href="https://github.com/rheophile10/rheoServ-waumpaum/blob/main/USER-MANUAL.md">USER-MANUAL.md</a> — the full written walkthrough</li>
+        <li><a href="https://github.com/rheophile10/rheoServ-waumpaum">rheophile10/rheoServ-waumpaum</a> — the source code and the build</li>
+        <li><a href="https://github.com/rheophile10/rheoServ-waumpaum/blob/main/USER-MANUAL.md">USER-MANUAL.md</a> — the full written instructions</li>
         <li><a href="https://rheophile10.github.io/rheoServ-waumpaum/app.html">the built app</a> — one self-contained file</li>
-        <li><a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the lineage this forks from</li>
+        <li><a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the project that RheoServ Waumpaum came from</li>
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite</li>
-        <li><a href="https://www.onondaganation.org/culture/wampum/">Onondaga Nation — Wampum</a> · <a href="https://www.oneidaindiannation.com/wampum-memorializing-the-spoken-word">Oneida — Wampum</a> (metaphor, with respect)</li>
+        <li>Wampum (the source of the metaphor, with respect): <a href="https://www.onondaganation.org/culture/wampum/">Onondaga Nation</a>, <a href="https://www.oneidaindiannation.com/wampum-memorializing-the-spoken-word">Oneida</a></li>
         <li><a href="https://www.cyber.gc.ca/en/guidance/cryptographic-algorithms-unclassified-protected-protected-b-information-itsp40111">CSE ITSP.40.111</a> — approved algorithms (AES-GCM, PBKDF2)</li>
       </ul>
     </article>

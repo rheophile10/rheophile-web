@@ -5,32 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- rheophile:og:start -->
   <link rel="canonical" href="https://rheophile.ca/blog/localrbac-crypto-rbac.html">
-  <meta name="description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.">
+  <meta name="description" content="localRbac enforces role-based access control with cryptography only, in a local-first CRDT database that a group edits offline and merges. Shamir secret sharing splits the master key k-of-n, and thus no single keyholder is a target for coercion.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="rheophile.ca">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/blog/localrbac-crypto-rbac.html">
-  <meta property="og:title" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
-  <meta property="og:description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.">
+  <meta property="og:title" content="Cryptographic RBAC on a CRDT database — records that a group can keep, with no single keyholder as a target">
+  <meta property="og:description" content="localRbac enforces role-based access control with cryptography only, in a local-first CRDT database that a group edits offline and merges. Shamir secret sharing splits the master key k-of-n, and thus no single keyholder is a target for coercion.">
   <meta property="og:image" content="https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg">
   <meta property="og:image:secure_url" content="https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target — rheophile.ca dev log">
+  <meta property="og:image:alt" content="Cryptographic RBAC on a CRDT database — records that a group can keep, with no single keyholder as a target — rheophile.ca dev log">
   <meta property="article:published_time" content="2026-07-15">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@rheophile10">
   <meta name="twitter:creator" content="@rheophile10">
   <meta name="twitter:url" content="https://rheophile.ca/blog/localrbac-crypto-rbac.html">
-  <meta name="twitter:title" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target">
-  <meta name="twitter:description" content="Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.">
+  <meta name="twitter:title" content="Cryptographic RBAC on a CRDT database — records that a group can keep, with no single keyholder as a target">
+  <meta name="twitter:description" content="localRbac enforces role-based access control with cryptography only, in a local-first CRDT database that a group edits offline and merges. Shamir secret sharing splits the master key k-of-n, and thus no single keyholder is a target for coercion.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg">
-  <meta name="twitter:image:alt" content="Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target — rheophile.ca dev log">
+  <meta name="twitter:image:alt" content="Cryptographic RBAC on a CRDT database — records that a group can keep, with no single keyholder as a target — rheophile.ca dev log">
   <meta name="robots" content="max-image-preview:large">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target", "description": "Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.", "image": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg", "datePublished": "2026-07-15", "url": "https://rheophile.ca/blog/localrbac-crypto-rbac.html", "mainEntityOfPage": "https://rheophile.ca/blog/localrbac-crypto-rbac.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Cryptographic RBAC on a CRDT database — records that a group can keep, with no single keyholder as a target", "description": "localRbac enforces role-based access control with cryptography only, in a local-first CRDT database that a group edits offline and merges. Shamir secret sharing splits the master key k-of-n, and thus no single keyholder is a target for coercion.", "image": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg", "datePublished": "2026-07-15", "url": "https://rheophile.ca/blog/localrbac-crypto-rbac.html", "mainEntityOfPage": "https://rheophile.ca/blog/localrbac-crypto-rbac.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
   <!-- rheophile:og:end -->
-  <title>Cryptographic RBAC over a CRDT · rheophile.ca</title>
+  <title>Cryptographic RBAC on a CRDT database · rheophile.ca</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
@@ -77,6 +77,9 @@
       padding-left: 1.35rem;
     }
     .prose-blog li { margin-bottom: 0.4rem; }
+    /* Tailwind preflight removes list markers. A procedure must show its step numbers. */
+    .prose-blog ol { list-style: decimal; }
+    .prose-blog ul { list-style: disc; }
     .prose-blog a {
       color: #2dd4bf;
       text-decoration: underline;
@@ -182,26 +185,33 @@
     <header>
       <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Dev log · 2026-07-15</div>
       <h1 class="display text-4xl md:text-[2.6rem] font-semibold tracking-tighter mt-2 leading-[1.1]">
-        Records a group can keep — without any one keyholder becoming a target <span class="text-3xl">🔐</span>
+        Records that a group can keep, with no single keyholder as a target <span class="text-3xl">🔐</span>
       </h1>
       <p class="mt-4 text-zinc-400 text-base leading-relaxed">
         <strong class="text-zinc-300">localRbac</strong> enforces
-        <strong class="text-zinc-300">role-based access control with cryptography alone</strong> — no server, no network
-        at access time — over a <strong class="text-zinc-300">local-first CRDT database</strong> several people run, edit
-        offline, and merge. RBAC is useful; RBAC that isn't cryptographically enforced is a
-        <a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA" class="text-teal-400/90 hover:text-teal-300">cargo
-        cult</a> — a UI that <em>looks</em> like a guard but checks nothing you couldn't bypass by editing the file.
-        Reads are gated by holding a key; writes by an admin-signed signature checked at merge. And no one person can
-        decrypt the whole dataset alone —
+        <strong class="text-zinc-300">role-based access control (RBAC) with cryptography only</strong>. It uses no
+        server and no network at access time. The data is in a
+        <strong class="text-zinc-300">local-first CRDT database</strong> that several people run, edit offline, and
+        merge.
+      </p>
+      <p class="mt-3 text-zinc-400 text-base leading-relaxed">
+        RBAC is useful. But RBAC without cryptographic enforcement is a UI that <em>shows</em> a guard but checks
+        nothing. A person who edits the file can bypass that UI. The name for this pattern is
+        "<a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA" class="text-teal-400/90 hover:text-teal-300">cargo
+        cult</a>".
+      </p>
+      <p class="mt-3 text-zinc-400 text-base leading-relaxed">
+        In localRbac, a person must hold a key to read. A write must have an admin-signed signature, and the merge
+        checks that signature. No one person can decrypt the full dataset alone, because the
         <a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176" class="text-teal-400/90 hover:text-teal-300">Shamir</a>
-        splits the master key <strong class="text-zinc-300">k-of-n</strong> — so nobody becomes the target.
+        method splits the master key <strong class="text-zinc-300">k-of-n</strong>. Thus no person becomes the target.
       </p>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
         <a href="https://rheophile10.github.io/localRbac/demo.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
           Try the 3-user demo →
         </a>
         <a href="https://github.com/rheophile10/localRbac" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
-          Source on GitHub
+          Source code on GitHub
         </a>
       </div>
     </header>
@@ -209,110 +219,320 @@
     <article class="prose-blog mt-10">
 
       <div class="callout">
-        <strong>Proof of concept only.</strong> No formal security review, threat assessment, or authorization to
-        protect anything real. It's a working demonstration of a design, not a product. Don't put real secrets in it yet.
+        <strong>Do not put real secrets in localRbac at this time.</strong> It is a proof of concept only. It has no
+        formal security review, no threat assessment, and no authorization to protect real data. The code operates,
+        but it is a demonstration of a design, not a product.
       </div>
 
       <h2>The goal</h2>
       <p>
-        A group wants to keep shared records <em>together</em> — one converging truth — without trusting a server, often
-        offline, knowing any one of them could lose a laptop or be leaned on. So the records live in an ordinary SQLite
-        file each person carries, and access control is baked into the <em>data itself</em> — it has to survive the file
-        being copied, edited offline, and merged. Three properties, no server in the loop:
+        The goal is that a group keeps its shared records <em>together</em>, as one truth that converges. The group
+        does not trust a server, and its members are often offline. The members know that any one of them can lose a
+        laptop. They also know that a person can coerce any one of them.
+      </p>
+      <p>
+        Thus the records are in a normal SQLite file that each person carries. Access control is part of the
+        <em>data itself</em>. It must stay in effect when a person copies the file, edits it offline, and merges it.
+        The design has three properties and uses no server:
       </p>
       <ul>
-        <li><strong>Multiple parties</strong> each run the database and edit offline.</li>
-        <li>Edits <strong>merge</strong>: two peers reconcile by trading a delta; a subgroup converges to an agreed
-          checkpoint.</li>
-        <li>No single keyholder is <strong>alone on the critical path</strong> — losing or coercing one person doesn't
-          hand over the data.</li>
+        <li><strong>Two or more parties</strong> each run the database and edit it offline.</li>
+        <li>Edits <strong>merge</strong>. Two peers exchange a delta to reconcile. A subgroup converges to a
+          checkpoint that its members agree on.</li>
+        <li>The data does not depend on <strong>one keyholder alone</strong>. If the group loses one person, or if
+          an attacker coerces one person, the attacker does not receive the data.</li>
       </ul>
       <p>
-        The engine is <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>, a CRDT extension to SQLite:
-        per-column merge that's commutative, associative, and idempotent, so <strong>replicas collaborate on the same
-        records and converge regardless of merge order</strong>. cr-sqlite gives convergence; everything about
-        <em>who may see and change what</em> is layered on top.
+        The engine is <a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>, a CRDT extension to SQLite. Its
+        merge operates on each column, and the merge is commutative, associative, and idempotent. Thus
+        <strong>replicas collaborate on the same records and converge in any merge order</strong>. The cr-sqlite
+        extension gives convergence. On top of it, localRbac adds all the rules about <em>who can see and who can
+        change each item</em>.
       </p>
 
       <h2>Read control is a data-encryption key</h2>
       <p>
-        You can't stop someone reading bytes on their own disk, so "can Alice read this?" becomes <em>can Alice decrypt
-        it?</em> Each <strong>resource</strong> (a compartment — <code>patient:alice</code>, <code>notes</code>) has its
-        own versioned <strong>data-encryption key (DEK)</strong>. A record is encrypted cells, one per
-        <code>(record, column)</code>, under that resource's DEK:
+        A person can always read the bytes on their own disk, and you cannot prevent that. Thus the question "Can
+        Alice read this?" becomes <em>"Can Alice decrypt this?"</em> Each <strong>resource</strong> is a compartment,
+        for example <code>patient:alice</code> or <code>notes</code>. Each resource has its own
+        <strong>data-encryption key (DEK)</strong>, and each DEK has a version. A record is a set of encrypted cells,
+        one cell for each <code>(record, column)</code> pair. The DEK of the resource encrypts each cell:
       </p>
       <pre><code>cell(pk = rid|resource|col, rid, resource, col, ct, dek_ver, author, sig)</code></pre>
-      <p>A reader gets the DEK one of two ways:</p>
+      <p>A reader receives the DEK in one of two ways:</p>
       <ul>
-        <li><strong>Admin derives it</strong> on demand from one root secret:
-          <code>DEK = HKDF(rootKey, "dek:"+resource, "v"+ver)</code>. No resource keys are stored.</li>
-        <li><strong>Everyone else is sealed in:</strong> on grant, the admin seals that DEK to the member's X25519 key
-          into a <code>keywrap</code> row. Only they can unseal it.</li>
+        <li><strong>The admin derives the DEK</strong> from one root secret when it is necessary:
+          <code>DEK = HKDF(rootKey, "dek:"+resource, "v"+ver)</code>. The engine stores no resource keys.</li>
+        <li><strong>Each other member receives a sealed DEK.</strong> For each grant, the admin seals that DEK to the
+          X25519 key of the member and puts it in a <code>keywrap</code> row. Only that member can unseal it.</li>
       </ul>
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 524" width="100%" role="img" aria-labelledby="dgm-read-t dgm-read-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-read-t">Read control with a data-encryption key</title>
+          <desc id="dgm-read-d">The admin derives the DEK of one resource from the root secret with HKDF. The admin seals that DEK to the X25519 key of each member, in a keywrap row. Each member unseals the DEK and decrypts the cells of that resource.</desc>
+          <defs>
+            <marker id="dgm-read-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+          <rect x="150" y="16" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="43" text-anchor="middle" fill="#e4e4e7">Root secret of the admin</text>
+          <line x1="260" y1="60" x2="260" y2="104" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <text x="274" y="87" fill="#a1a1aa" font-size="13">admin derives with HKDF</text>
+          <rect x="160" y="104" width="200" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="260" y="131" text-anchor="middle" fill="#e4e4e7">DEK of one resource</text>
+          <path d="M260 148 V168 H130 V208" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <path d="M260 168 H390 V208" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <text x="260" y="193" text-anchor="middle" fill="#a1a1aa" font-size="13">admin seals to each X25519 key</text>
+          <rect x="20" y="208" width="220" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="130" y="232" text-anchor="middle" fill="#e4e4e7">DEK sealed for member A</text>
+          <text x="130" y="251" text-anchor="middle" fill="#a1a1aa" font-size="13">in a keywrap row</text>
+          <rect x="280" y="208" width="220" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="390" y="232" text-anchor="middle" fill="#e4e4e7">DEK sealed for member B</text>
+          <text x="390" y="251" text-anchor="middle" fill="#a1a1aa" font-size="13">in a keywrap row</text>
+          <line x1="130" y1="264" x2="130" y2="308" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <line x1="390" y1="264" x2="390" y2="308" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <rect x="20" y="308" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="130" y="335" text-anchor="middle" fill="#e4e4e7">Member A unseals the DEK</text>
+          <rect x="280" y="308" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="390" y="335" text-anchor="middle" fill="#e4e4e7">Member B unseals the DEK</text>
+          <line x1="130" y1="352" x2="130" y2="396" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <line x1="390" y1="352" x2="390" y2="396" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-read-arrow)"/>
+          <rect x="20" y="396" width="480" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="260" y="423" text-anchor="middle" fill="#e4e4e7">Decrypt the cells of that resource</text>
+          <rect x="120" y="464" width="280" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="#f87171" stroke-dasharray="5 4"/>
+          <text x="260" y="491" text-anchor="middle" fill="#e4e4e7">No grant: ciphertext only 🔒</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 1. Read control: a member can read a resource only if the member holds its DEK.</figcaption>
+      </figure>
       <p>
-        Reading needs no online authority: <code>listRecords</code> decrypts the cells whose key you hold and skips the
-        rest. No grant, same ciphertext, a <code>🔒</code> — nothing leaks, because there's no plaintext to hide.
+        No online authority is necessary to read. <code>listRecords</code> decrypts each cell if you hold its key,
+        and it skips the other cells. A person without a grant has the same ciphertext and sees a <code>🔒</code>.
+        Nothing leaks, because there is no plaintext to hide.
       </p>
       <div class="callout">
-        <strong>Revocation is key rotation.</strong> Revoking bumps <code>dek_ver</code> and re-seals the new key to the
-        remaining members. The revoked user keeps old ciphertext but nothing written after.
+        <strong>Revocation is key rotation.</strong> To revoke a user, the admin increases <code>dek_ver</code> and
+        seals the new key to the remaining members. The revoked user keeps the old ciphertext. That user cannot read
+        the data that a member writes after the revocation.
       </div>
 
-      <h2>Write control is a signature checked at merge</h2>
+      <h2>Write control is a signature that the merge checks</h2>
       <p>
-        Encryption stops reads, not writes — anyone can append a row to a file. So every row carries its author's
-        Ed25519 key and a signature, enforced where it can't be bypassed: <strong>at merge</strong>. An incoming
-        changeset is replayed into a throwaway <strong>staging</strong> database and checked before it's trusted:
+        Encryption stops reads, but it does not stop writes. Any person can append a row to a file. Thus each row
+        carries the Ed25519 key of its author and a signature. The engine enforces the signature at a point that a
+        person cannot bypass: <strong>at merge</strong>. The engine replays an incoming changeset into a temporary
+        <strong>staging</strong> database. Before the engine trusts the changeset, it makes sure that these two
+        conditions are true:
       </p>
       <ol>
-        <li><strong>System rows</strong> (identities, grants, key-wraps, checkpoints) must be signature-valid and
-          admin-authored — establishing who is a writer.</li>
-        <li><strong>Data cells</strong> must be signature-valid and authored by a current writer for that resource.</li>
+        <li><strong>System rows</strong> (identities, grants, key-wraps, checkpoints) have a valid signature, and
+          the admin is their author. These rows establish who is a writer.</li>
+        <li><strong>Data cells</strong> have a valid signature, and their author is a current writer for that
+          resource.</li>
       </ol>
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 452" width="100%" role="img" aria-labelledby="dgm-write-t dgm-write-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-write-t">Write control at merge</title>
+          <desc id="dgm-write-d">The engine replays an incoming changeset into a temporary staging database. It checks the system rows and then the data cells. If each row passes, the changeset merges. If a row fails, the engine rejects the changeset and gives a reason.</desc>
+          <defs>
+            <marker id="dgm-write-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+            <marker id="dgm-write-stop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#f87171"/>
+            </marker>
+          </defs>
+          <rect x="20" y="16" width="240" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="140" y="43" text-anchor="middle" fill="#e4e4e7">Incoming changeset</text>
+          <line x1="140" y1="60" x2="140" y2="100" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-write-arrow)"/>
+          <text x="154" y="85" fill="#a1a1aa" font-size="13">replay</text>
+          <rect x="20" y="100" width="240" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="140" y="127" text-anchor="middle" fill="#e4e4e7">Temporary staging database</text>
+          <line x1="140" y1="144" x2="140" y2="184" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-write-arrow)"/>
+          <rect x="20" y="184" width="240" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="140" y="208" text-anchor="middle" fill="#e4e4e7">System rows:</text>
+          <text x="140" y="227" text-anchor="middle" fill="#a1a1aa" font-size="13">valid signature, admin author</text>
+          <line x1="140" y1="240" x2="140" y2="280" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-write-arrow)"/>
+          <rect x="20" y="280" width="240" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="140" y="304" text-anchor="middle" fill="#e4e4e7">Data cells:</text>
+          <text x="140" y="323" text-anchor="middle" fill="#a1a1aa" font-size="13">valid signature, current writer</text>
+          <line x1="140" y1="336" x2="140" y2="392" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-write-arrow)"/>
+          <text x="154" y="369" fill="#a1a1aa" font-size="13">each row passes</text>
+          <rect x="20" y="392" width="240" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="140" y="419" text-anchor="middle" fill="#e4e4e7">Merge the changeset</text>
+          <path d="M260 212 H405 V232" fill="none" stroke="#f87171" stroke-width="1.5" marker-end="url(#dgm-write-stop)"/>
+          <text x="290" y="203" fill="#a1a1aa" font-size="13">a row fails</text>
+          <path d="M260 308 H405 V288" fill="none" stroke="#f87171" stroke-width="1.5" marker-end="url(#dgm-write-stop)"/>
+          <text x="290" y="327" fill="#a1a1aa" font-size="13">a row fails</text>
+          <rect x="310" y="232" width="190" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="#f87171"/>
+          <text x="405" y="256" text-anchor="middle" fill="#e4e4e7">Reject the changeset</text>
+          <text x="405" y="275" text-anchor="middle" fill="#a1a1aa" font-size="13">and give a reason</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 2. Write control: the changeset merges only if each row passes the two checks.</figcaption>
+      </figure>
       <p>
-        Only if every row passes does it merge. A forged cell, a self-appointed admin, a reader trying to write — all
-        <strong>rejected at merge</strong>, with a reason. Authenticity rides on <em>each row</em>, not the envelope, so
-        it survives cr-sqlite's transitive gossip.
+        The changeset merges only if each row passes. The merge <strong>rejects</strong> each of these items, and it
+        gives a reason:
+      </p>
+      <ul>
+        <li>A forged cell.</li>
+        <li>A person who makes themselves the admin.</li>
+        <li>A reader who tries to write.</li>
+      </ul>
+      <p>
+        Authenticity is a property of <em>each row</em>, not of the envelope. Thus authenticity stays intact through
+        the transitive gossip of cr-sqlite.
       </p>
 
       <h2>Local consensus: two files, one state root</h2>
       <p>
-        Two peers reconcile by trading changesets. To <em>know</em> they've converged without shipping data, each
-        computes a <strong>state root</strong> — a SHA-256 over the sorted cell + grant state. Equal roots, identical
-        state: compare 64 hex characters, not a database. (One gotcha, documented in the engine: cr-sqlite's
-        <code>db_version</code> is a <em>local</em> clock reassigned on merge, so "everything since checkpoint H" uses a
-        local watermark, not a portable version vector.)
+        Two peers exchange changesets to reconcile. It is not necessary to send the data to <em>know</em> that the
+        peers converged. Each peer calculates a <strong>state root</strong>: a SHA-256 hash of the sorted state of
+        the cells and the grants. If the roots are equal, the states are identical. The peers compare 64 hex characters,
+        not a database.
+      </p>
+      <p>
+        The engine code documents one problem. The <code>db_version</code> of cr-sqlite is a <em>local</em> clock,
+        and a merge assigns it again. Thus "all changes after checkpoint H" uses a local watermark, not a portable
+        version vector.
       </p>
 
       <h2>Group consensus: the wipe-and-rebuild ceremony</h2>
       <p>
-        A whole subgroup converges through a <strong>ceremony</strong>: a coordinator merges everyone's
-        diff-since-last-checkpoint, optionally rotates every DEK, and records a signed <strong>checkpoint</strong> (a
-        hash of the agreed state). Then, instead of shipping the merged database back, it hands each member a
-        <strong>rebuild slice</strong> — the auth/checkpoint state plus only their entitled, non-archived cells — and
-        each member <strong>wipes and rebuilds</strong> from it. One move does three jobs: compaction, data
-        minimization (you get back only what you're entitled to), and redistribution from the same checkpoint. Evening
-        lock, morning unlock.
+        A full subgroup converges through a <strong>ceremony</strong>. A coordinator merges the diffs, records a
+        signed <strong>checkpoint</strong>, and gives each member a <strong>rebuild slice</strong>. Then each member
+        <strong>wipes</strong> the local database and <strong>rebuilds</strong> it from the slice. Figure 3 shows the
+        sequence.
       </p>
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 420" width="100%" role="img" aria-labelledby="dgm-ceremony-t dgm-ceremony-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-ceremony-t">The checkpoint ceremony</title>
+          <desc id="dgm-ceremony-d">The coordinator merges the diff of each member. The coordinator can rotate each DEK, records a signed checkpoint, and gives each member a rebuild slice. Each member wipes the local database and rebuilds it from the slice.</desc>
+          <defs>
+            <marker id="dgm-ceremony-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+          <text x="120" y="26" text-anchor="middle" fill="#a1a1aa">Each member</text>
+          <text x="385" y="26" text-anchor="middle" fill="#a1a1aa">Coordinator</text>
+          <rect x="20" y="42" width="200" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="120" y="66" text-anchor="middle" fill="#e4e4e7">Diff after the</text>
+          <text x="120" y="85" text-anchor="middle" fill="#e4e4e7">last checkpoint</text>
+          <line x1="220" y1="70" x2="270" y2="70" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ceremony-arrow)"/>
+          <rect x="270" y="48" width="230" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="385" y="75" text-anchor="middle" fill="#e4e4e7">Merge all the diffs</text>
+          <line x1="385" y1="92" x2="385" y2="124" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ceremony-arrow)"/>
+          <rect x="270" y="124" width="230" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)" stroke-dasharray="5 4"/>
+          <text x="385" y="151" text-anchor="middle" fill="#e4e4e7">Rotate each DEK (optional)</text>
+          <line x1="385" y1="168" x2="385" y2="200" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ceremony-arrow)"/>
+          <rect x="270" y="200" width="230" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="385" y="227" text-anchor="middle" fill="#e4e4e7">Record a signed checkpoint</text>
+          <line x1="385" y1="244" x2="385" y2="276" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ceremony-arrow)"/>
+          <rect x="270" y="276" width="230" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="385" y="300" text-anchor="middle" fill="#e4e4e7">Give each member</text>
+          <text x="385" y="319" text-anchor="middle" fill="#e4e4e7">a rebuild slice</text>
+          <line x1="270" y1="304" x2="220" y2="304" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ceremony-arrow)"/>
+          <line x1="120" y1="98" x2="120" y2="282" stroke="rgba(255,255,255,0.22)" stroke-width="1" stroke-dasharray="3 5"/>
+          <rect x="20" y="282" width="200" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="120" y="309" text-anchor="middle" fill="#e4e4e7">Wipe the local database</text>
+          <line x1="120" y1="326" x2="120" y2="360" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ceremony-arrow)"/>
+          <rect x="20" y="360" width="200" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="120" y="387" text-anchor="middle" fill="#e4e4e7">Rebuild from the slice</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 3. The ceremony: the diffs go to the coordinator, and a rebuild slice comes back to each member.</figcaption>
+      </figure>
+      <ul>
+        <li>Each diff holds the changes of one member after the last checkpoint.</li>
+        <li>The coordinator can also rotate each DEK. This step is optional.</li>
+        <li>The checkpoint is a hash of the agreed state.</li>
+        <li>The coordinator does not send the merged database back.</li>
+        <li>A rebuild slice holds the auth state and the checkpoint state. It also holds only the non-archived cells
+          that the member has a right to.</li>
+      </ul>
+      <p>This one procedure does three jobs:</p>
+      <ul>
+        <li>Compaction.</li>
+        <li>Data minimization: each member receives only the data that the member has a right to.</li>
+        <li>Redistribution from the same checkpoint.</li>
+      </ul>
+      <p>The lock occurs in the evening, and the unlock occurs in the morning.</p>
 
       <h2>No single keyholder: Shamir threshold custody</h2>
       <p>
-        One uncomfortable shape remains: the admin's root secret can derive every DEK. <strong>If any one person can
-        decrypt the whole collective dataset alone, that person becomes a target for extortion</strong> — and
-        cryptography has nothing to say to a $5 wrench.
+        One problem remains: the root secret of the admin can derive each DEK. <strong>If any one person can decrypt
+        the full collective dataset alone, that person becomes a target for extortion.</strong> Cryptography cannot
+        protect a person against physical force.
       </p>
       <figure style="margin:1.5rem 0;">
-        <a href="https://xkcd.com/538/"><img src="/assets/localrbac/xkcd-538-security.png" alt="xkcd 538 “Security”: a crypto nerd imagines a million-dollar cluster cracking 4096-bit RSA; what would actually happen is drugging him and hitting him with a $5 wrench until he gives up the password." style="display:block;margin:0 auto;max-width:100%;border-radius:0.6rem;border:1px solid rgba(255,255,255,0.12);background:#fff;padding:0.75rem;"></a>
-        <figcaption style="font-size:0.8rem;color:#71717a;margin-top:0.55rem;text-align:center;"><a href="https://xkcd.com/538/">xkcd 538</a> — the fix isn't a stronger cipher; it's making sure no one person is worth the wrench. (CC BY-NC 2.5)</figcaption>
+        <a href="https://xkcd.com/538/"><img src="/assets/localrbac/xkcd-538-security.png" alt="xkcd 538, “Security”. A cryptography enthusiast imagines that a million-dollar cluster cracks his 4096-bit RSA key. In the real result, attackers drug him and hit him with a $5 wrench until he gives them the password." style="display:block;margin:0 auto;max-width:100%;border-radius:0.6rem;border:1px solid rgba(255,255,255,0.12);background:#fff;padding:0.75rem;"></a>
+        <figcaption style="font-size:0.8rem;color:#71717a;margin-top:0.55rem;text-align:center;"><a href="https://xkcd.com/538/">xkcd 538</a>. A stronger cipher is not the fix. The fix is to make sure that no one person is a useful target for physical force. (CC BY-NC 2.5)</figcaption>
       </figure>
       <p>
-        So <a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Shamir's secret sharing</a> splits the custody
-        key into <code>n</code> shares over GF(2⁸) — any <code>k</code> reconstruct it, any <code>k−1</code> reveal
-        <em>nothing</em> — and seals each share to one custodian's key. <code>sealVault</code> encrypts a payload under a
-        random key and splits that key; unlock is distributed (each custodian re-seals their share to the opener, who
-        combines <code>k</code>). A 4-of-5 quorum survives losing one custodian but needs four people compromised at
-        once. No single keyholder is a point of failure <em>or</em> coercion.
+        Thus localRbac uses <a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Shamir's secret sharing</a>.
+        It splits the custody key into <code>n</code> shares in the field GF(2⁸). Any <code>k</code> shares
+        reconstruct the key. Any <code>k−1</code> shares reveal <em>nothing</em>. Then localRbac seals each share to
+        the key of one custodian.
       </p>
+      <p>
+        <code>sealVault</code> encrypts a payload with a random key and then splits that key. The unlock is a
+        distributed operation. Each custodian seals their share again to the opener. The opener combines
+        <code>k</code> shares.
+      </p>
+      <p>
+        A 4-of-5 quorum continues to operate if it loses one custodian. To break it, an attacker must compromise four
+        people at the same time. No single keyholder is a point of failure <em>or</em> a point of coercion.
+      </p>
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 388" width="100%" role="img" aria-labelledby="dgm-shamir-t dgm-shamir-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-shamir-t">Shamir k-of-n custody, with a 4-of-5 quorum</title>
+          <desc id="dgm-shamir-d">A Shamir split divides the custody key into 5 shares, one sealed share for each custodian. The group loses one custodian. The opener combines 4 shares and reconstructs the key. Any 3 shares reveal nothing.</desc>
+          <defs>
+            <marker id="dgm-shamir-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+          <rect x="160" y="16" width="200" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="260" y="43" text-anchor="middle" fill="#e4e4e7">Custody key</text>
+          <path d="M260 60 V116 M60 116 H460" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+          <text x="274" y="84" fill="#a1a1aa" font-size="13">Shamir split in GF(2⁸), n = 5</text>
+          <text x="274" y="102" fill="#a1a1aa" font-size="13">one sealed share for each custodian</text>
+          <g stroke="#2dd4bf" stroke-width="1.5">
+            <line x1="60" y1="116" x2="60" y2="144" marker-end="url(#dgm-shamir-arrow)"/>
+            <line x1="160" y1="116" x2="160" y2="144" marker-end="url(#dgm-shamir-arrow)"/>
+            <line x1="260" y1="116" x2="260" y2="144" marker-end="url(#dgm-shamir-arrow)"/>
+            <line x1="360" y1="116" x2="360" y2="144" marker-end="url(#dgm-shamir-arrow)"/>
+            <line x1="460" y1="116" x2="460" y2="144" marker-end="url(#dgm-shamir-arrow)"/>
+          </g>
+          <rect x="16" y="144" width="88" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="60" y="171" text-anchor="middle" fill="#e4e4e7">Share 1</text>
+          <rect x="116" y="144" width="88" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="160" y="171" text-anchor="middle" fill="#e4e4e7">Share 2</text>
+          <rect x="216" y="144" width="88" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="260" y="171" text-anchor="middle" fill="#e4e4e7">Share 3</text>
+          <rect x="316" y="144" width="88" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="360" y="171" text-anchor="middle" fill="#e4e4e7">Share 4</text>
+          <rect x="416" y="144" width="88" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)" stroke-dasharray="5 4"/>
+          <text x="460" y="171" text-anchor="middle" fill="#a1a1aa">Share 5</text>
+          <text x="460" y="210" text-anchor="middle" fill="#a1a1aa" font-size="13">custodian lost</text>
+          <path d="M60 188 V220 H360 V188 M160 188 V220 M260 188 V220" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+          <line x1="210" y1="220" x2="210" y2="248" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-shamir-arrow)"/>
+          <rect x="100" y="248" width="220" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="210" y="275" text-anchor="middle" fill="#e4e4e7">Opener combines 4 shares</text>
+          <line x1="210" y1="292" x2="210" y2="324" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-shamir-arrow)"/>
+          <rect x="100" y="324" width="220" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="210" y="351" text-anchor="middle" fill="#e4e4e7">Reconstructed custody key</text>
+          <rect x="350" y="312" width="154" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="#f87171"/>
+          <text x="427" y="336" text-anchor="middle" fill="#e4e4e7">Any 3 shares</text>
+          <text x="427" y="355" text-anchor="middle" fill="#e4e4e7">reveal nothing</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 4. A 4-of-5 quorum: four shares reconstruct the custody key, and three shares reveal nothing.</figcaption>
+      </figure>
+
+<!-- NEW-SECTION-START -->
 
       <h2>Where the database lives: demand-paged onto encrypted IndexedDB</h2>
       <p>
@@ -386,21 +606,30 @@
         </ul>
       </div>
 
-      <h2>A tour of the datalayer</h2>
+<!-- NEW-SECTION-END -->
+
+      <h2>The parts of the datalayer</h2>
       <p>
-        The engine is a headless package an app wires to a UI, deliberately <strong>resource- and column-agnostic</strong>
-        — records are a generic entity-attribute-value store; "notes" is a demo convention on top. The map:
+        The engine is a headless package, and an app connects it to a UI. By design, the engine is
+        <strong>resource-agnostic and column-agnostic</strong>. Records are a generic entity-attribute-value store.
+        The name "notes" is a convention of the demo on top of that store. These are the parts:
       </p>
 
       <div class="tour">
         <h3>The engine</h3>
         <p class="path">packages/datalayer/src/engine/crengine.ts</p>
+        <p>This file holds the full compartmented-RBAC mechanism:</p>
+        <ul>
+          <li><code>genesis</code> (become the admin)</li>
+          <li><code>grant</code> and <code>revoke</code></li>
+          <li><code>putRecord</code> and <code>listRecords</code></li>
+          <li><code>importChangeset</code>, with the staging-authorize logic</li>
+          <li><code>runConsensus</code> and <code>rebuildSliceFor</code></li>
+        </ul>
         <p>
-          The whole compartmented-RBAC device: <code>genesis</code> (become admin), <code>grant</code>/<code>revoke</code>,
-          <code>putRecord</code>/<code>listRecords</code>, <code>importChangeset</code> with the staging-authorize logic,
-          <code>runConsensus</code> and <code>rebuildSliceFor</code>. The essential schema is eight small tables
-          (<code>adminroot</code>, <code>identity</code>, <code>grantrec</code>, <code>dekver</code>, <code>keywrap</code>,
-          <code>cell</code>, <code>archived</code>, <code>checkpoint</code>) — all cr-sqlite CRRs except a local watermark.
+          The essential schema is eight small tables: <code>adminroot</code>, <code>identity</code>,
+          <code>grantrec</code>, <code>dekver</code>, <code>keywrap</code>, <code>cell</code>, <code>archived</code>,
+          and <code>checkpoint</code>. All of them are cr-sqlite CRRs. The exception is a local watermark.
         </p>
       </div>
 
@@ -408,77 +637,95 @@
         <h3>Threshold custody</h3>
         <p class="path">packages/datalayer/src/vault.ts · crypto/secret-sharing/shamir.ts</p>
         <p>
-          <code>sealVault</code> / <code>openVault</code> / <code>produceContribution</code> — the k-of-n seal and the
-          distributed unlock. The Shamir split/combine over GF(2⁸) lives beside it. Covered end to end by
-          <code>tests/{shamir,vault}.test.ts</code>.
+          <code>sealVault</code>, <code>openVault</code>, and <code>produceContribution</code> do the k-of-n seal and
+          the distributed unlock. The second file holds the Shamir split and the Shamir combine in the field GF(2⁸).
+          <code>tests/{shamir,vault}.test.ts</code> has end-to-end tests for this part.
         </p>
       </div>
 
       <div class="tour">
-        <h3>Consensus &amp; compartments</h3>
+        <h3>Consensus and compartments</h3>
         <p class="path">packages/datalayer/src/consensus/ · compartment/</p>
         <p>
-          Pure verbs over the checkpoint chain (<code>tip</code>, <code>chainFrom</code>, <code>isDescendant</code>,
-          <code>converged</code>) and the compartment fold that LWW-merges decrypted cells across the resources a viewer
-          can read. Both are side-effect-free and independently testable.
+          The consensus folder holds pure functions for the checkpoint chain: <code>tip</code>,
+          <code>chainFrom</code>, <code>isDescendant</code>, and <code>converged</code>. The compartment folder holds
+          the compartment fold. The fold does an LWW merge of the decrypted cells from all the resources that a
+          viewer can read. The two parts have no side effects, and you can test each part independently.
         </p>
       </div>
 
       <div class="tour">
-        <h3>Swappable crypto</h3>
+        <h3>Crypto that you can replace</h3>
         <p class="path">packages/datalayer/src/crypto/{kdf,signing,sealing,aead,hash,secret-sharing}/</p>
         <p>
-          Each cryptographic concern is a folder whose <code>index.ts</code> picks one implementation, so a protocol can
-          be swapped in one line. Signing is <strong>WebCrypto Ed25519</strong>, sealing <strong>X25519</strong>, record
-          encryption <strong>AES-256-GCM</strong>, hashing/derivation <strong>SHA-256/HKDF</strong> — all native. Only
-          the memory-hard keystore KDF (<strong>Argon2id</strong>, via hash-wasm) and the one sync-critical page cipher
-          pull in WASM/noble. Every WASM blob is base64-inlined, so there are <strong>zero network fetches</strong>, even
-          from <code>file://</code>.
+          Each cryptographic task is a folder. The <code>index.ts</code> file of the folder selects one
+          implementation. Thus you can replace a protocol with a change to one line. These functions are all native:
+        </p>
+        <ul>
+          <li>Signatures: <strong>WebCrypto Ed25519</strong></li>
+          <li>Seals: <strong>X25519</strong></li>
+          <li>Record encryption: <strong>AES-256-GCM</strong></li>
+          <li>Hash and derivation: <strong>SHA-256/HKDF</strong></li>
+        </ul>
+        <p>
+          Only two parts use WASM/noble. The first part is the memory-hard keystore KDF (<strong>Argon2id</strong>,
+          through hash-wasm). The second part is the one sync-critical page cipher. Each WASM blob is inline as
+          base64. Thus there are <strong>zero network fetches</strong>, and this is also true for
+          <code>file://</code>.
         </p>
       </div>
 
       <div class="tour">
-        <h3>Identity you hold, never stored</h3>
+        <h3>An identity that you hold and the app never stores</h3>
         <p class="path">packages/datalayer/src/crypto/keystore.ts</p>
         <p>
-          Identities are <em>generated</em> keypairs, wrapped in an Argon2id-encrypted <strong>keystore file</strong> the
-          user downloads and keeps — never written to IndexedDB. Provisioning is by public-key card exchange: you export
-          a self-signed <code>{pub, name, xpub, sig}</code> card, the admin grants to that key, and no private material
-          ever changes hands.
+          An identity is a <em>generated</em> keypair. An Argon2id-encrypted <strong>keystore file</strong> wraps the
+          keypair. The user downloads this file and keeps it. The app never writes the identity to IndexedDB.
+        </p>
+        <p>
+          The provision method is a public-key card exchange. You export a self-signed
+          <code>{pub, name, xpub, sig}</code> card, and the admin grants to that key. No private material goes from
+          one person to another person at any time.
         </p>
       </div>
 
       <div class="tour">
-        <h3>The notes demo &amp; UI</h3>
+        <h3>The notes demo and the UI</h3>
         <p class="path">packages/app/src/{notes.ts,ui.ts} · public/demo.html</p>
         <p>
-          The demo layer: <code>notes.ts</code> is the entire "a note is a record with title + body under the
-          <code>notes</code> resource" convention (~20 lines). <code>demo.html</code> iframes the built app three times —
-          admin, writer, reader — so you can watch role enforcement, offline edits, and merge on one screen.
+          This is the demo layer. <code>notes.ts</code> holds the full convention: a note is a record with a title
+          and a body in the <code>notes</code> resource. (It is approximately 20 lines.) <code>demo.html</code> shows
+          the built app three times in iframes: as admin, as writer, and as reader. Thus you can see role
+          enforcement, offline edits, and the merge on one screen.
         </p>
       </div>
 
-      <h2>See it run</h2>
+      <h2>Run the demo</h2>
       <p>
-        The <a href="https://rheophile10.github.io/localRbac/demo.html">three-user demo</a> is one HTML file loaded
-        thrice — three machines that never talk. Grant the writer, deny the reader, add a note, export a delta, import it
-        next door: the note converges, the reader sees <code>🔒</code>. Real engine throughout; only the transport (text
-        between iframes vs. a USB stick) is simulated.
+        The <a href="https://rheophile10.github.io/localRbac/demo.html">three-user demo</a> is one HTML file, and
+        the demo page loads it three times. The result is three machines that never communicate. Do these steps:
+      </p>
+      <ol>
+        <li>Grant access to the writer.</li>
+        <li>Deny access to the reader.</li>
+        <li>Add a note.</li>
+        <li>Export a delta.</li>
+        <li>Import the delta in the adjacent frame.</li>
+      </ol>
+      <p>
+        The note converges, and the reader sees <code>🔒</code>. All of the demo uses the real engine. The demo
+        simulates only the transport: it sends text between iframes as a replacement for a USB stick.
       </p>
 
       <h2>References</h2>
       <ul>
-        <li><a href="https://github.com/rheophile10/localRbac">rheophile10/localRbac</a> — source &amp; the datalayer tour</li>
-        <li><a href="https://rheophile10.github.io/localRbac/demo.html">the three-user demo</a> — one self-contained file, loaded thrice</li>
-        <li><a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Adi Shamir, <em>How to Share a Secret</em>, CACM 22(11), 1979</a> — the threshold-custody primitive</li>
-        <li><a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA">Cargo cult</a> — access control that isn't enforced is theatre</li>
-        <li><a href="https://xkcd.com/538/">xkcd 538 — <em>Security</em></a> — why no single keyholder should be worth the wrench</li>
-        <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite (the CRDT engine)</li>
-        <li><a href="https://github.com/rhashimoto/wa-sqlite">wa-sqlite</a> — async WASM SQLite whose <code>IDBBatchAtomicVFS</code> demand-pages onto IndexedDB (the storage engine, wrapped as <code>EncryptedIDBVFS</code>)</li>
-        <li><a href="/blog/wa-sqlite-idb-demand-paged.html">Demand-paged SQLite from <code>file://</code></a> — the bare wa-sqlite + IndexedDB-VFS version, without the encryption or CRDT</li>
-        <li><a href="https://github.com/rheophile10/sqlite-wasm-build">sqlite-wasm-build</a> — the pinned-source build this runs on; four variants, each a drop-in <code>@vlcn.io/wa-sqlite</code></li>
-        <li><a href="/blog/wa-sqlite-idb-demand-paged.html#the-build">One binary, every extension</a> — why the build exists, and the six toolchain failures it took</li>
-        <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a> — the offline-CRDT lineage this builds on</li>
+        <li><a href="https://github.com/rheophile10/localRbac">rheophile10/localRbac</a>: the source code and the description of the datalayer</li>
+        <li><a href="https://rheophile10.github.io/localRbac/demo.html">The three-user demo</a>: one self-contained file that the demo page loads three times</li>
+        <li><a href="https://dl.acm.org/doi/epdf/10.1145/359168.359176">Adi Shamir, <em>How to Share a Secret</em>, CACM 22(11), 1979</a>: the threshold-custody primitive</li>
+        <li><a href="https://www.youtube.com/watch?v=dVZ9bPRTiIA">Cargo cult</a>: access control without enforcement is only an appearance of control</li>
+        <li><a href="https://xkcd.com/538/">xkcd 538, <em>Security</em></a>: the reason that no single keyholder must be a useful target for physical force</li>
+        <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>: convergent, replicated SQLite (the CRDT engine)</li>
+        <li><a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum</a> · <a href="/blog/offline-hris-juarez.html">Offline HRIS</a>: the earlier offline-CRDT work that this project continues</li>
       </ul>
     </article>
 

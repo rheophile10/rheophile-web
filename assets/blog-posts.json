@@ -33,9 +33,9 @@
         "sqlite"
       ],
       "emoji": "🔐",
-      "title": "Records a group can keep — without any one keyholder becoming a target 🔐",
-      "ogTitle": "Cryptographic RBAC over a CRDT — records a group can keep without any one keyholder becoming a target",
-      "excerpt": "Cryptographic role-based access control over a local-first CRDT database — records a group can keep together, merged for local and group consensus, with Shamir threshold custody so no single keyholder is ever worth coercing. A tour of the datalayer, plus a live three-user demo.",
+      "title": "Records that a group can keep, with no single keyholder as a target 🔐",
+      "ogTitle": "Cryptographic RBAC on a CRDT database — records that a group can keep, with no single keyholder as a target",
+      "excerpt": "localRbac enforces role-based access control with cryptography only, in a local-first CRDT database that a group edits offline and merges. Shamir secret sharing splits the master key k-of-n, and thus no single keyholder is a target for coercion.",
       "ogImage": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.png",
       "ogImageJpg": "https://rheophile.ca/assets/og/localrbac-crypto-rbac.jpg"
     },
@@ -51,9 +51,9 @@
         "lab-intake"
       ],
       "emoji": "📄",
-      "title": "One HTML file vs. a web application: sample intake without the IT-approval gauntlet 📄",
-      "ogTitle": "One HTML file vs. a web application: sample intake without the IT-approval gauntlet",
-      "excerpt": "Web apps are easy to build; getting IT to approve them is not. A single HTML file is the free intermediate step — offline, no server, but with SQLite, Web Crypto, and a scannable QR that composes your form data into a label so transcription never has to happen.",
+      "title": "One HTML file compared with a web application: sample intake without the long IT approval process 📄",
+      "ogTitle": "One HTML file compared with a web application: sample intake without the long IT approval process",
+      "excerpt": "A web application is easy to build, but IT approval for a server, a login, and a database is difficult. One offline HTML file with SQLite and Web Crypto is a free intermediate step, and its QR code removes transcription.",
       "ogImage": "https://rheophile.ca/assets/og/offline-forms.png",
       "ogImageJpg": "https://rheophile.ca/assets/og/offline-forms.jpg"
     },
@@ -71,7 +71,7 @@
       "emoji": "🏦",
       "title": "RheoServ Waumpaum — a credit-union core in one HTML file 🏦",
       "ogTitle": "RheoServ Waumpaum — a credit-union core in one HTML file",
-      "excerpt": "A sovereign, offline-first counterpart to enterprise core banking: a person-centered credit-union core in one encrypted HTML file, with CRDT multi-operator merge and waumpaum settlement between institutions. Teller, merge, and payment-provider walkthroughs with videos.",
+      "excerpt": "RheoServ Waumpaum is a credit-union core banking system in one encrypted HTML file. A CRDT merges the offline changes of the operators, and institutions settle with waumpaums.",
       "ogImage": "https://rheophile.ca/assets/og/rheoserv-waumpaum.png",
       "ogImageJpg": "https://rheophile.ca/assets/og/rheoserv-waumpaum.jpg"
     },
@@ -87,9 +87,9 @@
       ],
       "emoji": "🕵️",
       "bannerImage": "/assets/chaosedgesteg-blog/crypt0lith-banner.png",
-      "title": "Hiding plastron links in pictures with ChaosEdgeSteg 🐢",
-      "ogTitle": "Hiding plastron links in pictures with ChaosEdgeSteg",
-      "excerpt": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.",
+      "title": "Hide a plastron link in an image with ChaosEdgeSteg 🐢",
+      "ogTitle": "Hide a plastron link in an image with ChaosEdgeSteg",
+      "excerpt": "A plastron sheetapp hides a plastron.ca share link in a PNG that you can post to X. The upstream ChaosEdgeSteg Python code runs without changes in Pyodide.",
       "ogImage": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.png",
       "ogImageJpg": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg"
     },
@@ -104,9 +104,9 @@
         "crdt"
       ],
       "emoji": "👮",
-      "title": "Offline HRIS for a community police office 👮",
-      "ogTitle": "Offline HRIS for a community police office",
-      "excerpt": "A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.",
+      "title": "An offline HRIS for a community police office 👮",
+      "ogTitle": "An offline HRIS for a community police office",
+      "excerpt": "A proof of concept puts CRDT SQLite in one HTML file to merge HR data offline. The demo shows a fictional Juárez police office, and the plan is to use the same patterns in plastron.",
       "ogImage": "https://rheophile.ca/assets/og/offline-hris-juarez.png",
       "ogImageJpg": "https://rheophile.ca/assets/og/offline-hris-juarez.jpg"
     },
@@ -122,7 +122,7 @@
       "emoji": "🐢",
       "title": "曳尾塗中 — drag your tail in the mud 🐢",
       "ogTitle": "曳尾塗中 — drag your tail in the mud",
-      "excerpt": "Zhuangzi's tortoise story in traditional Chinese. Click any character to break it down through a decomposition tree with English glosses.",
+      "excerpt": "The tortoise story of Zhuangzi in traditional Chinese. Click a character to see its decomposition tree with English glosses.",
       "ogImage": "https://rheophile.ca/assets/og/yiwei-tuzhong.png",
       "ogImageJpg": "https://rheophile.ca/assets/og/yiwei-tuzhong.jpg"
     }

@@ -65,7 +65,7 @@
       </${h}>
       <p class="mt-3 text-sm text-zinc-400 line-clamp-3">${escapeHtml(post.excerpt)}</p>
       <div class="mt-5 text-xs text-teal-400 flex items-center gap-1">
-        Read note <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
+        Read the post <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
       </div>
     `;
     return article;
@@ -74,8 +74,8 @@
   function renderEmptyState(container) {
     container.innerHTML = `
       <div class="md:col-span-2 rounded-3xl border border-dashed border-white/15 bg-zinc-900/40 p-10 text-center">
-        <div class="text-2xl tracking-tighter font-semibold text-zinc-300">Coming soon</div>
-        <p class="mt-2 text-sm text-zinc-500">Notes on building plastron in the open will land here.</p>
+        <div class="text-2xl tracking-tighter font-semibold text-zinc-300">No posts at this time</div>
+        <p class="mt-2 text-sm text-zinc-500">Posts about the work on plastron will show here.</p>
       </div>
     `;
   }

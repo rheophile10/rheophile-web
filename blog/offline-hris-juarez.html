@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- rheophile:og:start -->
   <link rel="canonical" href="https://rheophile.ca/blog/offline-hris-juarez.html">
-  <meta name="description" content="A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.">
+  <meta name="description" content="A proof of concept puts CRDT SQLite in one HTML file to merge HR data offline. The demo shows a fictional Juárez police office, and the plan is to use the same patterns in plastron.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="rheophile.ca">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/blog/offline-hris-juarez.html">
-  <meta property="og:title" content="Offline HRIS for a community police office">
-  <meta property="og:description" content="A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.">
+  <meta property="og:title" content="An offline HRIS for a community police office">
+  <meta property="og:description" content="A proof of concept puts CRDT SQLite in one HTML file to merge HR data offline. The demo shows a fictional Juárez police office, and the plan is to use the same patterns in plastron.">
   <meta property="og:image" content="https://rheophile.ca/assets/og/offline-hris-juarez.jpg">
   <meta property="og:image:secure_url" content="https://rheophile.ca/assets/og/offline-hris-juarez.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Offline HRIS for a community police office — rheophile.ca dev log">
+  <meta property="og:image:alt" content="An offline HRIS for a community police office — rheophile.ca dev log">
   <meta property="article:published_time" content="2026-07-07">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@rheophile10">
   <meta name="twitter:creator" content="@rheophile10">
   <meta name="twitter:url" content="https://rheophile.ca/blog/offline-hris-juarez.html">
-  <meta name="twitter:title" content="Offline HRIS for a community police office">
-  <meta name="twitter:description" content="A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.">
+  <meta name="twitter:title" content="An offline HRIS for a community police office">
+  <meta name="twitter:description" content="A proof of concept puts CRDT SQLite in one HTML file to merge HR data offline. The demo shows a fictional Juárez police office, and the plan is to use the same patterns in plastron.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og/offline-hris-juarez.jpg">
-  <meta name="twitter:image:alt" content="Offline HRIS for a community police office — rheophile.ca dev log">
+  <meta name="twitter:image:alt" content="An offline HRIS for a community police office — rheophile.ca dev log">
   <meta name="robots" content="max-image-preview:large">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Offline HRIS for a community police office", "description": "A plastron detour — CRDT SQLite in one HTML file for offline HR merge. Juárez-skinned demo; patterns intended for plastron's own offline-capable future.", "image": "https://rheophile.ca/assets/og/offline-hris-juarez.jpg", "datePublished": "2026-07-07", "url": "https://rheophile.ca/blog/offline-hris-juarez.html", "mainEntityOfPage": "https://rheophile.ca/blog/offline-hris-juarez.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "An offline HRIS for a community police office", "description": "A proof of concept puts CRDT SQLite in one HTML file to merge HR data offline. The demo shows a fictional Juárez police office, and the plan is to use the same patterns in plastron.", "image": "https://rheophile.ca/assets/og/offline-hris-juarez.jpg", "datePublished": "2026-07-07", "url": "https://rheophile.ca/blog/offline-hris-juarez.html", "mainEntityOfPage": "https://rheophile.ca/blog/offline-hris-juarez.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
   <!-- rheophile:og:end -->
   <title>Offline Protected B HRIS · rheophile.ca</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +77,9 @@
       padding-left: 1.35rem;
     }
     .prose-blog li { margin-bottom: 0.4rem; }
+    /* Tailwind preflight removes list markers. A procedure must show its step numbers. */
+    .prose-blog ol { list-style: decimal; }
+    .prose-blog ul { list-style: disc; }
     .prose-blog a {
       color: #2dd4bf;
       text-decoration: underline;
@@ -169,21 +172,25 @@
     <header>
       <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Dev log · 2026-07-07</div>
       <h1 class="display text-4xl md:text-[2.6rem] font-semibold tracking-tighter mt-2 leading-[1.1]">
-        Offline HRIS for a community police office <span class="text-3xl">👮</span>
+        An offline HRIS for a community police office <span class="text-3xl">👮</span>
       </h1>
       <p class="mt-4 text-zinc-400 text-base leading-relaxed">
-        A <strong class="text-zinc-300">detour from <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300">plastron</a></strong> —
-        exploring CRDT SQLite for offline merge before we add it to the main substrate (which is also
-        meant to be offline capable). This proof-of-concept runs as one self-contained HTML file: no server,
-        no network, encrypted at rest. The demo is skinned for a fictional <strong class="text-zinc-300">Juárez Police Department</strong>;
-        the use case is any small community policing unit that cannot depend on enterprise cloud HR.
+        This project is a <strong class="text-zinc-300">separate experiment, apart from <a href="https://plastron.ca" class="text-teal-400/90 hover:text-teal-300">plastron</a></strong>.
+        It tests CRDT SQLite for offline merge before we add CRDT SQLite to the plastron substrate.
+        The plan is that the substrate also operates offline.
+      </p>
+      <p class="mt-3 text-zinc-400 text-base leading-relaxed">
+        An HRIS is a human resources information system. This proof of concept is one self-contained HTML file.
+        It uses no server and no network, and it encrypts the data at rest.
+        The demo shows a fictional <strong class="text-zinc-300">Juárez Police Department</strong>.
+        The use case is any small community police unit that cannot depend on enterprise cloud HR.
       </p>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
         <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
-          Try the demo →
+          Open the demo →
         </a>
         <a href="https://github.com/rheophile10/offline-Protected-B-HRIS" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
-          Source on GitHub
+          Source code on GitHub
         </a>
         <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
           How-to guide
@@ -194,341 +201,530 @@
     <article class="prose-blog mt-10">
 
       <div class="callout">
-        <strong>Proof of concept only.</strong> The app has not completed a Privacy Impact Assessment,
-        threat/risk assessment, or formal security authorization. The Juárez roster is entirely synthetic.
-        Do not load real personnel data until governance requirements (below) are satisfied.
+        <strong>Do not load real personnel data into this app.</strong> The app is a proof of concept only.
+        It has no completed Privacy Impact Assessment, threat and risk assessment, or formal security authorization.
+        The Juárez roster is fully synthetic.
+        Load real data only after the organization completes the governance requirements (see below).
       </div>
 
-      <h2>A detour from plastron</h2>
+      <h2>An experiment apart from plastron</h2>
       <p>
-        The main line of work here is
-        <a href="https://plastron.ca">plastron</a> — a polyglot reactive substrate (spreadsheet kernel,
-        desktop shell, hosted at plastron.ca). This HRIS prototype is a <strong>detour</strong>: a
-        self-contained experiment in <strong>CRDT SQLite</strong> (<a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>)
-        for offline-first data that must merge cleanly after a day of disconnected edits.
+        The primary work here is <a href="https://plastron.ca">plastron</a>.
+        Plastron is a polyglot reactive substrate (a spreadsheet kernel and a desktop shell, hosted at plastron.ca).
+        This HRIS prototype is a <strong>separate experiment</strong>.
+        It is a self-contained experiment with <strong>CRDT SQLite</strong> (<a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a>)
+        for offline-first data. This data must merge correctly after a day of offline changes.
       </p>
       <p>
-        Plastron is hosted at <a href="https://plastron.ca">plastron.ca</a> with server-backed persistence
-        today; the <strong>zero-server, offline-capable</strong> single-file build is still the goal (no OPFS
-        in offline plastron yet). Before bolting CRDT SQLite into the full kernel, we
-        wanted a smaller, adversarial test case: Protected B personnel rows, encrypted portable dumps,
-        multi-operator convergence, and no network egress. Lessons from this build (changeset export,
-        merge ritual, audit tables, CSP-safe inlined WASM) are intended to feed back into plastron as a
-        <strong>future cr-sqlite integration</strong>, not to replace the spreadsheet model.
+        Today, <a href="https://plastron.ca">plastron.ca</a> hosts plastron, and a server stores the data.
+        The goal is still the <strong>zero-server, offline-capable</strong> build in one file.
+        (Offline plastron has no OPFS at this time.)
       </p>
       <p>
-        Think of offline HRIS as a field exercise for a capability plastron will need; the Juárez skin
-        is just a narrative wrapper for the demo.
+        Before we add CRDT SQLite to the full kernel, we wanted a smaller test case with difficult conditions:
+      </p>
+      <ul>
+        <li>Protected B personnel rows</li>
+        <li>encrypted portable dumps</li>
+        <li>convergence between many operators</li>
+        <li>no network egress</li>
+      </ul>
+      <p>
+        This build gave us lessons about changeset export, the merge procedure, audit tables, and CSP-safe inlined WASM.
+        The plan is to put these lessons into plastron as a <strong>future cr-sqlite integration</strong>.
+        They will not replace the spreadsheet model.
+      </p>
+      <p>
+        The offline HRIS is a practical test of a capability that will be necessary for plastron.
+        The Juárez names and data are only the story for the demo.
       </p>
 
       <h2>The problem</h2>
       <p>
-        A community police office still has to plan staffing: which positions exist, who holds them,
-        where the gaps are, what payroll pressure looks like. Enterprise HRIS products assume always-on
-        connectivity, identity federation, and a vendor security boundary. A neighbourhood command post,
-        a borrowed laptop, or a planning cell working from USB sticks does not get that luxury.
+        A community police office must plan its staffing. The plan must answer these questions:
+      </p>
+      <ul>
+        <li>What positions exist?</li>
+        <li>Who holds each position?</li>
+        <li>Where are the gaps?</li>
+        <li>How much payroll pressure is there?</li>
+      </ul>
+      <p>
+        Enterprise HRIS products assume a connection that is always on, identity federation, and a vendor security boundary.
+        A neighbourhood command post, a borrowed laptop, or a planning cell that works from USB drives has none of these.
       </p>
       <p>
-        The design question was blunt: <em>can several planners maintain one consistent personnel picture
-        without a server, without the public internet, and without ever writing plaintext rows to disk?</em>
+        The design question was direct.
+        <em>Can several planners keep one consistent set of personnel data with no server, no public internet,
+        and no plaintext rows on disk at any time?</em>
       </p>
 
       <h2>The idea</h2>
       <p>
-        Ship <strong>one file</strong> — a built <code>index.html</code> — that embeds React, SQLite,
-        and the <strong>cr-sqlite</strong> CRDT extension as inlined WebAssembly. Operators double-click it.
-        The live database exists only in memory. The only artifacts that touch disk are
-        <strong>encrypted</strong> blobs: a morning <code>truth.hrisdump</code> and evening
-        <code>lastname.hrischanges</code> deltas.
+        The idea is to supply <strong>one file</strong>: a built <code>index.html</code>.
+        The file embeds React, SQLite, and the <strong>cr-sqlite</strong> CRDT extension as inlined WebAssembly.
+        Operators double-click the file. The live database exists only in memory.
+        Only <strong>encrypted</strong> blobs go to disk.
+        These blobs are the morning <code>truth.hrisdump</code> file and the evening <code>lastname.hrischanges</code> delta files.
       </p>
       <p>
-        Content Security Policy sets <code>connect-src 'none'</code>, so even if script execution were
-        compromised, the page has no <code>fetch</code>, WebSocket, or beacon path off the machine.
-        That is a deliberate trade: perfect for an air-gapped ritual, hostile to SaaS analytics.
+        The Content Security Policy sets <code>connect-src 'none'</code>.
+        Thus, even if an attacker takes control of script execution, the page has no <code>fetch</code>, WebSocket, or beacon path off the machine.
+        This is a deliberate trade-off. It is good for an air-gapped daily procedure. It makes SaaS analytics impossible.
       </p>
       <p>
-        The demo skin says <strong>Juárez PD</strong> — Zona Centro, Anapra, fictional badge numbers,
-        invented salaries — because the original spreadsheet model came from a Canadian police HR layout
-        and we wanted a clearly non-production narrative. The mechanics are jurisdiction-agnostic; only
-        labels and seed data change.
+        The demo shows <strong>Juárez PD</strong>: Zona Centro, Anapra, fictional badge numbers, and invented salaries.
+        There are two reasons. The original spreadsheet model came from a Canadian police HR layout.
+        We wanted a story that is clearly not a production system.
+        The operation of the app does not depend on the jurisdiction. Only the labels and the seed data change.
       </p>
 
-      <h2>The daily ritual</h2>
-      <p>Think of it as git for staffing data, except the merge commit is encrypted and the coordinator
-        may have no admin rights beyond a browser.</p>
+      <h2>The daily cycle</h2>
+      <p>
+        The daily cycle uses the same model as git, but for staffing data.
+        Each planner changes a local copy, and then the coordinator merges the changes.
+        Two things are different from git. The app encrypts the merged file.
+        The coordinator can do the merge with only a browser and no administrator rights.
+        Figure 1 shows the cycle.
+      </p>
 
-      <h3>Morning — one truth</h3>
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:460px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 460 448" width="100%" role="img" aria-labelledby="dgm-hris-cycle-t dgm-hris-cycle-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-hris-cycle-t">The daily cycle of the offline HRIS</title>
+          <desc id="dgm-hris-cycle-d">In the morning, the coordinator distributes the truth file and the passphrase. During the day, each planner works offline. In the evening, each planner exports encrypted changes, and the coordinator merges them into the truth file for the next morning.</desc>
+          <defs>
+            <marker id="dgm-hris-cycle-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+
+          <text x="20" y="24" fill="#2dd4bf" font-size="13" font-weight="600">Morning</text>
+          <rect x="20" y="34" width="360" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="200" y="58" text-anchor="middle" fill="#e4e4e7">The coordinator distributes the truth file</text>
+          <text x="200" y="78" text-anchor="middle" fill="#a1a1aa" font-size="13">and the passphrase, through a separate channel</text>
+          <line x1="200" y1="90" x2="200" y2="124" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-cycle-arrow)"/>
+
+          <text x="20" y="116" fill="#2dd4bf" font-size="13" font-weight="600">Day</text>
+          <rect x="20" y="126" width="360" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="200" y="150" text-anchor="middle" fill="#e4e4e7">Each planner works offline</text>
+          <text x="200" y="170" text-anchor="middle" fill="#a1a1aa" font-size="13">with the database only in memory</text>
+          <line x1="200" y1="182" x2="200" y2="216" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-cycle-arrow)"/>
+
+          <text x="20" y="208" fill="#2dd4bf" font-size="13" font-weight="600">Evening</text>
+          <rect x="20" y="218" width="360" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="200" y="242" text-anchor="middle" fill="#e4e4e7">Each planner exports encrypted changes</text>
+          <text x="200" y="262" text-anchor="middle" fill="#a1a1aa" font-size="13">one .hrischanges file for each planner</text>
+          <line x1="200" y1="274" x2="200" y2="296" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-cycle-arrow)"/>
+
+          <rect x="20" y="298" width="360" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="200" y="322" text-anchor="middle" fill="#e4e4e7">The coordinator merges the changes</text>
+          <text x="200" y="342" text-anchor="middle" fill="#a1a1aa" font-size="13">into the morning truth file</text>
+          <line x1="200" y1="354" x2="200" y2="376" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-cycle-arrow)"/>
+
+          <rect x="20" y="378" width="360" height="56" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="200" y="402" text-anchor="middle" fill="#e4e4e7">The coordinator exports the merged truth</text>
+          <text x="200" y="422" text-anchor="middle" fill="#a1a1aa" font-size="13">the truth file for the next day</text>
+
+          <path d="M380 406 H420 V62 H383" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-cycle-arrow)"/>
+          <text x="441" y="234" text-anchor="middle" fill="#a1a1aa" font-size="13" transform="rotate(-90 441 234)">Next morning</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 1. The daily cycle: one truth file in the morning, offline work during the day, one merge in the evening.</figcaption>
+      </figure>
+
+      <h3>Morning — one truth file</h3>
       <ol>
-        <li>The coordinator distributes <code>truth-YYYYMMDD.hrisdump</code> and the day's org passphrase (out of band — never bundled with the file).</li>
-        <li>Each planner opens the HTML file locally, decrypts the truth, and passes the <strong>user gate</strong> (pick identity from a pre-provisioned operator list).</li>
-        <li>The app records a <code>session_open</code> event and stamps a <code>morning_db_version</code> watermark.</li>
+        <li>The coordinator distributes <code>truth-YYYYMMDD.hrisdump</code>.</li>
+        <li>The coordinator gives the organization passphrase for the day through a separate channel, never together with the file.</li>
+        <li>Each planner opens the HTML file on the local machine.</li>
+        <li>Each planner decrypts the truth file.</li>
+        <li>Each planner passes the <strong>user gate</strong>: the planner selects an identity from a pre-provisioned operator list.</li>
+        <li>The app records a <code>session_open</code> event and writes a <code>morning_db_version</code> watermark.</li>
       </ol>
 
       <h3>Day — offline work</h3>
       <ul>
-        <li>CRUD on officers, positions, assignments; dashboard refreshes deficits and headcount live.</li>
-        <li>Every mutation appends to <code>change_event</code> (who / what / when) and updates row-level <code>updated_by</code> columns.</li>
-        <li>cr-sqlite records replica-level changes in <code>crsql_changes</code> for merge — separate from human attribution.</li>
-        <li>Nothing is autosaved to disk. Closing the tab without exporting loses work — by design.</li>
+        <li>Planners create, read, update, and delete (CRUD) officers, positions, and assignments.</li>
+        <li>The dashboard updates the deficits and the headcount immediately.</li>
+        <li>Each change adds a row to <code>change_event</code>. The row records who made the change, what changed, and when.</li>
+        <li>Each change also updates the <code>updated_by</code> column of the changed row.</li>
+        <li>cr-sqlite records the changes of each replica in <code>crsql_changes</code> for the merge. This record is separate from the attribution to a person.</li>
+        <li>The app saves nothing to disk automatically. If a planner closes the tab before an export, the planner loses the work. This behaviour is intentional.</li>
       </ul>
 
-      <h3>Evening — converge</h3>
+      <h3>Evening — merge</h3>
       <ol>
-        <li>Each planner exports <strong>my changes</strong> → encrypted <code>.hrischanges</code> (not a full database dump).</li>
-        <li>The coordinator opens the same HTML file, loads the morning truth, and uses <strong>Merge operator changes</strong> on the Data &amp; Security screen to apply every delta.</li>
-        <li>cr-sqlite merges in an order-independent way; conflicting edits converge under CRDT rules instead of last-writer-wins file replacement.</li>
-        <li>Export the merged truth for tomorrow. Optional Node script <code>merge-hris.mjs</code> exists for automation; it is not required to operate.</li>
+        <li>Each planner uses <strong>Export my changes</strong> to make an encrypted <code>.hrischanges</code> file. This file is not a full database dump.</li>
+        <li>The coordinator opens the same HTML file and loads the morning truth file.</li>
+        <li>The coordinator uses <strong>Merge operator changes</strong> on the Data &amp; Security screen to apply each delta file.</li>
+        <li>cr-sqlite merges the changes, and the result does not depend on the order. Changes that conflict converge by the CRDT rules. The merge does not use last-writer-wins file replacement.</li>
+        <li>The coordinator exports the merged truth file for the next day.</li>
       </ol>
+      <p>
+        An optional Node script, <code>merge-hris.mjs</code>, exists for automation. The script is not necessary to operate the cycle.
+      </p>
 
       <blockquote>
-        CRDT solves <em>data convergence</em>. It does not automatically solve <em>accountability</em> —
-        that is why <code>change_event</code> and <code>session_log</code> are first-class tables that
-        sync with the same merge machinery.
+        CRDT solves <em>data convergence</em>. It does not automatically solve <em>accountability</em>.
+        For this reason, <code>change_event</code> and <code>session_log</code> are full tables in the database,
+        and they sync through the same merge mechanism.
       </blockquote>
 
       <h2>Protected B and CSE cryptography</h2>
       <p>
-        Personnel files (names, assignments, compensation) are not open data. In Government of Canada
-        terms they typically land at <strong>Protected B</strong>: unauthorized disclosure could cause
-        serious injury outside the national interest — see
+        Personnel files are not open data. They contain names, assignments, and compensation.
+        In the Government of Canada categories, personnel files are usually <strong>Protected B</strong>.
+        Protected B means that unauthorized disclosure can cause serious injury outside the national interest.
+        See the
         <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32614">TBS Standard on Security Categorization (Appendix J)</a>
         and the
         <a href="https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/security-policy-implementation-notice-direction-security-categorization-personal-information-aggregate.html">2023 direction on personal information in the aggregate</a>.
-        A community police office handling officer PII faces the same injury model even when the formal
-        framework is municipal privacy law rather than Treasury Board policy.
+      </p>
+      <p>
+        A community police office that handles officer PII has the same injury model.
+        This is true even when the formal framework is municipal privacy law and not Treasury Board policy.
       </p>
 
-      <h3>What the app satisfies technically</h3>
+      <h3>Technical requirements that the app obeys</h3>
       <p>
         For encryption algorithms, CSE publishes
         <a href="https://www.cyber.gc.ca/en/guidance/cryptographic-algorithms-unclassified-protected-protected-b-information-itsp40111">ITSP.40.111</a>
-        (Cryptographic algorithms for UNCLASSIFIED, Protected A, and Protected B information). The dump
-        format uses the strongest practical stack from that document for file-at-rest:
+        (Cryptographic algorithms for UNCLASSIFIED, Protected A, and Protected B information).
+        For a file at rest, the dump format uses the strongest practical set of algorithms from that document:
       </p>
       <ul>
         <li><strong>AES-256-GCM</strong> — bulk encryption with authenticated integrity (ITSP.40.111 §3.1, §4.2)</li>
-        <li><strong>PBKDF2-HMAC-SHA-256</strong> at 250,000 iterations — passphrase-to-key derivation (ITSP.40.111 §10.9; GC password guidance minimum 10,000)</li>
-        <li><strong>Per-file random salt and IV</strong> — 16-byte salt, 12-byte GCM nonce</li>
-        <li><strong>Non-extractable Web Crypto keys</strong> — raw key material never surfaces in JavaScript</li>
+        <li><strong>PBKDF2-HMAC-SHA-256</strong> at 250,000 iterations — key derivation from the passphrase (ITSP.40.111 §10.9). The minimum in the GC password guidance is 10,000 iterations.</li>
+        <li><strong>Per-file random salt and IV</strong> — a 16-byte salt and a 12-byte GCM nonce</li>
+        <li><strong>Non-extractable Web Crypto keys</strong> — JavaScript can never read the raw key material</li>
       </ul>
       <p>
-        Storage and transit expectations for sensitive electronic media are articulated in
+        The
         <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611&section=procedure&p=B">Directive on Security Management, Appendix B §B.2.3.4–§B.2.3.6</a>
-        (protect data at rest, in transit, and on portable media commensurate with sensitivity; encrypt
-        on public or risky networks). This app addresses <strong>at-rest</strong> for portable dumps;
-        coordinators still need a procedure for USB handoff or approved encrypted channels.
+        states the rules for storage and transit of sensitive electronic media.
+        Data at rest, in transit, and on portable media must have protection that agrees with its sensitivity.
+        Encryption is necessary on public networks and on networks with risk.
+        This app does the <strong>at-rest</strong> part for portable dumps.
+        Coordinators must still have a procedure for USB handoff or for approved encrypted channels.
       </p>
 
       <h3>What the app enforces in software</h3>
       <ul>
-        <li>No plaintext <code>.sqlite</code> or <code>.csv</code> export paths</li>
-        <li>Memory-only database while unlocked; lock wipes passphrase and DB</li>
-        <li>Operator identity gate + append-only <code>change_event</code> and <code>session_log</code></li>
-        <li>Encrypted changeset export for multi-planner sync without competing full dumps</li>
+        <li>The app has no export path for plaintext <code>.sqlite</code> or <code>.csv</code> files.</li>
+        <li>The database is only in memory while the session is open. The lock erases the passphrase and the database.</li>
+        <li>The app has an operator identity gate.</li>
+        <li>The <code>change_event</code> and <code>session_log</code> tables are append-only.</li>
+        <li>The app exports encrypted changesets. Thus many planners can sync, and no full dumps compete.</li>
       </ul>
 
-      <h3>What still requires organizational "soft" requirements</h3>
+      <h3>What the organization must do</h3>
       <p>
-        Protected B is not a checkbox you get from AES alone. Before operational use with real officers,
-        a jurisdiction would still need documented controls the browser cannot implement:
+        AES alone does not make an app correct for Protected B.
+        The other requirements are for the organization, not for the software.
+        The browser cannot implement the controls in this list.
+        A jurisdiction must still have these documented controls before operational use with real officers:
       </p>
       <ul>
-        <li><strong>Privacy Impact Assessment</strong> — <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=18308">Directive on Privacy Impact Assessment</a> (federal reference); municipal equivalent under local FOIP/IP legislation</li>
-        <li><strong>Threat &amp; risk assessment and authorization to operate</strong> — <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=16578">Policy on Government Security</a> lifecycle; accept residual risks (lost USB, shoulder surfing, stale truth files)</li>
-        <li><strong>Need-to-know roster</strong> — who appears in <code>app_user</code>; security screening verified outside the app</li>
-        <li><strong>Passphrase ceremony</strong> — org/day key distributed out of band; rotation on compromise; never stored beside dumps (including cloud-sync folders)</li>
-        <li><strong>Media policy</strong> — preferred USB handoff vs whether OneDrive/Google Drive may hold ciphertext</li>
-        <li><strong>Breach playbook</strong> — <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy/privacy/breach-management.html">Privacy Breach Management Toolkit</a>; <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy/access-information-privacy-notices/2022-01-cyber-security-incidents-involving-personal-information.html">PIN 2022-01</a> for cyber incidents involving personal information</li>
-        <li><strong>Coordinator SOP</strong> — morning distribution, evening collection, merge audit review, handling missed exports and stale watermarks</li>
-        <li><strong>Operator training</strong> — export changes before lock; do not treat the user picker as MFA</li>
+        <li><strong>Privacy Impact Assessment.</strong> The federal reference is the <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=18308">Directive on Privacy Impact Assessment</a>. A municipality uses the equivalent in its local FOIP/IP legislation.</li>
+        <li><strong>Threat and risk assessment, and authorization to operate.</strong> These follow the <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=16578">Policy on Government Security</a> lifecycle. The organization accepts the residual risks (a lost USB drive, shoulder surfing, out-of-date truth files).</li>
+        <li><strong>Need-to-know roster.</strong> The roster says who is in <code>app_user</code>. The organization makes sure, outside the app, that each person has security screening.</li>
+        <li><strong>Passphrase ceremony.</strong> The organization distributes the key for the day through a separate channel. It rotates the key after a compromise. It never stores the key adjacent to the dumps (this includes cloud-sync folders).</li>
+        <li><strong>Media policy.</strong> USB handoff is the preferred method. The policy says if OneDrive or Google Drive can hold ciphertext.</li>
+        <li><strong>Breach response plan.</strong> The plan uses the <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy/privacy/breach-management.html">Privacy Breach Management Toolkit</a>. The plan uses <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy/access-information-privacy-notices/2022-01-cyber-security-incidents-involving-personal-information.html">PIN 2022-01</a> for cyber incidents that involve personal information.</li>
+        <li><strong>Coordinator SOP.</strong> The SOP includes the morning distribution, the evening collection, and the review of the merge audit. It also tells the coordinator what to do about missed exports and out-of-date watermarks.</li>
+        <li><strong>Operator training.</strong> Operators learn to export changes before the lock. Operators learn that the user selection is not MFA.</li>
       </ul>
+
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 520 500" width="100%" role="img" aria-labelledby="dgm-hris-controls-t dgm-hris-controls-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="14">
+          <title id="dgm-hris-controls-t">Controls of the app and controls of the organization</title>
+          <desc id="dgm-hris-controls-d">The app enforces: no plaintext export path, a memory-only database, an operator identity gate, append-only audit tables, and encrypted changeset export. The organization supplies a Privacy Impact Assessment, a threat and risk assessment, an authorization to operate, a need-to-know roster, and a passphrase ceremony. The organization also supplies a media policy, a breach response plan, a coordinator SOP, and operator training. Both groups are necessary before operational use with real personnel data.</desc>
+          <defs>
+            <marker id="dgm-hris-controls-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+
+          <!-- left group: the app -->
+          <rect x="10" y="8" width="244" height="232" rx="12" fill="none" stroke="rgba(255,255,255,0.12)"/>
+          <text x="132" y="32" text-anchor="middle" fill="#2dd4bf" font-weight="600">The app enforces</text>
+          <rect x="20" y="46" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="132" y="66" text-anchor="middle" fill="#e4e4e7">No plaintext export path</text>
+          <rect x="20" y="84" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="132" y="104" text-anchor="middle" fill="#e4e4e7">Memory-only database</text>
+          <rect x="20" y="122" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="132" y="142" text-anchor="middle" fill="#e4e4e7">Operator identity gate</text>
+          <rect x="20" y="160" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="132" y="180" text-anchor="middle" fill="#e4e4e7">Append-only audit tables</text>
+          <rect x="20" y="198" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="132" y="218" text-anchor="middle" fill="#e4e4e7">Encrypted changeset export</text>
+
+          <!-- right group: the organization -->
+          <rect x="266" y="8" width="244" height="384" rx="12" fill="none" stroke="rgba(255,255,255,0.12)"/>
+          <text x="388" y="32" text-anchor="middle" fill="#2dd4bf" font-weight="600">The organization supplies</text>
+          <rect x="276" y="46" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="66" text-anchor="middle" fill="#e4e4e7">Privacy Impact Assessment</text>
+          <rect x="276" y="84" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="104" text-anchor="middle" fill="#e4e4e7">Threat and risk assessment</text>
+          <rect x="276" y="122" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="142" text-anchor="middle" fill="#e4e4e7">Authorization to operate</text>
+          <rect x="276" y="160" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="180" text-anchor="middle" fill="#e4e4e7">Need-to-know roster</text>
+          <rect x="276" y="198" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="218" text-anchor="middle" fill="#e4e4e7">Passphrase ceremony</text>
+          <rect x="276" y="236" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="256" text-anchor="middle" fill="#e4e4e7">Media policy</text>
+          <rect x="276" y="274" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="294" text-anchor="middle" fill="#e4e4e7">Breach response plan</text>
+          <rect x="276" y="312" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="332" text-anchor="middle" fill="#e4e4e7">Coordinator SOP</text>
+          <rect x="276" y="350" width="224" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="388" y="370" text-anchor="middle" fill="#e4e4e7">Operator training</text>
+
+          <!-- both groups are necessary -->
+          <line x1="132" y1="240" x2="132" y2="438" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-controls-arrow)"/>
+          <line x1="388" y1="392" x2="388" y2="438" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-hris-controls-arrow)"/>
+          <text x="146" y="336" fill="#a1a1aa" font-size="13">Both groups</text>
+          <text x="146" y="354" fill="#a1a1aa" font-size="13">are necessary.</text>
+
+          <rect x="60" y="440" width="400" height="48" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="260" y="469" text-anchor="middle" fill="#e4e4e7">Operational use with real personnel data</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 2. The controls that the app enforces and the controls that the organization must supply.</figcaption>
+      </figure>
+
       <p>
-        We split these explicitly in the project docs:
-        in-app build requirements vs governance procedure requirements (the latter intentionally deferred
-        until after the prototype stabilizes).
+        The project documents put these requirements in two separate groups:
+        the build requirements in the app, and the governance procedure requirements.
+        We deliberately delayed the governance group until the prototype becomes stable.
       </p>
 
-      <h2>Why a browser tab at all?</h2>
+      <h2>Why use a browser tab?</h2>
       <p>
-        A community office may not be allowed to install server software or database engines on managed
-        PCs. A static HTML file with inlined WASM is weird, but it has properties enterprise stacks rarely
-        offer together: offline-first, auditable merge semantics, ciphertext-only persistence, and zero
-        network egress enforced by CSP. The GitHub Pages host
-        (<a href="https://rheophile10.github.io/offline-Protected-B-HRIS/">demo</a>) is convenience for
-        evaluation; the intended deployment is download-and-run locally on a controlled machine —
-        <code>file://</code> with no backend.
+        The rules of a community office can prohibit the installation of server software or database engines on managed PCs.
+        A static HTML file with inlined WASM is unusual.
+        But it has properties that enterprise software rarely gives together:
+      </p>
+      <ul>
+        <li>offline-first operation</li>
+        <li>auditable merge semantics</li>
+        <li>ciphertext-only persistence</li>
+        <li>zero network egress, and CSP enforces this</li>
+      </ul>
+      <p>
+        The GitHub Pages host
+        (<a href="https://rheophile10.github.io/offline-Protected-B-HRIS/">demo</a>) is a convenience for evaluation.
+        The intended deployment is different.
+        You download the file and run it locally on a controlled machine, from <code>file://</code> with no backend.
       </p>
 
       <h2>Status</h2>
       <p>
         The repository
         <a href="https://github.com/rheophile10/offline-Protected-B-HRIS">rheophile10/offline-Protected-B-HRIS</a>
-        includes Playwright user stories, an automated CRDT convergence test, and the screen-recorded
-        walkthroughs below (also on the standalone
-        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>).
-        It is an exploration of how far you can push personnel HRIS into a single encrypted, mergeable,
-        offline artifact — not a production authorization, and not a fork of the product roadmap.
+        includes these items:
+      </p>
+      <ul>
+        <li>Playwright user stories</li>
+        <li>an automated CRDT convergence test</li>
+        <li>the screen-recorded demonstrations below (also in the separate
+          <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>)</li>
+      </ul>
+      <p>
+        The project examines how much of a personnel HRIS can go into one encrypted, mergeable, offline file.
+        It is not a production authorization. It is not a separate branch of the product roadmap.
       </p>
       <p>
-        Next for <a href="https://github.com/rheophile10/plastron">plastron</a>: absorb the CRDT SQLite
-        patterns here into the substrate so cels, sheets, and shared state can survive offline edits and
-        reconcile the same way. Next for this detour (if it continues): governance documentation for a
-        real pilot, optional PIN-per-operator, jurisdiction-specific legal review.
+        The next step for <a href="https://github.com/rheophile10/plastron">plastron</a> is to put these CRDT SQLite
+        patterns into the substrate. Then cels, sheets, and shared state can keep offline changes and merge them in the same way.
+        If this experiment continues, the next steps for it are:
       </p>
+      <ul>
+        <li>governance documentation for a real pilot</li>
+        <li>an optional PIN for each operator</li>
+        <li>a legal review for the specific jurisdiction</li>
+      </ul>
 
-      <h2>How to use it</h2>
+      <h2>How to use the app</h2>
       <p>
-        Each clip below is a Playwright test from
-        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/tests/hris.spec.ts"><code>tests/hris.spec.ts</code></a>
-        screen-recorded against the real built app with <strong>800&nbsp;ms slow-motion</strong> between
-        actions so each step is easy to follow — the same videos shipped in the repo's
-        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>.
-        User stories are documented in
-        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/USER-STORIES.md"><code>USER-STORIES.md</code></a>;
-        setup and build notes live in the
-        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/README.md">README</a>.
+        Each video below shows a Playwright test from
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/tests/hris.spec.ts"><code>tests/hris.spec.ts</code></a>.
+        The test runs on the real built app, and a screen recorder records it.
+        The recording has an <strong>800&nbsp;ms slow-motion</strong> delay between actions, so each step is easy to follow.
+        The <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">how-to guide</a>
+        of the repository includes the same videos.
+        <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/USER-STORIES.md"><code>USER-STORIES.md</code></a>
+        contains the user stories.
+        The <a href="https://github.com/rheophile10/offline-Protected-B-HRIS/blob/main/README.md">README</a>
+        contains the setup notes and the build notes.
       </p>
       <div class="callout">
-        <strong>One file.</strong> Download
-        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/app.html">the built <code>index.html</code></a>,
-        double-click it, and everything below works offline — no server, no install, no admin rights.
-        Export your changes before locking or closing; unsaved work is lost by design.
+        <strong>Export your changes before you lock or close the app.</strong>
+        The app discards unsaved work. This behaviour is intentional.
+        The app is one file. Download
+        <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/app.html">the built <code>index.html</code></a>
+        and double-click it. Then each procedure below works offline.
+        A server, an installation, and administrator rights are not necessary.
       </div>
 
       <div class="howto-story">
         <h3>Start a session <span class="howto-tag">US-1</span></h3>
-        <p class="howto-role">Open the app, load today's data behind a passphrase, pick your operator identity.</p>
+        <p class="howto-role">You open the app, load the data for today with a passphrase, and select your operator identity.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us1-start-session.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li>Open the file — locked gate first.</li>
-          <li>Keep <em>Demo data</em>, enter a passphrase, <strong>Start session</strong>.</li>
-          <li>Pick an operator; dashboard shows 27 officers and staffing gaps.</li>
+          <li>Open the file. The app shows the locked gate first.</li>
+          <li>Keep the <em>Demo data</em> selection.</li>
+          <li>Enter a passphrase.</li>
+          <li>Click <strong>Start session</strong>.</li>
+          <li>Select an operator. The dashboard shows 27 officers and the staffing gaps.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Add an officer <span class="howto-tag">US-2</span></h3>
-        <p class="howto-role">Add a new hire; roster and dashboard update with audit attribution.</p>
+        <p class="howto-role">You add a new hire. The roster and the dashboard update, and the audit log attributes the change.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us2-add-officer.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Officers</strong> → <strong>+ Add officer</strong>, badge + name, <strong>Save</strong>.</li>
-          <li>Headcount rises; change is attributed and audited.</li>
+          <li>Open <strong>Officers</strong>.</li>
+          <li>Click <strong>+ Add officer</strong>.</li>
+          <li>Enter the badge and the name.</li>
+          <li>Click <strong>Save</strong>. The headcount increases. The app attributes and audits the change.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Assign an officer to a position <span class="howto-tag">US-3</span></h3>
-        <p class="howto-role">Keep staffing levels and vacancy deficits current.</p>
+        <p class="howto-role">This procedure keeps the staffing levels and the vacancy deficits current.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us3-assign-officer.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Assignments</strong> → <strong>+ Assign officer</strong>, pick officer + position, <strong>Assign</strong>.</li>
-          <li>Staffing views recompute automatically.</li>
+          <li>Open <strong>Assignments</strong>.</li>
+          <li>Click <strong>+ Assign officer</strong>.</li>
+          <li>Select the officer and the position.</li>
+          <li>Click <strong>Assign</strong>. The staffing views recompute automatically.</li>
         </ol>
       </div>
 
       <div class="howto-story">
-        <h3>Query data &amp; export encrypted CSV <span class="howto-tag">US-4</span></h3>
-        <p class="howto-role">Run ad-hoc SQL; share figures without plaintext ever touching disk.</p>
+        <h3>Query data and export an encrypted CSV file <span class="howto-tag">US-4</span></h3>
+        <p class="howto-role">You run ad-hoc SQL and share the numbers. No plaintext goes to disk at any time.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us4-query-export-csv.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>SQL Console</strong> → write a query → <strong>Run</strong>.</li>
-          <li>Export produces <code>.csv.enc</code> only — decrypt later from <em>Data &amp; Security</em>.</li>
+          <li>Open <strong>SQL Console</strong>.</li>
+          <li>Write a query.</li>
+          <li>Click <strong>Run</strong>.</li>
+          <li>Export the result. The export makes only a <code>.csv.enc</code> file.</li>
+          <li>Decrypt the file later from <em>Data &amp; Security</em>.</li>
         </ol>
       </div>
 
       <div class="howto-story">
-        <h3>Export changes &amp; merge (no Node) <span class="howto-tag">US-5</span></h3>
-        <p class="howto-role">The coordinator merges everyone's offline edits inside the same HTML file.</p>
+        <h3>Export changes and merge them (no Node) <span class="howto-tag">US-5</span></h3>
+        <p class="howto-role">The coordinator merges the offline changes of all operators in the same HTML file.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us5-export-and-merge.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li>Operator: <strong>Export my changes</strong> → encrypted <code>.hrischanges</code>.</li>
-          <li>Coordinator: open morning truth → <strong>Merge operator changes</strong> → select deltas.</li>
-          <li><strong>Export merged truth</strong> for tomorrow. CRDT converges divergent edits.</li>
+          <li>Operator: click <strong>Export my changes</strong>. The app makes an encrypted <code>.hrischanges</code> file.</li>
+          <li>Coordinator: open the morning truth file.</li>
+          <li>Coordinator: click <strong>Merge operator changes</strong>.</li>
+          <li>Coordinator: select the delta files. CRDT makes the divergent changes converge.</li>
+          <li>Coordinator: click <strong>Export merged truth</strong> to make the truth file for the next day.</li>
         </ol>
       </div>
 
       <div class="howto-story">
-        <h3>Recruit &amp; hire an applicant <span class="howto-tag">US-7</span></h3>
-        <p class="howto-role">Run a hiring pipeline and convert a successful applicant into an officer.</p>
+        <h3>Recruit and hire an applicant <span class="howto-tag">US-7</span></h3>
+        <p class="howto-role">You move applicants through the recruitment stages and change a successful applicant into an officer.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us7-recruitment-hire.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Recruitment</strong> kanban — add applicants, move through stages to Offer.</li>
-          <li><strong>Hire →</strong> creates officer record + active assignment; headcount updates.</li>
+          <li>Open the <strong>Recruitment</strong> kanban.</li>
+          <li>Add applicants.</li>
+          <li>Move an applicant through the stages to Offer.</li>
+          <li>Click <strong>Hire →</strong>. The app creates an officer record and an active assignment. The headcount updates.</li>
         </ol>
       </div>
 
       <div class="howto-story">
-        <h3>Training &amp; compliance <span class="howto-tag">US-8</span></h3>
-        <p class="howto-role">See what's expiring and renew certifications.</p>
+        <h3>Training and compliance <span class="howto-tag">US-8</span></h3>
+        <p class="howto-role">You see the certifications that expire, and you renew certifications.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us8-compliance.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Compliance</strong> — Expired / Expiring / Valid counts and firearms-current ratio.</li>
-          <li>Filter by KPI; <strong>Renew</strong> or <strong>+ Record certification</strong>.</li>
+          <li>Open <strong>Compliance</strong>.</li>
+          <li>Read the Expired, Expiring, and Valid counts and the firearms-current ratio.</li>
+          <li>Filter by KPI.</li>
+          <li>Click <strong>Renew</strong> or <strong>+ Record certification</strong>.</li>
         </ol>
       </div>
 
       <div class="howto-story">
-        <h3>Leave &amp; absence <span class="howto-tag">US-9</span></h3>
-        <p class="howto-role">Track requests, approvals, and who's off today.</p>
+        <h3>Leave and absence <span class="howto-tag">US-9</span></h3>
+        <p class="howto-role">You monitor the leave requests, the approvals, and the persons who are on leave today.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us9-leave.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Leave</strong> — on-leave today, pending, upcoming counts.</li>
-          <li><strong>+ Request leave</strong>; <strong>Approve</strong> or <strong>Deny</strong> pending rows.</li>
+          <li>Open <strong>Leave</strong>.</li>
+          <li>Read the counts: on-leave today, pending, and upcoming.</li>
+          <li>Click <strong>+ Request leave</strong> to add a request.</li>
+          <li>Click <strong>Approve</strong> or <strong>Deny</strong> on each pending row.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Workforce planning <span class="howto-tag">US-10</span></h3>
-        <p class="howto-role">Project vacancies ahead of retirements.</p>
+        <p class="howto-role">You see the projected vacancies before the retirements occur.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us10-planning.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Planning</strong> — projected deficit at +1/+2/+3/+5-year horizons.</li>
-          <li>Officers nearing pension milestone listed for hire-ahead decisions.</li>
+          <li>Open <strong>Planning</strong>.</li>
+          <li>Read the projected deficit at the +1/+2/+3/+5-year horizons.</li>
+          <li>Read the list of officers who are near the pension milestone. Use this list for hire-ahead decisions.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Audit trail <span class="howto-tag">US-11</span></h3>
-        <p class="howto-role">See who changed what — attribution that survives the merge.</p>
+        <p class="howto-role">You see who changed each item. This attribution stays after the merge.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us11-audit.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Audit</strong> — change log (operator, entity, action) + session events.</li>
-          <li>Logs are CRRs; they travel with each changeset into the merge.</li>
+          <li>Open <strong>Audit</strong>.</li>
+          <li>Read the change log (operator, entity, action) and the session events.</li>
         </ol>
+        <p>The logs are CRRs. They go with each changeset into the merge.</p>
       </div>
 
       <div class="howto-story">
         <h3>Officer file <span class="howto-tag">US-12</span></h3>
-        <p class="howto-role">Emergency contacts, performance reviews, and conduct in one place.</p>
+        <p class="howto-role">The officer file shows emergency contacts, performance reviews, and conduct records in one place.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us12-officer-file.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Officer File</strong> → pick an officer.</li>
-          <li>View contacts, reviews, conduct; add a review or update a disposition.</li>
+          <li>Open <strong>Officer File</strong>.</li>
+          <li>Select an officer.</li>
+          <li>Read the contacts, the reviews, and the conduct records.</li>
+          <li>Add a review or update a disposition.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Equipment register <span class="howto-tag">US-13</span></h3>
-        <p class="howto-role">Track who holds each firearm, vehicle, radio, or camera.</p>
+        <p class="howto-role">You monitor who holds each firearm, vehicle, radio, or camera.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us13-equipment.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Equipment</strong> — in-service / issued / available counts.</li>
-          <li><strong>Issue</strong> or <strong>Return</strong> assets; mark Maintenance or Retired.</li>
+          <li>Open <strong>Equipment</strong>.</li>
+          <li>Read the in-service, issued, and available counts.</li>
+          <li>Click <strong>Issue</strong> or <strong>Return</strong> for an asset.</li>
+          <li>Mark an asset as Maintenance or Retired.</li>
         </ol>
       </div>
 
       <div class="howto-story">
         <h3>Lock the session <span class="howto-tag">US-6</span></h3>
-        <p class="howto-role">Wipe decrypted data from memory when you step away.</p>
+        <p class="howto-role">You erase the decrypted data from memory when you go away from the machine.</p>
         <video class="howto-video" src="/assets/offline-hris-howto/us6-lock-session.webm" controls muted playsinline preload="metadata"></video>
         <ol>
-          <li><strong>Lock session</strong> — returns to gate, clears DB + key + identity from memory.</li>
-          <li>Export changes first; unsaved work is lost by design.</li>
+          <li>Export your changes first. The app discards unsaved work, and this is intentional.</li>
+          <li>Click <strong>Lock session</strong>. The app goes back to the gate. It erases the database, the key, and the identity from memory.</li>
         </ol>
       </div>
 
       <p>
-        Full standalone guide:
+        The full guide is a separate page:
         <a href="https://rheophile10.github.io/offline-Protected-B-HRIS/how-to.html">rheophile10.github.io/offline-Protected-B-HRIS/how-to.html</a>
       </p>
 
@@ -542,9 +738,9 @@
         <li><a href="https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/security-policy-implementation-notice-direction-security-categorization-personal-information-aggregate.html">Direction on security categorization of personal information in the aggregate</a> (2023)</li>
         <li><a href="https://www.canada.ca/en/government/system/digital-government/online-security-privacy/identity-credential-access-management/password-guidance.html">Guideline on Password Security</a> (PBKDF2, offline attack countermeasures)</li>
         <li><a href="https://github.com/vlcn-io/cr-sqlite">cr-sqlite</a> — convergent replicated SQLite</li>
-        <li><a href="https://github.com/rheophile10/offline-Protected-B-HRIS">offline-Protected-B-HRIS</a> — source &amp; build</li>
-        <li><a href="https://github.com/rheophile10/plastron">plastron</a> — main project; offline + CRDT SQLite planned</li>
-        <li><a href="https://plastron.ca">plastron.ca</a> — hosted build (server-backed today; zero-server goal)</li>
+        <li><a href="https://github.com/rheophile10/offline-Protected-B-HRIS">offline-Protected-B-HRIS</a> — source code and build</li>
+        <li><a href="https://github.com/rheophile10/plastron">plastron</a> — the primary project. Offline operation and CRDT SQLite are in the plan.</li>
+        <li><a href="https://plastron.ca">plastron.ca</a> — the hosted build (a server stores the data today, and the goal is zero servers)</li>
       </ul>
     </article>
 

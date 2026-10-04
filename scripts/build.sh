@@ -16,4 +16,8 @@ npx -y tailwindcss@3.4.17 \
   -i scripts/tailwind.input.css \
   -o assets/tailwind.css --minify
 
+# The copy must obey the ASD-STE100 profile. Runs last so it also checks the
+# generated feed. A failure here means: fix the text, then build again.
+python3 scripts/ste-lint.py
+
 echo "build complete."

@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#09090b">
   <title>Manifesto — rheophile10</title>
   <link rel="canonical" href="https://rheophile.ca/manifesto.html">
-  <meta name="description" content="The rheophile manifesto: software you totally own, run for free, and read line by line; data that is local-first and shared like belts; and a distrust of centralization that isn't the living product of community merges.">
+  <meta name="description" content="The rheophile manifesto has three tenets. Own the software and read each line. Keep the data local and share it by merges. Do not trust a center that merges did not make.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="rheophile.ca">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/manifesto.html">
   <meta property="og:title" content="Manifesto">
-  <meta property="og:description" content="Software you totally own, run for free, and read line by line; data that is local-first and shared like belts; and a distrust of centralization that isn't the living product of community merges.">
+  <meta property="og:description" content="The rheophile manifesto has three tenets. Own the software and read each line. Keep the data local and share it by merges. Do not trust a center that merges did not make.">
   <meta property="og:image" content="https://rheophile.ca/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
   <meta name="twitter:site" content="@rheophile10">
   <meta name="twitter:creator" content="@rheophile10">
   <meta name="twitter:title" content="Manifesto">
-  <meta name="twitter:description" content="Software you totally own, run for free, and read line by line; data that is local-first and shared like belts; and a distrust of centralization that isn't the living product of community merges.">
+  <meta name="twitter:description" content="The rheophile manifesto has three tenets. Own the software and read each line. Keep the data local and share it by merges. Do not trust a center that merges did not make.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og-card.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,7 @@
       background-size: 32px 32px;
     }
 
-    /* A soft teal "current" bleeding up behind the hero — tools that feel like water. */
+    /* A soft teal light behind the top of the page. */
     .flowlight {
       background:
         radial-gradient(60% 60% at 50% 0%, rgba(20,184,166,0.16), transparent 70%),
@@ -82,7 +82,7 @@
 
   <nav class="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/95 backdrop-blur-lg">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 no-underline text-inherit group" aria-label="rheophile10 home">
+      <a href="/" class="flex items-center gap-2.5 no-underline text-inherit group" aria-label="rheophile10 home page">
         <div class="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center ring-1 ring-inset ring-teal-500/30 group-hover:ring-teal-500/50 transition">
           <span class="text-xl leading-none mt-px" aria-hidden="true">🐸</span>
         </div>
@@ -115,25 +115,74 @@
     <section class="tenet">
       <div class="tenet-num">01</div>
       <h2 class="text-2xl md:text-3xl mt-4">Own the software.</h2>
-      <p class="mt-3 text-lg">Water nourishes all things without trying, and asks nothing of them. Software should be the same: free, useful, scrutable to the last line, and running on your own machine. What you can't read, you don't own — you rent.</p>
+      <p class="mt-3 text-lg">Good software is free, and it is useful. You can read each line of the code. The software runs on your own machine. If you cannot read the software, you do not own it. You rent it.</p>
     </section>
 
     <section class="tenet">
       <div class="tenet-num">02</div>
       <h2 class="text-2xl md:text-3xl mt-4">Keep the data local.</h2>
-      <p class="mt-3 text-lg">Yours, on your machine — and merged with others only when you choose. Collaboration is trading signed deltas, merged like <a href="/blog/rheoserv-waumpaum.html">belts</a>, not surrendered to a host.</p>
+      <p class="mt-3 text-lg">The data is yours, and it stays on your machine. You merge it with the data of other people only when you make that decision. To work together, people exchange signed deltas and merge them. They do not give the data to a host. The <a href="/blog/rheoserv-waumpaum.html">RheoServ Waumpaum post</a> shows such a merge.</p>
     </section>
 
     <section class="tenet">
       <div class="tenet-num">03</div>
-      <h2 class="text-2xl md:text-3xl mt-4">Distrust the center.</h2>
-      <p class="mt-3 text-lg">Centralized compute and storage that isn't earned by active community merges is bad most of the time. Push the keys and the compute back to the edges.</p>
+      <h2 class="text-2xl md:text-3xl mt-4">Do not trust the center.</h2>
+      <p class="mt-3 text-lg">Central computation and central storage are usually bad. They are good only if a community makes them by active merges. Keep the keys and the computation on the machines of the users.</p>
     </section>
+
+    <figure class="ste-diagram" style="margin:3.5rem auto 0;max-width:520px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+      <svg viewBox="0 0 520 250" width="100%" role="img" aria-labelledby="dgm-center-t dgm-center-d"
+           xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="16">
+        <title id="dgm-center-t">A central host compared with local copies that merge</title>
+        <desc id="dgm-center-d">On the left, three users send all their data to one host. On the right, each user keeps a local copy, and the users exchange signed deltas to merge the copies.</desc>
+        <defs>
+          <marker id="dgm-center-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#a1a1aa"/>
+          </marker>
+          <marker id="dgm-center-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+          </marker>
+        </defs>
+
+        <text x="125" y="20" text-anchor="middle" fill="#a1a1aa" font-size="14">Central host</text>
+        <rect x="55" y="34" width="140" height="58" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+        <text x="125" y="59" text-anchor="middle" fill="#e4e4e7" font-weight="600">Host</text>
+        <text x="125" y="79" text-anchor="middle" fill="#a1a1aa" font-size="14">has all the data</text>
+        <rect x="10" y="166" width="70" height="46" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+        <text x="45" y="194" text-anchor="middle" fill="#e4e4e7">User</text>
+        <rect x="90" y="166" width="70" height="46" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+        <text x="125" y="194" text-anchor="middle" fill="#e4e4e7">User</text>
+        <rect x="170" y="166" width="70" height="46" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+        <text x="205" y="194" text-anchor="middle" fill="#e4e4e7">User</text>
+        <line x1="45" y1="166" x2="96" y2="97" stroke="#a1a1aa" stroke-width="1.5" marker-end="url(#dgm-center-grey)"/>
+        <line x1="125" y1="166" x2="125" y2="97" stroke="#a1a1aa" stroke-width="1.5" marker-end="url(#dgm-center-grey)"/>
+        <line x1="205" y1="166" x2="154" y2="97" stroke="#a1a1aa" stroke-width="1.5" marker-end="url(#dgm-center-grey)"/>
+        <text x="125" y="238" text-anchor="middle" fill="#a1a1aa" font-size="14">All data goes to the host.</text>
+
+        <line x1="260" y1="12" x2="260" y2="240" stroke="rgba(255,255,255,0.12)" stroke-dasharray="4 5"/>
+
+        <text x="395" y="20" text-anchor="middle" fill="#2dd4bf" font-size="14">Local copies that merge</text>
+        <rect x="350" y="34" width="90" height="46" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+        <text x="395" y="62" text-anchor="middle" fill="#e4e4e7">Copy 1</text>
+        <rect x="272" y="166" width="90" height="46" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+        <text x="317" y="194" text-anchor="middle" fill="#e4e4e7">Copy 2</text>
+        <rect x="428" y="166" width="90" height="46" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+        <text x="473" y="194" text-anchor="middle" fill="#e4e4e7">Copy 3</text>
+        <line x1="372" y1="85" x2="328" y2="161" stroke="#2dd4bf" stroke-width="1.5" marker-start="url(#dgm-center-teal)" marker-end="url(#dgm-center-teal)"/>
+        <line x1="418" y1="85" x2="462" y2="161" stroke="#2dd4bf" stroke-width="1.5" marker-start="url(#dgm-center-teal)" marker-end="url(#dgm-center-teal)"/>
+        <line x1="367" y1="189" x2="423" y2="189" stroke="#2dd4bf" stroke-width="1.5" marker-start="url(#dgm-center-teal)" marker-end="url(#dgm-center-teal)"/>
+        <text x="395" y="132" text-anchor="middle" fill="#a1a1aa" font-size="14">signed</text>
+        <text x="395" y="149" text-anchor="middle" fill="#a1a1aa" font-size="14">deltas</text>
+        <text x="395" y="238" text-anchor="middle" fill="#a1a1aa" font-size="14">Each user keeps the data.</text>
+      </svg>
+      <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 1. A central host has all the data. With local copies, each user keeps the data and merges signed deltas.</figcaption>
+    </figure>
+
 
     <section class="mt-16 pt-10 border-t border-white/10">
       <div class="creed">
         <p class="display text-xl md:text-2xl text-zinc-100 leading-snug">
-          Own it. Read it. Run it anywhere. Keep your data close, trade it freely, and be slow to trust a center that didn't earn it by merging.
+          Own the software. Read it. Run it on any machine. Keep your data local. Exchange your data freely. Trust a center only if a community made it by merges.
         </p>
       </div>
     </section>
@@ -142,7 +191,7 @@
 
   <footer class="border-t border-white/10 py-8">
     <div class="max-w-6xl mx-auto px-6 text-xs text-zinc-500 flex flex-col md:flex-row gap-y-2 items-center justify-between">
-      <div>© Rheophile Corp. · rheophile10 — tools that feel like water.</div>
+      <div>© Rheophile Corp. · rheophile10</div>
       <div class="flex items-center gap-x-5">
         <a href="/" class="hover:text-zinc-300 transition">Home</a>
         <span class="text-white/10">·</span>

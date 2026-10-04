@@ -5,7 +5,7 @@
       "name": "plastron",
       "emoji": "🐢",
       "lang": "TypeScript",
-      "tagline": "A polyglot reactive substrate — cells hold values, formulas, or compiled lambdas in any language a compiler is installed for. Live at plastron.ca.",
+      "tagline": "A polyglot reactive substrate. Cels hold values, formulas, or compiled lambdas in each language that has an installed compiler. Live at plastron.ca.",
       "repo": "https://github.com/rheophile10/plastron",
       "live": "https://plastron.ca",
       "featured": true
@@ -24,7 +24,7 @@
       "name": "RheoServ Waumpaum",
       "emoji": "🏦",
       "lang": "TypeScript",
-      "tagline": "An offline-first credit-union core in one encrypted HTML file: cr-sqlite CRDT merge across operators and waumpaum settlement between institutions.",
+      "tagline": "An offline-first credit-union core in one encrypted HTML file. cr-sqlite merges the work of the operators, and waumpaums settle between institutions.",
       "repo": "https://github.com/rheophile10/rheoServ-waumpaum",
       "blog": "/blog/rheoserv-waumpaum.html"
     },
@@ -33,7 +33,7 @@
       "name": "Offline Protected-B HRIS",
       "emoji": "👮",
       "lang": "TypeScript",
-      "tagline": "A Protected-B HRIS that runs offline in a single HTML file, merging HR records across operators with CRDT SQLite.",
+      "tagline": "A Protected-B HRIS that runs offline in one HTML file. CRDT SQLite merges the HR records of the operators.",
       "repo": "https://github.com/rheophile10/offline-Protected-B-HRIS",
       "blog": "/blog/offline-hris-juarez.html"
     },
@@ -42,7 +42,7 @@
       "name": "The Colonial Advocate",
       "emoji": "📰",
       "lang": "Python",
-      "tagline": "A single-page web app modelled after William Lyon Mackenzie's 19th-century reform newspaper.",
+      "tagline": "A single-page web app. Its model is the 19th-century reform newspaper of William Lyon Mackenzie.",
       "repo": "https://github.com/rheophile10/colonial-advocate"
     },
     {
@@ -50,7 +50,7 @@
       "name": "Firearms vs Homicide",
       "emoji": "📊",
       "lang": "HTML",
-      "tagline": "Civilian firearm ownership (Small Arms Survey 2017) charted against intentional homicide rates (UNODC), by country.",
+      "tagline": "A chart of civilian firearm ownership (Small Arms Survey 2017) and intentional homicide rates (UNODC) for each country.",
       "repo": "https://github.com/rheophile10/civilian-firearms-vs-homicide"
     },
     {
@@ -58,7 +58,7 @@
       "name": "genenote-js",
       "emoji": "🧬",
       "lang": "TypeScript",
-      "tagline": "Lion Kimbra's genenote, reimplemented in JavaScript on top of plastron.",
+      "tagline": "A JavaScript implementation of Lion Kimbra's genenote that runs on plastron.",
       "repo": "https://github.com/rheophile10/genenote-js"
     }
   ]

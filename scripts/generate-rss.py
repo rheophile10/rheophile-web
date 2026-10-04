@@ -20,7 +20,7 @@ SITE = "https://rheophile.ca"
 FEED_URL = f"{SITE}/feed.xml"
 TITLE = "rheophile.ca — dev log"
 DESCRIPTION = (
-    "Notes on building plastron and other reactive, offline-first tools in the open."
+    "Posts that record how rheophile10 builds plastron and other reactive, offline-first tools."
 )
 LANGUAGE = "en-ca"
 

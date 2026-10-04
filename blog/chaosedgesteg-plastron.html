@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- rheophile:og:start -->
   <link rel="canonical" href="https://rheophile.ca/blog/chaosedgesteg-plastron.html">
-  <meta name="description" content="Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.">
+  <meta name="description" content="A plastron sheetapp hides a plastron.ca share link in a PNG that you can post to X. The upstream ChaosEdgeSteg Python code runs without changes in Pyodide.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="rheophile.ca">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://rheophile.ca/blog/chaosedgesteg-plastron.html">
-  <meta property="og:title" content="Hiding plastron links in pictures with ChaosEdgeSteg">
-  <meta property="og:description" content="Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.">
+  <meta property="og:title" content="Hide a plastron link in an image with ChaosEdgeSteg">
+  <meta property="og:description" content="A plastron sheetapp hides a plastron.ca share link in a PNG that you can post to X. The upstream ChaosEdgeSteg Python code runs without changes in Pyodide.">
   <meta property="og:image" content="https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg">
   <meta property="og:image:secure_url" content="https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Hiding plastron links in pictures with ChaosEdgeSteg — rheophile.ca dev log">
+  <meta property="og:image:alt" content="Hide a plastron link in an image with ChaosEdgeSteg — rheophile.ca dev log">
   <meta property="article:published_time" content="2026-07-07">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@rheophile10">
   <meta name="twitter:creator" content="@rheophile10">
   <meta name="twitter:url" content="https://rheophile.ca/blog/chaosedgesteg-plastron.html">
-  <meta name="twitter:title" content="Hiding plastron links in pictures with ChaosEdgeSteg">
-  <meta name="twitter:description" content="Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.">
+  <meta name="twitter:title" content="Hide a plastron link in an image with ChaosEdgeSteg">
+  <meta name="twitter:description" content="A plastron sheetapp hides a plastron.ca share link in a PNG that you can post to X. The upstream ChaosEdgeSteg Python code runs without changes in Pyodide.">
   <meta name="twitter:image" content="https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg">
-  <meta name="twitter:image:alt" content="Hiding plastron links in pictures with ChaosEdgeSteg — rheophile.ca dev log">
+  <meta name="twitter:image:alt" content="Hide a plastron link in an image with ChaosEdgeSteg — rheophile.ca dev log">
   <meta name="robots" content="max-image-preview:large">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Hiding plastron links in pictures with ChaosEdgeSteg", "description": "Chaos-based edge steganography from crypt0lith, running verbatim in Pyodide cells. Hide a plastron.ca #f= link in a Twitter-safe PNG; recover it with cover + password.", "image": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg", "datePublished": "2026-07-07", "url": "https://rheophile.ca/blog/chaosedgesteg-plastron.html", "mainEntityOfPage": "https://rheophile.ca/blog/chaosedgesteg-plastron.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Hide a plastron link in an image with ChaosEdgeSteg", "description": "A plastron sheetapp hides a plastron.ca share link in a PNG that you can post to X. The upstream ChaosEdgeSteg Python code runs without changes in Pyodide.", "image": "https://rheophile.ca/assets/og/chaosedgesteg-plastron.jpg", "datePublished": "2026-07-07", "url": "https://rheophile.ca/blog/chaosedgesteg-plastron.html", "mainEntityOfPage": "https://rheophile.ca/blog/chaosedgesteg-plastron.html", "author": {"@type": "Person", "name": "rheophile10", "url": "https://rheophile.ca/", "sameAs": ["https://github.com/rheophile10", "https://x.com/rheophile10"]}, "publisher": {"@type": "Organization", "name": "Rheophile Corp.", "url": "https://rheophile.ca/"}}</script>
   <!-- rheophile:og:end -->
   <title>ChaosEdgeSteg on plastron · rheophile.ca</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +77,9 @@
       padding-left: 1.35rem;
     }
     .prose-blog li { margin-bottom: 0.4rem; }
+    /* Tailwind preflight removes list markers. A procedure must show its step numbers. */
+    .prose-blog ol { list-style: decimal; }
+    .prose-blog ul { list-style: disc; }
     .prose-blog a {
       color: #2dd4bf;
       text-decoration: underline;
@@ -164,31 +167,32 @@
     <header>
       <div class="text-xs uppercase tracking-[0.2em] text-teal-400 font-medium">Dev log · 2026-07-07</div>
       <h1 class="display text-4xl md:text-[2.6rem] font-semibold tracking-tighter mt-2 leading-[1.1]">
-        Hiding plastron links in pictures with ChaosEdgeSteg <span class="text-3xl">🐢</span>
+        Hide a plastron link in an image with ChaosEdgeSteg <span class="text-3xl">🐢</span>
       </h1>
       <figure class="mt-6 rounded-2xl overflow-hidden border border-white/10 bg-zinc-900/50">
-        <img src="/assets/chaosedgesteg-blog/crypt0lith-banner.png" alt="ChaosEdgeSteg banner from the crypt0lith project" width="640" height="640" loading="lazy">
+        <img src="/assets/chaosedgesteg-blog/crypt0lith-banner.png" alt="The ChaosEdgeSteg banner from the crypt0lith project" width="640" height="640" loading="lazy">
         <figcaption class="px-4 py-2.5 text-xs text-zinc-500 border-t border-white/10">
-          Banner from <a href="https://github.com/crypt0lith/ChaosEdgeSteg" class="text-teal-400/90 hover:text-teal-300 transition">crypt0lith/ChaosEdgeSteg</a>
+          The banner is from <a href="https://github.com/crypt0lith/ChaosEdgeSteg" class="text-teal-400/90 hover:text-teal-300 transition">crypt0lith/ChaosEdgeSteg</a>.
         </figcaption>
       </figure>
       <p class="mt-4 text-zinc-400 text-base leading-relaxed">
-        <a href="https://plastron.ca">plastron</a> now ships a sheetapp that smuggles a
-        <code>plastron.ca/#f=…</code> share link through an ordinary-looking PNG — edge-adaptive,
-        chaos-keyed LSB steganography from
-        <a href="https://github.com/crypt0lith/ChaosEdgeSteg">crypt0lith/ChaosEdgeSteg</a>, running
-        <strong class="text-zinc-300">verbatim</strong> as Python in the browser via Pyodide. Post the
-        picture to X; your friend recovers the link with the original cover and password.
+        <a href="https://plastron.ca">plastron</a> now includes a sheetapp that hides a
+        <code>plastron.ca/#f=…</code> share link in a PNG. The PNG looks the same as an ordinary image.
+        The method is the edge-adaptive, chaos-keyed LSB steganography from
+        <a href="https://github.com/crypt0lith/ChaosEdgeSteg">crypt0lith/ChaosEdgeSteg</a>. The upstream
+        Python code runs <strong class="text-zinc-300">without changes</strong> in the browser through
+        Pyodide. Post the image to X. Your friend then uses the original cover and the password to
+        recover the link.
       </p>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
         <a href="https://plastron.ca" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-300 hover:bg-teal-600/30 transition no-underline">
-          Try it on plastron.ca →
+          Use it on plastron.ca →
         </a>
         <a href="https://github.com/crypt0lith/ChaosEdgeSteg" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
           Upstream ChaosEdgeSteg
         </a>
         <a href="https://github.com/rheophile10/plastron" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-white/15 text-zinc-300 hover:bg-white/5 transition no-underline">
-          plastron source
+          plastron source code
         </a>
       </div>
     </header>
@@ -198,21 +202,31 @@
       <h2>What is ChaosEdgeSteg?</h2>
       <p>
         <a href="https://github.com/crypt0lith/ChaosEdgeSteg">ChaosEdgeSteg</a> is a Python tool from the
-        <a href="https://github.com/crypt0lith">crypt0lith</a> project — chaos-based, edge-adaptive LSB
-        steganography. Instead of hiding bits in every pixel (which shows up under statistical analysis),
-        it picks <em>edge pixels</em> via an adaptive Canny pass, orders them with a
-        <strong>Hénon chaotic map</strong> keyed off your password, and writes the payload into the least
-        significant bits of those locations only.
+        <a href="https://github.com/crypt0lith">crypt0lith</a> project. It does chaos-based,
+        edge-adaptive LSB steganography. Bits hidden in every pixel are visible in a statistical
+        analysis. Thus ChaosEdgeSteg does not use every pixel. It does three steps:
+      </p>
+      <ol style="list-style:decimal;">
+        <li>It finds the <em>edge pixels</em> with an adaptive Canny pass.</li>
+        <li>It puts the edge pixels in an order with a <strong>Hénon chaotic map</strong>. Your password is the key for the map.</li>
+        <li>It writes the payload into the least significant bits of only those locations.</li>
+      </ol>
+      <p>
+        The scheme is <strong>non-blind and keyed</strong>. Three items are necessary to decode:
+      </p>
+      <ul style="list-style:disc;">
+        <li>the <em>original cover image</em></li>
+        <li>the <em>steg image</em> (the image that you downloaded from X)</li>
+        <li>the <em>password</em> (you sent it through a different channel)</li>
+      </ul>
+      <p>
+        The decode operation uses the cover to find the set of edge pixels again. It uses the password
+        to make the Hénon order. If the cover, the image sequence, or the password is incorrect, the
+        decode operation fails quickly. The check on the <code>CES</code> header then shows
+        <code>bad password</code>.
       </p>
       <p>
-        The scheme is <strong>non-blind and keyed</strong>: decoding needs three things — the
-        <em>original cover image</em>, the <em>steg image</em> (what you downloaded from X), and the
-        <em>password</em> you shared out of band. The cover reconstructs the edge pixel set; the password
-        drives the Hénon ordering. Wrong cover, wrong image order, or wrong password fails fast with a
-        <code>bad password</code> check on the <code>CES</code> header.
-      </p>
-      <p>
-        Upstream ships a CLI:
+        The upstream project supplies a CLI:
       </p>
       <pre class="text-sm bg-zinc-900/80 border border-white/10 rounded-xl p-4 overflow-x-auto mb-4"><code>pip install git+https://github.com/crypt0lith/ChaosEdgeSteg.git
 
@@ -222,194 +236,401 @@ chaosedgesteg embed cover.png secret.txt -O steg.png
 # extract from the steg image (needs the same cover + password)
 chaosedgesteg extract cover.png steg.png -O extracted.zip</code></pre>
       <p>
-        plastron's integration is <strong>byte-compatible both ways</strong>: a steg PNG made in the
-        browser extracts under the desktop CLI, and an upstream-made steg image decodes in plastron.
+        The plastron integration is <strong>byte-compatible in the two directions</strong>. The desktop
+        CLI can extract a steg PNG that the browser made. The plastron workbook can decode a steg image
+        that the upstream CLI made.
       </p>
 
-      <h2>Why this lives on plastron</h2>
+      <h2>Why ChaosEdgeSteg is on plastron</h2>
       <p>
-        The use case is specific: hide a <code>https://plastron.ca/#f=&lt;base64url&gt;</code> f-string
-        link — a shareable deep link into a live sketch (boids, kanban, whatever) — inside a small PNG
-        you can post to Twitter/X. If the image survives X's re-encode, anyone with the cover and password
-        can pull the link back out and click straight into your sketch.
+        The use case is specific. You hide a <code>https://plastron.ca/#f=&lt;base64url&gt;</code>
+        f-string link in a small PNG that you can post to Twitter/X. An f-string link is a deep link
+        that you can share. It opens a live sketch (for example, boids or kanban). If the image stays
+        the same after X re-encodes it, each person who has the cover and the password can recover the
+        link. That person then clicks the link, and your sketch opens.
       </p>
       <p>
-        ChaosEdgeSteg is not a new plastron application segment. It is a <strong>sheetapp document</strong>
-        — a workbook of positioned cells where the algorithm, UI, password field, size guard, and decode
-        logic are all ordinary spreadsheet formulas and a single Python source cell. Open it from the desktop
-        like any other doc.
+        ChaosEdgeSteg is not a new plastron application segment. It is a <strong>sheetapp document</strong>:
+        a workbook of positioned cells. Ordinary spreadsheet formulas and one Python source cell make
+        all of these parts:
+      </p>
+      <ul style="list-style:disc;">
+        <li>the algorithm</li>
+        <li>the UI</li>
+        <li>the password field</li>
+        <li>the size guard</li>
+        <li>the decode logic</li>
+      </ul>
+      <p>
+        Open ChaosEdgeSteg from the desktop the same as any other document.
       </p>
 
       <figure>
-        <img src="/assets/chaosedgesteg-blog/01-desktop.jpg" alt="plastron origin desktop with the ChaosEdgeSteg icon visible among other apps" loading="lazy">
-        <figcaption>The 🕵️ ChaosEdgeSteg icon on the plastron origin desktop — opens <code>doc:chaosedgesteg</code>.</figcaption>
+        <img src="/assets/chaosedgesteg-blog/01-desktop.jpg" alt="The plastron origin desktop shows the ChaosEdgeSteg icon and the icons of other applications" loading="lazy">
+        <figcaption>The 🕵️ ChaosEdgeSteg icon on the plastron origin desktop opens <code>doc:chaosedgesteg</code>.</figcaption>
       </figure>
 
       <h2>How Pyodide runs the upstream code</h2>
       <p>
-        plastron already has a <code>py</code> compiler cel: paste Python, bind it with
-        <code>=def('name', 'py', sourceCell)</code>, call the minted function from formulas. For
-        ChaosEdgeSteg we dropped the upstream <code>henon.py</code> and <code>steg.py</code> bodies
-        <em>verbatim</em> into cell <code>A21</code>, plus thin glue for PNG↔BGR conversion and the
-        upstream zip container. Cell <code>A22</code> binds it:
-        <code>=def('chaosedgesteg.ces', 'py', A21)</code>.
+        The <code>py</code> compiler cel is already a part of plastron. Use it in three steps:
+      </p>
+      <ol style="list-style:decimal;">
+        <li>Paste the Python code into a cell.</li>
+        <li>Bind the code with <code>=def('name', 'py', sourceCell)</code>.</li>
+        <li>Call the new function from formulas.</li>
+      </ol>
+      <p>
+        For ChaosEdgeSteg, we put the bodies of the upstream <code>henon.py</code> and
+        <code>steg.py</code> files into cell <code>A21</code> <em>without changes</em>. We added a small
+        quantity of interface code for the PNG↔BGR conversion and the upstream zip container. Cell
+        <code>A22</code> binds the code: <code>=def('chaosedgesteg.ces', 'py', A21)</code>.
       </p>
       <p>
-        The runtime is <strong>Pyodide v0.29.4</strong> (CPython 3.13 in WebAssembly). On first open,
-        the browser downloads Pyodide core plus the packages the source actually imports —
-        <code>numpy</code>, <code>opencv-python</code> (<code>cv2</code>), <code>pillow</code>,
-        <code>mpmath</code> — roughly 30&nbsp;MB from jsDelivr, cached after the first run. PNG I/O goes
-        through Pillow + numpy; OpenCV handles grayscale, bilateral filter, adaptive Canny, and LSB writes.
-        There is no reimplementation of the chaotic-map math — parity is upstream's own bytes.
+        The runtime is <strong>Pyodide v0.29.4</strong> (CPython 3.13 in WebAssembly). When you open
+        the workbook for the first time, the browser downloads the Pyodide core and the packages that
+        the source code imports:
+      </p>
+      <ul style="list-style:disc;">
+        <li><code>numpy</code></li>
+        <li><code>opencv-python</code> (<code>cv2</code>)</li>
+        <li><code>pillow</code></li>
+        <li><code>mpmath</code></li>
+      </ul>
+      <p>
+        The download is approximately 30&nbsp;MB and comes from jsDelivr. The browser keeps it in the
+        cache after the first run.
       </p>
       <p>
-        One small native change made this possible: the <code>py</code> compiler now calls
-        <code>pyodide.loadPackagesFromImports(source)</code> before <code>runPython</code>, so any
-        <code>import</code> line in a py cell auto-fetches its wheel. ChaosEdgeSteg is the worked
-        example; before this, a cell that imported numpy would silently fail with
-        <code>ModuleNotFoundError</code>.
+        Pillow and numpy read and write the PNG data. OpenCV does four operations:
+      </p>
+      <ul style="list-style:disc;">
+        <li>the grayscale conversion</li>
+        <li>the bilateral filter</li>
+        <li>the adaptive Canny pass</li>
+        <li>the LSB writes</li>
+      </ul>
+      <p>
+        We did not write the chaotic-map math again. The plastron results are equal to the upstream
+        results because the code bytes are the upstream bytes.
+      </p>
+      <p>
+        One small native change made this possible. The <code>py</code> compiler now calls
+        <code>pyodide.loadPackagesFromImports(source)</code> before <code>runPython</code>. Thus each
+        <code>import</code> line in a py cell automatically downloads its wheel. ChaosEdgeSteg is the
+        worked example. Before this change, a cell that imported numpy failed with
+        <code>ModuleNotFoundError</code> and showed no message.
       </p>
       <blockquote>
-        The algorithm is policy in cells; the only native additions are package auto-loading and
-        <code>fs.pickToCel</code> (turn a file-picker upload into base64 in a named cell). No new verbs
-        for steganography itself.
+        The algorithm is policy in cells. There are only two native additions: the automatic package
+        load and <code>fs.pickToCel</code>. (<code>fs.pickToCel</code> changes a file-picker upload
+        into base64 in a named cell.) There are no new verbs for steganography.
       </blockquote>
 
       <figure>
-        <img src="/assets/chaosedgesteg-blog/02-workbook.jpg" alt="ChaosEdgeSteg workbook open — worksheet on the left, Decode and Embed view panes on the right" loading="lazy">
-        <figcaption>The workbook layout: grid of cells on the left (including the visible Python source in A21), <strong>🔓 Decode</strong> and <strong>🖼 Embed</strong> view panes on the right.</figcaption>
+        <img src="/assets/chaosedgesteg-blog/02-workbook.jpg" alt="The open ChaosEdgeSteg workbook: the worksheet is on the left, and the Decode and Embed view panes are on the right" loading="lazy">
+        <figcaption>The workbook layout. The grid of cells is on the left, and the Python source code is visible in A21. The <strong>🔓 Decode</strong> and <strong>🖼 Embed</strong> view panes are on the right.</figcaption>
       </figure>
 
-      <h2>How to use it</h2>
-      <p>You need three things to decode later: the <strong>original cover</strong>, the
-        <strong>image from X</strong>, and the <strong>password</strong>. Keep the cover; share the
-        password out of band.</p>
+      <h2>How to use ChaosEdgeSteg</h2>
+      <p>Figure 1 shows the full procedure. To decode the link later, three items are necessary: the
+        <strong>original cover</strong>, the <strong>image from X</strong>, and the
+        <strong>password</strong>. Keep the cover. Send the password to your friend through a
+        different channel.</p>
+
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:480px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 480 604" width="100%" role="img" aria-labelledby="dgm-ces-trip-t dgm-ces-trip-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="15">
+          <title id="dgm-ces-trip-t">Embed, post to X, download, decode</title>
+          <desc id="dgm-ces-trip-d">The embed operation uses a cover PNG, a plastron link, and a password to make a steg PNG. You post the steg PNG to X and then download the image from X. The decode operation uses the original cover, the image from X, and the password to recover the link.</desc>
+          <defs>
+            <marker id="dgm-ces-trip-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+            <marker id="dgm-ces-trip-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#a1a1aa"/>
+            </marker>
+          </defs>
+
+          <!-- row 1: the three inputs for embed -->
+          <rect x="20" y="16" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="88" y="43" text-anchor="middle" fill="#e4e4e7">Cover PNG</text>
+          <rect x="172" y="16" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="240" y="43" text-anchor="middle" fill="#e4e4e7">plastron link</text>
+          <rect x="324" y="16" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="392" y="43" text-anchor="middle" fill="#e4e4e7">Password</text>
+
+          <!-- embed -->
+          <polyline points="88,60 88,126 172,126" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <line x1="240" y1="60" x2="240" y2="100" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <polyline points="392,60 392,126 308,126" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <rect x="172" y="100" width="136" height="52" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="240" y="123" text-anchor="middle" fill="#e4e4e7" font-weight="600">Embed</text>
+          <text x="240" y="142" text-anchor="middle" fill="#a1a1aa" font-size="14">in plastron</text>
+
+          <!-- the cover and the password go to the decode step by a different path -->
+          <line x1="88" y1="126" x2="88" y2="368" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#dgm-ces-trip-grey)"/>
+          <circle cx="88" cy="126" r="3" fill="#2dd4bf"/>
+          <text x="98" y="244" fill="#a1a1aa" font-size="14">Keep the</text>
+          <text x="98" y="262" fill="#a1a1aa" font-size="14">cover</text>
+          <line x1="392" y1="126" x2="392" y2="368" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#dgm-ces-trip-grey)"/>
+          <circle cx="392" cy="126" r="3" fill="#2dd4bf"/>
+          <text x="382" y="244" text-anchor="end" fill="#a1a1aa" font-size="14">Different</text>
+          <text x="382" y="262" text-anchor="end" fill="#a1a1aa" font-size="14">channel</text>
+
+          <!-- steg PNG, X -->
+          <line x1="240" y1="152" x2="240" y2="190" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <rect x="172" y="190" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="240" y="217" text-anchor="middle" fill="#e4e4e7">Steg PNG</text>
+          <line x1="240" y1="234" x2="240" y2="278" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <text x="250" y="260" fill="#a1a1aa" font-size="14">Post</text>
+          <rect x="172" y="278" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="240" y="305" text-anchor="middle" fill="#e4e4e7">X</text>
+          <line x1="240" y1="322" x2="240" y2="368" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <text x="250" y="349" fill="#a1a1aa" font-size="14">Download</text>
+
+          <!-- row 5: the three items for decode -->
+          <rect x="20" y="368" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="88" y="395" text-anchor="middle" fill="#e4e4e7">Original cover</text>
+          <rect x="172" y="368" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="240" y="395" text-anchor="middle" fill="#e4e4e7">Image from X</text>
+          <rect x="324" y="368" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="392" y="395" text-anchor="middle" fill="#e4e4e7">Password</text>
+
+          <!-- decode -->
+          <polyline points="88,412 88,478 172,478" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <line x1="240" y1="412" x2="240" y2="452" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <polyline points="392,412 392,478 308,478" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <rect x="172" y="452" width="136" height="52" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="240" y="475" text-anchor="middle" fill="#e4e4e7" font-weight="600">Decode</text>
+          <text x="240" y="494" text-anchor="middle" fill="#a1a1aa" font-size="14">in plastron</text>
+
+          <!-- result -->
+          <line x1="240" y1="504" x2="240" y2="544" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-trip-arrow)"/>
+          <rect x="172" y="544" width="136" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="240" y="571" text-anchor="middle" fill="#e4e4e7">plastron link</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 1. The decode operation uses three items: the original cover, the image from X, and the password.</figcaption>
+      </figure>
 
       <h3>1. Open ChaosEdgeSteg</h3>
+      <ol style="list-style:decimal;">
+        <li>Go to <a href="https://plastron.ca">plastron.ca</a>.</li>
+        <li>Open the origin desktop.</li>
+        <li>Click <strong>🕵️ ChaosEdgeSteg</strong>.</li>
+      </ol>
       <p>
-        Go to <a href="https://plastron.ca">plastron.ca</a>, open the origin desktop, and click
-        <strong>🕵️ ChaosEdgeSteg</strong>. A workbook opens with two tabs on the right —
-        <strong>🔓 Decode</strong> and <strong>🖼 Embed</strong>.
+        A workbook opens. It has two tabs on the right: <strong>🔓 Decode</strong> and
+        <strong>🖼 Embed</strong>.
       </p>
 
       <h3>2. Embed a link</h3>
-      <ol>
-        <li>On the <strong>🖼 Embed</strong> pane, paste your <code>plastron.ca/#f=…</code> link (or leave the default boids link).</li>
-        <li>Pick a <strong>PNG cover image</strong>. The sheet checks dimensions immediately.</li>
-        <li>Set a password (default <code>SECRET_PASSWORD</code>, same as upstream).</li>
-        <li>Wait for embedding — the first run loads OpenCV via Pyodide (a few seconds). When done, click <strong>⬇ Download steg PNG</strong>.</li>
+      <ol style="list-style:decimal;">
+        <li>On the <strong>🖼 Embed</strong> pane, paste your <code>plastron.ca/#f=…</code> link. (As an alternative, keep the default boids link.)</li>
+        <li>Select a <strong>PNG cover image</strong>. The sheet immediately does a check of the dimensions.</li>
+        <li>Set a password. (The default is <code>SECRET_PASSWORD</code>, the same as upstream.)</li>
+        <li>Wait until the embed operation is complete. (The first run loads OpenCV through Pyodide in a few seconds.)</li>
+        <li>Click <strong>⬇ Download steg PNG</strong>.</li>
       </ol>
 
       <figure>
-        <img src="/assets/chaosedgesteg-blog/04-embed-done.jpg" alt="Embed pane after embedding completes, showing the Download steg PNG button" loading="lazy">
-        <figcaption>After embedding: the steg PNG is ready to download. It looks like the same ordinary picture.</figcaption>
+        <img src="/assets/chaosedgesteg-blog/04-embed-done.jpg" alt="The Embed pane after the embed operation is complete, with the Download steg PNG button" loading="lazy">
+        <figcaption>After the embed operation, you can download the steg PNG. It looks the same as the cover image.</figcaption>
       </figure>
 
-      <h3>3. The ≤680px rule (critical for X)</h3>
+      <h3>3. The ≤680px rule (necessary for X)</h3>
       <p>
-        We ran a real round-trip test: seven steg PNGs posted to X, downloaded, decoded. PNGs with
-        <strong>max dimension ≤ 680px</strong> came back byte-for-byte identical — link recovered exactly.
-        Images around 900px or larger were JPEG-recompressed and the LSBs were destroyed.
+        We did a round-trip test on the real X service. We posted seven steg PNGs to X, downloaded
+        them, and decoded them. X did not change the PNGs with a
+        <strong>maximum dimension ≤ 680px</strong>: the downloaded files were byte-for-byte identical.
+        We recovered the link exactly. X recompressed the images of approximately 900px or larger as
+        JPEG. That recompression destroyed the LSBs.
       </p>
       <p>
-        The Embed pane enforces this: if your cover is too big, you see
-        <code>TOO BIG: 1200×630 …</code> and the sheet auto-downscales to ≤680px before embedding.
-        If a downscaled copy was used, a second download link offers <em>the cover actually used</em> —
-        your decoder needs that exact file, not the original oversized one.
+        The Embed pane applies this rule. If your cover is too large, the pane shows
+        <code>TOO BIG: 1200×630 …</code>. The sheet then automatically downscales the cover to ≤680px
+        before the embed operation. If the sheet used a downscaled copy, a second download link gives
+        <em>the cover that the sheet used</em>. The person who decodes must have that exact file, not
+        the original file that was too large.
       </p>
 
       <figure>
-        <img src="/assets/chaosedgesteg-blog/03-embed-ready.jpg" alt="Embed pane showing size OK confirmation for a 680px cover" loading="lazy">
-        <figcaption>Size check passed: <code>size OK — 680×357, ≤680px</code>. This cover will survive X's lossless re-encode.</figcaption>
+        <img src="/assets/chaosedgesteg-blog/03-embed-ready.jpg" alt="The Embed pane shows the size OK confirmation for a 680px cover" loading="lazy">
+        <figcaption>The size check passed: <code>size OK — 680×357, ≤680px</code>. The lossless re-encode on X will not change this cover.</figcaption>
       </figure>
 
       <div class="img-pair">
         <figure>
-          <img src="/assets/chaosedgesteg-blog/cover.png" alt="Original cover PNG before steganography" loading="lazy">
+          <img src="/assets/chaosedgesteg-blog/cover.png" alt="The original cover PNG before steganography" loading="lazy">
           <figcaption>Original cover</figcaption>
         </figure>
         <figure>
-          <img src="/assets/chaosedgesteg-blog/steg.png" alt="Steg PNG with hidden link — visually indistinguishable from cover" loading="lazy">
-          <figcaption>Steg PNG (after X round-trip) — looks identical</figcaption>
+          <img src="/assets/chaosedgesteg-blog/steg.png" alt="The steg PNG with the hidden link. It looks the same as the cover." loading="lazy">
+          <figcaption>Steg PNG after the X round trip. It looks identical.</figcaption>
         </figure>
       </div>
 
       <h3>4. Post to X</h3>
+      <ol style="list-style:decimal;">
+        <li>Upload the downloaded steg PNG to X without changes. Do not crop the image, and do not apply a filter.</li>
+        <li>Later, download the image that X serves.</li>
+      </ol>
       <p>
-        Upload the downloaded steg PNG to X as-is — no crop, no filter. This step is outside plastron;
-        the app deliberately does not fetch from <code>twimg.com</code> (CORS). Later, download the image
-        X served back.
+        You do this step on X, not in plastron. The application intentionally does not download from
+        <code>twimg.com</code> because of CORS.
       </p>
 
       <h3>5. Decode</h3>
-      <ol>
-        <li>On the <strong>🔓 Decode</strong> pane, upload the <em>original cover</em> and the <em>image from X</em>.</li>
-        <li>Enter the password.</li>
-        <li>The recovered text appears — as a <strong>clickable link</strong> when it is a URL. The sheet tries cover/steg in both orderings automatically.</li>
-        <li>Click the link; your boids sketch (or whatever you hid) opens.</li>
+      <ol style="list-style:decimal;">
+        <li>On the <strong>🔓 Decode</strong> pane, upload the <em>original cover</em> and the <em>image from X</em>. The sheet automatically tries the two images in the two possible sequences.</li>
+        <li>Enter the password. The recovered text appears. If the text is a URL, it appears as a <strong>clickable link</strong>.</li>
+        <li>Click the link. Your boids sketch opens. If you hid a different link, that link opens.</li>
       </ol>
 
       <figure>
-        <img src="/assets/chaosedgesteg-blog/05-decode-done.jpg" alt="Decode pane showing the recovered plastron.ca link as a clickable anchor" loading="lazy">
-        <figcaption>Decode complete: the hidden <code>plastron.ca/#f=…</code> link recovered character-for-character and rendered as a clickable anchor.</figcaption>
+        <img src="/assets/chaosedgesteg-blog/05-decode-done.jpg" alt="The Decode pane shows the recovered plastron.ca link as a clickable link" loading="lazy">
+        <figcaption>The decode operation is complete. The sheet recovered each character of the hidden <code>plastron.ca/#f=…</code> link and shows it as a clickable link.</figcaption>
       </figure>
 
-      <h3>6. Cross-tool parity</h3>
+      <h3>6. Compatibility between the tools</h3>
       <p>
-        A steg PNG made in plastron also opens in the upstream CLI:
+        The upstream CLI can also extract a steg PNG that plastron made:
       </p>
       <pre class="text-sm bg-zinc-900/80 border border-white/10 rounded-xl p-4 overflow-x-auto mb-4"><code>chaosedgesteg extract cover.png plastron-steg.png -O recovered.zip</code></pre>
       <p>
-        And the reverse: an image embedded with upstream's CLI decodes in the plastron workbook with the
-        same cover and password. The zip container (comment <code>b"0"</code>, member <code>0.bin</code>)
-        matches upstream's format exactly.
+        The opposite direction is also possible. The plastron workbook can decode an image that the
+        upstream CLI made, with the same cover and the same password. The zip container is exactly the
+        same as the upstream format (comment <code>b"0"</code>, member <code>0.bin</code>).
       </p>
 
-      <h2>Under the hood (for the curious)</h2>
+      <h2>How the sheetapp operates (technical details)</h2>
       <p>
-        The embed path: grayscale the cover → adaptive Canny (bisection over thresholds on a
-        bilateral-filtered image to hit target edge density) → Hénon-map ordering keyed by a BLAKE2b-8
-        hash of the password → write LSBs at those pixels: a <code>CES</code> magic header plus
-        4-byte length, then payload bits. Extract re-runs Canny on the <em>original cover</em> to
-        reconstruct the pixel set, reads LSBs from the carrier, checks the header.
+        Figure 2 shows the embed operation. It has four steps:
       </p>
+      <ol style="list-style:decimal;">
+        <li>It changes the cover to grayscale.</li>
+        <li>It finds the edge pixels with adaptive Canny. Canny uses a bilateral-filtered image. A bisection on the thresholds gives the target edge density.</li>
+        <li>It puts those pixels in a Hénon-map order. The key for the map is a BLAKE2b-8 hash of the password.</li>
+        <li>It writes the LSBs at those pixels: a <code>CES</code> magic header and a 4-byte length, then the payload bits.</li>
+      </ol>
+
+      <figure class="ste-diagram" style="margin:1.75rem auto;max-width:380px;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;background:rgba(9,9,11,0.45);padding:1rem 1rem 0.75rem;">
+        <svg viewBox="0 0 380 636" width="100%" role="img" aria-labelledby="dgm-ces-embed-t dgm-ces-embed-d"
+             xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" font-size="15">
+          <title id="dgm-ces-embed-t">The four steps of the embed operation</title>
+          <desc id="dgm-ces-embed-d">The embed operation changes the cover PNG to grayscale. It finds the edge pixels with adaptive Canny. It puts the pixels in a Hénon-map order, and the key is a hash of the password. Then it writes the header, the length, and the payload bits into the LSBs. The result is the steg PNG.</desc>
+          <defs>
+            <marker id="dgm-ces-embed-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+            </marker>
+          </defs>
+
+          <!-- input: cover -->
+          <rect x="198" y="16" width="120" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="258" y="43" text-anchor="middle" fill="#e4e4e7">Cover PNG</text>
+          <line x1="258" y1="60" x2="258" y2="96" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+
+          <!-- step 1 -->
+          <rect x="148" y="96" width="220" height="64" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="258" y="123" text-anchor="middle" fill="#e4e4e7">Change the cover</text>
+          <text x="258" y="143" text-anchor="middle" fill="#e4e4e7">to grayscale</text>
+          <line x1="258" y1="160" x2="258" y2="196" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+
+          <!-- step 2 -->
+          <rect x="148" y="196" width="220" height="84" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="258" y="222" text-anchor="middle" fill="#e4e4e7">Find the edge pixels</text>
+          <text x="258" y="245" text-anchor="middle" fill="#a1a1aa" font-size="14">adaptive Canny,</text>
+          <text x="258" y="263" text-anchor="middle" fill="#a1a1aa" font-size="14">target edge density</text>
+          <line x1="258" y1="280" x2="258" y2="316" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+
+          <!-- step 3 -->
+          <rect x="12" y="346" width="104" height="44" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="64" y="373" text-anchor="middle" fill="#e4e4e7">Password</text>
+          <line x1="116" y1="368" x2="148" y2="368" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+          <rect x="148" y="316" width="220" height="104" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="258" y="342" text-anchor="middle" fill="#e4e4e7">Put the pixels in</text>
+          <text x="258" y="362" text-anchor="middle" fill="#e4e4e7">Hénon-map order</text>
+          <text x="258" y="385" text-anchor="middle" fill="#a1a1aa" font-size="14">key: BLAKE2b-8 hash</text>
+          <text x="258" y="403" text-anchor="middle" fill="#a1a1aa" font-size="14">of the password</text>
+          <line x1="258" y1="420" x2="258" y2="456" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+
+          <!-- step 4 -->
+          <rect x="12" y="472" width="104" height="52" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="64" y="494" text-anchor="middle" fill="#e4e4e7">plastron</text>
+          <text x="64" y="513" text-anchor="middle" fill="#e4e4e7">link</text>
+          <line x1="116" y1="498" x2="148" y2="498" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+          <rect x="148" y="456" width="220" height="84" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+          <text x="258" y="482" text-anchor="middle" fill="#e4e4e7">Write bits into the LSBs</text>
+          <text x="258" y="505" text-anchor="middle" fill="#a1a1aa" font-size="14">CES header, 4-byte length,</text>
+          <text x="258" y="523" text-anchor="middle" fill="#a1a1aa" font-size="14">then the payload bits</text>
+          <line x1="258" y1="540" x2="258" y2="576" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#dgm-ces-embed-arrow)"/>
+
+          <!-- result -->
+          <rect x="198" y="576" width="120" height="44" rx="10" fill="rgba(20,184,166,0.08)" stroke="#2dd4bf"/>
+          <text x="258" y="603" text-anchor="middle" fill="#e4e4e7">Steg PNG</text>
+        </svg>
+        <figcaption style="font-size:0.85rem;color:#a1a1aa;text-align:center;margin-top:0.6rem;line-height:1.5;">Figure 2. The embed operation writes the data only into the LSBs of the edge pixels.</figcaption>
+      </figure>
+
       <p>
-        Formulas wire it together without incantations:
+        The decode operation has three steps:
       </p>
-      <ul>
-        <li><code>B7 = chaosedgesteg.ces('decode', B4, B5, B6)</code> — decode side</li>
-        <li><code>B15 = chaosedgesteg.ces('embed', B13, B10, B14)</code> — embed side (always uses the downscaled cover <code>B13</code>)</li>
-        <li><code>B12 = chaosedgesteg.ces('size', B11)</code> — dimension guard</li>
-        <li><code>B13 = chaosedgesteg.ces('downscale', B11, 680)</code> — auto-fit for X</li>
+      <ol style="list-style:decimal;">
+        <li>It runs Canny again on the <em>original cover</em> to find the same set of pixels.</li>
+        <li>It reads the LSBs from the steg image.</li>
+        <li>It does a check of the header.</li>
+      </ol>
+      <p>
+        No special code is necessary. Formulas connect the parts:
+      </p>
+      <ul style="list-style:disc;">
+        <li><code>B7 = chaosedgesteg.ces('decode', B4, B5, B6)</code> — the decode side</li>
+        <li><code>B15 = chaosedgesteg.ces('embed', B13, B10, B14)</code> — the embed side (it always uses the downscaled cover <code>B13</code>)</li>
+        <li><code>B12 = chaosedgesteg.ces('size', B11)</code> — the size guard</li>
+        <li><code>B13 = chaosedgesteg.ces('downscale', B11, 680)</code> — the automatic downscale for X</li>
       </ul>
       <p>
-        Closing the workbook flushes and evicts every <code>chaosedgesteg.*</code> cell; the shared Pyodide
-        runtime stays cached at process level for the next py cell that needs it.
+        When you close the workbook, plastron flushes and evicts every <code>chaosedgesteg.*</code>
+        cell. The shared Pyodide runtime stays in the cache at process level. The next py cell that
+        uses Pyodide can then use that runtime.
       </p>
 
       <h2>Status</h2>
       <p>
-        Shipped in <a href="https://github.com/rheophile10/plastron">plastron-examples/origin</a> as
-        <code>apps/docs/chaosedgesteg.json</code>, with a capstone e2e
-        (<code>e2e/chaosedgesteg.mjs</code>) that embeds a boids link, decodes it, and verifies
-        upstream parity on a fixture that actually round-tripped through X. A lighter sibling,
-        <strong>🕵️ NanoSteg</strong>, offers dependency-free LSB hiding for contrast — different
-        algorithm, incompatible by design.
+        ChaosEdgeSteg is in <a href="https://github.com/rheophile10/plastron">plastron-examples/origin</a>
+        as <code>apps/docs/chaosedgesteg.json</code>. A capstone e2e test
+        (<code>e2e/chaosedgesteg.mjs</code>) is also there. The test does three things:
+      </p>
+      <ul style="list-style:disc;">
+        <li>It embeds a boids link.</li>
+        <li>It decodes the link.</li>
+        <li>It makes sure that the result is the same as the upstream result. The fixture for this check went through a real round trip on X.</li>
+      </ul>
+      <p>
+        <strong>🕵️ NanoSteg</strong> is a smaller, related tool. It hides data in LSBs and has no
+        dependencies. It is available for comparison. It uses a different algorithm and is intentionally
+        not compatible with ChaosEdgeSteg.
       </p>
       <p>
-        This is a fun demonstration of plastron's "algorithm as spreadsheet policy" model: real
-        scientific Python, visible in a cell, running in the browser, with every UX decision expressed
-        as positioned formulas. Not a security product — steganography is obscurity, not encryption —
-        but a neat way to smuggle share links through social image pipelines.
+        This sheetapp shows the "algorithm as spreadsheet policy" model of plastron:
+      </p>
+      <ul style="list-style:disc;">
+        <li>Real scientific Python code is visible in a cell.</li>
+        <li>The code runs in the browser.</li>
+        <li>Each UX decision is a positioned formula.</li>
+      </ul>
+      <p>
+        Do not use this sheetapp as a security product. Steganography is obscurity, not encryption.
+        The sheetapp is a demonstration for enjoyment. It is also a good method to send hidden share
+        links through the image pipelines of social networks.
       </p>
 
       <h2>References</h2>
-      <ul>
-        <li><a href="https://github.com/crypt0lith/ChaosEdgeSteg">crypt0lith/ChaosEdgeSteg</a> — upstream chaos-based edge-adaptive steganography</li>
-        <li><a href="https://github.com/crypt0lith">crypt0lith</a> — project home</li>
-        <li><a href="https://pyodide.org/en/stable/">Pyodide</a> — CPython in WebAssembly; plastron pins v0.29.4</li>
-        <li><a href="https://plastron.ca">plastron.ca</a> — live demo; click 🕵️ ChaosEdgeSteg on the desktop</li>
-        <li><a href="https://github.com/rheophile10/plastron">rheophile10/plastron</a> — source</li>
+      <ul style="list-style:disc;">
+        <li><a href="https://github.com/crypt0lith/ChaosEdgeSteg">crypt0lith/ChaosEdgeSteg</a> — the upstream chaos-based, edge-adaptive steganography tool</li>
+        <li><a href="https://github.com/crypt0lith">crypt0lith</a> — the home of the project</li>
+        <li><a href="https://pyodide.org/en/stable/">Pyodide</a> — CPython in WebAssembly (plastron pins v0.29.4)</li>
+        <li><a href="https://plastron.ca">plastron.ca</a> — the live demonstration. Click 🕵️ ChaosEdgeSteg on the desktop.</li>
+        <li><a href="https://github.com/rheophile10/plastron">rheophile10/plastron</a> — the source code</li>
       </ul>
     </article>
 
