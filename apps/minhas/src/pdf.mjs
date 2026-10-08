@@ -58,27 +58,30 @@ const makeXref = (offsets) =>
 /**
  * Makes a PDF file with the lines of text, 60 lines on each page.
  * @param {string[]} lines
+ * @param {string} [title] - The title of the document. A PDF reader shows it in its window.
  * @returns {Uint8Array}
  * @standard text - A PDF reader shows each line, in sequence.
  * @standard pages - Each 60 lines make one page. No lines make one empty page.
+ * @standard title - The document information has the title.
  * @uses chunk, LINES_PER_PAGE, makePageObjects, makeObject, makeOffsets, makeXref
  * @usedby makeVehicleLog (web/app.edge.mjs)
  */
-export const makePdf = (lines) => {
+export const makePdf = (lines, title = "") => {
   // The pages hold the lines in groups.
   const pages = chunk(lines.length === 0 ? [""] : lines, LINES_PER_PAGE);
   const pageRefs = pages.map((page, index) => `${4 + index * 2} 0 R`).join(" ");
-  // The fixed objects, then the pages with their content streams.
+  // The fixed objects, the pages with their content streams, and the document information as the last object.
   const bodies = [
     "<< /Type /Catalog /Pages 2 0 R >>",
     `<< /Type /Pages /Kids [${pageRefs}] /Count ${pages.length} >>`,
     "<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>",
     ...pages.flatMap(makePageObjects),
+    `<< /Title (${escapeText(title)}) >>`,
   ];
   const objects = bodies.map(makeObject);
   // The cross-reference table needs the byte offset of each object. All text is ASCII, thus the length is the byte count.
   const header = "%PDF-1.4\n";
   const offsets = makeOffsets(objects, header);
-  const trailer = `trailer\n<< /Size ${bodies.length + 1} /Root 1 0 R >>\nstartxref\n${offsets.at(-1)}\n%%EOF\n`;
+  const trailer = `trailer\n<< /Size ${bodies.length + 1} /Root 1 0 R /Info ${bodies.length} 0 R >>\nstartxref\n${offsets.at(-1)}\n%%EOF\n`;
   return strToU8([header, ...objects, makeXref(offsets), "\n", trailer].join(""));
 };

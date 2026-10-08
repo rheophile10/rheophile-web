@@ -2,6 +2,7 @@
 // The page state is a value. Each action makes a new state and draws the page again.
 /** @import { Connection, Page } from "../types/states.mjs" */
 import { readExportEntries } from "../edge/export.edge.mjs";
+import { findNewFaults, makeCheckFileName, makeCheckLines, makeCheckTitle, readCheckResults } from "../src/checklist.mjs";
 import { callFunction, insertRow, openConnection, readRows, refreshSession, saveRow, signIn, updateRow, uploadPhoto } from "../edge/supabase.edge.mjs";
 import { makeArchive, nameArchive } from "../src/export.mjs";
 import { makePdf } from "../src/pdf.mjs";
@@ -63,6 +64,8 @@ const emptyPage = (connection, message) => ({
   photos: [],
   products: [],
   customers: [],
+  check: null,
+  faults: [],
   recipients: REPORT_RECIPIENTS,
   message,
 });
@@ -105,6 +108,12 @@ const describeStop = (stop) => ({ ...stop, arrivedText: timeOf(stop.arrived_at),
 const describeDay = (day) => ({ ...day, reportSentText: day.report_sent_at === null ? "" : formatLocal(new Date(day.report_sent_at)).replace("T", " ") });
 
 /**
+ * @uses formatLocal (src/rows.mjs)
+ * @usedby loadFaults
+ */
+const describeFault = (fault) => ({ ...fault, reportedText: formatLocal(new Date(fault.reported_at)).slice(0, 10) });
+
+/**
  * @usedby loadUser
  */
 const memberOf = (row) => ({ id: row.user_id, companyId: row.company_id, name: row.name, role: row.role });
@@ -136,14 +145,36 @@ const loadDayRows = (connection, day) =>
       ]).then(([stops, fuelFills]) => ({ day: describeDay(day), stops: stops.map(describeStop), fuelFills }));
 
 /**
- * @uses loadDayRows, readRows (edge/supabase.edge.mjs), loadChildren
+ * @uses readRows (edge/supabase.edge.mjs), makeFilter (src/rows.mjs)
+ * @usedby loadDayParts
+ */
+const loadCheck = (connection, day) =>
+  day === null || day.vehicle_id === null
+    ? Promise.resolve(null)
+    : readRows(connection, "vehicle_checks", makeFilter({ driver_id: day.driver_id, vehicle_id: day.vehicle_id, checked_on: day.day })).then(
+        (rows) => rows[0] ?? null,
+      );
+
+/**
+ * @uses readRows (edge/supabase.edge.mjs), describeFault
+ * @usedby loadDayParts
+ */
+const loadFaults = (connection) => readRows(connection, "faults", "resolved_at=is.null").then((rows) => rows.map(describeFault));
+
+/**
+ * @uses loadDayRows, readRows (edge/supabase.edge.mjs), loadCheck, loadFaults, loadChildren
  * @usedby loadPage
  */
 const loadDayParts = (connection, day) =>
-  Promise.all([loadDayRows(connection, day), readRows(connection, "products", ""), readRows(connection, "customers", "")]).then(
-    ([rows, products, customers]) =>
-      loadChildren(connection, "photos", [...rows.stops, ...rows.fuelFills, ...products].map((row) => ({ column: "subject_id", id: row.id })))
-        .then((photos) => ({ ...rows, products, customers, photos })),
+  Promise.all([
+    loadDayRows(connection, day),
+    readRows(connection, "products", ""),
+    readRows(connection, "customers", ""),
+    loadCheck(connection, day),
+    loadFaults(connection),
+  ]).then(([rows, products, customers, check, faults]) =>
+    loadChildren(connection, "photos", [...rows.stops, ...rows.fuelFills, ...products, ...faults, ...(check === null ? [] : [check])].map((row) => ({ column: "subject_id", id: row.id })))
+      .then((photos) => ({ ...rows, products, customers, check, faults, photos })),
   );
 
 /**
@@ -212,6 +243,39 @@ const makeVehicleLog = (page, month) =>
   );
 
 /**
+ * @uses readCheckResults (src/checklist.mjs), saveRow (edge/supabase.edge.mjs), findNewFaults (src/checklist.mjs),
+ *   insertRow (edge/supabase.edge.mjs), nowIso, reload
+ * @usedby ACTIONS
+ */
+const saveCheck = (page, form) => {
+  // The check of today replaces an earlier save of the same vehicle on the same date.
+  const results = readCheckResults(form);
+  const row = { company_id: page.user.companyId, vehicle_id: page.day.vehicle_id, driver_id: page.user.id, day_id: page.day.id, checked_on: page.today, results, all_checked: form.all_checked === "true", notes: form.notes || null };
+  // Each new defect becomes a fault of the vehicle. An open fault of the same item stays as it is.
+  const newItems = findNewFaults(results, page.faults.filter((fault) => fault.vehicle_id === page.day.vehicle_id));
+  const faults = newItems.map((item) => ({ company_id: page.user.companyId, vehicle_id: page.day.vehicle_id, reported_by: page.user.id, reported_at: nowIso(), item, description: `Defect in the daily check of ${page.today}` }));
+  return saveRow(page.connection, { table: "vehicle_checks", conflict: "driver_id,vehicle_id,checked_on" }, row)
+    .then(() => (faults.length === 0 ? null : insertRow(page.connection, "faults", faults)))
+    .then(() => reload(page, `Check saved. New faults: ${faults.length}.`));
+};
+
+/**
+ * @uses makeCheckTitle (src/checklist.mjs), download, makePdf (src/pdf.mjs), makeCheckLines (src/checklist.mjs),
+ *   makeCheckFileName (src/checklist.mjs)
+ * @usedby ACTIONS
+ */
+const downloadCheck = (page) => {
+  // The document holds the check, the vehicle and its open faults with their photo counts.
+  const vehicle = page.vehicles.find((row) => row.id === page.check.vehicle_id);
+  const faults = page.faults
+    .filter((fault) => fault.vehicle_id === vehicle.id)
+    .map((fault) => ({ ...fault, photoCount: page.photos.filter((photo) => photo.subject_id === fault.id).length }));
+  const title = makeCheckTitle(vehicle, page.check.checked_on);
+  download(makePdf(makeCheckLines(title, { check: page.check, vehicle, faults, driver: page.user.name }), title), makeCheckFileName(title), "application/pdf");
+  return Promise.resolve({ ...page, message: `Checklist PDF: ${title}.` });
+};
+
+/**
  * @uses signIn (edge/supabase.edge.mjs), enter, SESSION_KEY, emptyPage, baseConnection,
  *   callFunction (edge/supabase.edge.mjs), insertRow (edge/supabase.edge.mjs), cleanRow (src/rows.mjs), reload,
  *   saveRow (edge/supabase.edge.mjs), readPosition, toIso, updateRow (edge/supabase.edge.mjs), nowIso, addPhoto,
@@ -263,6 +327,18 @@ const ACTIONS = {
       day_id: page.day.id,
     }).then(() => reload(page, "Fuel fill added.")),
   "add-photo": (page, form) => addPhoto(page, form).then(() => reload(page, "Photo added.")),
+  "save-check": saveCheck,
+  "check-pdf": downloadCheck,
+  "add-fault": (page, form) =>
+    form.vehicle_id === ""
+      ? Promise.resolve({ ...page, message: "Choose the vehicle of the fault." })
+      : insertRow(page.connection, "faults", { ...cleanRow(form), company_id: page.user.companyId, reported_by: page.user.id, reported_at: nowIso() }).then(() =>
+      reload(page, "Fault added."),
+    ),
+  "resolve-fault": (page, form) =>
+    updateRow(page.connection, "faults", { id: form.id, resolution: form.resolution || null, resolved_by: page.user.id, resolved_at: nowIso() }).then(() =>
+      reload(page, "Fault resolved."),
+    ),
   "report-sent": (page) =>
     updateRow(page.connection, "days", { id: page.day.id, report_sent_at: nowIso() }).then(() => reload(page, "Report marked as sent.")),
   "vehicle-log": (page, form) => makeVehicleLog(page, form.month).then((count) => ({ ...page, message: `Vehicle log ${form.month}: ${count} days.` })),
@@ -274,15 +350,29 @@ const ACTIONS = {
 };
 
 /**
- * @usedby readForm
+ * @usedby readElement
  */
-const readElement = (element) => [element.name, element.type === "file" ? element.files[0] ?? null : element.value];
+const READERS = {
+  file: (element) => element.files[0] ?? null,
+  checkbox: (element) => (element.checked ? element.value : ""),
+};
 
 /**
- * @uses readElement
+ * @uses READERS
+ * @usedby readForm
+ */
+const readElement = (element) => [element.name, (READERS[element.type] ?? ((field) => field.value))(element)];
+
+/**
+ * @usedby readForm
+ */
+const isChosen = (element) => element.name !== "" && !(element.type === "radio" && !element.checked);
+
+/**
+ * @uses readElement, isChosen
  * @usedby onSubmit
  */
-const readForm = (form) => Object.fromEntries([...form.elements].filter((element) => element.name !== "").map(readElement));
+const readForm = (form) => Object.fromEntries([...form.elements].filter(isChosen).map(readElement));
 
 /**
  * @uses ACTIONS, draw

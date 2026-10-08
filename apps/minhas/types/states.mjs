@@ -23,9 +23,11 @@
  * @property {object | null} day - The row of today in the days table, with the sent time also as local text. Null before the first save.
  * @property {object[]} stops - The stops of today, with the times also as local text.
  * @property {object[]} fuelFills - The fuel fills of today.
- * @property {object[]} photos - The photos of the stops and the fuel fills of today, and of the products.
+ * @property {object[]} photos - The photos of the stops, the fuel fills, the check of today, the open faults and the products.
  * @property {object[]} products - The products of the company.
  * @property {object[]} customers - The customers of the company.
+ * @property {object | null} check - The vehicle check of today for the vehicle of the day. Null before the first save.
+ * @property {object[]} faults - The open faults of all vehicles of the company, with the report date also as local text.
  * @property {{ supervisor: string, copy: string }} recipients - The addresses of the daily report.
  * @property {string} message - The last message for the user.
  * @readby makeReportLines, makeReportMail, renderPage

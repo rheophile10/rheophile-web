@@ -10,6 +10,8 @@ export const TABLES = [
   "fuel_fills",
   "receipts",
   "damage_reports",
+  "vehicle_checks",
+  "faults",
   "products",
   "customers",
   "photos",

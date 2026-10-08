@@ -1,5 +1,6 @@
 // The HTML of the test page. Each function makes text from the page state and changes nothing.
 /** @import { Page } from "../types/states.mjs" */
+import { CHECK_GROUPS, CHECK_ITEMS, CONFIRMATION, labelOf, makeCheckTitle } from "./checklist.mjs";
 import { makeReportMail } from "./report.mjs";
 
 const DAY_FIELDS = [
@@ -32,8 +33,12 @@ const FUEL_FIELDS = [
 const VEHICLE_FIELDS = [
   { name: "unit_number", label: "Unit number", type: "text" },
   { name: "plate", label: "Plate", type: "text" },
+  { name: "make", label: "Make", type: "text" },
   { name: "model", label: "Model", type: "text" },
 ];
+
+const FAULT_FIELDS = [{ name: "description", label: "Description (for example: left mirror cracked)", type: "text" }];
+const RESOLVE_FIELDS = [{ name: "resolution", label: "Repair or action", type: "text" }];
 
 const PRODUCT_FIELDS = [
   { name: "sku", label: "SKU", type: "text" },
@@ -59,6 +64,12 @@ const JOIN_FIELDS = [
 
 const STOP_KINDS = ["invoice", "boxes", "other"];
 const FUEL_KINDS = ["receipt", "other"];
+const CHECK_KINDS = ["condition", "odometer", "other"];
+const FAULT_KINDS = ["damage", "other"];
+const RESULT_NAMES = [
+  ["ok", "OK"],
+  ["defect", "Defect"],
+];
 
 /**
  * Makes text safe for HTML. The four special characters become entities.
@@ -87,7 +98,7 @@ const renderFields = (fields, row) => fields.map((field) => renderField(field, r
 /**
  * @usedby renderOption, renderVehiclesSection
  */
-const describeVehicle = (vehicle) => [vehicle.unit_number, vehicle.plate, vehicle.model].filter((part) => part !== null && part !== "").join(" ");
+const describeVehicle = (vehicle) => [vehicle.unit_number, vehicle.plate, vehicle.make, vehicle.model].filter(Boolean).join(" ");
 
 /**
  * @uses escapeHtml, describeVehicle
@@ -102,6 +113,13 @@ const renderOption = (vehicle, selected) =>
  */
 const renderVehicles = (vehicles, selected) =>
   `<label>Vehicle<select name="vehicle_id"><option value="">None</option>${vehicles.map((vehicle) => renderOption(vehicle, selected)).join("")}</select></label>`;
+
+/**
+ * @uses CHECK_ITEMS
+ * @usedby renderFaults
+ */
+const renderItemChoice = () =>
+  `<label>Checklist item<select name="item"><option value="">None</option>${CHECK_ITEMS.map((item) => `<option value="${item.key}">${item.label}</option>`).join("")}</select></label>`;
 
 /**
  * @usedby renderPage
@@ -233,7 +251,7 @@ const renderPhotoForm = (subject, kinds) => `
 <form data-action="add-photo" class="photo-form">
   <input type="hidden" name="subject_table" value="${subject.table}"><input type="hidden" name="subject_id" value="${subject.id}">
   <select name="kind">${kinds.map((kind) => `<option value="${kind}">${kind}</option>`).join("")}</select>
-  <input type="file" name="file" accept="image/*" capture="environment" required>
+  <input type="file" name="file" accept="image/*" required>
   <button>Add the photo</button>
 </form>`;
 
@@ -296,6 +314,82 @@ const renderReportSent = (page) =>
     : `<p>Report sent: ${page.day.reportSentText}</p>`;
 
 /**
+ * @uses escapeHtml, RESULT_NAMES
+ * @usedby renderCheckItem
+ */
+const renderResult = (item, chosen) =>
+  RESULT_NAMES.map(
+    ([value, name]) => `<label><input type="radio" name="item_${item.key}" value="${value}"${chosen === value ? " checked" : ""}> ${name}</label>`,
+  ).join("");
+
+/**
+ * @uses escapeHtml, renderResult
+ * @usedby renderCheckForm
+ */
+const renderCheckItem = (item, results, faults) => `
+<fieldset class="check-item"><legend>${escapeHtml(item.label)}</legend>${renderResult(item, results[item.key])}
+  ${faults.filter((fault) => fault.item === item.key).map((fault) => `<small>Open fault: ${escapeHtml(fault.description)}</small>`).join("")}
+</fieldset>`;
+
+/**
+ * @uses CHECK_GROUPS, renderCheckItem, CONFIRMATION, escapeHtml
+ * @usedby renderCheck
+ */
+const renderCheckForm = (check, faults) => `
+<form data-action="save-check">
+  ${CHECK_GROUPS.map((group) => `<h3>${group.title}</h3>${group.items.map((item) => renderCheckItem(item, check?.results ?? {}, faults)).join("")}`).join("")}
+  <label class="confirm"><input type="checkbox" name="all_checked" value="true"${check?.all_checked ? " checked" : ""}> ${CONFIRMATION}</label>
+  <label>Notes<input type="text" name="notes" value="${escapeHtml(check?.notes)}"></label>
+  <button>Save the check</button>
+</form>`;
+
+/**
+ * @uses renderPhoto, renderPhotoForm, CHECK_KINDS
+ * @usedby renderCheck
+ */
+const renderCheckOutputs = (check, photos) => `
+  <ul>${photos.map(renderPhoto).join("")}</ul>
+  ${renderPhotoForm({ table: "vehicle_checks", id: check.id }, CHECK_KINDS)}
+  <form data-action="check-pdf"><button>Download the checklist PDF</button></form>`;
+
+/**
+ * @uses escapeHtml, makeCheckTitle, renderCheckForm, renderCheckOutputs, photosOf
+ * @usedby renderPage
+ */
+const renderCheck = (page) => {
+  // The check is for the vehicle of the day. Without it, the section asks for it.
+  const vehicle = page.vehicles.find((row) => row.id === page.day?.vehicle_id);
+  const faults = page.faults.filter((fault) => fault.vehicle_id === vehicle?.id);
+  return vehicle === undefined
+    ? "<section><h2>Vehicle check</h2><p>Choose the vehicle of the day and save the day. Then do the vehicle check.</p></section>"
+    : `<section><h2>Vehicle check</h2><p><strong>${escapeHtml(makeCheckTitle(vehicle, page.today))}</strong></p>
+      ${renderCheckForm(page.check, faults)}${page.check === null ? "" : renderCheckOutputs(page.check, photosOf(page, page.check.id))}</section>`;
+};
+
+/**
+ * @uses escapeHtml, describeVehicle, labelOf, renderPhoto, renderPhotoForm, FAULT_KINDS, renderFields, RESOLVE_FIELDS
+ * @usedby renderFaults
+ */
+const renderFault = (fault, vehicle, photos) => `
+<li><strong>${escapeHtml(describeVehicle(vehicle ?? {}))}</strong> ${fault.reportedText}: ${escapeHtml(fault.description)}${fault.item === null ? "" : ` <small>(${escapeHtml(labelOf(fault.item))})</small>`}
+  <ul>${photos.map(renderPhoto).join("")}</ul>
+  ${renderPhotoForm({ table: "faults", id: fault.id }, FAULT_KINDS)}
+  <form data-action="resolve-fault"><input type="hidden" name="id" value="${fault.id}">${renderFields(RESOLVE_FIELDS, {})}<button>Resolve the fault</button></form>
+</li>`;
+
+/**
+ * @uses renderFault, photosOf, renderVehicles, renderItemChoice, renderFields, FAULT_FIELDS
+ * @usedby renderPage
+ */
+const renderFaults = (page) => `
+<section>
+  <h2>Faults</h2>
+  <p>A fault stays on its vehicle until you resolve it.</p>
+  <ul>${page.faults.map((fault) => renderFault(fault, page.vehicles.find((row) => row.id === fault.vehicle_id), photosOf(page, fault.id))).join("")}</ul>
+  <form data-action="add-fault">${renderVehicles(page.vehicles, page.day?.vehicle_id ?? "")}${renderItemChoice()}${renderFields(FAULT_FIELDS, {})}<button>Add the fault</button></form>
+</section>`;
+
+/**
  * @uses makeReportMail, renderReportSent
  * @usedby renderDayParts
  */
@@ -325,10 +419,12 @@ const renderDayParts = (page) =>
  * @returns {string}
  * @standard login - Without a user, the page is the sign-in form only. With a login but no member row, it is the join form.
  * @standard record - With a user, the page has the day form, and the stops, the fuel fills and the reports after the first save.
- * @uses renderLogin, renderJoin, renderMessage, renderHeader, renderDayForm, renderDayParts
+ * @standard check - With a day and a vehicle, the page has the checklist form with each item. Without a vehicle, it asks for one.
+ * @standard faults - The page lists each open fault, with a photo form and a resolve form.
+ * @uses renderLogin, renderJoin, renderMessage, renderHeader, renderDayForm, renderCheck, renderFaults, renderDayParts
  * @usedby draw (web/app.edge.mjs)
  */
 export const renderPage = (page) =>
   page.user === null
     ? (page.connection.userId === "" ? renderLogin() : renderJoin()) + renderMessage(page)
-    : [renderHeader(page), renderMessage(page), renderDayForm(page), renderDayParts(page)].join("");
+    : [renderHeader(page), renderMessage(page), renderDayForm(page), renderCheck(page), renderFaults(page), renderDayParts(page)].join("");
